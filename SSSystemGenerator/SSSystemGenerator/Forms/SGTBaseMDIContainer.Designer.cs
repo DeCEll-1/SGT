@@ -120,7 +120,7 @@
             // customEntitiesToolStripMenuItem
             // 
             this.customEntitiesToolStripMenuItem.Name = "customEntitiesToolStripMenuItem";
-            this.customEntitiesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.customEntitiesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.customEntitiesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.customEntitiesToolStripMenuItem.Text = "Custom Entities";
             this.customEntitiesToolStripMenuItem.Click += new System.EventHandler(this.customEntitiesToolStripMenuItem_Click);
@@ -136,7 +136,7 @@
             // astreoidBeltsToolStripMenuItem
             // 
             this.astreoidBeltsToolStripMenuItem.Name = "astreoidBeltsToolStripMenuItem";
-            this.astreoidBeltsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.astreoidBeltsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.astreoidBeltsToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.astreoidBeltsToolStripMenuItem.Text = "Astreoid Belts";
             this.astreoidBeltsToolStripMenuItem.Click += new System.EventHandler(this.astreoidBeltsToolStripMenuItem_Click);

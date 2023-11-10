@@ -9,7 +9,7 @@ namespace SSSystemGenerator.Classes
     public class BaseClass
     {
 
-        public List<VeBlib_StarSystemData> StarSystemDataList { get; set; }
+        public List<VeBlib_StarSystemData> StarSystemDataList { get; set; } = new List<VeBlib_StarSystemData> { };
 
 
 

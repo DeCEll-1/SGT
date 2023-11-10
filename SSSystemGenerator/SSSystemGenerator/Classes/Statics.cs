@@ -13,7 +13,7 @@ namespace SSSystemGenerator.Classes
 
         public static String JSONPath { get; set; } = EXEPath + "data\\strings\\STGSystems.json";
 
-        public static BaseClass baseClass { get; set; }
+        public static BaseClass baseClass { get; set; } = new BaseClass();
 
     }
 }

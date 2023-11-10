@@ -16,16 +16,13 @@ namespace SSSystemGenerator.Forms
 
 
 
-        public VeBlib_StarSystemData undoSystem { get; set; } = null;
+        public List<VeBlib_StarSystemData> deletedSystemsInThisSessionList { get; set; } = new List<VeBlib_StarSystemData> { };
         public VeBlib_StarSystemData currSystem { get; set; } = null;
 
         public Systems()
         {
             InitializeComponent();
-        }
 
-        private void Systems_Load(object sender, EventArgs e)
-        {
             Load();
         }
 
@@ -53,13 +50,17 @@ namespace SSSystemGenerator.Forms
         {
             ComboBox_SystemSelection.Items.Clear();
 
+            ComboBox_SystemSelection.Items.Add("New System");
+            ComboBox_SystemSelection.SelectedItem = "New System";
+
             ComboBox_SystemSelection.Items.AddRange(Helper.SystemListToSystemIDList().ToArray());
 
         }
 
         private void update(VeBlib_StarSystemData systemToUpdate)
         {
-            undoSystem = getSystemFromValues();
+
+            if (systemToUpdate == null) return;
 
             currSystem = systemToUpdate;
 
@@ -77,7 +78,6 @@ namespace SSSystemGenerator.Forms
 
         private void reset()
         {
-            undoSystem = getSystemFromValues();
 
             currSystem = null;
 
@@ -91,51 +91,137 @@ namespace SSSystemGenerator.Forms
             cb_autoGenerateEntrancesAtGasGiants.Checked = false;
             cb_autoGenerateFringeJumpPoint.Checked = false;
             cb_generatePlanetConditions.Checked = false;
+
+            ComboBox_SystemSelection.SelectedItem = "New System";
         }
         #endregion
 
         private void btn_Undo_Click(object sender, EventArgs e)
         {
 
-            if (undoSystem != null)
+            if (deletedSystemsInThisSessionList.Count != 0)
             {
-                update(undoSystem);
-            }
-            else//no last system
-            {
-                reset();
+                currSystem = deletedSystemsInThisSessionList.ElementAt(deletedSystemsInThisSessionList.Count - 1);
+
+                deletedSystemsInThisSessionList.RemoveAt(deletedSystemsInThisSessionList.Count - 1);
+
+                update(currSystem);
+
+                #region adds the system back, copied from add system
+
+                VeBlib_StarSystemData systemToAdd = getSystemFromValues();
+
+                currSystem = getSystemFromValues();
+
+                currSystem = systemToAdd;
+
+                Statics.baseClass.StarSystemDataList.Add(systemToAdd);
+
+                Load();
+
+                ComboBox_SystemSelection.SelectedItem = systemToAdd.systemID;
+
+                #endregion
+
+
             }
 
         }
 
         private void ComboBox_SystemSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ComboBox_SystemSelection.SelectedItem.ToString() == "New System")
+            {
+                btn_AddUpdateSystem.Text = "Add System";
 
-            string selectedID = ComboBox_SystemSelection.SelectedItem.ToString();
+                btn_Delete.Enabled = false;
 
-            undoSystem = getSystemFromValues();
+                reset();
+            }
+            else if (ComboBox_SystemSelection.SelectedItem != null)
+            {
+                string selectedID = ComboBox_SystemSelection.SelectedItem.ToString();
 
-            currSystem = Helper.GetSystemFromID(selectedID);
+                currSystem = Helper.GetSystemFromID(selectedID);
 
-        }
+                update(currSystem);
 
-        private void btn_Deselect_Click(object sender, EventArgs e)
-        {
-            undoSystem = getSystemFromValues();
+                btn_AddUpdateSystem.Text = "Update System";
 
-            reset();
+                btn_Delete.Enabled = true;
+
+            }
+            else
+            {
+                btn_Delete.Enabled = false;
+            }
+
+
         }
 
         private void btn_AddSystem_Click(object sender, EventArgs e)
         {
 
-            VeBlib_StarSystemData systemToAdd = getSystemFromValues();
+            if (btn_AddUpdateSystem.Text == "Add System")
+            {
+                VeBlib_StarSystemData systemToAdd = getSystemFromValues();
 
-            currSystem = systemToAdd;
+                currSystem = getSystemFromValues();
 
-            Statics.baseClass.StarSystemDataList.Add(systemToAdd);
+                currSystem = systemToAdd;
+
+                Statics.baseClass.StarSystemDataList.Add(systemToAdd);
+
+                Load();
+
+                ComboBox_SystemSelection.SelectedItem = systemToAdd.systemID;
+            }
+            else//update system
+            {
+
+                VeBlib_StarSystemData updatedSystem = getSystemFromValues();
+
+                updatedSystem = getSystemFromValues();
+
+                Statics.baseClass.StarSystemDataList.Remove(currSystem);
+
+                Statics.baseClass.StarSystemDataList.Add(updatedSystem);
+
+                Load();
+
+                ComboBox_SystemSelection.SelectedItem = updatedSystem.systemID;
+
+                currSystem = updatedSystem;
+
+            }
+
+        }
+
+        private void tb_ID_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_ID.Text == "")
+            {
+                btn_AddUpdateSystem.Enabled = false;
+            }
+            else
+            {
+                btn_AddUpdateSystem.Enabled = true;
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+
+            if (currSystem == null) return;
+
+            deletedSystemsInThisSessionList.Add(currSystem);
+
+            Statics.baseClass.StarSystemDataList.Remove(currSystem);
+
+            currSystem = new VeBlib_StarSystemData();
 
             Load();
+            reset();
 
         }
     }
