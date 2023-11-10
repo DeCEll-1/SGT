@@ -201,7 +201,7 @@
             this.btn_AddUpdateSystem.Location = new System.Drawing.Point(12, 278);
             this.btn_AddUpdateSystem.Name = "btn_AddUpdateSystem";
             this.btn_AddUpdateSystem.Size = new System.Drawing.Size(223, 36);
-            this.btn_AddUpdateSystem.TabIndex = 12;
+            this.btn_AddUpdateSystem.TabIndex = 10;
             this.btn_AddUpdateSystem.Text = "Add System";
             this.btn_AddUpdateSystem.UseVisualStyleBackColor = true;
             this.btn_AddUpdateSystem.Click += new System.EventHandler(this.btn_AddSystem_Click);
@@ -215,7 +215,7 @@
             this.btn_Delete.Location = new System.Drawing.Point(12, 320);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(180, 36);
-            this.btn_Delete.TabIndex = 13;
+            this.btn_Delete.TabIndex = 11;
             this.btn_Delete.Text = "Delete System";
             this.btn_Delete.UseVisualStyleBackColor = true;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
@@ -228,7 +228,7 @@
             this.btn_Undo.Location = new System.Drawing.Point(198, 320);
             this.btn_Undo.Name = "btn_Undo";
             this.btn_Undo.Size = new System.Drawing.Size(37, 36);
-            this.btn_Undo.TabIndex = 14;
+            this.btn_Undo.TabIndex = 12;
             this.btn_Undo.UseVisualStyleBackColor = true;
             this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
@@ -239,7 +239,7 @@
             this.ComboBox_SystemSelection.Location = new System.Drawing.Point(12, 25);
             this.ComboBox_SystemSelection.Name = "ComboBox_SystemSelection";
             this.ComboBox_SystemSelection.Size = new System.Drawing.Size(223, 21);
-            this.ComboBox_SystemSelection.TabIndex = 27;
+            this.ComboBox_SystemSelection.TabIndex = 1;
             this.ComboBox_SystemSelection.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SystemSelection_SelectedIndexChanged);
             // 
             // label1
