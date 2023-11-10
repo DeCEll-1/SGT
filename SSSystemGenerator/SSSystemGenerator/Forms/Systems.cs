@@ -135,7 +135,7 @@ namespace SSSystemGenerator.Forms
                 btn_AddUpdateSystem.Text = "Add System";
 
                 btn_Delete.Enabled = false;
-
+                    
                 reset();
             }
             else if (ComboBox_SystemSelection.SelectedItem != null)
