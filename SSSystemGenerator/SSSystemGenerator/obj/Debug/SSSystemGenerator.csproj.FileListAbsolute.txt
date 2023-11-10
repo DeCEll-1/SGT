@@ -1,0 +1,71 @@
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.AssemblyReference.cache
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Form1.resources
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Properties.Resources.resources
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.GenerateResource.cache
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.CoreCompileInputs.cache
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\SSSystemGenerator.exe.config
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\SSSystemGenerator.exe
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\SSSystemGenerator.pdb
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.exe
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.pdb
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Buffers.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Memory.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Json.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.ValueTuple.dll
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Buffers.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Memory.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Json.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.ValueTuple.xml
+C:\Users\poedx\source\repos\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.CopyComplete
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\SSSystemGenerator.exe.config
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\SSSystemGenerator.exe
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\SSSystemGenerator.pdb
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Buffers.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Memory.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Numerics.Vectors.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Encodings.Web.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Json.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.ValueTuple.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Buffers.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Memory.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Numerics.Vectors.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Encodings.Web.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Text.Json.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\System.ValueTuple.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.AssemblyReference.cache
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Form1.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Properties.Resources.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.GenerateResource.cache
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.CopyComplete
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.exe
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.pdb
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\CsvHelper.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\CsvHelper.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.SGTBaseMDIContainer.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Stars.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Systems.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Planets.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Markets.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.CustomEntities.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.RingBands.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.AstreoidBelts.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.LoadingOrder.resources
