@@ -16,9 +16,8 @@ namespace SSSystemGenerator.Forms
 
 
 
-        public List<VeBlib_StarSystemData> systemList { get; set; }
-        public VeBlib_StarSystemData undoSystem { get; set; }
-        public VeBlib_StarSystemData currSystem { get; set; }
+        public VeBlib_StarSystemData undoSystem { get; set; } = null;
+        public VeBlib_StarSystemData currSystem { get; set; } = null;
 
         public Systems()
         {
@@ -34,7 +33,7 @@ namespace SSSystemGenerator.Forms
 
         private VeBlib_StarSystemData getSystemFromValues()
         {
-            VeBlib_StarSystemData returnSystem = null;
+            VeBlib_StarSystemData returnSystem = new VeBlib_StarSystemData();
 
             returnSystem.systemID = tb_ID.Text;
             returnSystem.backgroundTextureFilename = tb_StarBackgroundTexturePath.Text;
@@ -60,7 +59,7 @@ namespace SSSystemGenerator.Forms
 
         private void update(VeBlib_StarSystemData systemToUpdate)
         {
-            undoSystem = currSystem;
+            undoSystem = getSystemFromValues();
 
             currSystem = systemToUpdate;
 
@@ -78,6 +77,10 @@ namespace SSSystemGenerator.Forms
 
         private void reset()
         {
+            undoSystem = getSystemFromValues();
+
+            currSystem = null;
+
             tb_ID.Text = "";
             tb_StarBackgroundTexturePath.Text = "";
 
@@ -94,7 +97,14 @@ namespace SSSystemGenerator.Forms
         private void btn_Undo_Click(object sender, EventArgs e)
         {
 
-            update(undoSystem);
+            if (undoSystem != null)
+            {
+                update(undoSystem);
+            }
+            else//no last system
+            {
+                reset();
+            }
 
         }
 
@@ -103,7 +113,7 @@ namespace SSSystemGenerator.Forms
 
             string selectedID = ComboBox_SystemSelection.SelectedItem.ToString();
 
-            undoSystem = currSystem;
+            undoSystem = getSystemFromValues();
 
             currSystem = Helper.GetSystemFromID(selectedID);
 
@@ -111,7 +121,7 @@ namespace SSSystemGenerator.Forms
 
         private void btn_Deselect_Click(object sender, EventArgs e)
         {
-            undoSystem = currSystem;
+            undoSystem = getSystemFromValues();
 
             reset();
         }

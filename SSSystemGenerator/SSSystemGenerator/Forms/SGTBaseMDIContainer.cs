@@ -196,9 +196,7 @@ namespace SSSystemGenerator
                 this.Close();
             }
 
-
         }
-
 
     }
 }

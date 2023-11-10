@@ -85,7 +85,7 @@
             -2147483648});
             this.nud_SystemY.Name = "nud_SystemY";
             this.nud_SystemY.Size = new System.Drawing.Size(69, 20);
-            this.nud_SystemY.TabIndex = 10;
+            this.nud_SystemY.TabIndex = 4;
             // 
             // nud_SystemX
             // 
@@ -102,7 +102,7 @@
             -2147483648});
             this.nud_SystemX.Name = "nud_SystemX";
             this.nud_SystemX.Size = new System.Drawing.Size(69, 20);
-            this.nud_SystemX.TabIndex = 11;
+            this.nud_SystemX.TabIndex = 3;
             // 
             // label12
             // 
@@ -118,7 +118,7 @@
             this.tb_ID.Location = new System.Drawing.Point(12, 25);
             this.tb_ID.Name = "tb_ID";
             this.tb_ID.Size = new System.Drawing.Size(223, 20);
-            this.tb_ID.TabIndex = 17;
+            this.tb_ID.TabIndex = 2;
             // 
             // label10
             // 
@@ -134,7 +134,7 @@
             this.tb_StarBackgroundTexturePath.Location = new System.Drawing.Point(12, 104);
             this.tb_StarBackgroundTexturePath.Name = "tb_StarBackgroundTexturePath";
             this.tb_StarBackgroundTexturePath.Size = new System.Drawing.Size(223, 20);
-            this.tb_StarBackgroundTexturePath.TabIndex = 19;
+            this.tb_StarBackgroundTexturePath.TabIndex = 5;
             // 
             // cb_generatePlanetConditions
             // 
@@ -142,7 +142,7 @@
             this.cb_generatePlanetConditions.Location = new System.Drawing.Point(12, 192);
             this.cb_generatePlanetConditions.Name = "cb_generatePlanetConditions";
             this.cb_generatePlanetConditions.Size = new System.Drawing.Size(147, 17);
-            this.cb_generatePlanetConditions.TabIndex = 23;
+            this.cb_generatePlanetConditions.TabIndex = 8;
             this.cb_generatePlanetConditions.Text = "generatePlanetConditions";
             this.cb_generatePlanetConditions.UseVisualStyleBackColor = true;
             // 
@@ -152,7 +152,7 @@
             this.cb_autoGenerateFringeJumpPoint.Location = new System.Drawing.Point(12, 215);
             this.cb_autoGenerateFringeJumpPoint.Name = "cb_autoGenerateFringeJumpPoint";
             this.cb_autoGenerateFringeJumpPoint.Size = new System.Drawing.Size(169, 17);
-            this.cb_autoGenerateFringeJumpPoint.TabIndex = 22;
+            this.cb_autoGenerateFringeJumpPoint.TabIndex = 9;
             this.cb_autoGenerateFringeJumpPoint.Text = "autoGenerateFringeJumpPoint";
             this.cb_autoGenerateFringeJumpPoint.UseVisualStyleBackColor = true;
             // 
@@ -162,7 +162,7 @@
             this.cb_autoGenerateEntrancesAtGasGiants.Location = new System.Drawing.Point(12, 169);
             this.cb_autoGenerateEntrancesAtGasGiants.Name = "cb_autoGenerateEntrancesAtGasGiants";
             this.cb_autoGenerateEntrancesAtGasGiants.Size = new System.Drawing.Size(198, 17);
-            this.cb_autoGenerateEntrancesAtGasGiants.TabIndex = 21;
+            this.cb_autoGenerateEntrancesAtGasGiants.TabIndex = 7;
             this.cb_autoGenerateEntrancesAtGasGiants.Text = "autoGenerateEntrancesAtGasGiants";
             this.cb_autoGenerateEntrancesAtGasGiants.UseVisualStyleBackColor = true;
             // 
@@ -190,7 +190,7 @@
             -2147483648});
             this.nud_minHyperspaceRadius.Name = "nud_minHyperspaceRadius";
             this.nud_minHyperspaceRadius.Size = new System.Drawing.Size(141, 20);
-            this.nud_minHyperspaceRadius.TabIndex = 24;
+            this.nud_minHyperspaceRadius.TabIndex = 6;
             // 
             // label1
             // 
@@ -198,7 +198,7 @@
             this.label1.Location = new System.Drawing.Point(12, 235);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 27;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Select System To Edit:";
             // 
             // ComboBox_SystemSelection
@@ -208,7 +208,7 @@
             this.ComboBox_SystemSelection.Location = new System.Drawing.Point(12, 251);
             this.ComboBox_SystemSelection.Name = "ComboBox_SystemSelection";
             this.ComboBox_SystemSelection.Size = new System.Drawing.Size(223, 21);
-            this.ComboBox_SystemSelection.TabIndex = 28;
+            this.ComboBox_SystemSelection.TabIndex = 11;
             this.ComboBox_SystemSelection.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SystemSelection_SelectedIndexChanged);
             // 
             // btn_AddSystem
@@ -219,7 +219,7 @@
             this.btn_AddSystem.Location = new System.Drawing.Point(12, 278);
             this.btn_AddSystem.Name = "btn_AddSystem";
             this.btn_AddSystem.Size = new System.Drawing.Size(223, 36);
-            this.btn_AddSystem.TabIndex = 34;
+            this.btn_AddSystem.TabIndex = 12;
             this.btn_AddSystem.Text = "Add System";
             this.btn_AddSystem.UseVisualStyleBackColor = true;
             this.btn_AddSystem.Click += new System.EventHandler(this.btn_AddSystem_Click);
@@ -232,7 +232,7 @@
             this.btn_Delete.Location = new System.Drawing.Point(12, 320);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(223, 36);
-            this.btn_Delete.TabIndex = 34;
+            this.btn_Delete.TabIndex = 13;
             this.btn_Delete.Text = "Delete System";
             this.btn_Delete.UseVisualStyleBackColor = true;
             // 
@@ -244,7 +244,7 @@
             this.btn_Undo.Location = new System.Drawing.Point(203, 220);
             this.btn_Undo.Name = "btn_Undo";
             this.btn_Undo.Size = new System.Drawing.Size(32, 30);
-            this.btn_Undo.TabIndex = 35;
+            this.btn_Undo.TabIndex = 14;
             this.btn_Undo.UseVisualStyleBackColor = true;
             this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
@@ -253,7 +253,7 @@
             this.btn_Deselect.Location = new System.Drawing.Point(162, 62);
             this.btn_Deselect.Name = "btn_Deselect";
             this.btn_Deselect.Size = new System.Drawing.Size(75, 23);
-            this.btn_Deselect.TabIndex = 36;
+            this.btn_Deselect.TabIndex = 1;
             this.btn_Deselect.Text = "Deselect";
             this.btn_Deselect.UseVisualStyleBackColor = true;
             this.btn_Deselect.Click += new System.EventHandler(this.btn_Deselect_Click);
@@ -283,7 +283,7 @@
             this.Controls.Add(this.nud_SystemY);
             this.Controls.Add(this.nud_SystemX);
             this.Name = "Systems";
-            this.Text = "Systems";
+            this.Text = "1";
             ((System.ComponentModel.ISupportInitialize)(this.nud_SystemY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_SystemX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_minHyperspaceRadius)).EndInit();

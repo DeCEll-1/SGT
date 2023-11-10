@@ -10,6 +10,8 @@ namespace SSSystemGenerator.Classes
     public class VeBlib_StarSystemData
     {
 
+        public VeBlib_StarSystemData() { }
+
         public VeBlib_StarSystemData(String systemID, float systemX, float systemY, String backgroundTextureFilename, List<VeBlib_StarData> starList, List<VeBlib_PlanetData> planetList, List<VeBlib_MarketData> marketList, List<VeBlib_AstreoidBeltData> astreoidBeltDataList, List<VeBlib_RingBandData> ringBandDataList, List<VeBlib_SectorEntittyTokenData> sectorEntityTokenList, bool autoGenerateEntrancesAtGasGiants, bool autoGenerateFringeJumpPoint, bool generatePlanetConditions, float minHyperspaceRadius)
         {
             this.systemID = systemID;
