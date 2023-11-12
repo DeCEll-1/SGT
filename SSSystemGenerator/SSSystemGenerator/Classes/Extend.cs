@@ -12,6 +12,12 @@ namespace SSSystemGenerator.Classes
 
         public int order { get; set; }
 
+
+        public String GUID { get; set; }
+
+        public String ID { get; set; }
+        public String name { get; set; }
+
         public float x { get; set; }
         public float y { get; set; }
 

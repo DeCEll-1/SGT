@@ -8,6 +8,17 @@ namespace SSSystemGenerator.Classes.SystemFiles
 {
     public class VeBlib_StarData : Extend
     {
+        #region overloads
+
+        public VeBlib_StarData()
+        {
+            this.ID = "";
+            this.typeID = "";
+            this.focusID = "";
+            this.radius = 0;
+            this.coronaSize = 0;
+
+        }
 
         public VeBlib_StarData(String ID, String typeID, String focusID, float radius, float coronaSize)
         {
@@ -31,7 +42,34 @@ namespace SSSystemGenerator.Classes.SystemFiles
             this.crLossMult = crLossMult;
         }
 
-        public String ID;//unique id
+        public VeBlib_StarData(String ID, String name, String typeID, String focusID, float radius, float coronaSize)
+        {
+            this.ID = ID;
+            this.name = name;
+            this.typeID = typeID;
+            this.focusID = focusID;
+            this.radius = radius;
+            this.coronaSize = coronaSize;
+
+        }
+
+        public VeBlib_StarData(String ID, String name, String typeID, String focusID, float radius, float coronaSize, float windBurnLevel, float flareProbability, float crLossMult)
+        {
+            this.ID = ID;
+            this.name = name;
+            this.typeID = typeID;
+            this.focusID = focusID;
+            this.radius = radius;
+            this.coronaSize = coronaSize;
+            this.windBurnLevel = windBurnLevel;
+            this.flareProbability = flareProbability;
+            this.crLossMult = crLossMult;
+        }
+
+        #endregion
+
+        public String systemID { get; set; }
+        public String systemGUID { get; set; }
         public float radius;//radius of the star
         public float coronaSize;//size of the covid-1984
         public float windBurnLevel = -1;//idk mayn star things

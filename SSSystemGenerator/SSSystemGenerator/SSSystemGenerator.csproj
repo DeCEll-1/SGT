@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ItemEditingAdding.cs" />
     <Compile Include="Classes\BaseClass.cs" />
     <Compile Include="Classes\Extend.cs" />
     <Compile Include="Classes\fileHelper.cs" />

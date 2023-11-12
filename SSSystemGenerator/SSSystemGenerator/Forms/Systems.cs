@@ -28,22 +28,41 @@ namespace SSSystemGenerator.Forms
 
         #region customFunctions
 
-        private VeBlib_StarSystemData getSystemFromValues()
+        private VeBlib_StarSystemData addValuesToSystem()
         {
-            VeBlib_StarSystemData returnSystem = new VeBlib_StarSystemData();
+            VeBlib_StarSystemData system = new VeBlib_StarSystemData();
 
-            returnSystem.systemID = tb_ID.Text;
-            returnSystem.backgroundTextureFilename = tb_StarBackgroundTexturePath.Text;
+            system.ID = tb_ID.Text;
+            system.name = tb_Name.Text;
+            system.backgroundTextureFilename = tb_StarBackgroundTexturePath.Text;
 
-            returnSystem.minHyperspaceRadius = (float)nud_minHyperspaceRadius.Value;
-            returnSystem.systemX = (float)nud_SystemX.Value;
-            returnSystem.systemY = (float)nud_SystemY.Value;
+            system.minHyperspaceRadius = (float)nud_minHyperspaceRadius.Value;
+            system.systemX = (float)nud_SystemX.Value;
+            system.systemY = (float)nud_SystemY.Value;
 
-            returnSystem.autoGenerateEntrancesAtGasGiants = cb_autoGenerateEntrancesAtGasGiants.Checked;
-            returnSystem.autoGenerateFringeJumpPoint = cb_autoGenerateFringeJumpPoint.Checked;
-            returnSystem.generatePlanetConditions = cb_generatePlanetConditions.Checked;
+            system.autoGenerateEntrancesAtGasGiants = cb_autoGenerateEntrancesAtGasGiants.Checked;
+            system.autoGenerateFringeJumpPoint = cb_autoGenerateFringeJumpPoint.Checked;
+            system.generatePlanetConditions = cb_generatePlanetConditions.Checked;
 
-            return returnSystem;
+            return system;
+        }
+
+        private VeBlib_StarSystemData addValuesToSystem(VeBlib_StarSystemData system)
+        {
+
+            system.ID = tb_ID.Text;
+            system.name = tb_Name.Text;
+            system.backgroundTextureFilename = tb_StarBackgroundTexturePath.Text;
+
+            system.minHyperspaceRadius = (float)nud_minHyperspaceRadius.Value;
+            system.systemX = (float)nud_SystemX.Value;
+            system.systemY = (float)nud_SystemY.Value;
+
+            system.autoGenerateEntrancesAtGasGiants = cb_autoGenerateEntrancesAtGasGiants.Checked;
+            system.autoGenerateFringeJumpPoint = cb_autoGenerateFringeJumpPoint.Checked;
+            system.generatePlanetConditions = cb_generatePlanetConditions.Checked;
+
+            return system;
         }
 
         private void Load()
@@ -53,7 +72,9 @@ namespace SSSystemGenerator.Forms
             ComboBox_SystemSelection.Items.Add("New System");
             ComboBox_SystemSelection.SelectedItem = "New System";
 
-            ComboBox_SystemSelection.Items.AddRange(Helper.SystemListToSystemIDList().ToArray());
+
+            ComboBox_SystemSelection.Items.AddRange(Helper.IDNameList(Helper.LitsUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            //upcasts array of a list, turns it to the list for ids and then arrays that
 
         }
 
@@ -64,7 +85,8 @@ namespace SSSystemGenerator.Forms
 
             currSystem = systemToUpdate;
 
-            tb_ID.Text = systemToUpdate.systemID;
+            tb_ID.Text = systemToUpdate.ID;
+            tb_Name.Text = systemToUpdate.name;
             tb_StarBackgroundTexturePath.Text = systemToUpdate.backgroundTextureFilename;
 
             nud_minHyperspaceRadius.Value = (decimal)systemToUpdate.minHyperspaceRadius;
@@ -82,6 +104,7 @@ namespace SSSystemGenerator.Forms
             currSystem = null;
 
             tb_ID.Text = "";
+            tb_Name.Text = "";
             tb_StarBackgroundTexturePath.Text = "";
 
             nud_minHyperspaceRadius.Value = 0;
@@ -109,9 +132,9 @@ namespace SSSystemGenerator.Forms
 
                 #region adds the system back, copied from add system
 
-                VeBlib_StarSystemData systemToAdd = getSystemFromValues();
+                VeBlib_StarSystemData systemToAdd = addValuesToSystem();
 
-                currSystem = getSystemFromValues();
+                currSystem = addValuesToSystem();
 
                 currSystem = systemToAdd;
 
@@ -119,7 +142,7 @@ namespace SSSystemGenerator.Forms
 
                 Load();
 
-                ComboBox_SystemSelection.SelectedItem = systemToAdd.systemID;
+                ComboBox_SystemSelection.SelectedItem = systemToAdd.ID + " - " + systemToAdd.name;
 
                 #endregion
 
@@ -135,7 +158,7 @@ namespace SSSystemGenerator.Forms
                 btn_AddUpdateSystem.Text = "Add System";
 
                 btn_Delete.Enabled = false;
-                    
+
                 reset();
             }
             else if (ComboBox_SystemSelection.SelectedItem != null)
@@ -159,37 +182,46 @@ namespace SSSystemGenerator.Forms
 
         }
 
+        //update / add
         private void btn_AddSystem_Click(object sender, EventArgs e)
         {
 
             if (btn_AddUpdateSystem.Text == "Add System")
             {
-                VeBlib_StarSystemData systemToAdd = getSystemFromValues();
+                VeBlib_StarSystemData systemToAdd = addValuesToSystem();
 
-                currSystem = getSystemFromValues();
 
                 currSystem = systemToAdd;
 
-                Statics.baseClass.StarSystemDataList.Add(systemToAdd);
+                ItemEditingAdding.AddSystem(systemToAdd);
 
                 Load();
 
-                ComboBox_SystemSelection.SelectedItem = systemToAdd.systemID;
+                ComboBox_SystemSelection.SelectedItem = systemToAdd.ID + " - " + systemToAdd.name;
             }
             else//update system
             {
 
-                VeBlib_StarSystemData updatedSystem = getSystemFromValues();
 
-                updatedSystem = getSystemFromValues();
+                VeBlib_StarSystemData updatedSystem = Helper.GetSystemFromGUID(currSystem.GUID);//get the old system with the guid to keep the stars and planets and such other things
 
-                Statics.baseClass.StarSystemDataList.Remove(currSystem);
 
-                Statics.baseClass.StarSystemDataList.Add(updatedSystem);
+
+                updatedSystem = addValuesToSystem(updatedSystem);//update the variables of system
+
+                updatedSystem.GUID = currSystem.GUID;//OK
+                                                     //this shit is actually very easy so
+                                                     //i give the thing a guid for editing it and get the system to update with guid
+                                                     //but for some reason this is liquidifieing my brain
+                                                     //smoothbrain.png
+
+
+
+                ItemEditingAdding.UpdateSystem(updatedSystem);//update the system
 
                 Load();
 
-                ComboBox_SystemSelection.SelectedItem = updatedSystem.systemID;
+                ComboBox_SystemSelection.SelectedItem = updatedSystem.ID + " - " + updatedSystem.name;
 
                 currSystem = updatedSystem;
 
@@ -199,7 +231,7 @@ namespace SSSystemGenerator.Forms
 
         private void tb_ID_TextChanged(object sender, EventArgs e)
         {
-            if (tb_ID.Text == "")
+            if ((sender as TextBox).Text == "")
             {
                 btn_AddUpdateSystem.Enabled = false;
             }

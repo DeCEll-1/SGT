@@ -24,7 +24,6 @@ namespace SSSystemGenerator.Classes.SystemFiles
 
         public String factionID;
         public String primaryEntity;
-        public String name;
         public int size;
         public List<String> connectedEntities;
         public List<String> marketConditions;

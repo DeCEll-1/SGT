@@ -7,14 +7,51 @@ using System.Threading.Tasks;
 
 namespace SSSystemGenerator.Classes
 {
-    public class VeBlib_StarSystemData
+    public class VeBlib_StarSystemData : Extend
     {
 
-        public VeBlib_StarSystemData() { }
-
-        public VeBlib_StarSystemData(String systemID, float systemX, float systemY, String backgroundTextureFilename, List<VeBlib_StarData> starList, List<VeBlib_PlanetData> planetList, List<VeBlib_MarketData> marketList, List<VeBlib_AstreoidBeltData> astreoidBeltDataList, List<VeBlib_RingBandData> ringBandDataList, List<VeBlib_SectorEntittyTokenData> sectorEntityTokenList, bool autoGenerateEntrancesAtGasGiants, bool autoGenerateFringeJumpPoint, bool generatePlanetConditions, float minHyperspaceRadius)
+        public VeBlib_StarSystemData()
         {
-            this.systemID = systemID;
+
+            this.ID = "";
+
+            this.systemX = 0;
+
+            this.systemY = 0;
+
+            this.backgroundTextureFilename = "";
+
+
+            this.starList = new List<VeBlib_StarData> { };
+
+            this.planetList = new List<VeBlib_PlanetData> { };
+
+            this.marketList = new List<VeBlib_MarketData> { };
+
+            //        this.WithJunkAndChatter= WithJunkAndChatter;
+            //        this.PirateMode= PirateMode;
+
+            this.astreoidBeltDataList = new List<VeBlib_AstreoidBeltData> { };
+            this.ringBandDataList = new List<VeBlib_RingBandData> { };
+
+            this.sectorEntityTokenList = new List<VeBlib_SectorEntittyTokenData> { };
+
+
+            this.autoGenerateEntrancesAtGasGiants = false;
+
+            this.autoGenerateFringeJumpPoint = false;
+            this.generatePlanetConditions = false;
+
+            this.minHyperspaceRadius = 0;
+
+
+        }
+
+        public VeBlib_StarSystemData(String systemID, String systemName, float systemX, float systemY, String backgroundTextureFilename, List<VeBlib_StarData> starList, List<VeBlib_PlanetData> planetList, List<VeBlib_MarketData> marketList, List<VeBlib_AstreoidBeltData> astreoidBeltDataList, List<VeBlib_RingBandData> ringBandDataList, List<VeBlib_SectorEntittyTokenData> sectorEntityTokenList, bool autoGenerateEntrancesAtGasGiants, bool autoGenerateFringeJumpPoint, bool generatePlanetConditions, float minHyperspaceRadius)
+        {
+            this.ID = systemID;
+
+            this.systemName = systemName;
 
             this.systemX = systemX;
 
@@ -47,7 +84,7 @@ namespace SSSystemGenerator.Classes
 
         }
 
-        public String systemID;
+        public String systemName;
 
         public float systemX;
 

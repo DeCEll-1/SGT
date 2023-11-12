@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="tb_Info.Text" xml:space="preserve">
-    <value>//0 = setFixedLocation; only needs x and y other than neccessary stuff.
+    <value>Orbit Mode Explanation:
+
+//0 = setFixedLocation; only needs x and y other than neccessary stuff.
 
 //1 = setCircularOrbit; needs focusID; angle; orbitRadius; orbitDays;
 

@@ -49,7 +49,6 @@ namespace SSSystemGenerator.Classes.SystemFiles
             this.orbitLocationMode = 3;
         }
 
-        public String ID;//neccessary
         public String name;//neccessary
         public String customEntittyType;//neccessary
         public String factionID;//neccessary
