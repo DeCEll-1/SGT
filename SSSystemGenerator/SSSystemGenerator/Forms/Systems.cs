@@ -73,7 +73,7 @@ namespace SSSystemGenerator.Forms
             ComboBox_SystemSelection.SelectedItem = "New System";
 
 
-            ComboBox_SystemSelection.Items.AddRange(Helper.IDNameList(Helper.LitsUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            ComboBox_SystemSelection.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
             //upcasts array of a list, turns it to the list for ids and then arrays that
 
         }
@@ -190,6 +190,12 @@ namespace SSSystemGenerator.Forms
             {
                 VeBlib_StarSystemData systemToAdd = addValuesToSystem();
 
+                if (Helper.DoesSystemIDExists(systemToAdd.ID))
+                {
+                    MessageBox.Show("System ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
 
                 currSystem = systemToAdd;
 
@@ -215,6 +221,12 @@ namespace SSSystemGenerator.Forms
                                                      //but for some reason this is liquidifieing my brain
                                                      //smoothbrain.png
 
+                if (Helper.DoesSystemIDExists(updatedSystem.ID))
+                {
+                    MessageBox.Show("System ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
 
 
                 ItemEditingAdding.UpdateSystem(updatedSystem);//update the system

@@ -20,32 +20,95 @@ namespace SSSystemGenerator
         public Stars()
         {
             InitializeComponent();
-            ComboBox_OrbitMode.SelectedIndex = 0;
             Load();
 
-            if (ComboBox_Systems.Items.Count != 0)
+        }
+
+        #region focusStuff
+
+        //orbit mode selection
+        private void ComboBox_OrbitMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            resetOrbit();
+
+            byte orbitMode = Convert.ToByte(ComboBox_OrbitMode.SelectedItem.ToString());
+
+            switch (orbitMode)//i dont have any idea on how switches work i work with ifs but why not go fancy when i got the chance
             {
-                ComboBox_Systems.SelectedIndex = 0;
+
+                case 0://if orbit mode is 0 aka only coordinates
+
+                    nud_X.Enabled = true;
+                    nud_Y.Enabled = true;
+
+                    break;//w3 schools says we need a break here but why? cant it just end when it hits the other piece?
+                case 1:
+
+                    ComboBox_FocusID.Enabled = true;
+
+                    nud_Angle.Enabled = true;
+                    nud_OrbitDays.Enabled = true;
+                    nud_OrbitRadius.Enabled = true;
+
+                    break;
+                case 2://1 but pointing down
+
+                    ComboBox_FocusID.Enabled = true;
+
+                    nud_Angle.Enabled = true;
+                    nud_OrbitDays.Enabled = true;
+                    nud_OrbitRadius.Enabled = true;
+
+
+                    break;
+
+                case 3://max-min spin
+
+                    ComboBox_FocusID.Enabled = true;
+
+                    nud_Angle.Enabled = true;
+                    nud_OrbitDays.Enabled = true;
+                    nud_OrbitRadius.Enabled = true;
+
+                    nud_MinSpin.Enabled = true;
+                    nud_MaxSpin.Enabled = true;
+
+                    break;
+
+                default:
+                    break;
             }
         }
 
-        #region focus stuff
+        //update orbit list on refresh key press
+        private void btn_FocusRefresh_Click(object sender, EventArgs e) { loadOrbits(); }
 
-        private void ComboBox_FocusID_DropDown(object sender, EventArgs e)//when the drop box opens
+        //updates orbitables list
+        private void loadOrbits()
+        {
+            List<Extend> orbitables = Helper.getOrbitablesInSystem(getSystem());
+
+            if (orbitables == null) return;
+
+            ComboBox_FocusID.Items.Clear();
+
+            ComboBox_FocusID.Items.Add("");
+
+            ComboBox_FocusID.Items.AddRange(Helper.IDNameList(orbitables).ToArray());
+        }
+
+        //when selected orbitable changes
+        private void ComboBox_FocusID_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void ComboBox_FocusID_SelectedIndexChanged(object sender, EventArgs e)//when selected thing changes
-        {
-
-        }
-
+        //adds extend values to the item, like id or type id or focus or bla bla
         private void addExtendValues(Extend item)
         {
             item.orbitLocationMode = Convert.ToInt32(ComboBox_OrbitMode.SelectedItem);
 
-            if (ComboBox_FocusID.SelectedItem != null) item.focusID = ComboBox_FocusID.SelectedItem.ToString();
+            if (item.orbitLocationMode != 0) item.focusID = Helper.IDWithNameToID(ComboBox_FocusID.SelectedItem.ToString());
             //if focus id isnt set then dont add it for not crashing
             //if no focus itll use x or y or whatever
 
@@ -64,9 +127,19 @@ namespace SSSystemGenerator
             item.typeID = tb_TypeID.Text;
         }
 
+        //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
         private void updateExtends(Extend item)
         {
             ComboBox_OrbitMode.SelectedItem = item.orbitLocationMode;
+
+            foreach (var comboboxItem in ComboBox_FocusID.Items)//scroll through the list of items in the focusables
+            {
+                if (Helper.IDWithNameToID(comboboxItem.ToString()) == item.focusID)//if the focusables name is equal to the items focus
+                {
+                    ComboBox_FocusID.SelectedIndex = ComboBox_FocusID.Items.IndexOf(comboboxItem);//then make selected index be the comboboxItem which is what were looking for 
+                    break;
+                }
+            }
 
             ComboBox_FocusID.SelectedText = item.focusID;
 
@@ -85,25 +158,48 @@ namespace SSSystemGenerator
             tb_TypeID.Text = item.typeID;
         }
 
+        //reset extend elements on the form to default values
         private void resetExtend()
         {
             ComboBox_OrbitMode.SelectedItem = 0;
 
-            ComboBox_FocusID.SelectedText = "New Star";
+            ComboBox_FocusID.SelectedText = "New Star";//change this in different forms
 
-            nud_X.Value = 0;
-            nud_Y.Value = 0;
-
-            nud_Angle.Value = 0;
-            nud_OrbitRadius.Value = 0;
-            nud_OrbitDays.Value = 0;
-
-            nud_MinSpin.Value = 0;
-            nud_MaxSpin.Value = 0;
+            resetOrbit();
 
             tb_ID.Text = "";
             tb_Name.Text = "";
             tb_TypeID.Text = "";
+        }
+
+        //resets orbit values to the defaults, resetExtend alredy uses this so dont need to run this too
+        private void resetOrbit()
+        {
+            nud_X.Value = -1;
+            nud_X.Enabled = false;
+
+            nud_Y.Value = -1;
+            nud_Y.Enabled = false;
+
+            nud_Angle.Value = -1;
+            nud_Angle.Enabled = false;
+
+            nud_OrbitRadius.Value = -1;
+            nud_OrbitRadius.Enabled = false;
+
+            nud_OrbitDays.Value = -1;
+            nud_OrbitDays.Enabled = false;
+
+            nud_MinSpin.Value = -1;
+            nud_MinSpin.Enabled = false;
+
+            nud_MaxSpin.Value = -1;
+            nud_MaxSpin.Enabled = false;
+
+            ComboBox_FocusID.Enabled = false;
+
+
+
         }
 
         #endregion
@@ -122,12 +218,22 @@ namespace SSSystemGenerator
             if (ComboBox_Systems.Items.Count != 0)
             {
                 ComboBox_Stars.Items.AddRange(
-                    Helper.IDNameList(
-                        Helper.LitsUpcasting(
-                            Helper.GetSystemFromID(
-                                ComboBox_Systems.SelectedItem.ToString()).starList.ToArray())).ToArray());
+                    Helper.IDNameList(//turns systems into id + name list for the combo box
+                        Helper.ListUpcasting(//turn star list to extend
+                            Helper.GetSystemFromID(//get system with id (it automatically removes name)
+                                ComboBox_Systems.SelectedItem.ToString()//selected star systems id + name
+                                )
+                            .starList.ToArray()))//get stars in the selected system
+                    .ToArray());
             }
 
+            ComboBox_OrbitMode.Items.Clear();
+
+            ComboBox_OrbitMode.Items.AddRange(new object[] { 0, 1, 2, 3 });
+
+            ComboBox_OrbitMode.SelectedItem = 0;
+
+            loadOrbits();
 
 
         }
@@ -135,7 +241,7 @@ namespace SSSystemGenerator
         private void LoadSystems()
         {
             ComboBox_Systems.Items.Clear();
-            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.LitsUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
 
             if (ComboBox_Systems.Items.Count != 0)
             {
@@ -143,8 +249,6 @@ namespace SSSystemGenerator
             }
 
         }
-
-
 
         private void update(VeBlib_StarData star)
         {
@@ -155,8 +259,6 @@ namespace SSSystemGenerator
 
         }
 
-       
-
         private void reset()
         {
 
@@ -165,6 +267,16 @@ namespace SSSystemGenerator
 
             nud_Radius.Value = 0;
             nud_CoronaSize.Value = 0;
+        }
+
+        private VeBlib_StarSystemData getSystem()
+        {
+
+            if (ComboBox_Systems.SelectedItem == null) return null;
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
+
+            return system;
         }
 
         private VeBlib_StarData getData()
@@ -183,6 +295,9 @@ namespace SSSystemGenerator
 
         #endregion
 
+        #region formFunction
+
+        //adds / updates star
         private void btn_AddStar_Click(object sender, EventArgs e)
         {
             if (btn_AddUpdateStar.Text == "Add Star")
@@ -190,6 +305,12 @@ namespace SSSystemGenerator
 
                 VeBlib_StarData starToAdd = getData();
 
+                if (Helper.DoesStarIDExist(starToAdd.ID))
+                {
+                    MessageBox.Show("Star ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
 
                 ItemEditingAdding.AddStar(starToAdd);
 
@@ -208,6 +329,13 @@ namespace SSSystemGenerator
 
                 updatedStar.systemGUID = Helper.GetSystemFromID(updatedStar.systemID).GUID;
 
+                if (Helper.DoesStarIDExist(updatedStar.ID))
+                {
+                    MessageBox.Show("Star ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
                 ItemEditingAdding.UpdateStar(updatedStar);
 
                 Load();
@@ -219,6 +347,7 @@ namespace SSSystemGenerator
             }
         }
 
+        //checks for required stuff like ids or parent system
         private void TextChangedBTNAddUpdateCheck(object sender, EventArgs e)
         {
             if (
@@ -236,11 +365,7 @@ namespace SSSystemGenerator
             }
         }
 
-        private void ComboBox_Systems_DropDown(object sender, EventArgs e)
-        {
-            LoadSystems();
-        }
-
+        //star selection
         private void ComboBox_Stars_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ComboBox_Stars.SelectedItem.ToString() == "New Star")
@@ -255,9 +380,13 @@ namespace SSSystemGenerator
             {
                 string selectedID = ComboBox_Stars.SelectedItem.ToString();
 
-                currStar = Helper.GetStarOnSystem(ComboBox_Systems.SelectedItem.ToString(), selectedID);
+                string systemID = ComboBox_Systems.SelectedItem.ToString();
 
-                update(currStar);
+                VeBlib_StarData Star = Helper.GetStarOnSystem(systemID, selectedID);//get star in the system
+
+                update(Star);// update the star with variables
+
+
 
                 btn_AddUpdateStar.Text = "Update Star";
 
@@ -270,13 +399,13 @@ namespace SSSystemGenerator
             }
         }
 
-        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TextChangedBTNAddUpdateCheck(null, null);
-        }
+        //system selection
+        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { TextChangedBTNAddUpdateCheck(null, null); }
 
-       
+        //system list refresh
+        private void btn_SystemsRefresh_Click(object sender, EventArgs e) { LoadSystems(); }
 
-        
+        #endregion
+
     }
 }

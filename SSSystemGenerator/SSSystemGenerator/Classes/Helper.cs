@@ -14,6 +14,24 @@ namespace SSSystemGenerator.Classes
     public class Helper
     {
 
+        #region extend list to string list for combo boxes and such
+
+        //same as IDNameList but without ids
+        public static List<String> NameList(List<Extend> list)
+        {
+
+            List<String> result = new List<String>();
+
+            foreach (Extend item in list)
+            {
+                result.Add(item.name);
+            }
+
+            return result;
+
+        }
+
+        //same as IDNameList but without names
         public static List<String> IDList(List<Extend> list)
         {
 
@@ -28,8 +46,11 @@ namespace SSSystemGenerator.Classes
 
         }
 
+        //turns extend items to a list of id + names, for lists
         public static List<String> IDNameList(List<Extend> list)
         {
+
+            if (list == null) return null;
 
             List<String> result = new List<String>();
 
@@ -40,6 +61,16 @@ namespace SSSystemGenerator.Classes
 
             return result;
 
+        }
+
+        #endregion
+
+        #region systems
+
+        //gets all systems
+        public static List<VeBlib_StarSystemData> GetAllSystems()
+        {
+            return Statics.baseClass.StarSystemDataList;
         }
 
         //returns null if couldnt find any
@@ -80,6 +111,42 @@ namespace SSSystemGenerator.Classes
             return system;
         }
 
+        //gets orbitables on the system
+        public static List<Extend> getOrbitablesInSystem(VeBlib_StarSystemData system)
+        {
+            if (system == null) return null;
+
+            List<Extend> list = new List<Extend>();
+
+            foreach (var item in system.starList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.planetList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.astreoidBeltDataList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.ringBandDataList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.sectorEntityTokenList)
+            {
+                list.Add(item);
+            }
+
+            return list;
+
+        }
+
         //returns null if couldnt find any
         public static VeBlib_StarData GetStarOnSystem(String systemID, String starID)
         {
@@ -101,6 +168,24 @@ namespace SSSystemGenerator.Classes
             return null;
         }
 
+        //returns true if system exists
+        public static Boolean DoesSystemIDExists(string ID)
+        {
+            foreach (var system in GetAllSystems())
+            {
+                if (system.ID == ID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        #endregion
+
+        #region stars
+
         //return null if couldnt find anything
         public static VeBlib_StarData GetStarWithGUID(String GUID)
         {
@@ -120,12 +205,31 @@ namespace SSSystemGenerator.Classes
 
         }
 
-        private static String IDWithNameToID(String IDPName)
+        public static Boolean DoesStarIDExist(string ID)
+        {
+            foreach (VeBlib_StarSystemData system in Statics.baseClass.StarSystemDataList)//scroll through system list
+            {
+                foreach (VeBlib_StarData star in system.starList)//scroll through star list
+                {
+                    if (star.ID == ID)//if ID is found
+                    {
+                        return true;//star exists
+                    }
+                }
+            }
+
+            return false;//couldnt find anything
+        }
+
+        #endregion
+
+        #region misc
+
+        public static String IDWithNameToID(String IDPName)
         {
             //https://www.geeksforgeeks.org/string-split-method-in-c-sharp-with-examples/
 
             if (!IDPName.Contains(" - ")) return IDPName;
-
 
 
             char[] spearator = { ' ' };
@@ -136,7 +240,7 @@ namespace SSSystemGenerator.Classes
             return splittenName;
         }
 
-        public static List<Extend> LitsUpcasting(Object[] listToUpcast)
+        public static List<Extend> ListUpcasting(Object[] listToUpcast)
         {
 
             List<Extend> upcastedList = new List<Extend>();
@@ -150,8 +254,6 @@ namespace SSSystemGenerator.Classes
 
         }
 
-
-
         public static void throwCrash(string fileName, string functionName)
         {
 
@@ -161,5 +263,7 @@ namespace SSSystemGenerator.Classes
                 "\nping me on corvus or usc with the reproduction way and your system JSON");
 
         }
+
+        #endregion
     }
 }

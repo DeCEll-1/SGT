@@ -65,6 +65,8 @@
             this.btn_Undo = new System.Windows.Forms.Button();
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.btn_FocusRefresh = new System.Windows.Forms.Button();
+            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CoronaSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Y)).BeginInit();
@@ -182,6 +184,7 @@
             // 
             // nud_Y
             // 
+            this.nud_Y.Enabled = false;
             this.nud_Y.Location = new System.Drawing.Point(310, 103);
             this.nud_Y.Maximum = new decimal(new int[] {
             999999,
@@ -199,6 +202,7 @@
             // 
             // nud_X
             // 
+            this.nud_X.Enabled = false;
             this.nud_X.Location = new System.Drawing.Point(202, 102);
             this.nud_X.Maximum = new decimal(new int[] {
             999999,
@@ -240,9 +244,8 @@
             this.ComboBox_Systems.FormattingEnabled = true;
             this.ComboBox_Systems.Location = new System.Drawing.Point(12, 24);
             this.ComboBox_Systems.Name = "ComboBox_Systems";
-            this.ComboBox_Systems.Size = new System.Drawing.Size(178, 21);
+            this.ComboBox_Systems.Size = new System.Drawing.Size(150, 21);
             this.ComboBox_Systems.TabIndex = 0;
-            this.ComboBox_Systems.DropDown += new System.EventHandler(this.ComboBox_Systems_DropDown);
             this.ComboBox_Systems.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Systems_SelectedIndexChanged);
             // 
             // ComboBox_Stars
@@ -266,6 +269,7 @@
             // 
             // nud_Angle
             // 
+            this.nud_Angle.Enabled = false;
             this.nud_Angle.Location = new System.Drawing.Point(202, 141);
             this.nud_Angle.Maximum = new decimal(new int[] {
             999999,
@@ -273,7 +277,7 @@
             0,
             0});
             this.nud_Angle.Minimum = new decimal(new int[] {
-            9999999,
+            999999,
             0,
             0,
             -2147483648});
@@ -283,6 +287,7 @@
             // 
             // nud_OrbitRadius
             // 
+            this.nud_OrbitRadius.Enabled = false;
             this.nud_OrbitRadius.Location = new System.Drawing.Point(310, 141);
             this.nud_OrbitRadius.Maximum = new decimal(new int[] {
             999999,
@@ -318,6 +323,7 @@
             // 
             // nud_MaxSpin
             // 
+            this.nud_MaxSpin.Enabled = false;
             this.nud_MaxSpin.Location = new System.Drawing.Point(311, 219);
             this.nud_MaxSpin.Maximum = new decimal(new int[] {
             999999,
@@ -348,13 +354,13 @@
             this.ComboBox_FocusID.FormattingEnabled = true;
             this.ComboBox_FocusID.Location = new System.Drawing.Point(200, 63);
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
-            this.ComboBox_FocusID.Size = new System.Drawing.Size(177, 21);
+            this.ComboBox_FocusID.Size = new System.Drawing.Size(153, 21);
             this.ComboBox_FocusID.TabIndex = 8;
-            this.ComboBox_FocusID.DropDown += new System.EventHandler(this.ComboBox_FocusID_DropDown);
             this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.ComboBox_FocusID_SelectedIndexChanged);
             // 
             // nud_OrbitDays
             // 
+            this.nud_OrbitDays.Enabled = false;
             this.nud_OrbitDays.Location = new System.Drawing.Point(201, 180);
             this.nud_OrbitDays.Maximum = new decimal(new int[] {
             999999,
@@ -381,6 +387,7 @@
             // 
             // nud_MinSpin
             // 
+            this.nud_MinSpin.Enabled = false;
             this.nud_MinSpin.Location = new System.Drawing.Point(201, 219);
             this.nud_MinSpin.Maximum = new decimal(new int[] {
             999999,
@@ -429,6 +436,7 @@
             this.ComboBox_OrbitMode.Name = "ComboBox_OrbitMode";
             this.ComboBox_OrbitMode.Size = new System.Drawing.Size(177, 21);
             this.ComboBox_OrbitMode.TabIndex = 7;
+            this.ComboBox_OrbitMode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_OrbitMode_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -488,11 +496,37 @@
             this.label16.TabIndex = 18;
             this.label16.Text = "Name (optional):";
             // 
+            // btn_FocusRefresh
+            // 
+            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_FocusRefresh.Location = new System.Drawing.Point(359, 63);
+            this.btn_FocusRefresh.Name = "btn_FocusRefresh";
+            this.btn_FocusRefresh.Size = new System.Drawing.Size(22, 22);
+            this.btn_FocusRefresh.TabIndex = 41;
+            this.btn_FocusRefresh.UseVisualStyleBackColor = true;
+            this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click);
+            // 
+            // btn_SystemsRefresh
+            // 
+            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_SystemsRefresh.Location = new System.Drawing.Point(168, 24);
+            this.btn_SystemsRefresh.Name = "btn_SystemsRefresh";
+            this.btn_SystemsRefresh.Size = new System.Drawing.Size(22, 22);
+            this.btn_SystemsRefresh.TabIndex = 42;
+            this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
+            this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
+            // 
             // Stars
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 480);
+            this.Controls.Add(this.btn_SystemsRefresh);
+            this.Controls.Add(this.btn_FocusRefresh);
             this.Controls.Add(this.btn_Undo);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label11);
@@ -531,7 +565,6 @@
             this.Controls.Add(this.tb_ID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Stars";
-            this.Text = "Stars";
             ((System.ComponentModel.ISupportInitialize)(this.nud_CoronaSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Y)).EndInit();
@@ -584,5 +617,7 @@
         private System.Windows.Forms.Button btn_Undo;
         private System.Windows.Forms.TextBox tb_Name;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btn_FocusRefresh;
+        private System.Windows.Forms.Button btn_SystemsRefresh;
     }
 }
