@@ -16,7 +16,7 @@ namespace SSSystemGenerator.Forms
     public partial class Planets : Form
     {
 
-        public List<VeBlib_PlanetData> deletedPlanetssInThisSessionList { get; set; }
+        public List<VeBlib_PlanetData> deletedPlanetssInThisSessionList { get; set; } = new List<VeBlib_PlanetData>();
         public VeBlib_PlanetData currPlanet { get; set; } = null;
 
         public string context { get; set; } = "Planet";
@@ -24,6 +24,7 @@ namespace SSSystemGenerator.Forms
         public Planets()
         {
             InitializeComponent();
+            Load();
         }
 
         #region focusStuff
@@ -31,7 +32,55 @@ namespace SSSystemGenerator.Forms
         //orbit mode selection
         private void ComboBox_OrbitMode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            resetOrbit();
 
+            byte orbitMode = Convert.ToByte(ComboBox_OrbitMode.SelectedItem.ToString());
+
+            switch (orbitMode)//i dont have any idea on how switches work i work with ifs but why not go fancy when i got the chance
+            {
+
+                case 0://if orbit mode is 0 aka only coordinates
+
+                    nud_X.Enabled = true;
+                    nud_Y.Enabled = true;
+
+                    break;//w3 schools says we need a break here but why? cant it just end when it hits the other piece?
+                case 1:
+
+                    ComboBox_FocusID.Enabled = true;
+
+                    nud_Angle.Enabled = true;
+                    nud_OrbitDays.Enabled = true;
+                    nud_OrbitRadius.Enabled = true;
+
+                    break;
+                case 2://1 but pointing down
+
+                    ComboBox_FocusID.Enabled = true;
+
+                    nud_Angle.Enabled = true;
+                    nud_OrbitDays.Enabled = true;
+                    nud_OrbitRadius.Enabled = true;
+
+
+                    break;
+
+                case 3://max-min spin
+
+                    ComboBox_FocusID.Enabled = true;
+
+                    nud_Angle.Enabled = true;
+                    nud_OrbitDays.Enabled = true;
+                    nud_OrbitRadius.Enabled = true;
+
+                    nud_MinSpin.Enabled = true;
+                    nud_MaxSpin.Enabled = true;
+
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         //update orbit list on refresh key press
@@ -44,15 +93,17 @@ namespace SSSystemGenerator.Forms
 
             ComboBox_FocusID.Items.Add("");
 
-            List<Extend> orbitables = Helper.getOrbitablesInSystem(getSystem());
+            VeBlib_StarSystemData system = getSystem();
+
+            List<Extend> orbitables = Helper.getOrbitablesInSystem(system);
 
             if (orbitables == null) return;
 
             if (ComboBox_Planets.SelectedItem != null)//İF SPAM AAAAAAAAAAAAAAAAAAAAAAAA
             {
-                if (orbitables.Contains(Helper.GetStarWithID(ComboBox_Planets.SelectedItem.ToString())))
+                if (orbitables.Contains(Helper.GetPlanetWithID(ComboBox_Planets.SelectedItem.ToString())))
                 {
-                    orbitables.Remove(Helper.GetStarWithID(ComboBox_Planets.SelectedItem.ToString()));
+                    orbitables.Remove(Helper.GetPlanetWithID(ComboBox_Planets.SelectedItem.ToString()));
                 }
             }
 
@@ -168,6 +219,26 @@ namespace SSSystemGenerator.Forms
         //system list refresh
         private void btn_SystemsRefresh_Click(object sender, EventArgs e) { LoadSystems(); }
 
+        //system selection
+        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { TextChangedBTNAddUpdateCheck(null, null); }
+
+        private void TextChangedBTNAddUpdateCheck(object sender, EventArgs e)
+        {
+            if (
+               tb_ID.Text == "" ||
+               tb_TypeID.Text == "" ||
+               ComboBox_Systems.SelectedItem == null ||
+               ComboBox_Systems.SelectedItem.ToString() == ""
+               )
+            {
+                btn_Planet.Enabled = false;
+            }
+            else
+            {
+                btn_Planet.Enabled = true;
+            }
+        }
+
         private void Load()
         {
             LoadSystems();
@@ -176,7 +247,7 @@ namespace SSSystemGenerator.Forms
             ComboBox_Planets.Items.Add("New " + context);
             ComboBox_Planets.SelectedItem = "New " + context;
 
-            if (ComboBox_System.Items.Count != 0)
+            if (ComboBox_Systems.Items.Count != 0)
             {
 
                 //use the numbers for read order
@@ -185,7 +256,7 @@ namespace SSSystemGenerator.Forms
                     Helper.IDNameList(//turns systems into id + name list for the combo box / 5
                         Helper.ListUpcasting(//turn planet list to extend list / 4
                             Helper.GetSystemFromID(//get system object with id (it automatically removes name from id + name) / 2
-                                ComboBox_System.SelectedItem.ToString()//get selected systems id + name / 1
+                                ComboBox_Systems.SelectedItem.ToString()//get selected systems id + name / 1
                                 )
                             .planetList.ToArray()))//get planets in the selected system / 3
                     .ToArray());//to array because add range adds arrays and not list, just a minor inconvenience
@@ -204,17 +275,17 @@ namespace SSSystemGenerator.Forms
 
         private void LoadSystems()
         {
-            ComboBox_Planets.Items.Clear();
-            ComboBox_Planets.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            ComboBox_Systems.Items.Clear();
+            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
 
-            if (ComboBox_Planets.Items.Count != 0)
+            if (ComboBox_Systems.Items.Count != 0)
             {
-                ComboBox_Planets.SelectedIndex = 0;
+                ComboBox_Systems.SelectedIndex = 0;
             }
 
         }
 
-        private void update(VeBlib_StarData star)
+        private void update(VeBlib_PlanetData star)
         {
             updateExtends(star);
 
@@ -232,41 +303,165 @@ namespace SSSystemGenerator.Forms
         private VeBlib_StarSystemData getSystem()
         {
 
-            if (ComboBox_Planets.SelectedItem == null) return null;
+            if (ComboBox_Systems.SelectedItem == null) return null;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Planets.SelectedItem.ToString());
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
 
             return system;
         }
 
         private VeBlib_PlanetData getData()
         {
-            VeBlib_PlanetData gettenStar = new VeBlib_PlanetData();
+            VeBlib_PlanetData gettenPlanet = new VeBlib_PlanetData();
 
-            addExtendValues(gettenStar);
+            addExtendValues(gettenPlanet);
 
-            gettenStar.systemID = ComboBox_Planets.SelectedItem.ToString();
+            gettenPlanet.systemID = ComboBox_Systems.SelectedItem.ToString();
 
-            gettenStar.radius = (float)nud_Radius.Value;
+            gettenPlanet.radius = (float)nud_Radius.Value;
 
-            return gettenStar;
+            return gettenPlanet;
         }
+
+        private void AddPlanet()
+        {
+            VeBlib_PlanetData planetToAdd = getData();//get planet 
+
+            if (Helper.DoesIDExists(planetToAdd.ID))//if planet with same id exists
+            {
+                MessageBox.Show(context + " ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            planetToAdd.systemGUID = getSystem().GUID;
+
+            ItemEditingAdding.AddPlanet(planetToAdd);//add the planet to the system
+
+            currPlanet = planetToAdd;
+
+            Load();
+
+            ComboBox_Planets.SelectedItem = planetToAdd.ID + " - " + planetToAdd.name;//select the added planet
+        }
+
+        private string getID()
+        {
+            if (ComboBox_Planets.SelectedItem != null)
+            {
+                return ComboBox_Planets.SelectedItem.ToString();
+            }
+
+            return null;
+        }
+
 
         #endregion
 
         #region formStuff
 
-
+        //planet add / update
         private void btn_Planet_Click(object sender, EventArgs e)
         {
+            if (btn_Planet.Text == "Add " + context)
+            {
 
+                AddPlanet();
+
+            }
+            else//update
+            {
+
+                VeBlib_PlanetData updatedPlanet = getData();//get planet 
+
+                updatedPlanet.GUID = currPlanet.GUID;
+
+                updatedPlanet.systemGUID = Helper.GetSystemFromID(updatedPlanet.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
+
+                if (Helper.DoesIDExists(updatedPlanet.ID, currPlanet.ID))
+                {
+                    MessageBox.Show(context + " ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                ItemEditingAdding.UpdatePlanet(updatedPlanet);//update the planet
+
+                Load();
+
+                ComboBox_Planets.SelectedItem = updatedPlanet.ID + " - " + updatedPlanet.name;//select updated system
+
+                currPlanet = updatedPlanet;//set current star to updated star
+
+
+            }
+        }
+
+        private void ComboBox_Planets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ComboBox_Planets.SelectedItem.ToString() == "New " + context)
+            {
+                btn_Planet.Text = "Add " + context;
+
+                btn_Delete.Enabled = false;
+
+                reset();
+            }
+            else if (ComboBox_Planets.SelectedItem != null)
+            {
+                string selectedID = ComboBox_Planets.SelectedItem.ToString();
+
+                string systemID = ComboBox_Systems.SelectedItem.ToString();
+
+                VeBlib_PlanetData planet = Helper.GetPlanetOnSystem(systemID, selectedID);//get star in the system
+
+                update(planet);// update the star with variables
+
+                btn_Planet.Text = "Update " + context;
+
+                btn_Delete.Enabled = true;
+
+            }
+            else
+            {
+                btn_Delete.Enabled = false;
+            }
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
+            VeBlib_PlanetData planetToDelete = Helper.GetPlanetWithID(getID());
+
+            deletedPlanetssInThisSessionList.Add(planetToDelete);
+
+            ItemEditingAdding.DeletePlanet(planetToDelete);
+
+            Load();
+
+            reset();
+
         }
 
+        private void btn_Undo_Click(object sender, EventArgs e)
+        {
+            if (deletedPlanetssInThisSessionList.Count() == 0) { return; }
+
+            VeBlib_PlanetData lastDeletedItem = deletedPlanetssInThisSessionList.ElementAt(deletedPlanetssInThisSessionList.Count() - 1);
+
+            if (Helper.DoesIDExists(lastDeletedItem.ID))
+            {
+
+                lastDeletedItem.ID += "-SOMETHING_WITH_SAME_ID_EXISTS-" + Guid.NewGuid().ToString();
+
+            }
+
+            update(lastDeletedItem);
+
+            AddPlanet();
+
+            deletedPlanetssInThisSessionList.RemoveAt(deletedPlanetssInThisSessionList.Count() - 1);
+        }
         #endregion
 
 

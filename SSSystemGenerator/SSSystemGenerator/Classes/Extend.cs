@@ -21,6 +21,7 @@ namespace SSSystemGenerator.Classes
         public float radius { get; set; }
 
         public string systemID { get; set; }
+        public string systemGUID { get; set; }
 
         public float x { get; set; }
         public float y { get; set; }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,140 @@ namespace SSSystemGenerator.Classes
 
         }
 
+        public static Boolean DoesIDExists(string IDToCheck)
+        {
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())
+            {
+
+                if (IDToCheck == system.ID)
+                {
+                    return true;
+                }
+
+                foreach (var item in system.starList)
+                {
+                    if (IDToCheck == item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.planetList)
+                {
+                    if (IDToCheck == item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.astreoidBeltDataList)
+                {
+                    if (IDToCheck == item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.ringBandDataList)
+                {
+                    if (IDToCheck == item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.sectorEntityTokenList)
+                {
+                    if (IDToCheck == item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.marketList)
+                {
+                    if (IDToCheck == item.ID)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+        }
+
+        /// <summary>
+        /// excludes the second id, for updates and stuff
+        /// </summary>
+        /// <param name="IDToCheck"></param>
+        /// <param name="IDToExclude"></param>
+        /// <returns></returns>
+        public static Boolean DoesIDExists(string IDToCheck, string IDToExclude)
+        {
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())
+            {
+
+                if (IDToCheck == system.ID && IDToExclude != system.ID)
+                {
+                    return true;
+                }
+
+                foreach (var item in system.starList)
+                {
+                    if (IDToCheck == item.ID && IDToExclude != item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.planetList)
+                {
+                    if (IDToCheck == item.ID && IDToExclude != item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.astreoidBeltDataList)
+                {
+                    if (IDToCheck == item.ID && IDToExclude != item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.ringBandDataList)
+                {
+                    if (IDToCheck == item.ID && IDToExclude != item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.sectorEntityTokenList)
+                {
+                    if (IDToCheck == item.ID && IDToExclude != item.ID)
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var item in system.marketList)
+                {
+                    if (IDToCheck == item.ID && IDToExclude != item.ID)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+        }
+
         #endregion
 
         #region systems
@@ -88,7 +223,7 @@ namespace SSSystemGenerator.Classes
         public static VeBlib_StarSystemData GetSystemFromGUID(String systemGUID)
         {
 
-            foreach (VeBlib_StarSystemData foreSystem in Statics.baseClass.StarSystemDataList)
+            foreach (VeBlib_StarSystemData foreSystem in GetAllSystems())
             {
                 if (foreSystem.GUID == systemGUID)
                 {
@@ -110,18 +245,15 @@ namespace SSSystemGenerator.Classes
                 return GetSystemFromID(IDWithNameToID(systemID));
             }
 
-            VeBlib_StarSystemData system = null;
-
-            foreach (VeBlib_StarSystemData foreSystem in Statics.baseClass.StarSystemDataList)
+            foreach (VeBlib_StarSystemData foreSystem in GetAllSystems())
             {
                 if (foreSystem.ID == systemID)
                 {
-                    system = foreSystem;
-                    break;
+                    return foreSystem;
                 }
             }
 
-            return system;
+            return null;
         }
 
         ///<summary>
@@ -185,44 +317,6 @@ namespace SSSystemGenerator.Classes
             return null;
         }
 
-        ///<summary>
-        ///returns true if system exists
-        ///</summary>
-        public static Boolean DoesSystemIDExists(string ID)
-        {
-            foreach (var system in GetAllSystems())
-            {
-                if (system.ID == ID)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-
-        ///<summary>
-        ///it excludes the second systemID, for update checks
-        ///</summary>
-        public static Boolean DoesSystemIDExists(string ID, string systemID)
-        {
-            foreach (var system in GetAllSystems())
-            {
-                if (system.ID == ID)
-                {
-
-                    if (system.ID == systemID)//exclude this id, for update
-                    {
-                        continue;
-                    }
-
-                    return true;//found system
-                }
-            }
-
-            return false;
-        }
 
         #endregion
 
@@ -234,7 +328,7 @@ namespace SSSystemGenerator.Classes
         public static VeBlib_StarData GetStarWithGUID(String GUID)
         {
 
-            foreach (VeBlib_StarSystemData system in Statics.baseClass.StarSystemDataList)//scroll through system list
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
             {
                 foreach (VeBlib_StarData star in system.starList)//scroll through star list
                 {
@@ -260,7 +354,7 @@ namespace SSSystemGenerator.Classes
                 return GetStarWithID(IDWithNameToID(ID));
             }
 
-            foreach (VeBlib_StarSystemData system in Statics.baseClass.StarSystemDataList)//scroll through system list
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
             {
                 foreach (VeBlib_StarData star in system.starList)//scroll through star list
                 {
@@ -275,13 +369,13 @@ namespace SSSystemGenerator.Classes
 
         }
 
-        public static Boolean DoesStarIDExist(string ID)
+        public static Boolean DoesStarIDExist(string IDToCheck)
         {
-            foreach (VeBlib_StarSystemData system in Statics.baseClass.StarSystemDataList)//scroll through system list
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
             {
                 foreach (VeBlib_StarData star in system.starList)//scroll through star list
                 {
-                    if (star.ID == ID)//if ID is found
+                    if (star.ID == IDToCheck)//if ID is found
                     {
                         return true;//star exists
                     }
@@ -294,16 +388,16 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///it excludes the second starID, for update checks
         ///</summary>
-        public static Boolean DoesStarIDExist(string ID, string starID)
+        public static Boolean DoesStarIDExist(string IDToCheck, string starIDToExclude)
         {
-            foreach (VeBlib_StarSystemData system in Statics.baseClass.StarSystemDataList)//scroll through system list
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
             {
                 foreach (VeBlib_StarData star in system.starList)//scroll through star list
                 {
-                    if (star.ID == ID)//if ID is found
+                    if (star.ID == IDToCheck)//if ID is found
                     {
 
-                        if (star.ID == starID)//theyre the same so skip it
+                        if (star.ID == starIDToExclude)//theyre the same so skip it
                         {
                             continue;
                         }
@@ -315,6 +409,82 @@ namespace SSSystemGenerator.Classes
 
             return false;//couldnt find anything
         }
+
+        #endregion
+
+        #region planets
+
+        ///<summary>
+        ///returns null if couldnt find any
+        ///</summary>
+        public static VeBlib_PlanetData GetPlanetOnSystem(String systemID, String planetID)
+        {
+            if (systemID.Contains(" - ") || planetID.Contains(" - "))
+            {
+                return GetPlanetOnSystem(IDWithNameToID(systemID), IDWithNameToID(planetID));
+            }
+
+            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+
+            foreach (VeBlib_PlanetData planet in system.planetList)
+            {
+                if (planet.ID == planetID)
+                {
+                    return planet;
+                }
+            }
+
+            return null;
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_PlanetData GetPlanetWithGUID(String GUID)
+        {
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_PlanetData planet in system.planetList)//scroll through planet list
+                {
+                    if (planet.GUID == GUID)//if guid is found return the planet
+                    {
+                        return planet;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_PlanetData GetPlanetWithID(string ID)
+        {
+
+            if (ID.Contains(" - "))
+            {
+                return GetPlanetWithID(IDWithNameToID(ID));
+            }
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_PlanetData planet in system.planetList)//scroll through planet list
+                {
+                    if (planet.ID == ID)//if id is found return the planet
+                    {
+                        return planet;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
+
+
+
 
         #endregion
 

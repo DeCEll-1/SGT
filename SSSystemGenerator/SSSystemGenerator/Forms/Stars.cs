@@ -29,6 +29,8 @@ namespace SSSystemGenerator
 
         #region focusStuff
 
+
+
         //orbit mode selection
         private void ComboBox_OrbitMode_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -106,12 +108,6 @@ namespace SSSystemGenerator
             }
 
             ComboBox_FocusID.Items.AddRange(Helper.IDNameList(orbitables).ToArray());
-        }
-
-        //when selected orbitable changes
-        private void ComboBox_FocusID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         //adds extend values to the item, like id or type id or focus or bla bla
@@ -309,6 +305,43 @@ namespace SSSystemGenerator
             return gettenStar;
         }
 
+        private string getID()
+        {
+            if (ComboBox_Stars.SelectedItem != null)
+            {
+                return ComboBox_Stars.SelectedItem.ToString();
+            }
+
+            return null;
+        }
+
+        private void AddStar()
+        {
+            VeBlib_StarData starToAdd = getData();//gets star
+
+
+
+            if (Helper.DoesStarIDExist(starToAdd.ID))//does a star with the same id exist
+            {
+                MessageBox.Show(context + " ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            starToAdd.systemGUID = Helper.GetSystemFromID(starToAdd.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
+
+            ItemEditingAdding.AddStar(starToAdd);//add the star to the system
+
+            //currStar = Helper.GetStarOnSystem(starToAdd.systemID, starToAdd.ID);
+            //why the fuck did i got the star like this? starToAdd is literally this anyways?
+
+            currStar = starToAdd;
+
+            Load();//reload cuz why not
+
+            ComboBox_Stars.SelectedItem = starToAdd.ID + " - " + starToAdd.name;//select the added star
+        }
+
         #endregion
 
         #region formFunction
@@ -319,25 +352,8 @@ namespace SSSystemGenerator
             if (btn_AddUpdateStar.Text == "Add " + context)
             {
 
-                VeBlib_StarData starToAdd = getData();//gets star
+                AddStar();
 
-                if (Helper.DoesStarIDExist(starToAdd.ID))//does a star with the same id exist
-                {
-                    MessageBox.Show("Star ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    return;
-                }
-
-                ItemEditingAdding.AddStar(starToAdd);//add the star to the system
-
-                //currStar = Helper.GetStarOnSystem(starToAdd.systemID, starToAdd.ID);
-                //why the fuck did i got the star like this? starToAdd is literally this anyways?
-
-                currStar = starToAdd;
-
-                Load();//reload cuz why not
-
-                ComboBox_Stars.SelectedItem = starToAdd.ID + " - " + starToAdd.name;//select the added star
             }
             else//update star
             {
@@ -350,7 +366,7 @@ namespace SSSystemGenerator
 
                 if (Helper.DoesStarIDExist(updatedStar.ID, currStar.ID))//should work? idk mayn my brain isnt working fuck politics
                 {
-                    MessageBox.Show("Star ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(context + " ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return;
                 }
@@ -421,7 +437,45 @@ namespace SSSystemGenerator
         //system selection
         private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { TextChangedBTNAddUpdateCheck(null, null); }
 
-        
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+
+            VeBlib_StarData starToDelete = Helper.GetStarWithID(getID());//gets the star
+
+            deletedStarsInThisSessionList.Add(starToDelete);//add it to deleteds list
+
+            ItemEditingAdding.DeleteStar(starToDelete);//delete it
+
+            Load();//reload
+
+            reset();
+        }
+
+        private void btn_Undo_Click(object sender, EventArgs e)
+        {
+
+            if (deletedStarsInThisSessionList.Count() == 0) { return; }
+
+            VeBlib_StarData lastDeletedItem = deletedStarsInThisSessionList.ElementAt(deletedStarsInThisSessionList.Count() - 1);
+
+            if (Helper.DoesStarIDExist(lastDeletedItem.ID))
+            {
+
+                lastDeletedItem.ID += "-SOMETHING_WITH_SAME_ID_EXISTS-" + Guid.NewGuid().ToString();
+
+            }
+
+
+            update(lastDeletedItem);
+
+            AddStar();
+
+            deletedStarsInThisSessionList.RemoveAt(deletedStarsInThisSessionList.Count() - 1);
+
+
+
+        }
 
         #endregion
 

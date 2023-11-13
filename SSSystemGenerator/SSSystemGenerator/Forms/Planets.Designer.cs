@@ -34,7 +34,7 @@
             this.ComboBox_Planets = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ComboBox_System = new System.Windows.Forms.ComboBox();
+            this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.btn_Planet = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Undo = new System.Windows.Forms.Button();
@@ -109,6 +109,7 @@
             this.ComboBox_Planets.Name = "ComboBox_Planets";
             this.ComboBox_Planets.Size = new System.Drawing.Size(176, 21);
             this.ComboBox_Planets.TabIndex = 35;
+            this.ComboBox_Planets.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Planets_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -128,17 +129,19 @@
             this.label2.TabIndex = 30;
             this.label2.Text = "Parent System:";
             // 
-            // ComboBox_System
+            // ComboBox_Systems
             // 
-            this.ComboBox_System.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_System.FormattingEnabled = true;
-            this.ComboBox_System.Location = new System.Drawing.Point(11, 25);
-            this.ComboBox_System.Name = "ComboBox_System";
-            this.ComboBox_System.Size = new System.Drawing.Size(148, 21);
-            this.ComboBox_System.TabIndex = 35;
+            this.ComboBox_Systems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Systems.FormattingEnabled = true;
+            this.ComboBox_Systems.Location = new System.Drawing.Point(11, 25);
+            this.ComboBox_Systems.Name = "ComboBox_Systems";
+            this.ComboBox_Systems.Size = new System.Drawing.Size(148, 21);
+            this.ComboBox_Systems.TabIndex = 35;
+            this.ComboBox_Systems.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Systems_SelectedIndexChanged);
             // 
             // btn_Planet
             // 
+            this.btn_Planet.Enabled = false;
             this.btn_Planet.Location = new System.Drawing.Point(11, 380);
             this.btn_Planet.Name = "btn_Planet";
             this.btn_Planet.Size = new System.Drawing.Size(179, 46);
@@ -170,6 +173,7 @@
             this.btn_Undo.Size = new System.Drawing.Size(37, 36);
             this.btn_Undo.TabIndex = 61;
             this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // btn_FocusRefresh
             // 
@@ -225,6 +229,7 @@
             this.ComboBox_OrbitMode.Name = "ComboBox_OrbitMode";
             this.ComboBox_OrbitMode.Size = new System.Drawing.Size(177, 21);
             this.ComboBox_OrbitMode.TabIndex = 64;
+            this.ComboBox_OrbitMode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_OrbitMode_SelectedIndexChanged);
             // 
             // ComboBox_FocusID
             // 
@@ -439,6 +444,7 @@
             this.tb_TypeID.Name = "tb_TypeID";
             this.tb_TypeID.Size = new System.Drawing.Size(176, 20);
             this.tb_TypeID.TabIndex = 86;
+            this.tb_TypeID.TextChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // label16
             // 
@@ -471,6 +477,7 @@
             this.tb_ID.Name = "tb_ID";
             this.tb_ID.Size = new System.Drawing.Size(176, 20);
             this.tb_ID.TabIndex = 84;
+            this.tb_ID.TextChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // btn_SystemsRefresh
             // 
@@ -519,12 +526,13 @@
             this.Controls.Add(this.btn_Undo);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Planet);
-            this.Controls.Add(this.ComboBox_System);
+            this.Controls.Add(this.ComboBox_Systems);
             this.Controls.Add(this.ComboBox_Planets);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.nud_Radius);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Planets";
             this.Text = "Planets";
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).EndInit();
@@ -546,7 +554,7 @@
         private System.Windows.Forms.ComboBox ComboBox_Planets;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox ComboBox_System;
+        private System.Windows.Forms.ComboBox ComboBox_Systems;
         private System.Windows.Forms.Button btn_Planet;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Undo;

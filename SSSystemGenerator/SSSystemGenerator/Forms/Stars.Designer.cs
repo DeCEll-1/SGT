@@ -224,7 +224,7 @@
             this.btn_Delete.TabIndex = 17;
             this.btn_Delete.Text = "Delete Star";
             this.btn_Delete.UseVisualStyleBackColor = true;
-            this.btn_Delete.Click += new System.EventHandler(this.btn_AddStar_Click);
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Undo
             // 
@@ -236,6 +236,7 @@
             this.btn_Undo.Size = new System.Drawing.Size(37, 36);
             this.btn_Undo.TabIndex = 18;
             this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // tb_Name
             // 
@@ -462,7 +463,6 @@
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
             this.ComboBox_FocusID.Size = new System.Drawing.Size(153, 21);
             this.ComboBox_FocusID.TabIndex = 8;
-            this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.ComboBox_FocusID_SelectedIndexChanged);
             // 
             // ComboBox_OrbitMode
             // 
@@ -565,6 +565,7 @@
             this.Controls.Add(this.tb_ID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Stars";
+            this.Text = "Stars";
             ((System.ComponentModel.ISupportInitialize)(this.nud_CoronaSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_X)).EndInit();

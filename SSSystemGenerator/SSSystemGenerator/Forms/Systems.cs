@@ -119,37 +119,6 @@ namespace SSSystemGenerator.Forms
         }
         #endregion
 
-        private void btn_Undo_Click(object sender, EventArgs e)
-        {
-
-            if (deletedSystemsInThisSessionList.Count != 0)
-            {
-                currSystem = deletedSystemsInThisSessionList.ElementAt(deletedSystemsInThisSessionList.Count - 1);
-
-                deletedSystemsInThisSessionList.RemoveAt(deletedSystemsInThisSessionList.Count - 1);
-
-                update(currSystem);
-
-                #region adds the system back, copied from add system
-
-                VeBlib_StarSystemData systemToAdd = addValuesToSystem();
-
-                currSystem = addValuesToSystem();
-
-                currSystem = systemToAdd;
-
-                Statics.baseClass.StarSystemDataList.Add(systemToAdd);
-
-                Load();
-
-                ComboBox_SystemSelection.SelectedItem = systemToAdd.ID + " - " + systemToAdd.name;
-
-                #endregion
-
-
-            }
-
-        }
 
         private void ComboBox_SystemSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -190,7 +159,7 @@ namespace SSSystemGenerator.Forms
             {
                 VeBlib_StarSystemData systemToAdd = addValuesToSystem();
 
-                if (Helper.DoesSystemIDExists(systemToAdd.ID))
+                if (Helper.DoesIDExists(systemToAdd.ID))
                 {
                     MessageBox.Show("System ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -221,7 +190,7 @@ namespace SSSystemGenerator.Forms
                                                      //but for some reason this is liquidifieing my brain
                                                      //smoothbrain.png
 
-                if (Helper.DoesSystemIDExists(updatedSystem.ID))
+                if (Helper.DoesIDExists(updatedSystem.ID))
                 {
                     MessageBox.Show("System ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -251,6 +220,40 @@ namespace SSSystemGenerator.Forms
             {
                 btn_AddUpdateSystem.Enabled = true;
             }
+        }
+
+        private void btn_Undo_Click(object sender, EventArgs e)
+        {
+
+            //old ahh tech, check stars deletion thing and update this according to that
+            //TODO: or some shit idk
+            if (deletedSystemsInThisSessionList.Count != 0)
+            {
+                currSystem = deletedSystemsInThisSessionList.ElementAt(deletedSystemsInThisSessionList.Count - 1);
+
+                deletedSystemsInThisSessionList.RemoveAt(deletedSystemsInThisSessionList.Count - 1);
+
+                update(currSystem);
+
+                #region adds the system back, copied from add system
+
+                VeBlib_StarSystemData systemToAdd = addValuesToSystem();
+
+                currSystem = addValuesToSystem();
+
+                currSystem = systemToAdd;
+
+                Statics.baseClass.StarSystemDataList.Add(systemToAdd);
+
+                Load();
+
+                ComboBox_SystemSelection.SelectedItem = systemToAdd.ID + " - " + systemToAdd.name;
+
+                #endregion
+
+
+            }
+
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)

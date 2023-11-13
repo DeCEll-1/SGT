@@ -49,6 +49,11 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);//get system from id
 
+            if (system == null)//if couldnt find system then crash, i cant be fucked to make this work when its null i am already having smoothbrain
+            {
+                Helper.throwCrash("ItemEditingAdding.cs", "AddStar");
+            }
+
             system.starList.Add(star);//add star to system
 
         }
@@ -66,14 +71,66 @@ namespace SSSystemGenerator.Classes
                 Helper.throwCrash("ItemEditingAdding.cs", "UpdateStar");
             }
 
-            VeBlib_StarSystemData starSystem = Helper.GetSystemFromID(newStar.systemID);//get the star system 
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(newStar.systemID);//get the star system 
 
 
-            starSystem.starList.Remove(oldStar);//remove the old star
+            system.starList.Remove(oldStar);//remove the old star
 
-            starSystem.starList.Add(newStar);//add the new star
+            system.starList.Add(newStar);//add the new star
 
         }
+
+        /// <summary>
+        /// removes star from its system
+        /// </summary>
+        /// <param name="starToDelete"></param>
+        public static void DeleteStar(VeBlib_StarData starToDelete)
+        {
+
+            Helper.GetSystemFromGUID(starToDelete.systemGUID).starList.Remove(starToDelete);
+
+        }
+
+        #endregion
+
+        #region planet
+
+        public static void AddPlanet(VeBlib_PlanetData planet)
+        {
+
+            planet.GUID = Guid.NewGuid().ToString();//guid for later editing
+
+            string systemID = planet.systemID;
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+
+            system.planetList.Add(planet);
+
+
+        }
+
+        public static void UpdatePlanet(VeBlib_PlanetData newPlanet)
+        {
+            VeBlib_PlanetData oldPlanet = Helper.GetPlanetWithGUID(newPlanet.GUID);
+
+            if (oldPlanet == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
+            {
+                Helper.throwCrash("ItemEditingAdding.cs", "UpdatePlanet");
+            }
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(newPlanet.systemID);//get the system
+
+            system.planetList.Remove(oldPlanet);
+
+            system.planetList.Add(newPlanet);
+        }
+
+        public static void DeletePlanet(VeBlib_PlanetData planetToDelete)
+        {
+            Helper.GetSystemFromGUID(planetToDelete.systemGUID).planetList.Remove(planetToDelete);
+
+        }
+
         #endregion
 
     }
