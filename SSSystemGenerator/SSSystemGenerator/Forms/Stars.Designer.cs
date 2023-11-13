@@ -33,55 +33,55 @@
             this.tb_ID = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tb_TypeID = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.nud_CoronaSize = new System.Windows.Forms.NumericUpDown();
             this.nud_Radius = new System.Windows.Forms.NumericUpDown();
-            this.nud_Y = new System.Windows.Forms.NumericUpDown();
-            this.nud_X = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_AddUpdateStar = new System.Windows.Forms.Button();
             this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.ComboBox_Stars = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.nud_Angle = new System.Windows.Forms.NumericUpDown();
-            this.nud_OrbitRadius = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.nud_MaxSpin = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.ComboBox_FocusID = new System.Windows.Forms.ComboBox();
-            this.nud_OrbitDays = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.nud_MinSpin = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tb_Info = new System.Windows.Forms.TextBox();
-            this.ComboBox_OrbitMode = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Undo = new System.Windows.Forms.Button();
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.btn_FocusRefresh = new System.Windows.Forms.Button();
             this.btn_SystemsRefresh = new System.Windows.Forms.Button();
+            this.nud_X = new System.Windows.Forms.NumericUpDown();
+            this.nud_Y = new System.Windows.Forms.NumericUpDown();
+            this.nud_Angle = new System.Windows.Forms.NumericUpDown();
+            this.nud_OrbitRadius = new System.Windows.Forms.NumericUpDown();
+            this.nud_MaxSpin = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nud_MinSpin = new System.Windows.Forms.NumericUpDown();
+            this.nud_OrbitDays = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ComboBox_FocusID = new System.Windows.Forms.ComboBox();
+            this.ComboBox_OrbitMode = new System.Windows.Forms.ComboBox();
+            this.tb_Info = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btn_FocusRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CoronaSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_X)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Angle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitRadius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MaxSpin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinSpin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 88);
+            this.label12.Location = new System.Drawing.Point(12, 87);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(21, 13);
             this.label12.TabIndex = 18;
@@ -98,7 +98,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 166);
+            this.label13.Location = new System.Drawing.Point(12, 166);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 13);
             this.label13.TabIndex = 20;
@@ -112,15 +112,6 @@
             this.tb_TypeID.TabIndex = 4;
             this.tb_TypeID.TextChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(308, 87);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(14, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Y";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -133,20 +124,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 205);
+            this.label7.Location = new System.Drawing.Point(12, 205);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 26;
             this.label7.Text = "Radius";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(199, 87);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 13);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "X";
             // 
             // nud_CoronaSize
             // 
@@ -182,46 +164,10 @@
             this.nud_Radius.Size = new System.Drawing.Size(69, 20);
             this.nud_Radius.TabIndex = 5;
             // 
-            // nud_Y
-            // 
-            this.nud_Y.Enabled = false;
-            this.nud_Y.Location = new System.Drawing.Point(310, 103);
-            this.nud_Y.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_Y.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_Y.Name = "nud_Y";
-            this.nud_Y.Size = new System.Drawing.Size(69, 20);
-            this.nud_Y.TabIndex = 10;
-            // 
-            // nud_X
-            // 
-            this.nud_X.Enabled = false;
-            this.nud_X.Location = new System.Drawing.Point(202, 102);
-            this.nud_X.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_X.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_X.Name = "nud_X";
-            this.nud_X.Size = new System.Drawing.Size(69, 20);
-            this.nud_X.TabIndex = 9;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 8);
+            this.label2.Location = new System.Drawing.Point(12, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 32;
@@ -254,207 +200,18 @@
             this.ComboBox_Stars.FormattingEnabled = true;
             this.ComboBox_Stars.Location = new System.Drawing.Point(12, 64);
             this.ComboBox_Stars.Name = "ComboBox_Stars";
-            this.ComboBox_Stars.Size = new System.Drawing.Size(178, 21);
+            this.ComboBox_Stars.Size = new System.Drawing.Size(176, 21);
             this.ComboBox_Stars.TabIndex = 1;
             this.ComboBox_Stars.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Stars_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 48);
+            this.label1.Location = new System.Drawing.Point(12, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 13);
             this.label1.TabIndex = 35;
             this.label1.Text = "Stars On The Selected System:";
-            // 
-            // nud_Angle
-            // 
-            this.nud_Angle.Enabled = false;
-            this.nud_Angle.Location = new System.Drawing.Point(202, 141);
-            this.nud_Angle.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_Angle.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_Angle.Name = "nud_Angle";
-            this.nud_Angle.Size = new System.Drawing.Size(69, 20);
-            this.nud_Angle.TabIndex = 11;
-            // 
-            // nud_OrbitRadius
-            // 
-            this.nud_OrbitRadius.Enabled = false;
-            this.nud_OrbitRadius.Location = new System.Drawing.Point(310, 141);
-            this.nud_OrbitRadius.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_OrbitRadius.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_OrbitRadius.Name = "nud_OrbitRadius";
-            this.nud_OrbitRadius.Size = new System.Drawing.Size(69, 20);
-            this.nud_OrbitRadius.TabIndex = 12;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(199, 126);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Angle";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(308, 125);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Orbit Radius";
-            // 
-            // nud_MaxSpin
-            // 
-            this.nud_MaxSpin.Enabled = false;
-            this.nud_MaxSpin.Location = new System.Drawing.Point(311, 219);
-            this.nud_MaxSpin.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_MaxSpin.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_MaxSpin.Name = "nud_MaxSpin";
-            this.nud_MaxSpin.Size = new System.Drawing.Size(69, 20);
-            this.nud_MaxSpin.TabIndex = 15;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(309, 203);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Max Spin";
-            // 
-            // ComboBox_FocusID
-            // 
-            this.ComboBox_FocusID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_FocusID.FormattingEnabled = true;
-            this.ComboBox_FocusID.Location = new System.Drawing.Point(200, 63);
-            this.ComboBox_FocusID.Name = "ComboBox_FocusID";
-            this.ComboBox_FocusID.Size = new System.Drawing.Size(153, 21);
-            this.ComboBox_FocusID.TabIndex = 8;
-            this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.ComboBox_FocusID_SelectedIndexChanged);
-            // 
-            // nud_OrbitDays
-            // 
-            this.nud_OrbitDays.Enabled = false;
-            this.nud_OrbitDays.Location = new System.Drawing.Point(201, 180);
-            this.nud_OrbitDays.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_OrbitDays.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_OrbitDays.Name = "nud_OrbitDays";
-            this.nud_OrbitDays.Size = new System.Drawing.Size(69, 20);
-            this.nud_OrbitDays.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(199, 164);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Orbit Days";
-            // 
-            // nud_MinSpin
-            // 
-            this.nud_MinSpin.Enabled = false;
-            this.nud_MinSpin.Location = new System.Drawing.Point(201, 219);
-            this.nud_MinSpin.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_MinSpin.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_MinSpin.Name = "nud_MinSpin";
-            this.nud_MinSpin.Size = new System.Drawing.Size(69, 20);
-            this.nud_MinSpin.TabIndex = 14;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(199, 203);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 13);
-            this.label10.TabIndex = 28;
-            this.label10.Text = "Min Spin";
-            // 
-            // tb_Info
-            // 
-            this.tb_Info.Location = new System.Drawing.Point(200, 245);
-            this.tb_Info.Multiline = true;
-            this.tb_Info.Name = "tb_Info";
-            this.tb_Info.ReadOnly = true;
-            this.tb_Info.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_Info.Size = new System.Drawing.Size(177, 223);
-            this.tb_Info.TabIndex = 39;
-            this.tb_Info.Text = resources.GetString("tb_Info.Text");
-            // 
-            // ComboBox_OrbitMode
-            // 
-            this.ComboBox_OrbitMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_OrbitMode.FormattingEnabled = true;
-            this.ComboBox_OrbitMode.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3"});
-            this.ComboBox_OrbitMode.Location = new System.Drawing.Point(200, 24);
-            this.ComboBox_OrbitMode.Name = "ComboBox_OrbitMode";
-            this.ComboBox_OrbitMode.Size = new System.Drawing.Size(177, 21);
-            this.ComboBox_OrbitMode.TabIndex = 7;
-            this.ComboBox_OrbitMode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_OrbitMode_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(199, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 13);
-            this.label11.TabIndex = 40;
-            this.label11.Text = "Orbit Mode:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(200, 48);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 13);
-            this.label14.TabIndex = 40;
-            this.label14.Text = "Focus:";
             // 
             // btn_Delete
             // 
@@ -490,23 +247,11 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 127);
+            this.label16.Location = new System.Drawing.Point(12, 127);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 18;
             this.label16.Text = "Name (optional):";
-            // 
-            // btn_FocusRefresh
-            // 
-            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
-            this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_FocusRefresh.Location = new System.Drawing.Point(359, 63);
-            this.btn_FocusRefresh.Name = "btn_FocusRefresh";
-            this.btn_FocusRefresh.Size = new System.Drawing.Size(22, 22);
-            this.btn_FocusRefresh.TabIndex = 41;
-            this.btn_FocusRefresh.UseVisualStyleBackColor = true;
-            this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click);
             // 
             // btn_SystemsRefresh
             // 
@@ -519,6 +264,261 @@
             this.btn_SystemsRefresh.TabIndex = 42;
             this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
             this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
+            // 
+            // nud_X
+            // 
+            this.nud_X.Enabled = false;
+            this.nud_X.Location = new System.Drawing.Point(203, 104);
+            this.nud_X.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nud_X.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nud_X.Name = "nud_X";
+            this.nud_X.Size = new System.Drawing.Size(69, 20);
+            this.nud_X.TabIndex = 9;
+            // 
+            // nud_Y
+            // 
+            this.nud_Y.Enabled = false;
+            this.nud_Y.Location = new System.Drawing.Point(311, 105);
+            this.nud_Y.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nud_Y.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nud_Y.Name = "nud_Y";
+            this.nud_Y.Size = new System.Drawing.Size(69, 20);
+            this.nud_Y.TabIndex = 10;
+            // 
+            // nud_Angle
+            // 
+            this.nud_Angle.Enabled = false;
+            this.nud_Angle.Location = new System.Drawing.Point(203, 143);
+            this.nud_Angle.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nud_Angle.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nud_Angle.Name = "nud_Angle";
+            this.nud_Angle.Size = new System.Drawing.Size(69, 20);
+            this.nud_Angle.TabIndex = 11;
+            // 
+            // nud_OrbitRadius
+            // 
+            this.nud_OrbitRadius.Enabled = false;
+            this.nud_OrbitRadius.Location = new System.Drawing.Point(311, 143);
+            this.nud_OrbitRadius.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nud_OrbitRadius.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nud_OrbitRadius.Name = "nud_OrbitRadius";
+            this.nud_OrbitRadius.Size = new System.Drawing.Size(69, 20);
+            this.nud_OrbitRadius.TabIndex = 12;
+            // 
+            // nud_MaxSpin
+            // 
+            this.nud_MaxSpin.Enabled = false;
+            this.nud_MaxSpin.Location = new System.Drawing.Point(312, 221);
+            this.nud_MaxSpin.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nud_MaxSpin.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nud_MaxSpin.Name = "nud_MaxSpin";
+            this.nud_MaxSpin.Size = new System.Drawing.Size(69, 20);
+            this.nud_MaxSpin.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(200, 89);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(14, 13);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "X";
+            // 
+            // nud_MinSpin
+            // 
+            this.nud_MinSpin.Enabled = false;
+            this.nud_MinSpin.Location = new System.Drawing.Point(202, 221);
+            this.nud_MinSpin.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nud_MinSpin.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nud_MinSpin.Name = "nud_MinSpin";
+            this.nud_MinSpin.Size = new System.Drawing.Size(69, 20);
+            this.nud_MinSpin.TabIndex = 14;
+            // 
+            // nud_OrbitDays
+            // 
+            this.nud_OrbitDays.Enabled = false;
+            this.nud_OrbitDays.Location = new System.Drawing.Point(202, 182);
+            this.nud_OrbitDays.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nud_OrbitDays.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nud_OrbitDays.Name = "nud_OrbitDays";
+            this.nud_OrbitDays.Size = new System.Drawing.Size(69, 20);
+            this.nud_OrbitDays.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(200, 128);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Angle";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(309, 89);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(14, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Y";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(309, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Orbit Radius";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(310, 205);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Max Spin";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(200, 205);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Min Spin";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(200, 166);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Orbit Days";
+            // 
+            // ComboBox_FocusID
+            // 
+            this.ComboBox_FocusID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_FocusID.FormattingEnabled = true;
+            this.ComboBox_FocusID.Location = new System.Drawing.Point(200, 64);
+            this.ComboBox_FocusID.Name = "ComboBox_FocusID";
+            this.ComboBox_FocusID.Size = new System.Drawing.Size(153, 21);
+            this.ComboBox_FocusID.TabIndex = 8;
+            this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.ComboBox_FocusID_SelectedIndexChanged);
+            // 
+            // ComboBox_OrbitMode
+            // 
+            this.ComboBox_OrbitMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_OrbitMode.FormattingEnabled = true;
+            this.ComboBox_OrbitMode.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3"});
+            this.ComboBox_OrbitMode.Location = new System.Drawing.Point(200, 25);
+            this.ComboBox_OrbitMode.Name = "ComboBox_OrbitMode";
+            this.ComboBox_OrbitMode.Size = new System.Drawing.Size(177, 21);
+            this.ComboBox_OrbitMode.TabIndex = 7;
+            this.ComboBox_OrbitMode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_OrbitMode_SelectedIndexChanged);
+            // 
+            // tb_Info
+            // 
+            this.tb_Info.Location = new System.Drawing.Point(201, 247);
+            this.tb_Info.Multiline = true;
+            this.tb_Info.Name = "tb_Info";
+            this.tb_Info.ReadOnly = true;
+            this.tb_Info.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tb_Info.Size = new System.Drawing.Size(177, 223);
+            this.tb_Info.TabIndex = 39;
+            this.tb_Info.Text = resources.GetString("tb_Info.Text");
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(199, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 13);
+            this.label11.TabIndex = 40;
+            this.label11.Text = "Orbit Mode:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(200, 49);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 13);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "Focus:";
+            // 
+            // btn_FocusRefresh
+            // 
+            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_FocusRefresh.Location = new System.Drawing.Point(359, 64);
+            this.btn_FocusRefresh.Name = "btn_FocusRefresh";
+            this.btn_FocusRefresh.Size = new System.Drawing.Size(22, 22);
+            this.btn_FocusRefresh.TabIndex = 41;
+            this.btn_FocusRefresh.UseVisualStyleBackColor = true;
+            this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click);
             // 
             // Stars
             // 
@@ -567,13 +567,13 @@
             this.Name = "Stars";
             ((System.ComponentModel.ISupportInitialize)(this.nud_CoronaSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_Y)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_X)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_Y)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Angle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MaxSpin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinSpin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -585,39 +585,39 @@
         private System.Windows.Forms.TextBox tb_ID;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tb_TypeID;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown nud_CoronaSize;
         private System.Windows.Forms.NumericUpDown nud_Radius;
-        private System.Windows.Forms.NumericUpDown nud_Y;
-        private System.Windows.Forms.NumericUpDown nud_X;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_AddUpdateStar;
         private System.Windows.Forms.ComboBox ComboBox_Systems;
         private System.Windows.Forms.ComboBox ComboBox_Stars;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown nud_Angle;
-        private System.Windows.Forms.NumericUpDown nud_OrbitRadius;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown nud_MaxSpin;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox ComboBox_FocusID;
-        private System.Windows.Forms.NumericUpDown nud_OrbitDays;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown nud_MinSpin;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tb_Info;
-        private System.Windows.Forms.ComboBox ComboBox_OrbitMode;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Undo;
         private System.Windows.Forms.TextBox tb_Name;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button btn_FocusRefresh;
         private System.Windows.Forms.Button btn_SystemsRefresh;
+        private System.Windows.Forms.NumericUpDown nud_X;
+        private System.Windows.Forms.NumericUpDown nud_Y;
+        private System.Windows.Forms.NumericUpDown nud_Angle;
+        private System.Windows.Forms.NumericUpDown nud_OrbitRadius;
+        private System.Windows.Forms.NumericUpDown nud_MaxSpin;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown nud_MinSpin;
+        private System.Windows.Forms.NumericUpDown nud_OrbitDays;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox ComboBox_FocusID;
+        private System.Windows.Forms.ComboBox ComboBox_OrbitMode;
+        private System.Windows.Forms.TextBox tb_Info;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btn_FocusRefresh;
     }
 }

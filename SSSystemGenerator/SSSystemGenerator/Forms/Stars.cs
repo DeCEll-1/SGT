@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ namespace SSSystemGenerator
     {
         public List<VeBlib_StarData> deletedStarsInThisSessionList { get; set; } = new List<VeBlib_StarData> { };
         public VeBlib_StarData currStar { get; set; } = null;
+
+        public string context { get; set; } = "Star";
 
         public Stars()
         {
@@ -86,13 +89,21 @@ namespace SSSystemGenerator
         //updates orbitables list
         private void loadOrbits()
         {
+            ComboBox_FocusID.Items.Clear();
+
+            ComboBox_FocusID.Items.Add("");
+
             List<Extend> orbitables = Helper.getOrbitablesInSystem(getSystem());
 
             if (orbitables == null) return;
 
-            ComboBox_FocusID.Items.Clear();
-
-            ComboBox_FocusID.Items.Add("");
+            if (ComboBox_Stars.SelectedItem != null)//İF SPAM AAAAAAAAAAAAAAAAAAAAAAAA
+            {
+                if (orbitables.Contains(Helper.GetStarWithID(ComboBox_Stars.SelectedItem.ToString())))
+                {
+                    orbitables.Remove(Helper.GetStarWithID(ComboBox_Stars.SelectedItem.ToString()));
+                }
+            }
 
             ComboBox_FocusID.Items.AddRange(Helper.IDNameList(orbitables).ToArray());
         }
@@ -163,7 +174,7 @@ namespace SSSystemGenerator
         {
             ComboBox_OrbitMode.SelectedItem = 0;
 
-            ComboBox_FocusID.SelectedText = "New Star";//change this in different forms
+            ComboBox_FocusID.SelectedText = "New " + context;//change this in different forms
 
             resetOrbit();
 
@@ -198,6 +209,9 @@ namespace SSSystemGenerator
 
             ComboBox_FocusID.Enabled = false;
 
+            loadOrbits();
+
+            ComboBox_FocusID.SelectedIndex = 0;
 
 
         }
@@ -206,14 +220,16 @@ namespace SSSystemGenerator
 
         #region customFunctions
 
+        //system list refresh
+        private void btn_SystemsRefresh_Click(object sender, EventArgs e) { LoadSystems(); }
+
         private void Load()
         {
             LoadSystems();
-
             ComboBox_Stars.Items.Clear();
 
-            ComboBox_Stars.Items.Add("New Star");
-            ComboBox_Stars.SelectedItem = "New Star";
+            ComboBox_Stars.Items.Add("New " + context);
+            ComboBox_Stars.SelectedItem = "New " + context;
 
             if (ComboBox_Systems.Items.Count != 0)
             {
@@ -300,49 +316,52 @@ namespace SSSystemGenerator
         //adds / updates star
         private void btn_AddStar_Click(object sender, EventArgs e)
         {
-            if (btn_AddUpdateStar.Text == "Add Star")
+            if (btn_AddUpdateStar.Text == "Add " + context)
             {
 
-                VeBlib_StarData starToAdd = getData();
+                VeBlib_StarData starToAdd = getData();//gets star
 
-                if (Helper.DoesStarIDExist(starToAdd.ID))
+                if (Helper.DoesStarIDExist(starToAdd.ID))//does a star with the same id exist
                 {
                     MessageBox.Show("Star ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return;
                 }
 
-                ItemEditingAdding.AddStar(starToAdd);
+                ItemEditingAdding.AddStar(starToAdd);//add the star to the system
 
-                currStar = Helper.GetStarOnSystem(starToAdd.systemID, starToAdd.ID);
+                //currStar = Helper.GetStarOnSystem(starToAdd.systemID, starToAdd.ID);
+                //why the fuck did i got the star like this? starToAdd is literally this anyways?
 
-                Load();
+                currStar = starToAdd;
 
-                ComboBox_Stars.SelectedItem = starToAdd.ID + " - " + starToAdd.name;
+                Load();//reload cuz why not
+
+                ComboBox_Stars.SelectedItem = starToAdd.ID + " - " + starToAdd.name;//select the added star
             }
             else//update star
             {
 
-                VeBlib_StarData updatedStar = getData();
+                VeBlib_StarData updatedStar = getData();//get updated star
 
-                updatedStar.GUID = currStar.GUID;
+                updatedStar.GUID = currStar.GUID;//give currstars guid to updated to keep the guid same
 
-                updatedStar.systemGUID = Helper.GetSystemFromID(updatedStar.systemID).GUID;
+                updatedStar.systemGUID = Helper.GetSystemFromID(updatedStar.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
-                if (Helper.DoesStarIDExist(updatedStar.ID))
+                if (Helper.DoesStarIDExist(updatedStar.ID, currStar.ID))//should work? idk mayn my brain isnt working fuck politics
                 {
                     MessageBox.Show("Star ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return;
                 }
 
-                ItemEditingAdding.UpdateStar(updatedStar);
+                ItemEditingAdding.UpdateStar(updatedStar);//updates star
 
-                Load();
+                Load();//reload (idr why)
 
-                ComboBox_Stars.SelectedItem = updatedStar.ID + " - " + updatedStar.name;
+                ComboBox_Stars.SelectedItem = updatedStar.ID + " - " + updatedStar.name;//select updated system
 
-                currStar = updatedStar;
+                currStar = updatedStar;//set current star to updated star
 
             }
         }
@@ -368,9 +387,9 @@ namespace SSSystemGenerator
         //star selection
         private void ComboBox_Stars_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ComboBox_Stars.SelectedItem.ToString() == "New Star")
+            if (ComboBox_Stars.SelectedItem.ToString() == "New " + context)
             {
-                btn_AddUpdateStar.Text = "Add Star";
+                btn_AddUpdateStar.Text = "Add " + context;
 
                 btn_Delete.Enabled = false;
 
@@ -388,7 +407,7 @@ namespace SSSystemGenerator
 
 
 
-                btn_AddUpdateStar.Text = "Update Star";
+                btn_AddUpdateStar.Text = "Update " + context;
 
                 btn_Delete.Enabled = true;
 
@@ -402,10 +421,10 @@ namespace SSSystemGenerator
         //system selection
         private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { TextChangedBTNAddUpdateCheck(null, null); }
 
-        //system list refresh
-        private void btn_SystemsRefresh_Click(object sender, EventArgs e) { LoadSystems(); }
+        
 
         #endregion
+
 
     }
 }

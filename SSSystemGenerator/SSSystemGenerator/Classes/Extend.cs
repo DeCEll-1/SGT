@@ -18,6 +18,10 @@ namespace SSSystemGenerator.Classes
         public String ID { get; set; }
         public String name { get; set; }
 
+        public float radius { get; set; }
+
+        public string systemID { get; set; }
+
         public float x { get; set; }
         public float y { get; set; }
 

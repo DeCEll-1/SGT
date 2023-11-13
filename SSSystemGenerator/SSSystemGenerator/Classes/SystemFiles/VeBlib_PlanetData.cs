@@ -9,20 +9,24 @@ namespace SSSystemGenerator.Classes.SystemFiles
     public class VeBlib_PlanetData : Extend
     {
 
-        public VeBlib_PlanetData(String ID, String OrbitFocus, String name, String TypeId, float angle, float Radius, float orbitRadius, float orbitDays)
+        public VeBlib_PlanetData()
+        {
+
+        }
+
+        public VeBlib_PlanetData(String ID, String OrbitFocus, String name, String TypeId, float angle, float radius, float orbitRadius, float orbitDays)
         {
             this.ID = ID;
             this.focusID = OrbitFocus;
             this.name = name;
             this.typeID = TypeId;
             this.angle = angle;
-            this.Radius = Radius;
+            this.radius = radius;
             this.orbitRadius = orbitRadius;
             this.orbitDays = orbitDays;
 
         }
 
-        public float Radius;
 
     }
 }

@@ -68,9 +68,7 @@ namespace SSSystemGenerator.Classes.SystemFiles
 
         #endregion
 
-        public String systemID { get; set; }
         public String systemGUID { get; set; }
-        public float radius;//radius of the star
         public float coronaSize;//size of the covid-1984
         public float windBurnLevel = -1;//idk mayn star things
         public float flareProbability = -1;//idk mayn star things
