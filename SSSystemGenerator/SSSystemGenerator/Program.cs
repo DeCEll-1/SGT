@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSSystemGenerator.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace SSSystemGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            fileHelper.setupFiles();//generate the data/strings/STGSystems.json
+
             Application.Run(new SGTBaseMDIContainer());
         }
     }

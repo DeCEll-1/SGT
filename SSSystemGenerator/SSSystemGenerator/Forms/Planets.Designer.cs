@@ -65,6 +65,7 @@
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.tb_ID = new System.Windows.Forms.TextBox();
             this.btn_SystemsRefresh = new System.Windows.Forms.Button();
+            this.btn_PlanetsRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinSpin)).BeginInit();
@@ -99,7 +100,7 @@
             -2147483648});
             this.nud_Radius.Name = "nud_Radius";
             this.nud_Radius.Size = new System.Drawing.Size(72, 20);
-            this.nud_Radius.TabIndex = 31;
+            this.nud_Radius.TabIndex = 5;
             // 
             // ComboBox_Planets
             // 
@@ -107,8 +108,8 @@
             this.ComboBox_Planets.FormattingEnabled = true;
             this.ComboBox_Planets.Location = new System.Drawing.Point(11, 65);
             this.ComboBox_Planets.Name = "ComboBox_Planets";
-            this.ComboBox_Planets.Size = new System.Drawing.Size(176, 21);
-            this.ComboBox_Planets.TabIndex = 35;
+            this.ComboBox_Planets.Size = new System.Drawing.Size(148, 21);
+            this.ComboBox_Planets.TabIndex = 1;
             this.ComboBox_Planets.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Planets_SelectedIndexChanged);
             // 
             // label1
@@ -136,7 +137,7 @@
             this.ComboBox_Systems.Location = new System.Drawing.Point(11, 25);
             this.ComboBox_Systems.Name = "ComboBox_Systems";
             this.ComboBox_Systems.Size = new System.Drawing.Size(148, 21);
-            this.ComboBox_Systems.TabIndex = 35;
+            this.ComboBox_Systems.TabIndex = 0;
             this.ComboBox_Systems.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Systems_SelectedIndexChanged);
             // 
             // btn_Planet
@@ -145,7 +146,7 @@
             this.btn_Planet.Location = new System.Drawing.Point(11, 380);
             this.btn_Planet.Name = "btn_Planet";
             this.btn_Planet.Size = new System.Drawing.Size(179, 46);
-            this.btn_Planet.TabIndex = 36;
+            this.btn_Planet.TabIndex = 15;
             this.btn_Planet.Text = "Add Planet";
             this.btn_Planet.UseVisualStyleBackColor = true;
             this.btn_Planet.Click += new System.EventHandler(this.btn_Planet_Click);
@@ -158,7 +159,7 @@
             this.btn_Delete.Location = new System.Drawing.Point(11, 432);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(136, 36);
-            this.btn_Delete.TabIndex = 60;
+            this.btn_Delete.TabIndex = 16;
             this.btn_Delete.Text = "Delete Planet";
             this.btn_Delete.UseVisualStyleBackColor = true;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
@@ -171,7 +172,7 @@
             this.btn_Undo.Location = new System.Drawing.Point(153, 432);
             this.btn_Undo.Name = "btn_Undo";
             this.btn_Undo.Size = new System.Drawing.Size(37, 36);
-            this.btn_Undo.TabIndex = 61;
+            this.btn_Undo.TabIndex = 17;
             this.btn_Undo.UseVisualStyleBackColor = true;
             this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
@@ -228,7 +229,7 @@
             this.ComboBox_OrbitMode.Location = new System.Drawing.Point(199, 25);
             this.ComboBox_OrbitMode.Name = "ComboBox_OrbitMode";
             this.ComboBox_OrbitMode.Size = new System.Drawing.Size(177, 21);
-            this.ComboBox_OrbitMode.TabIndex = 64;
+            this.ComboBox_OrbitMode.TabIndex = 6;
             this.ComboBox_OrbitMode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_OrbitMode_SelectedIndexChanged);
             // 
             // ComboBox_FocusID
@@ -238,7 +239,7 @@
             this.ComboBox_FocusID.Location = new System.Drawing.Point(199, 64);
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
             this.ComboBox_FocusID.Size = new System.Drawing.Size(149, 21);
-            this.ComboBox_FocusID.TabIndex = 65;
+            this.ComboBox_FocusID.TabIndex = 7;
             // 
             // label6
             // 
@@ -310,7 +311,7 @@
             -2147483648});
             this.nud_OrbitDays.Name = "nud_OrbitDays";
             this.nud_OrbitDays.Size = new System.Drawing.Size(69, 20);
-            this.nud_OrbitDays.TabIndex = 70;
+            this.nud_OrbitDays.TabIndex = 12;
             // 
             // nud_MinSpin
             // 
@@ -328,7 +329,7 @@
             -2147483648});
             this.nud_MinSpin.Name = "nud_MinSpin";
             this.nud_MinSpin.Size = new System.Drawing.Size(69, 20);
-            this.nud_MinSpin.TabIndex = 71;
+            this.nud_MinSpin.TabIndex = 13;
             // 
             // label8
             // 
@@ -355,7 +356,7 @@
             -2147483648});
             this.nud_MaxSpin.Name = "nud_MaxSpin";
             this.nud_MaxSpin.Size = new System.Drawing.Size(69, 20);
-            this.nud_MaxSpin.TabIndex = 72;
+            this.nud_MaxSpin.TabIndex = 14;
             // 
             // nud_OrbitRadius
             // 
@@ -373,7 +374,7 @@
             -2147483648});
             this.nud_OrbitRadius.Name = "nud_OrbitRadius";
             this.nud_OrbitRadius.Size = new System.Drawing.Size(69, 20);
-            this.nud_OrbitRadius.TabIndex = 69;
+            this.nud_OrbitRadius.TabIndex = 11;
             // 
             // nud_Angle
             // 
@@ -391,7 +392,7 @@
             -2147483648});
             this.nud_Angle.Name = "nud_Angle";
             this.nud_Angle.Size = new System.Drawing.Size(69, 20);
-            this.nud_Angle.TabIndex = 68;
+            this.nud_Angle.TabIndex = 10;
             // 
             // nud_Y
             // 
@@ -409,7 +410,7 @@
             -2147483648});
             this.nud_Y.Name = "nud_Y";
             this.nud_Y.Size = new System.Drawing.Size(69, 20);
-            this.nud_Y.TabIndex = 67;
+            this.nud_Y.TabIndex = 9;
             // 
             // nud_X
             // 
@@ -427,7 +428,7 @@
             -2147483648});
             this.nud_X.Name = "nud_X";
             this.nud_X.Size = new System.Drawing.Size(69, 20);
-            this.nud_X.TabIndex = 66;
+            this.nud_X.TabIndex = 8;
             // 
             // label13
             // 
@@ -443,7 +444,7 @@
             this.tb_TypeID.Location = new System.Drawing.Point(11, 182);
             this.tb_TypeID.Name = "tb_TypeID";
             this.tb_TypeID.Size = new System.Drawing.Size(176, 20);
-            this.tb_TypeID.TabIndex = 86;
+            this.tb_TypeID.TabIndex = 4;
             this.tb_TypeID.TextChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // label16
@@ -469,14 +470,14 @@
             this.tb_Name.Location = new System.Drawing.Point(11, 143);
             this.tb_Name.Name = "tb_Name";
             this.tb_Name.Size = new System.Drawing.Size(176, 20);
-            this.tb_Name.TabIndex = 85;
+            this.tb_Name.TabIndex = 3;
             // 
             // tb_ID
             // 
             this.tb_ID.Location = new System.Drawing.Point(11, 104);
             this.tb_ID.Name = "tb_ID";
             this.tb_ID.Size = new System.Drawing.Size(176, 20);
-            this.tb_ID.TabIndex = 84;
+            this.tb_ID.TabIndex = 2;
             this.tb_ID.TextChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // btn_SystemsRefresh
@@ -491,11 +492,24 @@
             this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
             this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
             // 
+            // btn_PlanetsRefresh
+            // 
+            this.btn_PlanetsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_PlanetsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_PlanetsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_PlanetsRefresh.Location = new System.Drawing.Point(165, 65);
+            this.btn_PlanetsRefresh.Name = "btn_PlanetsRefresh";
+            this.btn_PlanetsRefresh.Size = new System.Drawing.Size(22, 22);
+            this.btn_PlanetsRefresh.TabIndex = 91;
+            this.btn_PlanetsRefresh.UseVisualStyleBackColor = true;
+            this.btn_PlanetsRefresh.Click += new System.EventHandler(this.btn_PlanetsRefresh_Click);
+            // 
             // Planets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 476);
+            this.Controls.Add(this.btn_PlanetsRefresh);
             this.Controls.Add(this.btn_SystemsRefresh);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.tb_TypeID);
@@ -585,5 +599,6 @@
         private System.Windows.Forms.TextBox tb_Name;
         private System.Windows.Forms.TextBox tb_ID;
         private System.Windows.Forms.Button btn_SystemsRefresh;
+        private System.Windows.Forms.Button btn_PlanetsRefresh;
     }
 }

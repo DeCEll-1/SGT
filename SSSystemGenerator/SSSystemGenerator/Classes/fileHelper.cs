@@ -30,9 +30,10 @@ namespace SSSystemGenerator.Classes
                 UpdateFileAttributes(subDir);
             }
         }
+
         public static void setupFiles()
         {
-            FileInfo fi = new FileInfo(Statics.JSONPath);
+            FileInfo fi = new FileInfo(Statics.JSONPath.FullName);
 
             if (!fi.Exists)
             {
@@ -41,7 +42,7 @@ namespace SSSystemGenerator.Classes
                 fi.Create();
             }
 
-            fileHelper.UpdateFileAttributes(Directory.GetParent(Statics.EXEPath).Parent.Parent);
+            fileHelper.UpdateFileAttributes(Directory.GetParent(Statics.EXEPath.FullName).Parent.Parent);
 
         }
 

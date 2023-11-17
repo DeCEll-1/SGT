@@ -26,7 +26,7 @@ namespace SSSystemGenerator.Classes
 
             if (systemToRemove == null)
             {
-                Helper.throwCrash("ItemEditingAdding.cs", "UpdateSystem");
+                Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateSystem");
 
             }
 
@@ -51,7 +51,7 @@ namespace SSSystemGenerator.Classes
 
             if (system == null)//if couldnt find system then crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
-                Helper.throwCrash("ItemEditingAdding.cs", "AddStar");
+                Helper.ThrowCrash("ItemEditingAdding.cs", "AddStar");
             }
 
             system.starList.Add(star);//add star to system
@@ -68,7 +68,7 @@ namespace SSSystemGenerator.Classes
 
             if (oldStar == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
-                Helper.throwCrash("ItemEditingAdding.cs", "UpdateStar");
+                Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateStar");
             }
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newStar.systemID);//get the star system 
@@ -115,7 +115,7 @@ namespace SSSystemGenerator.Classes
 
             if (oldPlanet == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
-                Helper.throwCrash("ItemEditingAdding.cs", "UpdatePlanet");
+                Helper.ThrowCrash("ItemEditingAdding.cs", "UpdatePlanet");
             }
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newPlanet.systemID);//get the system
@@ -132,6 +132,46 @@ namespace SSSystemGenerator.Classes
         }
 
         #endregion
+
+        #region market
+
+        public static void AddMarket(VeBlib_MarketData market)
+        {
+            market.GUID = Guid.NewGuid().ToString();
+
+            string systemID = market.systemID;
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+
+            system.marketList.Add(market);
+
+        }
+
+        public static void UpdateMarket(VeBlib_MarketData marketToUpdate)
+        {
+            VeBlib_MarketData oldMarket = Helper.GetMarketWithGUID(marketToUpdate.GUID);
+
+            if (oldMarket == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
+            {
+                Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateMarket");
+            }
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(marketToUpdate.systemID);
+
+            system.marketList.Remove(oldMarket);
+
+            system.marketList.Add(marketToUpdate);
+
+        }
+
+        public static void DeleteMarket(VeBlib_MarketData marketToDelete)
+        {
+            Helper.GetSystemFromGUID(marketToDelete.systemGUID).marketList.Remove(marketToDelete);
+        }
+
+
+        #endregion
+
 
     }
 }

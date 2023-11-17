@@ -459,7 +459,7 @@
             // 
             this.ComboBox_FocusID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox_FocusID.FormattingEnabled = true;
-            this.ComboBox_FocusID.Location = new System.Drawing.Point(200, 64);
+            this.ComboBox_FocusID.Location = new System.Drawing.Point(202, 64);
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
             this.ComboBox_FocusID.Size = new System.Drawing.Size(153, 21);
             this.ComboBox_FocusID.TabIndex = 8;
@@ -473,7 +473,7 @@
             "1",
             "2",
             "3"});
-            this.ComboBox_OrbitMode.Location = new System.Drawing.Point(200, 25);
+            this.ComboBox_OrbitMode.Location = new System.Drawing.Point(200, 24);
             this.ComboBox_OrbitMode.Name = "ComboBox_OrbitMode";
             this.ComboBox_OrbitMode.Size = new System.Drawing.Size(177, 21);
             this.ComboBox_OrbitMode.TabIndex = 7;

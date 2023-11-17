@@ -190,7 +190,7 @@ namespace SSSystemGenerator.Forms
                                                      //but for some reason this is liquidifieing my brain
                                                      //smoothbrain.png
 
-                if (Helper.DoesIDExists(updatedSystem.ID))
+                if (Helper.DoesIDExists(updatedSystem.ID, currSystem.ID))
                 {
                     MessageBox.Show("System ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

@@ -54,8 +54,6 @@ C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SS
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.GenerateResource.cache
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.CoreCompileInputs.cache
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.CopyComplete
-C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.exe
-C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.pdb
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\CsvHelper.dll
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\Microsoft.Bcl.HashCode.dll
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\bin\Debug\CsvHelper.xml
@@ -69,3 +67,8 @@ C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SS
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.RingBands.resources
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.AstreoidBelts.resources
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.LoadingOrder.resources
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SGTExe\.SSSystemGenerator.exe.config
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SGTExe\.SSSystemGenerator.exe
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SGTExe\.SSSystemGenerator.pdb
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.exe
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.pdb

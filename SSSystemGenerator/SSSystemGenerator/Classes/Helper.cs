@@ -1,4 +1,5 @@
-﻿using SSSystemGenerator.Classes.SystemFiles;
+﻿using SSSystemGenerator.Classes.CSVClasses;
+using SSSystemGenerator.Classes.SystemFiles;
 using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
@@ -205,6 +206,48 @@ namespace SSSystemGenerator.Classes
 
         }
 
+        /// <summary>
+        /// gets all orbitables
+        /// </summary>
+        /// <returns></returns>
+        public static List<Extend> GetAllOrbitables()
+        {
+
+            List<Extend> extendList = new List<Extend>();
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())
+            {
+
+                extendList.AddRange(GetOrbitablesInSystem(system.ID).ToArray());
+
+            }
+
+            return extendList;
+
+        }
+
+        /// <summary>
+        /// gets Extend from id
+        /// </summary>
+        /// <param name="extendID"></param>
+        /// <returns></returns>
+        public static Extend GetExtendFromID(string extendID)
+        {
+
+            foreach (Extend item in GetAllOrbitables())
+            {
+
+                if (item.ID == extendID)
+                {
+                    return item;
+                }
+
+            }
+
+            return null;
+
+        }
+
         #endregion
 
         #region systems
@@ -240,6 +283,9 @@ namespace SSSystemGenerator.Classes
         ///</summary>
         public static VeBlib_StarSystemData GetSystemFromID(String systemID)
         {
+
+            if (systemID == null) { return null; }
+
             if (systemID.Contains(" - "))
             {
                 return GetSystemFromID(IDWithNameToID(systemID));
@@ -257,10 +303,61 @@ namespace SSSystemGenerator.Classes
         }
 
         ///<summary>
+        ///gets orbitables on the system and exclude connected entities on the market
+        ///</summary>
+        public static List<Extend> GetOrbitablesInSystem(VeBlib_StarSystemData system, VeBlib_MarketData market)
+        {
+            return GetOrbitablesInSystem(system.ID, market);
+        }
+
+        ///<summary>
         ///gets orbitables on the system
         ///</summary>
-        public static List<Extend> getOrbitablesInSystem(VeBlib_StarSystemData system)
+        public static List<Extend> GetOrbitablesInSystem(VeBlib_StarSystemData system)
         {
+            if (system == null) return null;
+
+            List<Extend> list = new List<Extend>();
+
+            foreach (var item in system.starList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.planetList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.sectorEntityTokenList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.astreoidBeltDataList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.ringBandDataList)
+            {
+                list.Add(item);
+            }
+
+            return list;
+
+        }
+
+        ///<summary>
+        ///gets orbitables on the system
+        ///</summary>
+        public static List<Extend> GetOrbitablesInSystem(string systemID)
+        {
+
+            if (systemID == null) { return null; }
+
+            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+
             if (system == null) return null;
 
             List<Extend> list = new List<Extend>();
@@ -288,6 +385,61 @@ namespace SSSystemGenerator.Classes
             foreach (var item in system.sectorEntityTokenList)
             {
                 list.Add(item);
+            }
+
+            return list;
+
+        }
+
+        ///<summary>
+        ///gets orbitables on the system and exclude connected entities on the market
+        ///</summary>
+        public static List<Extend> GetOrbitablesInSystem(string systemID, VeBlib_MarketData market)
+        {
+            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+
+            if (system == null) return null;
+
+            List<Extend> list = new List<Extend>();
+
+            foreach (var item in system.starList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.planetList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.astreoidBeltDataList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.ringBandDataList)
+            {
+                list.Add(item);
+            }
+
+            foreach (var item in system.sectorEntityTokenList)
+            {
+                list.Add(item);
+            }
+
+            List<Extend> stuffToRemove = new List<Extend>();
+
+            foreach (Extend item in list)
+            {
+                if (market.connectedEntities.Contains(item.ID))
+                {
+                    stuffToRemove.Add(item);
+                }
+            }
+
+            foreach (Extend item in stuffToRemove)
+            {
+                list.Remove(item);
             }
 
             return list;
@@ -440,7 +592,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_PlanetData GetPlanetWithGUID(String GUID)
+        public static VeBlib_PlanetData GetPlanetWithGUID(string GUID)
         {
 
             foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
@@ -483,12 +635,95 @@ namespace SSSystemGenerator.Classes
             return null;//null if couldnt find anything
         }
 
+        #endregion
 
+        #region Markets
 
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_MarketData GetMarketWithGUID(String GUID)
+        {
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_MarketData market in system.marketList)//scroll through planet list
+                {
+                    if (market.GUID == GUID)//if guid is found return the planet
+                    {
+                        return market;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_MarketData GetMarketWithID(string ID)
+        {
+
+            if (ID.Contains(" - "))
+            {
+                return GetMarketWithID(IDWithNameToID(ID));
+            }
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_MarketData market in system.marketList)//scroll through market list
+                {
+                    if (market.ID == ID)//if id is found return the planet
+                    {
+                        return market;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_MarketData GetMarketWithPrimaryEntityID(string ID)
+        {
+
+            if (ID.Contains(" - "))
+            {
+                return GetMarketWithPrimaryEntityID(IDWithNameToID(ID));
+            }
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_MarketData market in system.marketList)//scroll through market list
+                {
+                    if (market.primaryEntity == ID)//if id is found return the market
+                    {
+                        return market;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
 
         #endregion
 
+
         #region misc
+
+        public static CSVs GetCSV()
+        {
+            return Statics.csvs;
+        }
+
+        public static void UpdateCSV()
+        {
+            Statics.csvs = CSVHelper.GetAllCSVs();
+        }
 
         public static String IDWithNameToID(String IDPName)
         {
@@ -519,13 +754,54 @@ namespace SSSystemGenerator.Classes
 
         }
 
-        public static void throwCrash(string fileName, string functionName)
+        public static void ThrowCrash(string fileName, string functionName)
         {
 
             throw new Exception(
                 "filename:" + fileName +
                 "\nfunctionname:" + functionName +
                 "\nping me on corvus or usc with the reproduction way and your system JSON");
+
+        }
+
+        public static string WhatTypeIsThisIDIs(string unknownID)
+        {
+            CSVs csv = GetCSV();
+
+
+            foreach (Extend extends in GetAllOrbitables())
+            {
+                if (extends.ID == unknownID)
+                {
+                    return Finals.ORBITABLE;
+                }
+            }
+
+            foreach (IndustriesCSV industries in csv.Industries)
+            {
+                if (industries.id == unknownID)
+                {
+                    return Finals.INDUSTRIES;
+                }
+            }
+
+            foreach (SubmarketsCSV submarkets in csv.Submarkets)
+            {
+                if (submarkets.id == unknownID)
+                {
+                    return Finals.SUBMARKETS;
+                }
+            }
+
+            foreach (MarketConditions condition in csv.MarketConditions)
+            {
+                if (condition.id == unknownID)
+                {
+                    return Finals.MARKET_CONDITIONS;
+                }
+            }
+
+            return Finals.NOT_FOUND_STRING;
 
         }
 

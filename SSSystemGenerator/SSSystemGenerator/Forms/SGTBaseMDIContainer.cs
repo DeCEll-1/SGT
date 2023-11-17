@@ -1,4 +1,5 @@
-﻿using SSSystemGenerator.Forms;
+﻿using SSSystemGenerator.Classes;
+using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,15 @@ namespace SSSystemGenerator
         public SGTBaseMDIContainer()
         {
             InitializeComponent();
+            object s = Statics.EXEPath;
+            s = Statics.JSONPath;
+            s = Statics.ModFolderRoot;
+            s = Statics.ModsFolderRoot;
+            s = Statics.ModCampaignRoot;
+            s = Statics.GameRoot;
+            s = Statics.GameCore;
+            s = Statics.GameCoreCampaignFolder;
+            s = Statics.baseClass;
         }
 
         private void TSMI_Systems_Click(object sender, EventArgs e)

@@ -95,7 +95,7 @@ namespace SSSystemGenerator
 
             ComboBox_FocusID.Items.Add("");
 
-            List<Extend> orbitables = Helper.getOrbitablesInSystem(getSystem());
+            List<Extend> orbitables = Helper.GetOrbitablesInSystem(getSystem());
 
             if (orbitables == null) return;
 

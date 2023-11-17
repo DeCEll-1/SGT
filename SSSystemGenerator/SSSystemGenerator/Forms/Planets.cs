@@ -95,7 +95,7 @@ namespace SSSystemGenerator.Forms
 
             VeBlib_StarSystemData system = getSystem();
 
-            List<Extend> orbitables = Helper.getOrbitablesInSystem(system);
+            List<Extend> orbitables = Helper.GetOrbitablesInSystem(system);
 
             if (orbitables == null) return;
 
@@ -249,17 +249,7 @@ namespace SSSystemGenerator.Forms
 
             if (ComboBox_Systems.Items.Count != 0)
             {
-
-                //use the numbers for read order
-
-                ComboBox_Planets.Items.AddRange(
-                    Helper.IDNameList(//turns systems into id + name list for the combo box / 5
-                        Helper.ListUpcasting(//turn planet list to extend list / 4
-                            Helper.GetSystemFromID(//get system object with id (it automatically removes name from id + name) / 2
-                                ComboBox_Systems.SelectedItem.ToString()//get selected systems id + name / 1
-                                )
-                            .planetList.ToArray()))//get planets in the selected system / 3
-                    .ToArray());//to array because add range adds arrays and not list, just a minor inconvenience
+                UpdatePlanets();
             }
 
             ComboBox_OrbitMode.Items.Clear();
@@ -271,6 +261,19 @@ namespace SSSystemGenerator.Forms
             loadOrbits();
 
 
+        }
+
+        private void UpdatePlanets()
+        {
+            //use the numbers for read order
+            ComboBox_Planets.Items.AddRange(
+                Helper.IDNameList(//turns systems into id + name list for the combo box / 5
+                    Helper.ListUpcasting(//turn planet list to extend list / 4
+                        Helper.GetSystemFromID(//get system object with id (it automatically removes name from id + name) / 2
+                            ComboBox_Systems.SelectedItem.ToString()//get selected systems id + name / 1
+                            )
+                        .planetList.ToArray()))//get planets in the selected system / 3
+                .ToArray());//to array because add range adds arrays and not list, just a minor inconvenience
         }
 
         private void LoadSystems()
@@ -352,7 +355,7 @@ namespace SSSystemGenerator.Forms
                 return ComboBox_Planets.SelectedItem.ToString();
             }
 
-            return null;
+            return "";
         }
 
 
@@ -374,16 +377,16 @@ namespace SSSystemGenerator.Forms
 
                 VeBlib_PlanetData updatedPlanet = getData();//get planet 
 
-                updatedPlanet.GUID = currPlanet.GUID;
-
-                updatedPlanet.systemGUID = Helper.GetSystemFromID(updatedPlanet.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
-
                 if (Helper.DoesIDExists(updatedPlanet.ID, currPlanet.ID))
                 {
                     MessageBox.Show(context + " ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return;
                 }
+
+                updatedPlanet.GUID = currPlanet.GUID;//TODO check if you update curr planet on selected planet change
+
+                updatedPlanet.systemGUID = Helper.GetSystemFromID(updatedPlanet.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
                 ItemEditingAdding.UpdatePlanet(updatedPlanet);//update the planet
 
@@ -462,8 +465,10 @@ namespace SSSystemGenerator.Forms
 
             deletedPlanetssInThisSessionList.RemoveAt(deletedPlanetssInThisSessionList.Count() - 1);
         }
-        #endregion
 
+        private void btn_PlanetsRefresh_Click(object sender, EventArgs e) { UpdatePlanets(); }
+
+        #endregion
 
     }
 }
