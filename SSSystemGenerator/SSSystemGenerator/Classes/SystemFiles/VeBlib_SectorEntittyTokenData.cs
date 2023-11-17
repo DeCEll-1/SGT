@@ -9,6 +9,14 @@ namespace SSSystemGenerator.Classes.SystemFiles
     public class VeBlib_SectorEntittyTokenData : Extend
     {
 
+        public VeBlib_SectorEntittyTokenData()
+        {
+            this.ID = "";
+            this.name = "";
+            this.customEntittyType = "";
+            this.factionID = "";
+        }
+
         public VeBlib_SectorEntittyTokenData(String ID, String name, String customEntittyType, String factionID, float x, float y)
         {
             this.ID = ID;

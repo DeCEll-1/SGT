@@ -567,6 +567,8 @@ namespace SSSystemGenerator.Forms
 
         }
 
+        private void tb_ID_TextChanged(object sender, EventArgs e) { Enable_AddingEditing_KeyPress(null, null); }
+
         #endregion
 
         #region comments
@@ -598,7 +600,6 @@ namespace SSSystemGenerator.Forms
         //                }
         //                break; 
         #endregion
-
 
     }
 }

@@ -712,6 +712,78 @@ namespace SSSystemGenerator.Classes
 
         #endregion
 
+        #region CustomEntity
+
+        ///<summary>
+        ///returns null if couldnt find any
+        ///</summary>
+        public static VeBlib_SectorEntittyTokenData GetCustomEntityInSystem(String systemID, String customEntityID)
+        {
+            if (systemID.Contains(" - ") || customEntityID.Contains(" - "))
+            {
+                return GetCustomEntityInSystem(IDWithNameToID(systemID), IDWithNameToID(customEntityID));
+            }
+
+            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+
+            foreach (VeBlib_SectorEntittyTokenData customEntity in system.sectorEntityTokenList)
+            {
+                if (customEntity.ID == customEntityID)
+                {
+                    return customEntity;
+                }
+            }
+
+            return null;
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_SectorEntittyTokenData GetCustomEntityWithGUID(String GUID)
+        {
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_SectorEntittyTokenData customEntity in system.sectorEntityTokenList)//scroll through planet list
+                {
+                    if (customEntity.GUID == GUID)//if guid is found return the planet
+                    {
+                        return customEntity;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_SectorEntittyTokenData GetEntityFromID(string ID)
+        {
+
+            if (ID.Contains(" - "))
+            {
+                return GetEntityFromID(IDWithNameToID(ID));
+            }
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_SectorEntittyTokenData customEntity in system.sectorEntityTokenList)//scroll through planet list
+                {
+                    if (customEntity.ID == ID)//if id is found return the planet
+                    {
+                        return customEntity;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
+
+        #endregion
 
         #region misc
 

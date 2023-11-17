@@ -310,7 +310,7 @@
             this.tb_MarketFactionID.Name = "tb_MarketFactionID";
             this.tb_MarketFactionID.Size = new System.Drawing.Size(229, 20);
             this.tb_MarketFactionID.TabIndex = 8;
-            this.tb_MarketFactionID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enable_AddingEditing_KeyPress);
+            this.tb_MarketFactionID.TextChanged += new System.EventHandler(this.tb_ID_TextChanged);
             // 
             // label1
             // 
@@ -346,7 +346,7 @@
             this.tb_ID.Name = "tb_ID";
             this.tb_ID.Size = new System.Drawing.Size(229, 20);
             this.tb_ID.TabIndex = 2;
-            this.tb_ID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enable_AddingEditing_KeyPress);
+            this.tb_ID.TextChanged += new System.EventHandler(this.tb_ID_TextChanged);
             // 
             // label4
             // 

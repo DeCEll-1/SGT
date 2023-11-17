@@ -16,7 +16,7 @@ namespace SSSystemGenerator.Forms
     public partial class Planets : Form
     {
 
-        public List<VeBlib_PlanetData> deletedPlanetssInThisSessionList { get; set; } = new List<VeBlib_PlanetData>();
+        public List<VeBlib_PlanetData> deletedPlanetsInThisSessionList { get; set; } = new List<VeBlib_PlanetData>();
         public VeBlib_PlanetData currPlanet { get; set; } = null;
 
         public string context { get; set; } = "Planet";
@@ -368,9 +368,7 @@ namespace SSSystemGenerator.Forms
         {
             if (btn_Planet.Text == "Add " + context)
             {
-
                 AddPlanet();
-
             }
             else//update
             {
@@ -436,7 +434,7 @@ namespace SSSystemGenerator.Forms
 
             VeBlib_PlanetData planetToDelete = Helper.GetPlanetWithID(getID());
 
-            deletedPlanetssInThisSessionList.Add(planetToDelete);
+            deletedPlanetsInThisSessionList.Add(planetToDelete);
 
             ItemEditingAdding.DeletePlanet(planetToDelete);
 
@@ -448,9 +446,9 @@ namespace SSSystemGenerator.Forms
 
         private void btn_Undo_Click(object sender, EventArgs e)
         {
-            if (deletedPlanetssInThisSessionList.Count() == 0) { return; }
+            if (deletedPlanetsInThisSessionList.Count() == 0) { return; }
 
-            VeBlib_PlanetData lastDeletedItem = deletedPlanetssInThisSessionList.ElementAt(deletedPlanetssInThisSessionList.Count() - 1);
+            VeBlib_PlanetData lastDeletedItem = deletedPlanetsInThisSessionList.ElementAt(deletedPlanetsInThisSessionList.Count() - 1);
 
             if (Helper.DoesIDExists(lastDeletedItem.ID))
             {
@@ -463,7 +461,7 @@ namespace SSSystemGenerator.Forms
 
             AddPlanet();
 
-            deletedPlanetssInThisSessionList.RemoveAt(deletedPlanetssInThisSessionList.Count() - 1);
+            deletedPlanetsInThisSessionList.RemoveAt(deletedPlanetsInThisSessionList.Count() - 1);
         }
 
         private void btn_PlanetsRefresh_Click(object sender, EventArgs e) { UpdatePlanets(); }

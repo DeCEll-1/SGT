@@ -169,9 +169,45 @@ namespace SSSystemGenerator.Classes
             Helper.GetSystemFromGUID(marketToDelete.systemGUID).marketList.Remove(marketToDelete);
         }
 
-
         #endregion
 
+        #region customEntity
+
+        public static void AddCustomEntity(VeBlib_SectorEntittyTokenData customEntity)
+        {
+            customEntity.GUID = Guid.NewGuid().ToString();
+
+            string systemID = customEntity.systemID;
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+
+            system.sectorEntityTokenList.Add(customEntity);
+        }
+
+        public static void UpdateCustomEntity(VeBlib_SectorEntittyTokenData customEntityToUpdate)
+        {
+            VeBlib_SectorEntittyTokenData oldEntity = Helper.GetCustomEntityWithGUID(customEntityToUpdate.GUID);
+
+            if (oldEntity == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
+            {
+                Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateCustomEntity");
+            }
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(customEntityToUpdate.systemID);
+
+            system.sectorEntityTokenList.Remove(oldEntity);
+
+            system.sectorEntityTokenList.Add(customEntityToUpdate);
+
+        }
+
+        public static void DeleteCustomEntity(VeBlib_SectorEntittyTokenData customEntityToDelete)
+        {
+            Helper.GetSystemFromGUID(customEntityToDelete.systemGUID).sectorEntityTokenList.Remove(customEntityToDelete);
+        }
+
+
+        #endregion
 
     }
 }
