@@ -785,6 +785,79 @@ namespace SSSystemGenerator.Classes
 
         #endregion
 
+        #region ringBelts
+
+        ///<summary>
+        ///returns null if couldnt find any
+        ///</summary>
+        public static VeBlib_RingBandData GetRingBandInSystem(String systemID, String ringBandID)
+        {
+            if (systemID.Contains(" - ") || ringBandID.Contains(" - "))
+            {
+                return GetRingBandInSystem(IDWithNameToID(systemID), IDWithNameToID(ringBandID));
+            }
+
+            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+
+            foreach (VeBlib_RingBandData ringBand in system.ringBandDataList)
+            {
+                if (ringBand.ID == ringBandID)
+                {
+                    return ringBand;
+                }
+            }
+
+            return null;
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_RingBandData GetringBandWithID(string GUID)
+        {
+
+            if (GUID.Contains(" - "))
+            {
+                return GetringBandWithID(IDWithNameToID(GUID));
+            }
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_RingBandData ringBand in system.ringBandDataList)//scroll through planet list
+                {
+                    if (ringBand.ID == GUID)//if id is found return the planet
+                    {
+                        return ringBand;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_RingBandData GetringBandWithGUID(string GUID)
+        {
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_RingBandData ringBand in system.ringBandDataList)//scroll through planet list
+                {
+                    if (ringBand.GUID == GUID)//if guid is found return the planet
+                    {
+                        return ringBand;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
+
+
+        #endregion
+
         #region misc
 
         public static CSVs GetCSV()

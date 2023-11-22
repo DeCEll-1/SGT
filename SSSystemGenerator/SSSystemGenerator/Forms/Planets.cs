@@ -100,7 +100,7 @@ namespace SSSystemGenerator.Forms
             if (orbitables == null) return;
 
             if (ComboBox_Planets.SelectedItem != null)//İF SPAM AAAAAAAAAAAAAAAAAAAAAAAA
-            {
+            {//excludes the selected id from the orbiting list (it cant orbit around itself, cope more)
                 if (orbitables.Contains(Helper.GetPlanetWithID(ComboBox_Planets.SelectedItem.ToString())))
                 {
                     orbitables.Remove(Helper.GetPlanetWithID(ComboBox_Planets.SelectedItem.ToString()));
@@ -259,8 +259,6 @@ namespace SSSystemGenerator.Forms
             ComboBox_OrbitMode.SelectedItem = 0;
 
             loadOrbits();
-
-
         }
 
         private void UpdatePlanets()
@@ -288,12 +286,13 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        private void update(VeBlib_PlanetData star)
+        private void update(VeBlib_PlanetData planetData)
         {
-            updateExtends(star);
+            updateExtends(planetData);
 
-            nud_Radius.Value = (decimal)star.radius;
+            nud_Radius.Value = (decimal)planetData.radius;
 
+            currPlanet = planetData;
         }
 
         private void reset()
@@ -332,7 +331,7 @@ namespace SSSystemGenerator.Forms
 
             if (Helper.DoesIDExists(planetToAdd.ID))//if planet with same id exists
             {
-                MessageBox.Show(context + " ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
@@ -377,7 +376,7 @@ namespace SSSystemGenerator.Forms
 
                 if (Helper.DoesIDExists(updatedPlanet.ID, currPlanet.ID))
                 {
-                    MessageBox.Show(context + " ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ID Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return;
                 }

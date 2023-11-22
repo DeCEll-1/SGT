@@ -206,6 +206,44 @@ namespace SSSystemGenerator.Classes
             Helper.GetSystemFromGUID(customEntityToDelete.systemGUID).sectorEntityTokenList.Remove(customEntityToDelete);
         }
 
+        #endregion
+
+        #region ringBand
+
+        public static void AddRingBand(VeBlib_RingBandData ringBandToAdd)
+        {
+            ringBandToAdd.GUID = Guid.NewGuid().ToString();
+
+            string systemID = ringBandToAdd.systemID;
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+
+            system.ringBandDataList.Add(ringBandToAdd);
+        }
+
+        public static void UpdateRingBand(VeBlib_RingBandData newRingBand)
+        {
+            VeBlib_RingBandData oldRingBand = Helper.GetringBandWithGUID(newRingBand.GUID);//get old star with stars guid
+
+            if (oldRingBand == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
+            {
+                Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateStar");
+            }
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(newRingBand.systemID);//get the star system 
+
+
+            system.ringBandDataList.Remove(oldRingBand);//remove the old star
+
+            system.ringBandDataList.Add(newRingBand);//add the new star
+
+        }
+
+        public static void DeleteRingBand(VeBlib_RingBandData ringBandTodlete)
+        {
+            Helper.GetSystemFromGUID(ringBandTodlete.systemGUID).ringBandDataList.Remove(ringBandTodlete);
+        }
+
 
         #endregion
 
