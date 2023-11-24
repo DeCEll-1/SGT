@@ -47,9 +47,9 @@ namespace SSSystemGenerator.Forms
 
             if (ComboBox_RingBands.SelectedItem != null)//İF SPAM AAAAAAAAAAAAAAAAAAAAAAAA
             {//excludes the selected id from the orbiting list (it cant orbit around itself, cope more)
-                if (orbitables.Contains(Helper.GetringBandWithID(ComboBox_RingBands.SelectedItem.ToString())))
+                if (orbitables.Contains(Helper.GetRingBandWithID(ComboBox_RingBands.SelectedItem.ToString())))
                 {
-                    orbitables.Remove(Helper.GetringBandWithID(ComboBox_RingBands.SelectedItem.ToString()));
+                    orbitables.Remove(Helper.GetRingBandWithID(ComboBox_RingBands.SelectedItem.ToString()));
                 }
             }
 
@@ -140,6 +140,8 @@ namespace SSSystemGenerator.Forms
             ringBand.bandIndex = (int)nud_BandIndex.Value;
 
             ringBand.middleRadius = (float)nud_MiddleRadius.Value;
+
+            ringBand.terrainId = ComboBox_TerrainID.Text;
 
             #region textures
 
@@ -280,7 +282,7 @@ namespace SSSystemGenerator.Forms
         {
             if (ComboBox_RingBands.SelectedItem != null)
             {
-                return ComboBox_RingBands.SelectedItem.ToString();
+                return Helper.IDWithNameToID(ComboBox_RingBands.SelectedItem.ToString());
             }
 
             return "";
@@ -437,7 +439,7 @@ namespace SSSystemGenerator.Forms
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
-            VeBlib_RingBandData ringBandToDelete = Helper.GetringBandWithID(getID());
+            VeBlib_RingBandData ringBandToDelete = Helper.GetRingBandWithID(getID());
 
             deletedRingBandsInThisSession.Add(ringBandToDelete);
 

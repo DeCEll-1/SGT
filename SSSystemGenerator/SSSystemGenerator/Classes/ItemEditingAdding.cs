@@ -223,7 +223,7 @@ namespace SSSystemGenerator.Classes
 
         public static void UpdateRingBand(VeBlib_RingBandData newRingBand)
         {
-            VeBlib_RingBandData oldRingBand = Helper.GetringBandWithGUID(newRingBand.GUID);//get old star with stars guid
+            VeBlib_RingBandData oldRingBand = Helper.GetRingBandWithGUID(newRingBand.GUID);//get old star with stars guid
 
             if (oldRingBand == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
@@ -244,6 +244,43 @@ namespace SSSystemGenerator.Classes
             Helper.GetSystemFromGUID(ringBandTodlete.systemGUID).ringBandDataList.Remove(ringBandTodlete);
         }
 
+        #endregion
+
+        #region astreoidBelt
+
+        public static void AddAstreoidBelt(VeBlib_AstreoidBeltData astreoidBeltToAdd)
+        {
+            astreoidBeltToAdd.GUID = Guid.NewGuid().ToString();
+
+            string systemID = astreoidBeltToAdd.systemID;
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+
+            system.astreoidBeltDataList.Add(astreoidBeltToAdd);
+        }
+
+        public static void UpdateAstreoidBelt(VeBlib_AstreoidBeltData newAstreoidBelt)
+        {
+            VeBlib_AstreoidBeltData oldAstreoidBelt = Helper.GetAstreoidBeltWithGUID(newAstreoidBelt.GUID);//get old star with stars guid
+
+            if (oldAstreoidBelt == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
+            {
+                Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateAstreoidBelt");
+            }
+
+            VeBlib_StarSystemData system = Helper.GetSystemFromID(newAstreoidBelt.systemID);//get the star system 
+
+
+            system.astreoidBeltDataList.Remove(oldAstreoidBelt);//remove the old star
+
+            system.astreoidBeltDataList.Add(newAstreoidBelt);//add the new star
+
+        }
+
+        public static void DeleteAstreoidBelt(VeBlib_AstreoidBeltData astreoidBeltToDelete)
+        {
+            Helper.GetSystemFromGUID(astreoidBeltToDelete.systemGUID).astreoidBeltDataList.Remove(astreoidBeltToDelete);
+        }
 
         #endregion
 

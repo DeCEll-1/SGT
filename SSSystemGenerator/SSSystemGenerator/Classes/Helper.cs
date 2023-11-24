@@ -813,12 +813,12 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_RingBandData GetringBandWithID(string GUID)
+        public static VeBlib_RingBandData GetRingBandWithID(string GUID)
         {
 
             if (GUID.Contains(" - "))
             {
-                return GetringBandWithID(IDWithNameToID(GUID));
+                return GetRingBandWithID(IDWithNameToID(GUID));
             }
 
             foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
@@ -838,7 +838,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_RingBandData GetringBandWithGUID(string GUID)
+        public static VeBlib_RingBandData GetRingBandWithGUID(string GUID)
         {
 
             foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
@@ -855,6 +855,77 @@ namespace SSSystemGenerator.Classes
             return null;//null if couldnt find anything
         }
 
+        #endregion
+
+        #region astreoidBelts
+
+        ///<summary>
+        ///returns null if couldnt find any
+        ///</summary>
+        public static VeBlib_AstreoidBeltData GetAstreoidBeltInSystem(String systemID, String astreoidBeltID)
+        {
+            if (systemID.Contains(" - ") || astreoidBeltID.Contains(" - "))
+            {
+                return GetAstreoidBeltInSystem(IDWithNameToID(systemID), IDWithNameToID(astreoidBeltID));
+            }
+
+            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+
+            foreach (VeBlib_AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)
+            {
+                if (astreoidBelt.ID == astreoidBeltID)
+                {
+                    return astreoidBelt;
+                }
+            }
+
+            return null;
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_AstreoidBeltData GetAstreoidBeltWithID(string GUID)
+        {
+
+            if (GUID.Contains(" - "))
+            {
+                return GetAstreoidBeltWithID(IDWithNameToID(GUID));
+            }
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)//scroll through planet list
+                {
+                    if (astreoidBelt.ID == GUID)//if id is found return the planet
+                    {
+                        return astreoidBelt;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
+
+        ///<summary>
+        ///return null if couldnt find anything
+        ///</summary>
+        public static VeBlib_AstreoidBeltData GetAstreoidBeltWithGUID(string GUID)
+        {
+
+            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            {
+                foreach (VeBlib_AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)//scroll through planet list
+                {
+                    if (astreoidBelt.GUID == GUID)//if guid is found return the planet
+                    {
+                        return astreoidBelt;
+                    }
+                }
+            }
+
+            return null;//null if couldnt find anything
+        }
 
         #endregion
 

@@ -45,8 +45,11 @@
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.btn_RingBand = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ComboBox_RingBands = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.ComboBox_FocusID = new System.Windows.Forms.ComboBox();
+            this.btn_FocusRefresh = new System.Windows.Forms.Button();
             this.btn_SystemsRefresh = new System.Windows.Forms.Button();
             this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -73,10 +76,8 @@
             this.nud_MiddleRadius = new System.Windows.Forms.NumericUpDown();
             this.label33 = new System.Windows.Forms.Label();
             this.nud_BandIndex = new System.Windows.Forms.NumericUpDown();
-            this.btn_FocusRefresh = new System.Windows.Forms.Button();
-            this.ComboBox_RingBands = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_Undo = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.nud_BandWidthInEngine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_BandWidthInTexture)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -94,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MiddleRadius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_BandIndex)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_Color
@@ -101,7 +103,7 @@
             this.pnl_Color.BackColor = System.Drawing.Color.Red;
             this.pnl_Color.Location = new System.Drawing.Point(6, 177);
             this.pnl_Color.Name = "pnl_Color";
-            this.pnl_Color.Size = new System.Drawing.Size(170, 31);
+            this.pnl_Color.Size = new System.Drawing.Size(170, 63);
             this.pnl_Color.TabIndex = 45;
             // 
             // label12
@@ -218,7 +220,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(12, 192);
+            this.label40.Location = new System.Drawing.Point(6, 16);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(164, 13);
             this.label40.TabIndex = 62;
@@ -227,15 +229,15 @@
             // ComboBox_TerrainID
             // 
             this.ComboBox_TerrainID.FormattingEnabled = true;
-            this.ComboBox_TerrainID.Location = new System.Drawing.Point(12, 208);
+            this.ComboBox_TerrainID.Location = new System.Drawing.Point(6, 32);
             this.ComboBox_TerrainID.Name = "ComboBox_TerrainID";
-            this.ComboBox_TerrainID.Size = new System.Drawing.Size(164, 21);
+            this.ComboBox_TerrainID.Size = new System.Drawing.Size(167, 21);
             this.ComboBox_TerrainID.TabIndex = 2;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(12, 232);
+            this.label18.Location = new System.Drawing.Point(6, 56);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(38, 13);
             this.label18.TabIndex = 64;
@@ -243,7 +245,7 @@
             // 
             // tb_Name
             // 
-            this.tb_Name.Location = new System.Drawing.Point(12, 248);
+            this.tb_Name.Location = new System.Drawing.Point(6, 72);
             this.tb_Name.Name = "tb_Name";
             this.tb_Name.Size = new System.Drawing.Size(167, 20);
             this.tb_Name.TabIndex = 3;
@@ -251,7 +253,7 @@
             // btn_RingBand
             // 
             this.btn_RingBand.Enabled = false;
-            this.btn_RingBand.Location = new System.Drawing.Point(12, 352);
+            this.btn_RingBand.Location = new System.Drawing.Point(12, 379);
             this.btn_RingBand.Name = "btn_RingBand";
             this.btn_RingBand.Size = new System.Drawing.Size(167, 30);
             this.btn_RingBand.TabIndex = 10;
@@ -276,6 +278,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selection";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(164, 13);
+            this.label1.TabIndex = 95;
+            this.label1.Text = "Ring Bands On Selected System:";
+            // 
+            // ComboBox_RingBands
+            // 
+            this.ComboBox_RingBands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_RingBands.FormattingEnabled = true;
+            this.ComboBox_RingBands.Location = new System.Drawing.Point(6, 110);
+            this.ComboBox_RingBands.Name = "ComboBox_RingBands";
+            this.ComboBox_RingBands.Size = new System.Drawing.Size(167, 21);
+            this.ComboBox_RingBands.TabIndex = 4;
+            this.ComboBox_RingBands.SelectedIndexChanged += new System.EventHandler(this.ComboBox_RingBands_SelectedIndexChanged);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -294,6 +315,18 @@
             this.ComboBox_FocusID.Size = new System.Drawing.Size(139, 21);
             this.ComboBox_FocusID.TabIndex = 2;
             this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
+            // 
+            // btn_FocusRefresh
+            // 
+            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_FocusRefresh.Location = new System.Drawing.Point(151, 71);
+            this.btn_FocusRefresh.Name = "btn_FocusRefresh";
+            this.btn_FocusRefresh.Size = new System.Drawing.Size(22, 21);
+            this.btn_FocusRefresh.TabIndex = 3;
+            this.btn_FocusRefresh.UseVisualStyleBackColor = true;
+            this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click_1);
             // 
             // btn_SystemsRefresh
             // 
@@ -332,7 +365,7 @@
             this.btn_Delete.Enabled = false;
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btn_Delete.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_Delete.Location = new System.Drawing.Point(12, 388);
+            this.btn_Delete.Location = new System.Drawing.Point(12, 415);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(124, 35);
             this.btn_Delete.TabIndex = 11;
@@ -374,7 +407,7 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(201, 204);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(182, 219);
+            this.groupBox3.Size = new System.Drawing.Size(182, 246);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Colors";
@@ -530,7 +563,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 310);
+            this.label3.Location = new System.Drawing.Point(12, 337);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 97;
@@ -538,7 +571,7 @@
             // 
             // nud_OrbitRadius
             // 
-            this.nud_OrbitRadius.Location = new System.Drawing.Point(12, 326);
+            this.nud_OrbitRadius.Location = new System.Drawing.Point(12, 353);
             this.nud_OrbitRadius.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -560,7 +593,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 271);
+            this.label6.Location = new System.Drawing.Point(12, 298);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 95;
@@ -568,7 +601,7 @@
             // 
             // nud_OrbitDays
             // 
-            this.nud_OrbitDays.Location = new System.Drawing.Point(12, 287);
+            this.nud_OrbitDays.Location = new System.Drawing.Point(12, 314);
             this.nud_OrbitDays.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -590,7 +623,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(105, 310);
+            this.label32.Location = new System.Drawing.Point(105, 337);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(74, 13);
             this.label32.TabIndex = 93;
@@ -598,7 +631,7 @@
             // 
             // nud_MiddleRadius
             // 
-            this.nud_MiddleRadius.Location = new System.Drawing.Point(105, 326);
+            this.nud_MiddleRadius.Location = new System.Drawing.Point(105, 353);
             this.nud_MiddleRadius.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -620,7 +653,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(105, 271);
+            this.label33.Location = new System.Drawing.Point(105, 298);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(61, 13);
             this.label33.TabIndex = 91;
@@ -628,7 +661,7 @@
             // 
             // nud_BandIndex
             // 
-            this.nud_BandIndex.Location = new System.Drawing.Point(105, 287);
+            this.nud_BandIndex.Location = new System.Drawing.Point(105, 314);
             this.nud_BandIndex.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -643,54 +676,37 @@
             this.nud_BandIndex.Size = new System.Drawing.Size(74, 20);
             this.nud_BandIndex.TabIndex = 5;
             // 
-            // btn_FocusRefresh
-            // 
-            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
-            this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_FocusRefresh.Location = new System.Drawing.Point(151, 71);
-            this.btn_FocusRefresh.Name = "btn_FocusRefresh";
-            this.btn_FocusRefresh.Size = new System.Drawing.Size(22, 21);
-            this.btn_FocusRefresh.TabIndex = 3;
-            this.btn_FocusRefresh.UseVisualStyleBackColor = true;
-            this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click_1);
-            // 
-            // ComboBox_RingBands
-            // 
-            this.ComboBox_RingBands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_RingBands.FormattingEnabled = true;
-            this.ComboBox_RingBands.Location = new System.Drawing.Point(6, 110);
-            this.ComboBox_RingBands.Name = "ComboBox_RingBands";
-            this.ComboBox_RingBands.Size = new System.Drawing.Size(167, 21);
-            this.ComboBox_RingBands.TabIndex = 4;
-            this.ComboBox_RingBands.SelectedIndexChanged += new System.EventHandler(this.ComboBox_RingBands_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 13);
-            this.label1.TabIndex = 95;
-            this.label1.Text = "Ring Bands On Selected System:";
-            // 
             // btn_Undo
             // 
             this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
             this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_Undo.Location = new System.Drawing.Point(142, 388);
+            this.btn_Undo.Location = new System.Drawing.Point(142, 415);
             this.btn_Undo.Name = "btn_Undo";
             this.btn_Undo.Size = new System.Drawing.Size(37, 35);
             this.btn_Undo.TabIndex = 12;
             this.btn_Undo.UseVisualStyleBackColor = true;
             this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label40);
+            this.groupBox4.Controls.Add(this.ComboBox_TerrainID);
+            this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Controls.Add(this.tb_Name);
+            this.groupBox4.Location = new System.Drawing.Point(12, 195);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(183, 100);
+            this.groupBox4.TabIndex = 98;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Optional";
+            // 
             // RingBands
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 434);
+            this.ClientSize = new System.Drawing.Size(401, 460);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btn_Undo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nud_OrbitRadius);
@@ -705,12 +721,9 @@
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_RingBand);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.tb_Name);
-            this.Controls.Add(this.label40);
-            this.Controls.Add(this.ComboBox_TerrainID);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.tb_ID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RingBands";
             this.Text = "RingBands";
             ((System.ComponentModel.ISupportInitialize)(this.nud_BandWidthInEngine)).EndInit();
@@ -733,6 +746,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MiddleRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_BandIndex)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -789,5 +804,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ComboBox_RingBands;
         private System.Windows.Forms.Button btn_Undo;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
