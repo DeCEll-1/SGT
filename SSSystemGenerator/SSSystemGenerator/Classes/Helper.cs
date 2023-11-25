@@ -4,6 +4,7 @@ using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,6 +12,7 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SSSystemGenerator.Classes
 {
@@ -233,6 +235,12 @@ namespace SSSystemGenerator.Classes
         /// <returns></returns>
         public static Extend GetExtendFromID(string extendID)
         {
+            if (extendID == null) return new Extend();
+
+            if (extendID.Contains(" - "))
+            {
+                return GetExtendFromID(IDWithNameToID(extendID));
+            }
 
             foreach (Extend item in GetAllOrbitables())
             {
@@ -246,6 +254,88 @@ namespace SSSystemGenerator.Classes
 
             return null;
 
+        }
+
+        /// <summary>
+        /// gets orbitable from id
+        /// </summary>
+        /// <param name="extendID"></param>
+        /// <returns></returns>
+        public static Extend GetOrbitableFromID(string orbitableID)
+        {
+            return GetExtendFromID(orbitableID);
+        }
+
+        public static Extend SSCoordinatesToPanelCoordinates(Extend extend, int resizeValue)
+        {
+            Extend adjustedExtend = new Extend();
+
+
+
+            adjustedExtend.x = extend.x / resizeValue;
+            adjustedExtend.y = extend.y / resizeValue;
+            adjustedExtend.radius = extend.radius / resizeValue;
+            adjustedExtend.width = extend.width / resizeValue;
+            adjustedExtend.orbitRadius = extend.orbitRadius / resizeValue;
+            adjustedExtend.bandWidthInEngine = extend.bandWidthInEngine / 10;
+
+            return adjustedExtend;
+
+
+        }
+
+        public static PointF SSPointToPanelPoint(PointF coordinate, int resizeValue)
+        {
+            return new PointF(coordinate.X / resizeValue, coordinate.Y / resizeValue);
+        }
+
+
+        public static PointF GetLocationOfFocus(Extend extend)
+        {
+            //problem: the focus doesnt have location values
+            //return: the location values of the focus
+            //how to find them:
+            /*
+             * 1: get the focus of the focus
+             * 2: get the point on circumfrence
+             * 2.1: 
+             * 3: return that
+             */
+
+            if (extend.focusID == null)
+            {
+                return new PointF(extend.x, extend.y);
+            }
+
+            Extend focusOfExtend = Helper.GetExtendFromID(extend.focusID);
+
+            PointF theLocationOfTheFocus = new PointF();
+
+            if (focusOfExtend.focusID != null)
+            {
+                PointF s = Helper.GetLocationOfFocus(focusOfExtend);
+                //so this does work for orbits of orbits of orbits but idk why, if you know math - unlike me - please let me know how this works
+                return Helper.GetPointOnCircumference(
+                       new PointF(
+                           s.X,
+                           s.Y
+                        ),
+                        extend.angle,
+                        extend.orbitRadius
+                    );
+            }
+
+            theLocationOfTheFocus = Helper.GetPointOnCircumference(
+                       new PointF(
+                           focusOfExtend.x,
+                           focusOfExtend.y
+                        ),
+                        extend.angle,
+                        extend.orbitRadius
+                    );
+
+            return theLocationOfTheFocus;
+            //idk math
         }
 
         #endregion
@@ -1020,6 +1110,29 @@ namespace SSSystemGenerator.Classes
             return Finals.NOT_FOUND_STRING;
 
         }
+
+        public static PointF GetPointOnCircumference(PointF center, float angle, float distance)
+        {
+            //https://stackoverflow.com/questions/14096138/find-the-point-on-a-circle-with-given-center-point-radius-and-degree
+
+            //problem: 
+            /*
+             90 = 270
+             45 = 305
+             etc
+             */
+            //solution:
+            //multiply angle with -1
+
+            angle *= -1;
+
+            float x_oncircle = (float)(center.X + distance * Math.Cos(angle * (Math.PI / 180f)));
+            float y_oncircle = (float)(center.Y + distance * Math.Sin(angle * (Math.PI / 180f)));
+
+            return new PointF(x_oncircle, y_oncircle);
+        }
+
+
 
         #endregion
     }

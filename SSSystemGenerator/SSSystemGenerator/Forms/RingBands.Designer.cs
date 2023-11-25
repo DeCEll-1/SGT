@@ -68,8 +68,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nud_OrbitRadius = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.nud_OrbitDays = new System.Windows.Forms.NumericUpDown();
             this.label32 = new System.Windows.Forms.Label();
@@ -91,7 +89,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Blue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Green)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Red)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitRadius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MiddleRadius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_BandIndex)).BeginInit();
@@ -212,6 +209,11 @@
             this.nud_BandWidthInTexture.Name = "nud_BandWidthInTexture";
             this.nud_BandWidthInTexture.Size = new System.Drawing.Size(167, 20);
             this.nud_BandWidthInTexture.TabIndex = 2;
+            this.nud_BandWidthInTexture.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
             this.nud_BandWidthInTexture.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             this.nud_BandWidthInTexture.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextChangedBTNAddUpdateCheck);
             this.nud_BandWidthInTexture.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextChangedBTNAddUpdateCheck);
@@ -560,36 +562,6 @@
             this.label2.TabIndex = 56;
             this.label2.Text = "Red";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 337);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 97;
-            this.label3.Text = "Orbit Radius:";
-            // 
-            // nud_OrbitRadius
-            // 
-            this.nud_OrbitRadius.Location = new System.Drawing.Point(12, 353);
-            this.nud_OrbitRadius.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nud_OrbitRadius.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nud_OrbitRadius.Name = "nud_OrbitRadius";
-            this.nud_OrbitRadius.Size = new System.Drawing.Size(74, 20);
-            this.nud_OrbitRadius.TabIndex = 6;
-            this.nud_OrbitRadius.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
-            this.nud_OrbitRadius.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextChangedBTNAddUpdateCheck);
-            this.nud_OrbitRadius.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextChangedBTNAddUpdateCheck);
-            this.nud_OrbitRadius.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextChangedBTNAddUpdateCheck);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -708,8 +680,6 @@
             this.ClientSize = new System.Drawing.Size(401, 460);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btn_Undo);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.nud_OrbitRadius);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.nud_OrbitDays);
             this.Controls.Add(this.label32);
@@ -742,7 +712,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Blue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Green)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Red)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MiddleRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_BandIndex)).EndInit();
@@ -787,8 +756,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nud_OrbitRadius;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown nud_OrbitDays;
         private System.Windows.Forms.Label label32;

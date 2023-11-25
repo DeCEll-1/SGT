@@ -40,6 +40,7 @@
             this.ringBandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.astreoidBeltsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_Main.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
             this.closeAppToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.closeAppToolStripMenuItem.Text = "Close App";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 
@@ -80,7 +81,8 @@
             this.customEntitiesToolStripMenuItem,
             this.ringBandsToolStripMenuItem,
             this.astreoidBeltsToolStripMenuItem,
-            this.loadingOrderToolStripMenuItem});
+            this.loadingOrderToolStripMenuItem,
+            this.mapToolStripMenuItem});
             this.TSMI_SystemGeneration.Name = "TSMI_SystemGeneration";
             this.TSMI_SystemGeneration.Size = new System.Drawing.Size(118, 20);
             this.TSMI_SystemGeneration.Text = "System Generation";
@@ -149,6 +151,14 @@
             this.loadingOrderToolStripMenuItem.Text = "Loading Order";
             this.loadingOrderToolStripMenuItem.Click += new System.EventHandler(this.loadingOrderToolStripMenuItem_Click);
             // 
+            // mapToolStripMenuItem
+            // 
+            this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
+            this.mapToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.mapToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.mapToolStripMenuItem.Text = "Map";
+            this.mapToolStripMenuItem.Click += new System.EventHandler(this.mapToolStripMenuItem_Click);
+            // 
             // SGTBaseMDIContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,5 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem astreoidBeltsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadingOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeAppToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapToolStripMenuItem;
     }
 }

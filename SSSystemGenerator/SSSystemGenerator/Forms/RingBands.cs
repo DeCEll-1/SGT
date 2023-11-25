@@ -64,11 +64,15 @@ namespace SSSystemGenerator.Forms
         //adds extend values to the item, like id or type id or focus or bla bla
         private void addExtendValues(Extend item)
         {
-            item.orbitRadius = (float)nud_OrbitRadius.Value;
+            item.orbitRadius = item.radius = (float)nud_MiddleRadius.Value;//aka orbit radius
             item.orbitDays = (float)nud_OrbitDays.Value;
+
+            item.focusID = Helper.IDWithNameToID(ComboBox_FocusID.SelectedItem.ToString());
 
             item.ID = tb_ID.Text;
             item.name = tb_Name.Text;
+
+            item.WhatIsThis = Finals.RING_BAND;
         }
 
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
@@ -76,7 +80,7 @@ namespace SSSystemGenerator.Forms
         {
             ComboBox_FocusID.SelectedText = item.focusID;
 
-            nud_OrbitRadius.Value = (int)item.orbitRadius;
+            nud_MiddleRadius.Value = (int)item.radius;
             nud_OrbitDays.Value = (int)item.orbitDays;
 
             tb_ID.Text = item.ID;
@@ -89,7 +93,7 @@ namespace SSSystemGenerator.Forms
             resetOrbit();
 
             nud_OrbitDays.Value = 0;
-            nud_OrbitRadius.Value = 0;
+            nud_MiddleRadius.Value = 0;
 
             tb_ID.Text = "";
             tb_Name.Text = "";
@@ -237,7 +241,6 @@ namespace SSSystemGenerator.Forms
                tb_TextureID.Text == "" ||
                tb_TextureCategory.Text == "" ||
                nud_OrbitDays.Value == 0 ||
-               nud_OrbitRadius.Value == 0 ||
                nud_MiddleRadius.Value == 0 ||
                nud_BandWidthInTexture.Value == 0 ||
                nud_BandWidthInEngine.Value == 0 ||

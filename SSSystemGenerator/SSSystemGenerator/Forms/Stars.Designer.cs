@@ -38,7 +38,7 @@
             this.nud_CoronaSize = new System.Windows.Forms.NumericUpDown();
             this.nud_Radius = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_AddUpdateStar = new System.Windows.Forms.Button();
+            this.btn_Star = new System.Windows.Forms.Button();
             this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.ComboBox_Stars = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -173,16 +173,16 @@
             this.label2.TabIndex = 32;
             this.label2.Text = "Systems:";
             // 
-            // btn_AddUpdateStar
+            // btn_Star
             // 
-            this.btn_AddUpdateStar.Enabled = false;
-            this.btn_AddUpdateStar.Location = new System.Drawing.Point(12, 380);
-            this.btn_AddUpdateStar.Name = "btn_AddUpdateStar";
-            this.btn_AddUpdateStar.Size = new System.Drawing.Size(179, 46);
-            this.btn_AddUpdateStar.TabIndex = 16;
-            this.btn_AddUpdateStar.Text = "Add Star";
-            this.btn_AddUpdateStar.UseVisualStyleBackColor = true;
-            this.btn_AddUpdateStar.Click += new System.EventHandler(this.btn_AddStar_Click);
+            this.btn_Star.Enabled = false;
+            this.btn_Star.Location = new System.Drawing.Point(12, 380);
+            this.btn_Star.Name = "btn_Star";
+            this.btn_Star.Size = new System.Drawing.Size(179, 46);
+            this.btn_Star.TabIndex = 16;
+            this.btn_Star.Text = "Add Star";
+            this.btn_Star.UseVisualStyleBackColor = true;
+            this.btn_Star.Click += new System.EventHandler(this.btn_AddStar_Click);
             // 
             // ComboBox_Systems
             // 
@@ -537,7 +537,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ComboBox_Systems);
             this.Controls.Add(this.btn_Delete);
-            this.Controls.Add(this.btn_AddUpdateStar);
+            this.Controls.Add(this.btn_Star);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label10);
@@ -591,7 +591,7 @@
         private System.Windows.Forms.NumericUpDown nud_CoronaSize;
         private System.Windows.Forms.NumericUpDown nud_Radius;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_AddUpdateStar;
+        private System.Windows.Forms.Button btn_Star;
         private System.Windows.Forms.ComboBox ComboBox_Systems;
         private System.Windows.Forms.ComboBox ComboBox_Stars;
         private System.Windows.Forms.Label label1;

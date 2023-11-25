@@ -53,7 +53,6 @@ namespace SSSystemGenerator.Classes.SystemFiles
         public float bandWidthInTexture;
         public int bandIndex;
         public Color color;
-        public float bandWidthInEngine;
         public float middleRadius;
         public String terrainId;
 

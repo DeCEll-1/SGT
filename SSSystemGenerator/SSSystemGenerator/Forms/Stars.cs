@@ -83,6 +83,25 @@ namespace SSSystemGenerator
                 default:
                     break;
             }
+
+            if (orbitMode != 0)
+            {
+                if (
+                    ComboBox_FocusID.SelectedItem == null ||
+                    ComboBox_FocusID.SelectedItem.ToString() == ""
+                   )
+                {
+                    btn_Star.Enabled = false;
+                }
+                else
+                {
+                    btn_Star.Enabled = true;
+                }
+            }
+            else
+            {
+                TextChangedBTNAddUpdateCheck(sender, e);
+            }
         }
 
         //update orbit list on refresh key press
@@ -132,6 +151,8 @@ namespace SSSystemGenerator
             item.ID = tb_ID.Text;
             item.name = tb_Name.Text;
             item.typeID = tb_TypeID.Text;
+
+            item.WhatIsThis = Finals.STAR;
         }
 
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
@@ -349,7 +370,7 @@ namespace SSSystemGenerator
         //adds / updates star
         private void btn_AddStar_Click(object sender, EventArgs e)
         {
-            if (btn_AddUpdateStar.Text == "Add " + context)
+            if (btn_Star.Text == "Add " + context)
             {
 
                 AddStar();
@@ -392,11 +413,11 @@ namespace SSSystemGenerator
                 ComboBox_Systems.SelectedItem.ToString() == ""
                 )
             {
-                btn_AddUpdateStar.Enabled = false;
+                btn_Star.Enabled = false;
             }
             else
             {
-                btn_AddUpdateStar.Enabled = true;
+                btn_Star.Enabled = true;
             }
         }
 
@@ -405,7 +426,7 @@ namespace SSSystemGenerator
         {
             if (ComboBox_Stars.SelectedItem.ToString() == "New " + context)
             {
-                btn_AddUpdateStar.Text = "Add " + context;
+                btn_Star.Text = "Add " + context;
 
                 btn_Delete.Enabled = false;
 
@@ -423,7 +444,7 @@ namespace SSSystemGenerator
 
 
 
-                btn_AddUpdateStar.Text = "Update " + context;
+                btn_Star.Text = "Update " + context;
 
                 btn_Delete.Enabled = true;
 

@@ -9,6 +9,9 @@ namespace SSSystemGenerator.Classes
 {
     public class ItemEditingAdding
     {
+
+        private static void MapRefresh() { Statics.Map.RefreshPanel(); }
+
         #region system
         public static void AddSystem(VeBlib_StarSystemData systemToAdd)//add the system
         {
@@ -56,6 +59,7 @@ namespace SSSystemGenerator.Classes
 
             system.starList.Add(star);//add star to system
 
+            MapRefresh();
         }
 
         public static void UpdateStar(VeBlib_StarData newStar)
@@ -78,6 +82,7 @@ namespace SSSystemGenerator.Classes
 
             system.starList.Add(newStar);//add the new star
 
+            MapRefresh();
         }
 
         /// <summary>
@@ -86,9 +91,9 @@ namespace SSSystemGenerator.Classes
         /// <param name="starToDelete"></param>
         public static void DeleteStar(VeBlib_StarData starToDelete)
         {
-
             Helper.GetSystemFromGUID(starToDelete.systemGUID).starList.Remove(starToDelete);
 
+            MapRefresh();
         }
 
         #endregion
@@ -106,7 +111,7 @@ namespace SSSystemGenerator.Classes
 
             system.planetList.Add(planet);
 
-
+            MapRefresh();
         }
 
         public static void UpdatePlanet(VeBlib_PlanetData newPlanet)
@@ -123,12 +128,15 @@ namespace SSSystemGenerator.Classes
             system.planetList.Remove(oldPlanet);
 
             system.planetList.Add(newPlanet);
+
+            MapRefresh();
         }
 
         public static void DeletePlanet(VeBlib_PlanetData planetToDelete)
         {
             Helper.GetSystemFromGUID(planetToDelete.systemGUID).planetList.Remove(planetToDelete);
 
+            MapRefresh();
         }
 
         #endregion
@@ -161,7 +169,6 @@ namespace SSSystemGenerator.Classes
             system.marketList.Remove(oldMarket);
 
             system.marketList.Add(marketToUpdate);
-
         }
 
         public static void DeleteMarket(VeBlib_MarketData marketToDelete)
@@ -182,6 +189,8 @@ namespace SSSystemGenerator.Classes
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
             system.sectorEntityTokenList.Add(customEntity);
+
+            MapRefresh();
         }
 
         public static void UpdateCustomEntity(VeBlib_SectorEntittyTokenData customEntityToUpdate)
@@ -199,11 +208,14 @@ namespace SSSystemGenerator.Classes
 
             system.sectorEntityTokenList.Add(customEntityToUpdate);
 
+            MapRefresh();
         }
 
         public static void DeleteCustomEntity(VeBlib_SectorEntittyTokenData customEntityToDelete)
         {
             Helper.GetSystemFromGUID(customEntityToDelete.systemGUID).sectorEntityTokenList.Remove(customEntityToDelete);
+
+            MapRefresh();
         }
 
         #endregion
@@ -214,11 +226,16 @@ namespace SSSystemGenerator.Classes
         {
             ringBandToAdd.GUID = Guid.NewGuid().ToString();
 
+            ringBandToAdd.x = Helper.GetExtendFromID(ringBandToAdd.focusID).x;
+            ringBandToAdd.y = Helper.GetExtendFromID(ringBandToAdd.focusID).y;
+
             string systemID = ringBandToAdd.systemID;
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
             system.ringBandDataList.Add(ringBandToAdd);
+
+            MapRefresh();
         }
 
         public static void UpdateRingBand(VeBlib_RingBandData newRingBand)
@@ -232,16 +249,21 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newRingBand.systemID);//get the star system 
 
+            newRingBand.x = Helper.GetExtendFromID(newRingBand.focusID).x;
+            newRingBand.y = Helper.GetExtendFromID(newRingBand.focusID).y;
 
             system.ringBandDataList.Remove(oldRingBand);//remove the old star
 
             system.ringBandDataList.Add(newRingBand);//add the new star
 
+            MapRefresh();
         }
 
         public static void DeleteRingBand(VeBlib_RingBandData ringBandTodlete)
         {
             Helper.GetSystemFromGUID(ringBandTodlete.systemGUID).ringBandDataList.Remove(ringBandTodlete);
+
+            MapRefresh();
         }
 
         #endregion
@@ -252,11 +274,16 @@ namespace SSSystemGenerator.Classes
         {
             astreoidBeltToAdd.GUID = Guid.NewGuid().ToString();
 
+            astreoidBeltToAdd.x = Helper.GetExtendFromID(astreoidBeltToAdd.focusID).x;
+            astreoidBeltToAdd.y = Helper.GetExtendFromID(astreoidBeltToAdd.focusID).y;
+
             string systemID = astreoidBeltToAdd.systemID;
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
             system.astreoidBeltDataList.Add(astreoidBeltToAdd);
+
+            MapRefresh();
         }
 
         public static void UpdateAstreoidBelt(VeBlib_AstreoidBeltData newAstreoidBelt)
@@ -270,16 +297,21 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newAstreoidBelt.systemID);//get the star system 
 
+            newAstreoidBelt.x = Helper.GetExtendFromID(newAstreoidBelt.focusID).x;
+            newAstreoidBelt.y = Helper.GetExtendFromID(newAstreoidBelt.focusID).y;
 
             system.astreoidBeltDataList.Remove(oldAstreoidBelt);//remove the old star
 
             system.astreoidBeltDataList.Add(newAstreoidBelt);//add the new star
 
+            MapRefresh();
         }
 
         public static void DeleteAstreoidBelt(VeBlib_AstreoidBeltData astreoidBeltToDelete)
         {
             Helper.GetSystemFromGUID(astreoidBeltToDelete.systemGUID).astreoidBeltDataList.Remove(astreoidBeltToDelete);
+
+            MapRefresh();
         }
 
         #endregion

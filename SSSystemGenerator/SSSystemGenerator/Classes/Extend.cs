@@ -20,6 +20,13 @@ namespace SSSystemGenerator.Classes
 
         public float radius { get; set; }
 
+        #region stolen from classes for map purposes
+        public float bandWidthInEngine = 0; //ring band
+
+        public float width = 0;//astreoid belt
+        #endregion
+
+
         public string systemID { get; set; }
         public string systemGUID { get; set; }
 
@@ -28,6 +35,8 @@ namespace SSSystemGenerator.Classes
 
         public String focusID { get; set; }//"" for center
         public String typeID { get; set; }
+
+        public String WhatIsThis { get; set; }
 
         public float angle { get; set; }
         public float orbitRadius { get; set; }

@@ -132,6 +132,8 @@ namespace SSSystemGenerator.Forms
             item.ID = tb_ID.Text;
             item.name = tb_Name.Text;
             item.typeID = tb_TypeID.Text;
+
+            item.WhatIsThis = Finals.CUSTOM_ENTITY;
         }
 
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here

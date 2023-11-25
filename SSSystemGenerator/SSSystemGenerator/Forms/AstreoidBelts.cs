@@ -49,7 +49,7 @@ namespace SSSystemGenerator.Forms
 
             astreoidBelt.terrainId = ComboBox_TerrainID.Text;
 
-            astreoidBelt.orbitRadius = (float)nud_OrbitRadius.Value;
+            astreoidBelt.orbitRadius = astreoidBelt.radius = (float)nud_OrbitRadius.Value;
 
             astreoidBelt.minOrbitDays = (float)nud_MinOrbitDays.Value;
             astreoidBelt.maxOrbitDays = (float)nud_MaxOrbitDays.Value;
@@ -139,7 +139,7 @@ namespace SSSystemGenerator.Forms
             }
         }
 
-        private void AddAstreoidRing()
+        private void AddAstreoidBelt()
         {
             VeBlib_AstreoidBeltData astreoidBelt = getData();
 
@@ -258,6 +258,8 @@ namespace SSSystemGenerator.Forms
         {
             item.ID = tb_ID.Text;
             item.name = tb_Name.Text;
+
+            item.WhatIsThis = Finals.ASTREOID_BELT;
         }
 
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
@@ -317,7 +319,7 @@ namespace SSSystemGenerator.Forms
         {
             if (btn_RingBand.Text == "Add " + context)
             {
-                AddAstreoidRing();
+                AddAstreoidBelt();
             }
             else
             {
@@ -355,7 +357,7 @@ namespace SSSystemGenerator.Forms
 
             update(lastDeletedItem);
 
-            AddAstreoidRing();
+            AddAstreoidBelt();
 
             deletedAstreoidBeltsThisSession.RemoveAt(deletedAstreoidBeltsThisSession.Count() - 1);
         }

@@ -99,7 +99,6 @@
     <Compile Include="Classes\SystemFiles\VeBlib_RingBandData.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_SectorEntittyTokenData.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_StarData.cs" />
-    <Compile Include="Classes\SystemFiles\Vector2f.cs" />
     <Compile Include="Classes\VeBlib_StarSystemData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -124,6 +123,12 @@
     </Compile>
     <Compile Include="Forms\LoadingOrder.Designer.cs">
       <DependentUpon>LoadingOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Map.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Map.Designer.cs">
+      <DependentUpon>Map.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Markets.cs">
       <SubType>Form</SubType>
@@ -163,6 +168,10 @@
     <Compile Include="Forms\Stars.Designer.cs">
       <DependentUpon>Stars.cs</DependentUpon>
     </Compile>
+    <Compile Include="Render\Circles.cs" />
+    <Compile Include="Render\Lines.cs" />
+    <Compile Include="Render\PanelRenderer.cs" />
+    <Compile Include="Render\RendererBaseClass.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingOrder.resx">
       <DependentUpon>LoadingOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Map.resx">
+      <DependentUpon>Map.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Markets.resx">
       <DependentUpon>Markets.cs</DependentUpon>
@@ -219,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Undo.png" />
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

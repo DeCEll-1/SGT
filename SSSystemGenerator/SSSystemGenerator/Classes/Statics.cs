@@ -1,4 +1,5 @@
 ﻿using SSSystemGenerator.Classes.CSVClasses;
+using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,6 +33,10 @@ namespace SSSystemGenerator.Classes
         public static BaseClass baseClass { get; set; } = new BaseClass();
 
         public static CSVs csvs { get; set; } = CSVHelper.GetAllCSVs();
+
+        public static Boolean debugMode { get; set; } = false;//TODO: add settings for this
+
+        public static Map Map { get; set; } = null;
 
     }
 }

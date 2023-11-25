@@ -36,7 +36,6 @@ namespace SSSystemGenerator.Classes.SystemFiles
         }
 
         public int numAsteroids;//number of asteroid entities
-        public float width;//width of band
         public float minOrbitDays;//minimum and maximum visual orbit speeds of asteroids
         public float maxOrbitDays;
         public String terrainId;//ID of the terrain type that appears in the section above the abilities bar//Terrain.PULSAR_BEAM;//this

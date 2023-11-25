@@ -33,7 +33,6 @@ namespace SSSystemGenerator.Forms
         private void ComboBox_OrbitMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetOrbit();
-
             byte orbitMode = Convert.ToByte(ComboBox_OrbitMode.SelectedItem.ToString());
 
             switch (orbitMode)//i dont have any idea on how switches work i work with ifs but why not go fancy when i got the chance
@@ -80,6 +79,26 @@ namespace SSSystemGenerator.Forms
 
                 default:
                     break;
+            }
+
+
+            if (orbitMode != 0)
+            {
+                if (
+                    ComboBox_FocusID.SelectedItem == null ||
+                    ComboBox_FocusID.SelectedItem.ToString() == ""
+                   )
+                {
+                    btn_Planet.Enabled = false;
+                }
+                else
+                {
+                    btn_Planet.Enabled = true;
+                }
+            }
+            else
+            {
+                TextChangedBTNAddUpdateCheck(sender, e);
             }
         }
 
@@ -132,18 +151,22 @@ namespace SSSystemGenerator.Forms
             item.ID = tb_ID.Text;
             item.name = tb_Name.Text;
             item.typeID = tb_TypeID.Text;
+
+            item.WhatIsThis = Finals.PLANET;
         }
 
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
         private void updateExtends(Extend item)
         {
+            loadOrbits();
+
             ComboBox_OrbitMode.SelectedItem = item.orbitLocationMode;
 
             foreach (var comboboxItem in ComboBox_FocusID.Items)//scroll through the list of items in the focusables
             {
                 if (Helper.IDWithNameToID(comboboxItem.ToString()) == item.focusID)//if the focusables name is equal to the items focus
                 {
-                    ComboBox_FocusID.SelectedIndex = ComboBox_FocusID.Items.IndexOf(comboboxItem);//then make selected index be the comboboxItem which is what were looking for 
+                    ComboBox_FocusID.SelectedIndex = ComboBox_FocusID.Items.IndexOf(comboboxItem.ToString());//then make selected index be the comboboxItem which is what were looking for 
                     break;
                 }
             }
@@ -288,6 +311,8 @@ namespace SSSystemGenerator.Forms
 
         private void update(VeBlib_PlanetData planetData)
         {
+
+
             updateExtends(planetData);
 
             nud_Radius.Value = (decimal)planetData.radius;

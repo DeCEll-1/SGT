@@ -1,0 +1,1 @@
+﻿TODO: when deleting something that can have orbitables it crashes beacuse the orbiting stuffs focus no longer exists, fix that

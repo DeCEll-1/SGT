@@ -72,3 +72,4 @@ C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SGTExe\.SSSystemGene
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SGTExe\.SSSystemGenerator.pdb
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.exe
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.pdb
+C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Map.resources

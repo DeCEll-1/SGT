@@ -196,6 +196,27 @@ namespace SSSystemGenerator
             }
         }
 
+        private void mapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Map map = new Map();
+            bool a = true;
+            foreach (var item in this.MdiChildren)
+            {
+                if (item.GetType() == map.GetType())
+                {
+                    this.ActivateMdiChild(item);
+                    map.BringToFront();
+                    a = false;
+                    break;
+                }
+            }
+            if (a)
+            {
+                map.MdiParent = this;
+                map.Show();
+            }
+        }
+
         private void closeAppToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -208,5 +229,6 @@ namespace SSSystemGenerator
 
         }
 
+        
     }
 }
