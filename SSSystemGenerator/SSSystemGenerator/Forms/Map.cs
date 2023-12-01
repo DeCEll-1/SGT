@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,9 @@ namespace SSSystemGenerator.Forms
 {
     public partial class Map : Form
     {
+        public float zoomValue { get; set; } = 0f;
+
+        public PointF renderCenter { get; set; } = new PointF(0f, 0f);
 
         #region to remove flicker ///// https://stackoverflow.com/questions/4690426/why-do-my-winforms-controls-flicker-and-resize-slowly
         protected override void OnResizeBegin(EventArgs e)
@@ -33,11 +37,121 @@ namespace SSSystemGenerator.Forms
 
         public PanelRenderer PanelDrawer { get; set; } = null;
 
+        #region mouse
+
+        private void pnl_Map_MouseWheel(object sender, MouseEventArgs e)
+        {//https://stackoverflow.com/questions/45325726/move-shapes-on-a-panel-by-mouse
+            zoomValue += (e.Delta / 100f) * 0.3f;
+
+            try
+            {
+                //TrackBar_Zoom.Value = (int)(zoomValue * 100f);
+            }//"value must be in min-max uwu :3"
+            catch (Exception ex)
+            {
+            }
+
+            if (zoomValue < -1f || zoomValue == -1f)
+            {
+                zoomValue = -0.99f;
+                RefreshPanel();
+                return;
+            }
+
+
+
+            #region i hate zooming
+            //get current center
+            //get location
+            //subtract location/2 to center when zooming 2x
+
+            //if (e.Delta > 0)
+            //{
+            //    //renderCenter = Helper.SubtractCoordinates(renderCenter, new PointF(e.X / (e.Delta / 100f), e.Y / (e.Delta / 100f)));//hope this works!
+            //    renderCenter = Helper.SubtractCoordinates(renderCenter, new PointF(pnl_Map.Width * ((e.Delta / 100f) - 1), pnl_Map.Height * ((e.Delta / 100f) - 1)));//hope this works!
+            //}
+            //else
+            //{
+            //    renderCenter = Helper.CombineCoordinates(renderCenter, new PointF(e.X, e.Y));//hope this works!
+            //}
+
+            PanelDrawer.rendererValues.mouseEventArgs = e;
+
+            PanelDrawer.rendererValues.zooming = true;
+
+            //renderCenter = new PointF(-(e.X * (zoomValue)), -(e.Y * (zoomValue))); 
+            #endregion
+
+            RefreshPanel();
+        }
+
+        public bool moveEnabled { get; set; }
+
+        public PointF startLocation { get; set; } = new PointF(0, 0);
+        public PointF endLocation { get; set; } = new PointF(0, 0);
+
+        private void pnl_Map_MouseDown(object sender, MouseEventArgs e)
+        {
+            startLocation = new PointF(e.X, e.Y);
+
+            moveEnabled = true;
+
+
+
+
+            //pnl_Map.MouseMove += Pnl_Map_MouseMove;
+            pnl_Map.MouseUp += Pnl_Map_MouseUp;
+        }
+
+        //private void Pnl_Map_MouseMove(object sender, EventArgs e)
+        //{//change center point
+        // //get current coordinates
+        // //get the last coordinates
+        // //subtract bla bla
+        // //change center
+        // //re render
+
+        //    if (!moveEnabled) return;
+
+        //    MouseEventArgs mouseEventArgs = (e as MouseEventArgs);
+
+        //    PointF mouseCoordinates = new PointF(mouseEventArgs.X, mouseEventArgs.Y);
+
+        //    center = Helper.SubtractCoordinates(center, mouseCoordinates);//hope this works!
+
+        //    RefreshPanel();
+        //}
+
+        private void Pnl_Map_MouseUp(object sender, MouseEventArgs e)
+        {
+            //pnl_Map.MouseHover -= Pnl_Map_MouseMove;
+            pnl_Map.MouseUp -= Pnl_Map_MouseUp;
+
+            endLocation = new PointF(e.X, e.Y);
+
+            renderCenter = Helper.CombineCoordinates(renderCenter, Helper.SubtractCoordinates(endLocation, startLocation));//hope this works!
+
+            //center = endLocation;
+
+            RefreshPanel();
+
+            //get current center
+            //
+
+        }
+
+        #endregion
+
         public Map()
         {
             InitializeComponent();
 
+            this.MouseWheel += new MouseEventHandler(pnl_Map_MouseWheel);
+            this.MouseMove += new MouseEventHandler(pnl_Map_MouseWheel);
+
             Statics.Map = this;
+
+            Load();
         }
 
         private void Load()
@@ -68,6 +182,8 @@ namespace SSSystemGenerator.Forms
 
         public void RefreshPanel()
         {
+            if (PanelDrawer == null) return;
+
             PanelDrawer.rendererValues.Circles = new List<Circles>();
 
             AddValuesToRenderer();
@@ -78,7 +194,7 @@ namespace SSSystemGenerator.Forms
         private void AddValuesToRenderer()
         {
 
-            lbl_PanelInfo.Text = "Panel Values:\nHeight: " + pnl_Map.Height + "\nWidth: " + pnl_Map.Width;
+            lbl_PanelInfo.Text = "Panel Values:\nHeight: " + pnl_Map.Height + "\nWidth: " + pnl_Map.Width + "\nZoom Value: " + zoomValue + "\nCenter: " + renderCenter.X + " , " + renderCenter.Y;
 
             lbl_PanelInfo.BackColor = Color.White;
             lbl_PanelInfo.ForeColor = Color.Black;
@@ -247,6 +363,13 @@ namespace SSSystemGenerator.Forms
 
             PanelDrawer.BackgroundColor = Color.Black;
 
+            PanelDrawer.rendererValues.zoomValue = zoomValue + 1;
+
+            PanelDrawer.rendererValues.center = renderCenter;
+
+
+
+
         }
 
         private void pnlMap_Paint(object sender, PaintEventArgs e)
@@ -258,7 +381,6 @@ namespace SSSystemGenerator.Forms
 
             if (PanelDrawer == null)
             {
-
                 PanelDrawer = new PanelRenderer(panel, e);
 
                 PanelDrawer.rendererValues = new RendererBaseClass();
@@ -279,12 +401,14 @@ namespace SSSystemGenerator.Forms
             }
 
 
-            PanelDrawer.Render(sender, e);
+            //PanelDrawer.Render(sender, e);
 
+        }
 
-
-
-
+        private void TrackBar_Zoom_ValueChanged(object sender, EventArgs e)
+        {
+            zoomValue = (sender as TrackBar).Value / 100f;
+            RefreshPanel();
         }
 
 

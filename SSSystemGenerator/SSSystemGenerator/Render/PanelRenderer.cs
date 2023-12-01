@@ -3,6 +3,7 @@ using SSSystemGenerator.Classes.SystemFiles;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -68,8 +69,9 @@ namespace SSSystemGenerator.Render
         public void Render(object sender, PaintEventArgs e)
         {
 
-            using (Graphics g = e.Graphics)
+            using (Graphics g = Panel.CreateGraphics())
             {
+
                 try
                 {
                     g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
@@ -77,21 +79,120 @@ namespace SSSystemGenerator.Render
                     g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                     g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
                     g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                    //g.RenderingOrigin = new Point(-500, -500);
                 }
                 catch (Exception ex)
                 {
                     return;
                 }
 
-                Panel.BackColor = BackgroundColor;
+                Matrix transform = new Matrix();
 
+                try
+                {
+
+                    if (rendererValues.zooming && false)
+                    {
+
+                        //float zoom = 2f;
+
+                        ////https://stackoverflow.com/questions/27871711/zoom-in-on-a-fixed-point-using-matrices
+                        //// first we reverse translate the point
+                        //// we need an array!
+                        //PointF[] tv = new PointF[] { rendererValues.mouseEventArgs.Location };
+                        //viewMatrixRev.TransformPoints(tv);
+                        //// after the reversal we can use the coordinates
+                        //float xPos = tv[0].X;
+                        //float yPos = tv[0].Y;
+
+                        //// revers translation for the point
+                        //Matrix scaleMatrixRev = new Matrix(1f / zoom, 0, 0, 1f / zoom, 0, 0);
+                        //// the other transformations
+                        //Matrix scaleMatrix = new Matrix(zoom, 0, 0, zoom, 0, 0);
+                        //Matrix translateOrigin = new Matrix(1, 0, 0, 1, xPos, yPos);
+                        //Matrix translateBack = new Matrix(1, 0, 0, 1, -xPos, -yPos);
+
+                        //// we need two different orders, not sure yet why(?)
+                        //MatrixOrder moP = MatrixOrder.Prepend;
+                        //MatrixOrder moA = MatrixOrder.Append;
+
+                        //// graphics transfomation
+                        //viewMatrix.Multiply(translateOrigin, moP);
+                        //viewMatrix.Multiply(scaleMatrix, moP);
+                        //viewMatrix.Multiply(translateBack, moP);
+
+                        //// store the next point reversal:
+                        //viewMatrixRev.Multiply(translateBack, moA);
+                        //viewMatrixRev.Multiply(scaleMatrixRev, moA);
+                        //viewMatrixRev.Multiply(translateOrigin, moA);
+
+                        //g.Transform = viewMatrix;
+
+                        //https://i.stack.imgur.com/EQp7o.png // i do nut know
+
+                        //Matrix transform = new Matrix();
+
+                        //transform.Translate(-(Width / 2f), -(Height / 2f));//origin is not at the middle of the panel, so set the origion to the middle of the panel
+
+                        //transform.Translate();
+
+
+
+                        //Matrix transform = new Matrix();
+
+                        ////if (false)
+                        //{//https://stackoverflow.com/questions/44566229/how-to-zoom-at-a-point-in-picturebox-in-c
+                        //    Point location = rendererValues.mouseEventArgs.Location;
+
+
+                        transform.Translate(rendererValues.mouseEventArgs.Location.X, rendererValues.mouseEventArgs.Location.Y, MatrixOrder.Append);
+
+                        transform.Scale(rendererValues.zoomValue, rendererValues.zoomValue, MatrixOrder.Append);
+
+                        transform.Translate(-rendererValues.mouseEventArgs.Location.X, -rendererValues.mouseEventArgs.Location.Y, MatrixOrder.Append);
+
+                        g.Transform = transform.Clone();
+
+                        rendererValues.center.X = g.Transform.OffsetX;
+                        rendererValues.center.Y = g.Transform.OffsetY;
+
+                        rendererValues.zooming = false;
+
+                        Helper.GetMap().renderCenter = rendererValues.center;
+
+
+                    }
+                    else
+                    {
+                        transform.Translate(rendererValues.center.X, rendererValues.center.Y);
+
+                        transform.Scale(rendererValues.zoomValue, rendererValues.zoomValue);
+                        //oh wow when its 0 it gives argument exception beacuse its dumb enough to not check if it can / things by 0 wonderfull
+                        //or something like that
+
+                        g.Transform = transform.Clone();
+
+                    }
+
+                    //g.Transform = transform;
+
+
+
+                }
+                catch (Exception ex)
+                {
+                }
+
+                //Panel.Scale(new SizeF(rendererValues.zoomValue, rendererValues.zoomValue));
+
+                g.Clear(BackgroundColor);
 
                 foreach (Lines line in rendererValues.Lines)
                 {
                     Pen pen = new Pen(line.Color, line.Thickness);
 
 
-                    g.DrawLine(pen,line.from,line.to);
+                    g.DrawLine(pen, line.from, line.to);
 
                 }
 

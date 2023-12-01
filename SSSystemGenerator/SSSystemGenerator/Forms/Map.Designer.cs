@@ -29,15 +29,20 @@
         private void InitializeComponent()
         {
             this.pnl_Map = new System.Windows.Forms.Panel();
+            this.TrackBar_Zoom = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_PanelInfo = new System.Windows.Forms.Label();
             this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SystemsRefresh = new System.Windows.Forms.Button();
-            this.lbl_PanelInfo = new System.Windows.Forms.Label();
             this.pnl_Map.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Zoom)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Map
             // 
+            this.pnl_Map.Controls.Add(this.TrackBar_Zoom);
+            this.pnl_Map.Controls.Add(this.label2);
             this.pnl_Map.Controls.Add(this.lbl_PanelInfo);
             this.pnl_Map.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_Map.Location = new System.Drawing.Point(0, 0);
@@ -45,6 +50,37 @@
             this.pnl_Map.Size = new System.Drawing.Size(1000, 1000);
             this.pnl_Map.TabIndex = 0;
             this.pnl_Map.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMap_Paint);
+            this.pnl_Map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_Map_MouseDown);
+            // 
+            // TrackBar_Zoom
+            // 
+            this.TrackBar_Zoom.AutoSize = false;
+            this.TrackBar_Zoom.BackColor = System.Drawing.SystemColors.Control;
+            this.TrackBar_Zoom.Location = new System.Drawing.Point(862, 26);
+            this.TrackBar_Zoom.Maximum = 200;
+            this.TrackBar_Zoom.Name = "TrackBar_Zoom";
+            this.TrackBar_Zoom.Size = new System.Drawing.Size(126, 20);
+            this.TrackBar_Zoom.TabIndex = 5;
+            this.TrackBar_Zoom.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.TrackBar_Zoom.ValueChanged += new System.EventHandler(this.TrackBar_Zoom_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(859, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Select System:";
+            // 
+            // lbl_PanelInfo
+            // 
+            this.lbl_PanelInfo.AutoSize = true;
+            this.lbl_PanelInfo.Location = new System.Drawing.Point(149, 25);
+            this.lbl_PanelInfo.Name = "lbl_PanelInfo";
+            this.lbl_PanelInfo.Size = new System.Drawing.Size(72, 13);
+            this.lbl_PanelInfo.TabIndex = 0;
+            this.lbl_PanelInfo.Text = "Panel Values:";
             // 
             // ComboBox_Systems
             // 
@@ -77,15 +113,6 @@
             this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
             this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
             // 
-            // lbl_PanelInfo
-            // 
-            this.lbl_PanelInfo.AutoSize = true;
-            this.lbl_PanelInfo.Location = new System.Drawing.Point(149, 25);
-            this.lbl_PanelInfo.Name = "lbl_PanelInfo";
-            this.lbl_PanelInfo.Size = new System.Drawing.Size(72, 13);
-            this.lbl_PanelInfo.TabIndex = 0;
-            this.lbl_PanelInfo.Text = "Panel Values:";
-            // 
             // Map
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +127,7 @@
             this.Text = "Map";
             this.pnl_Map.ResumeLayout(false);
             this.pnl_Map.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Zoom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,5 +140,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_SystemsRefresh;
         private System.Windows.Forms.Label lbl_PanelInfo;
+        private System.Windows.Forms.TrackBar TrackBar_Zoom;
+        private System.Windows.Forms.Label label2;
     }
 }

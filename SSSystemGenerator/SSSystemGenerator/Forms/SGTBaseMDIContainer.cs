@@ -17,15 +17,11 @@ namespace SSSystemGenerator
         public SGTBaseMDIContainer()
         {
             InitializeComponent();
-            object s = Statics.EXEPath;
-            s = Statics.JSONPath;
-            s = Statics.ModFolderRoot;
-            s = Statics.ModsFolderRoot;
-            s = Statics.ModCampaignRoot;
-            s = Statics.GameRoot;
-            s = Statics.GameCore;
-            s = Statics.GameCoreCampaignFolder;
-            s = Statics.baseClass;
+
+        }
+
+        private void SGTBaseMDIContainer_Load(object sender, EventArgs e)
+        {
         }
 
         private void TSMI_Systems_Click(object sender, EventArgs e)
@@ -217,6 +213,27 @@ namespace SSSystemGenerator
             }
         }
 
+        private void TSMII_Info_Click(object sender, EventArgs e)
+        {
+            Info info = new Info();
+            bool a = true;
+            foreach (var item in this.MdiChildren)
+            {
+                if (item.GetType() == info.GetType())
+                {
+                    this.ActivateMdiChild(item);
+                    info.BringToFront();
+                    a = false;
+                    break;
+                }
+            }
+            if (a)
+            {
+                info.MdiParent = this;
+                info.Show();
+            }
+        }
+
         private void closeAppToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -229,6 +246,41 @@ namespace SSSystemGenerator
 
         }
 
-        
+        private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            ItemEditingAdding.UpdateLoadOrder();
+
+            if (TSPB_Saving.Value == 100) TSPB_Saving.Value = 0;
+
+            if (TSPB_Saving.Value != 0) { MessageBox.Show("saving"); return; }
+
+            var progress = new Progress<int>(
+                value =>
+                {
+                    TSPB_Saving.Value = value;
+                    if (value == 0)
+                    {
+                        TSSL_Saving.Text = "Starting Saving...";
+                    }
+                    else if (value != 0 || value != 100)
+                    {
+                        TSSL_Saving.Text = "Saved Successfully";
+                    }
+                    else
+                    {
+                        TSSL_Saving.Text = "Saving In Progress... Completion %: " + value;
+                    }
+                }
+                );
+
+            TSSL_Saving.Text = "Starting Saving...";
+
+            await JSONSerialiser.SerialiseToBaseJSONFile(Statics.baseClass, progress);
+        }
+
+
+
+
     }
 }

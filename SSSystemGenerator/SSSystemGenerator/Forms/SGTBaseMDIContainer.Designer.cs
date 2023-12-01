@@ -41,14 +41,23 @@
             this.astreoidBeltsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.TSMI_Info = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMII_Info = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSPB_Saving = new System.Windows.Forms.ToolStripProgressBar();
+            this.TSSL_Saving = new System.Windows.Forms.ToolStripStatusLabel();
             this.MS_Main.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MS_Main
             // 
             this.MS_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_File,
-            this.TSMI_SystemGeneration});
+            this.TSMI_SystemGeneration,
+            this.TSMI_Info});
             this.MS_Main.Location = new System.Drawing.Point(0, 0);
             this.MS_Main.Name = "MS_Main";
             this.MS_Main.Size = new System.Drawing.Size(800, 24);
@@ -58,7 +67,9 @@
             // TSMI_File
             // 
             this.TSMI_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeAppToolStripMenuItem});
+            this.closeAppToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.exportToolStripMenuItem});
             this.TSMI_File.Name = "TSMI_File";
             this.TSMI_File.Size = new System.Drawing.Size(37, 20);
             this.TSMI_File.Text = "File";
@@ -67,7 +78,7 @@
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
             this.closeAppToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeAppToolStripMenuItem.Text = "Close App";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 
@@ -159,19 +170,74 @@
             this.mapToolStripMenuItem.Text = "Map";
             this.mapToolStripMenuItem.Click += new System.EventHandler(this.mapToolStripMenuItem_Click);
             // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSSL_Saving,
+            this.TSPB_Saving});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // TSMI_Info
+            // 
+            this.TSMI_Info.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMII_Info});
+            this.TSMI_Info.Name = "TSMI_Info";
+            this.TSMI_Info.Size = new System.Drawing.Size(40, 20);
+            this.TSMI_Info.Text = "Info";
+            // 
+            // TSMII_Info
+            // 
+            this.TSMII_Info.Name = "TSMII_Info";
+            this.TSMII_Info.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.TSMII_Info.Size = new System.Drawing.Size(180, 22);
+            this.TSMII_Info.Text = "Info";
+            this.TSMII_Info.Click += new System.EventHandler(this.TSMII_Info_Click);
+            // 
+            // TSPB_Saving
+            // 
+            this.TSPB_Saving.Name = "TSPB_Saving";
+            this.TSPB_Saving.Size = new System.Drawing.Size(100, 16);
+            // 
+            // TSSL_Saving
+            // 
+            this.TSSL_Saving.Name = "TSSL_Saving";
+            this.TSSL_Saving.Size = new System.Drawing.Size(0, 17);
+            // 
             // SGTBaseMDIContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MS_Main);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MS_Main;
             this.Name = "SGTBaseMDIContainer";
             this.Text = "SGTBaseMDIContainer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.SGTBaseMDIContainer_Load);
             this.MS_Main.ResumeLayout(false);
             this.MS_Main.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +258,12 @@
         private System.Windows.Forms.ToolStripMenuItem loadingOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeAppToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Info;
+        private System.Windows.Forms.ToolStripMenuItem TSMII_Info;
+        private System.Windows.Forms.ToolStripStatusLabel TSSL_Saving;
+        private System.Windows.Forms.ToolStripProgressBar TSPB_Saving;
     }
 }

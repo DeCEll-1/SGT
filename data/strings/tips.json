@@ -10,6 +10,8 @@
       "freq": 0.001,
       "tip": "why do i work on this when i have a more important project? do i dont wanna work with it? is it too boring? too hard? or is this just relatively more interesting? or is it just for the attention i couldnt get with triangles?, damn triangles, as much as i love them, they doesnt work do they?"
     },
+    { "freq": 0.001, "tip": "Should I quit being a maid Should I quit being a human" },
+    { "freq": 1, "tip": "read if cute" },
     { "freq": 0.0, "tip": "note to self: get glowes, fan is cooling my hand too much" }
   ]
 }

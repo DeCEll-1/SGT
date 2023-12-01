@@ -289,7 +289,6 @@ namespace SSSystemGenerator.Classes
             return new PointF(coordinate.X / resizeValue, coordinate.Y / resizeValue);
         }
 
-
         public static PointF GetLocationOfFocus(Extend extend)
         {
             //problem: the focus doesnt have location values
@@ -302,7 +301,9 @@ namespace SSSystemGenerator.Classes
              * 3: return that
              */
 
-            if (extend.focusID == null)
+            if (extend == null) return new PointF(0, 0);
+
+            if ( extend.focusID == null)
             {
                 return new PointF(extend.x, extend.y);
             }
@@ -1132,7 +1133,23 @@ namespace SSSystemGenerator.Classes
             return new PointF(x_oncircle, y_oncircle);
         }
 
+        public static PointF SubtractCoordinates(PointF toSubtractFrom, PointF subtract)
+        {
+            toSubtractFrom.X -= subtract.X;
+            toSubtractFrom.Y -= subtract.Y;
 
+            return toSubtractFrom;
+        }
+
+        public static PointF CombineCoordinates(PointF toAddTo, PointF subtract)
+        {
+            toAddTo.X += subtract.X;
+            toAddTo.Y += subtract.Y;
+
+            return toAddTo;
+        }
+
+        public static Map GetMap() { return Statics.Map; }
 
         #endregion
     }

@@ -10,7 +10,7 @@ namespace SSSystemGenerator.Classes
     {
 
 
-        public int order { get; set; }
+        public int order { get; set; } = -1;
 
 
         public String GUID { get; set; }
@@ -34,6 +34,7 @@ namespace SSSystemGenerator.Classes
         public float y { get; set; }
 
         public String focusID { get; set; }//"" for center
+        public List<string> stuffOrbitingAround { get; set; } = new List<string>();
         public String typeID { get; set; }
 
         public String WhatIsThis { get; set; }

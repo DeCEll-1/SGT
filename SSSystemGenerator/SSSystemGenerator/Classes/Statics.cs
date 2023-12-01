@@ -28,6 +28,8 @@ namespace SSSystemGenerator.Classes
 
         public static DirectoryInfo GameCoreCampaignFolder { get; set; } = new DirectoryInfo(GameCore.FullName + "\\data\\campaign");
 
+        public const string Version = "0" + "." + "0" + "." + "0";
+
         public static List<DirectoryInfo> ModsToRead { get; set; } = new List<DirectoryInfo>();//TODO: add settings and save this thing
 
         public static BaseClass baseClass { get; set; } = new BaseClass();
@@ -37,6 +39,7 @@ namespace SSSystemGenerator.Classes
         public static Boolean debugMode { get; set; } = false;//TODO: add settings for this
 
         public static Map Map { get; set; } = null;
+        public static SGTBaseMDIContainer SGTBaseMDIContainer { get; set; } = null;
 
     }
 }

@@ -286,15 +286,22 @@ namespace SSSystemGenerator.Forms
 
         private void UpdatePlanets()
         {
-            //use the numbers for read order
-            ComboBox_Planets.Items.AddRange(
-                Helper.IDNameList(//turns systems into id + name list for the combo box / 5
-                    Helper.ListUpcasting(//turn planet list to extend list / 4
-                        Helper.GetSystemFromID(//get system object with id (it automatically removes name from id + name) / 2
-                            ComboBox_Systems.SelectedItem.ToString()//get selected systems id + name / 1
-                            )
-                        .planetList.ToArray()))//get planets in the selected system / 3
-                .ToArray());//to array because add range adds arrays and not list, just a minor inconvenience
+            try
+            {
+                //use the numbers for read order
+                ComboBox_Planets.Items.AddRange(
+                    Helper.IDNameList(//turns systems into id + name list for the combo box / 5
+                        Helper.ListUpcasting(//turn planet list to extend list / 4
+                            Helper.GetSystemFromID(//get system object with id (it automatically removes name from id + name) / 2
+                                ComboBox_Systems.SelectedItem.ToString()//get selected systems id + name / 1
+                                )
+                            .planetList.ToArray()))//get planets in the selected system / 3
+                    .ToArray());//to array because add range adds arrays and not list, just a minor inconvenience
+            }
+            catch (Exception ex)
+            {
+            }
+
         }
 
         private void LoadSystems()

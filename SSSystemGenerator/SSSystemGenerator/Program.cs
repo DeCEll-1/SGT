@@ -20,7 +20,17 @@ namespace SSSystemGenerator
 
             fileHelper.setupFiles();//generate the data/strings/STGSystems.json
 
-            Application.Run(new SGTBaseMDIContainer());
+            object s = Statics.EXEPath;
+            s = Statics.JSONPath;
+            s = Statics.ModFolderRoot;
+            s = Statics.ModsFolderRoot;
+            s = Statics.ModCampaignRoot;
+            s = Statics.GameRoot;
+            s = Statics.GameCore;
+            s = Statics.GameCoreCampaignFolder;
+            s = Statics.baseClass;//for testing
+            Statics.SGTBaseMDIContainer = new SGTBaseMDIContainer();
+            Application.Run(Statics.SGTBaseMDIContainer);
         }
     }
 }
