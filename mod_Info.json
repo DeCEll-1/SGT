@@ -1,35 +1,17 @@
 {
   "id": "SGT",
   "name": "SGT",
-  "author": "DeCell#7556",
+  "author": "SGT",
   "totalConversion": "false",
   "version": {
-    "major": 1,
+    "major": 0,
     "minor": 0,
     "patch": 0
   },
   "description": "SGT",
   "gameVersion": "0.96a-RC9",
-  "modPlugin":"data.plugins.DEA_Plugin",
+  "modPlugin":"SGT.SGT.Plugins.SGT_ModPlugin",
   "jars": [
     "jars/SGT.jar"
-  ],
-  # "dependencies": [
-  #   {
-  #     "id": "lw_lazylib",
-  #     "name": "LazyLib"
-  #   },
-  #   {
-  #     "id": "MagicLib",
-  #     "name": "MagicLib"
-  #   },
-  #   {
-  #     "id": "cmutils",
-  #     "name": "Combat Misc Utils"
-  #   },
-  #   {
-  #     "id": "VeBlib",
-  #     "name": "you WİLL download libs\nyou WİLL download ip loggers thats in them\nyou CANT play without them\nwe truly live in a society\n(this is VeBlib)"
-  #   }
-  # ]
+  ]
 }

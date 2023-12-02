@@ -1,4 +1,4 @@
-package SGT.SGT;
+package SGT.SGT.Plugins;
 
 import SGT.SGT.Helpers.VeBlib_Logger;
 import com.fs.starfarer.api.BaseModPlugin;
