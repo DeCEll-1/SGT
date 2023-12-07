@@ -70,7 +70,7 @@
             // 
             // btn_Undo
             // 
-            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_Undo.Location = new System.Drawing.Point(165, 464);
@@ -239,6 +239,7 @@
             // ComboBox_AstreoidBelts
             // 
             this.ComboBox_AstreoidBelts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_AstreoidBelts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_AstreoidBelts.FormattingEnabled = true;
             this.ComboBox_AstreoidBelts.Location = new System.Drawing.Point(6, 110);
             this.ComboBox_AstreoidBelts.Name = "ComboBox_AstreoidBelts";
@@ -258,6 +259,7 @@
             // ComboBox_FocusID
             // 
             this.ComboBox_FocusID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_FocusID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_FocusID.FormattingEnabled = true;
             this.ComboBox_FocusID.Location = new System.Drawing.Point(6, 71);
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
@@ -266,7 +268,7 @@
             // 
             // btn_FocusRefresh
             // 
-            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_FocusRefresh.Location = new System.Drawing.Point(151, 71);
@@ -278,7 +280,7 @@
             // 
             // btn_SystemsRefresh
             // 
-            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_SystemsRefresh.Location = new System.Drawing.Point(151, 32);
@@ -291,6 +293,7 @@
             // ComboBox_Systems
             // 
             this.ComboBox_Systems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Systems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_Systems.FormattingEnabled = true;
             this.ComboBox_Systems.Location = new System.Drawing.Point(5, 32);
             this.ComboBox_Systems.Name = "ComboBox_Systems";
@@ -345,6 +348,7 @@
             // 
             // ComboBox_TerrainID
             // 
+            this.ComboBox_TerrainID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_TerrainID.FormattingEnabled = true;
             this.ComboBox_TerrainID.Location = new System.Drawing.Point(6, 32);
             this.ComboBox_TerrainID.Name = "ComboBox_TerrainID";

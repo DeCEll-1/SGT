@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class Markets : Form
+    public partial class Markets : Form, IFormInterface
     {
 
         public List<VeBlib_MarketData> deletedMarketsInThisSessionList { get; set; } = new List<VeBlib_MarketData>();
@@ -29,12 +29,14 @@ namespace SSSystemGenerator.Forms
         public Markets()
         {
             InitializeComponent();
+            UpdateColors();
 
             ReloadCSV();
 
             Load();
         }
 
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
 
         #region customFunctions

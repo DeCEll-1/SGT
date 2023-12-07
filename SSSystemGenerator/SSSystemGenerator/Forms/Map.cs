@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class Map : Form
+    public partial class Map : Form, IFormInterface
     {
         public float zoomValue { get; set; } = 0f;
 
@@ -39,51 +39,6 @@ namespace SSSystemGenerator.Forms
 
         #region mouse
 
-        private void pnl_Map_MouseWheel(object sender, MouseEventArgs e)
-        {//https://stackoverflow.com/questions/45325726/move-shapes-on-a-panel-by-mouse
-            zoomValue += (e.Delta / 100f) * 0.3f;
-
-            try
-            {
-                //TrackBar_Zoom.Value = (int)(zoomValue * 100f);
-            }//"value must be in min-max uwu :3"
-            catch (Exception ex)
-            {
-            }
-
-            if (zoomValue < -1f || zoomValue == -1f)
-            {
-                zoomValue = -0.99f;
-                RefreshPanel();
-                return;
-            }
-
-
-
-            #region i hate zooming
-            //get current center
-            //get location
-            //subtract location/2 to center when zooming 2x
-
-            //if (e.Delta > 0)
-            //{
-            //    //renderCenter = Helper.SubtractCoordinates(renderCenter, new PointF(e.X / (e.Delta / 100f), e.Y / (e.Delta / 100f)));//hope this works!
-            //    renderCenter = Helper.SubtractCoordinates(renderCenter, new PointF(pnl_Map.Width * ((e.Delta / 100f) - 1), pnl_Map.Height * ((e.Delta / 100f) - 1)));//hope this works!
-            //}
-            //else
-            //{
-            //    renderCenter = Helper.CombineCoordinates(renderCenter, new PointF(e.X, e.Y));//hope this works!
-            //}
-
-            PanelDrawer.rendererValues.mouseEventArgs = e;
-
-            PanelDrawer.rendererValues.zooming = true;
-
-            //renderCenter = new PointF(-(e.X * (zoomValue)), -(e.Y * (zoomValue))); 
-            #endregion
-
-            RefreshPanel();
-        }
 
         public bool moveEnabled { get; set; }
 
@@ -140,11 +95,89 @@ namespace SSSystemGenerator.Forms
 
         }
 
+        #region zoom
+
+        private void pnl_Map_MouseWheel(object sender, MouseEventArgs e)
+        {//https://stackoverflow.com/questions/45325726/move-shapes-on-a-panel-by-mouse
+            zoomValue += e.Delta > 0 ? 0.3f : -0.3f;
+
+            try
+            {
+                //TrackBar_Zoom.Value = (int)(zoomValue * 100f);
+            }//"value must be in min-max uwu :3"
+            catch (Exception ex)
+            {
+            }
+
+            if (zoomValue < -1f || zoomValue == -1f)
+            {
+                zoomValue = -0.99f;
+                RefreshPanel();
+                return;
+            }
+
+
+
+            #region i hate zooming
+            //get current center
+            //get location
+            //subtract location/2 to center when zooming 2x
+
+            //if (e.Delta > 0)
+            //{
+            //    //renderCenter = Helper.SubtractCoordinates(renderCenter, new PointF(e.X / (e.Delta / 100f), e.Y / (e.Delta / 100f)));//hope this works!
+            //    renderCenter = Helper.SubtractCoordinates(renderCenter, new PointF(pnl_Map.Width * ((e.Delta / 100f) - 1), pnl_Map.Height * ((e.Delta / 100f) - 1)));//hope this works!
+            //}
+            //else
+            //{
+            //    renderCenter = Helper.CombineCoordinates(renderCenter, new PointF(e.X, e.Y));//hope this works!
+            //}
+
+            PanelDrawer.rendererValues.mouseEventArgs = e;
+
+            PanelDrawer.rendererValues.zooming = true;
+
+            //renderCenter = new PointF(-(e.X * (zoomValue)), -(e.Y * (zoomValue))); 
+            #endregion
+
+            RefreshPanel();
+        }
+
+        #region zoomButtons
+
+        private void btn_ResetMapVisuals_Click(object sender, EventArgs e)
+        {
+            zoomValue = 0f;
+
+            renderCenter = new PointF(0f, 0f);
+
+            RefreshPanel();
+        }
+
+        private void btn_Zoom_Click(object sender, EventArgs e)
+        {
+            zoomValue += 0.3f;
+
+            RefreshPanel();
+        }
+
+        private void btn_DeZoom_Click(object sender, EventArgs e)
+        {
+            zoomValue -= 0.3f;
+
+            RefreshPanel();
+        }
+
+        #endregion
+
+        #endregion
+
         #endregion
 
         public Map()
         {
             InitializeComponent();
+            UpdateColors();
 
             this.MouseWheel += new MouseEventHandler(pnl_Map_MouseWheel);
             this.MouseMove += new MouseEventHandler(pnl_Map_MouseWheel);
@@ -152,7 +185,15 @@ namespace SSSystemGenerator.Forms
             Statics.Map = this;
 
             Load();
+
+            SuspendLayout();
+            ResumeLayout();
+
+            RefreshPanel();
+
         }
+
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
         private void Load()
         {
@@ -182,9 +223,16 @@ namespace SSSystemGenerator.Forms
 
         public void RefreshPanel()
         {
-            if (PanelDrawer == null) return;
 
-            PanelDrawer.rendererValues.Circles = new List<Circles>();
+            if (PanelDrawer == null)
+            {
+                //https://stackoverflow.com/a/60247726
+                PanelDrawer = new PanelRenderer(pnl_Map, new PaintEventArgs(pnl_Map.CreateGraphics(), pnl_Map.DisplayRectangle));
+
+                PanelDrawer.rendererValues = new RendererBaseClass();
+            }
+
+            PanelDrawer.rendererValues.Circles = new List<Circles>(); https://stackoverflow.com/a/60247726
 
             AddValuesToRenderer();
 
@@ -193,8 +241,19 @@ namespace SSSystemGenerator.Forms
 
         private void AddValuesToRenderer()
         {
+            try
+            {
+                lbl_PanelInfo.Text =
+                    "Panel Values:\nHeight: " + pnl_Map.Height +
+                    "\nWidth: " + pnl_Map.Width +
+                    "\nZoom Value: " + (zoomValue > 0 ? zoomValue.ToString().Substring(0, 4) : zoomValue.ToString().Substring(0, 5)) +
+                    "\nCenter: " + renderCenter.X + " , " + renderCenter.Y;
+            }
+            catch (Exception ex)
+            {//getting parameter name lenght System.ArgumentOutOfRangeException from zoom value
 
-            lbl_PanelInfo.Text = "Panel Values:\nHeight: " + pnl_Map.Height + "\nWidth: " + pnl_Map.Width + "\nZoom Value: " + zoomValue + "\nCenter: " + renderCenter.X + " , " + renderCenter.Y;
+            }
+
 
             lbl_PanelInfo.BackColor = Color.White;
             lbl_PanelInfo.ForeColor = Color.Black;
@@ -379,6 +438,7 @@ namespace SSSystemGenerator.Forms
             Panel panel = sender as Panel;
 
 
+
             if (PanelDrawer == null)
             {
                 PanelDrawer = new PanelRenderer(panel, e);
@@ -411,6 +471,75 @@ namespace SSSystemGenerator.Forms
             RefreshPanel();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {//https://stackoverflow.com/a/31464086
+
+            float moveAmount = -100f;//im suppose to change the -s under but thats too much work so ill just - the move amount
+            //TODO: dont be lazy
+
+            switch (keyData)
+            {
+                case Keys.D0://0 key on line
+                case Keys.NumPad0://0 key on numpad
+                    btn_ResetMapVisuals_Click(null, null);//reset zooms
+                    break;
+                case Keys.Oemplus://+ key on line 
+                case Keys.Add://+ key on numpad
+                    btn_Zoom_Click(null, null);//zoom in
+                    break;
+                case Keys.OemMinus://- key on line
+                case Keys.Subtract://- key on numpad
+                    btn_DeZoom_Click(null, null);//zoom out
+                    break;
+                #region move
+
+                case Keys.NumPad1://go down left by 100 (not sqrted)
+                    Move(-moveAmount, moveAmount);
+                    break;
+                case Keys.NumPad2://go down
+                case Keys.Down:
+                    Move(0f, moveAmount);
+                    break;
+                case Keys.NumPad3://go down right
+                    Move(moveAmount, moveAmount);
+                    break;
+
+                case Keys.NumPad4://go left
+                case Keys.Left:
+                    Move(-moveAmount, 0);
+                    break;
+                //no 5, cope 
+                case Keys.NumPad6://go right 
+                case Keys.Right://go right 
+                    Move(moveAmount, 0f);
+                    break;
+
+                case Keys.NumPad7://go down left by 100 (not sqrted)
+                    Move(-moveAmount, -moveAmount);
+                    break;
+                case Keys.NumPad8://go down
+                case Keys.Up:
+                    Move(0f, -moveAmount);
+                    break;
+                case Keys.NumPad9://go down right
+                    Move(moveAmount, -moveAmount);
+                    break;
+
+                #endregion
+
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+
+            return true;
+        }
+
+        private void Move(float x, float y)
+        {
+            renderCenter = Helper.CombineCoordinates(renderCenter, new PointF(x, y));
+
+            RefreshPanel();
+        }
 
     }
 

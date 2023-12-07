@@ -1,5 +1,6 @@
 ﻿using SSSystemGenerator.Classes;
 using SSSystemGenerator.Classes.SystemFiles;
+using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator
 {
-    public partial class Stars : Form
+    public partial class Stars : Form, IFormInterface
     {
         public List<VeBlib_StarData> deletedStarsInThisSessionList { get; set; } = new List<VeBlib_StarData> { };
         public VeBlib_StarData currStar { get; set; } = null;
@@ -23,13 +24,14 @@ namespace SSSystemGenerator
         public Stars()
         {
             InitializeComponent();
+            UpdateColors();
             Load();
 
         }
 
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+
         #region focusStuff
-
-
 
         //orbit mode selection
         private void ComboBox_OrbitMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,7 +107,7 @@ namespace SSSystemGenerator
         }
 
         //update orbit list on refresh key press
-        private void btn_FocusRefresh_Click(object sender, EventArgs e) { loadOrbits(); }
+        private void btn_FocusRefresh_Click(object sender, EventArgs e) { loadOrbits(); TextChangedBTNAddUpdateCheck(null, null); ComboBox_OrbitMode_SelectedIndexChanged(null, null); }
 
         //updates orbitables list
         private void loadOrbits()

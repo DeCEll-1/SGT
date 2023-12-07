@@ -11,20 +11,23 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class Systems : Form
+    public partial class Systems : Form, IFormInterface
     {
-
-
 
         public List<VeBlib_StarSystemData> deletedSystemsInThisSessionList { get; set; } = new List<VeBlib_StarSystemData> { };
         public VeBlib_StarSystemData currSystem { get; set; } = null;
+
 
         public Systems()
         {
             InitializeComponent();
 
+            UpdateColors();
+
             Load();
         }
+
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
         #region customFunctions
 
@@ -271,5 +274,6 @@ namespace SSSystemGenerator.Forms
             reset();
 
         }
+
     }
 }

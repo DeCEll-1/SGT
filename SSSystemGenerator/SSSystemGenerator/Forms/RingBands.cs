@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class RingBands : Form
+    public partial class RingBands : Form, IFormInterface
     {
         public List<VeBlib_RingBandData> deletedRingBandsInThisSession { get; set; } = new List<VeBlib_RingBandData>();
         private VeBlib_RingBandData currRingBand { get; set; } = new VeBlib_RingBandData();
@@ -25,9 +25,11 @@ namespace SSSystemGenerator.Forms
         public RingBands()
         {
             InitializeComponent();
+            UpdateColors();
             Load();
         }
 
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); UpdateColorPanel(); }
 
         #region orbit
 
@@ -175,8 +177,7 @@ namespace SSSystemGenerator.Forms
 
             nud_MiddleRadius.Value = 0;
 
-
-            nud_BandWidthInTexture.Value = 0;
+            nud_BandWidthInTexture.Value = 256;
             nud_BandWidthInEngine.Value = 0;
 
             tb_TextureCategory.Text = "";

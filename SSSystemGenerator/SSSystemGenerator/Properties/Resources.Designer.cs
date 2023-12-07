@@ -63,9 +63,19 @@ namespace SSSystemGenerator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Undo {
+        internal static System.Drawing.Bitmap UndoDarkMode {
             get {
-                object obj = ResourceManager.GetObject("Undo", resourceCulture);
+                object obj = ResourceManager.GetObject("UndoDarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UndoLightMode {
+            get {
+                object obj = ResourceManager.GetObject("UndoLightMode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

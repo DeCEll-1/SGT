@@ -105,6 +105,7 @@
             // ComboBox_Planets
             // 
             this.ComboBox_Planets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Planets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_Planets.FormattingEnabled = true;
             this.ComboBox_Planets.Location = new System.Drawing.Point(11, 65);
             this.ComboBox_Planets.Name = "ComboBox_Planets";
@@ -133,6 +134,7 @@
             // ComboBox_Systems
             // 
             this.ComboBox_Systems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Systems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_Systems.FormattingEnabled = true;
             this.ComboBox_Systems.Location = new System.Drawing.Point(11, 25);
             this.ComboBox_Systems.Name = "ComboBox_Systems";
@@ -166,7 +168,7 @@
             // 
             // btn_Undo
             // 
-            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_Undo.Location = new System.Drawing.Point(153, 432);
@@ -178,7 +180,7 @@
             // 
             // btn_FocusRefresh
             // 
-            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_FocusRefresh.Location = new System.Drawing.Point(354, 64);
@@ -220,6 +222,7 @@
             // ComboBox_OrbitMode
             // 
             this.ComboBox_OrbitMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_OrbitMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_OrbitMode.FormattingEnabled = true;
             this.ComboBox_OrbitMode.Items.AddRange(new object[] {
             "0",
@@ -235,6 +238,7 @@
             // ComboBox_FocusID
             // 
             this.ComboBox_FocusID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_FocusID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_FocusID.FormattingEnabled = true;
             this.ComboBox_FocusID.Location = new System.Drawing.Point(199, 64);
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
@@ -482,7 +486,7 @@
             // 
             // btn_SystemsRefresh
             // 
-            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_SystemsRefresh.Location = new System.Drawing.Point(165, 25);
@@ -494,7 +498,7 @@
             // 
             // btn_PlanetsRefresh
             // 
-            this.btn_PlanetsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_PlanetsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_PlanetsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_PlanetsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_PlanetsRefresh.Location = new System.Drawing.Point(165, 65);

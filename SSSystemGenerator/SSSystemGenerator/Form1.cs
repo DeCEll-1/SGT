@@ -27,7 +27,7 @@ namespace SSSystemGenerator
             lbl_EXEPath.Text = "EXEPath: " + Statics.EXEPath;
             lbl_JSONPath.Text = "JSONPath: " + Statics.JSONPath;
 
-            fileHelper.setupFiles();
+            fileHelper.SetupFiles();
 
 
         }

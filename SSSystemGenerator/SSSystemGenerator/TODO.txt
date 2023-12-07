@@ -1,3 +1,5 @@
 ﻿TODO: when deleting something that can have orbitables it crashes beacuse the orbiting stuffs focus no longer exists, fix that
 TODO: dark mode, check this //https://stackoverflow.com/questions/61145347/c-how-to-make-a-dark-mode-theme-in-windows-forms-separate-form-as-select-the
+//https://stackoverflow.com/questions/43315352/in-windows-form-application-make-list-of-drop-down-without-changing-background-c
+//https://stackoverflow.com/a/59478243
 TODO: update the things a body is orbiting when changing its id to not get null pointer exceptioned

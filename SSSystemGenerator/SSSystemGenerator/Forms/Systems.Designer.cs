@@ -224,7 +224,7 @@
             // 
             // btn_Undo
             // 
-            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.Undo;
+            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
             this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btn_Undo.Location = new System.Drawing.Point(198, 359);
@@ -237,6 +237,7 @@
             // ComboBox_SystemSelection
             // 
             this.ComboBox_SystemSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_SystemSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_SystemSelection.FormattingEnabled = true;
             this.ComboBox_SystemSelection.Location = new System.Drawing.Point(12, 25);
             this.ComboBox_SystemSelection.Name = "ComboBox_SystemSelection";

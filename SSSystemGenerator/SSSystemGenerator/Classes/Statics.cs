@@ -14,9 +14,11 @@ namespace SSSystemGenerator.Classes
 
         public static DirectoryInfo EXEPath { get; set; } = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);//mod/SGTExe//exe
 
-        public static DirectoryInfo JSONPath { get; set; } = new DirectoryInfo(EXEPath.Parent.FullName + "\\data\\strings\\STGSystems.json");
+        public static DirectoryInfo JSONPath { get; set; } = new DirectoryInfo(EXEPath.Parent.FullName + "\\data\\strings\\SGTSystems.json");
 
         public static DirectoryInfo ModFolderRoot { get; set; } = EXEPath.Parent;
+
+        public static DirectoryInfo SSSystemGeneratorRootFolder { get; set; } = new DirectoryInfo(EXEPath.Parent + "\\SSSystemGenerator\\SSSystemGenerator");
 
         public static DirectoryInfo ModsFolderRoot { get; set; } = EXEPath.Parent.Parent;
 
@@ -37,6 +39,9 @@ namespace SSSystemGenerator.Classes
         public static CSVs csvs { get; set; } = CSVHelper.GetAllCSVs();
 
         public static Boolean debugMode { get; set; } = false;//TODO: add settings for this
+
+        //true is for light false is for dark
+        public static Boolean colorMode { get; set; } = true;//TODO: add settings for this
 
         public static Map Map { get; set; } = null;
         public static SGTBaseMDIContainer SGTBaseMDIContainer { get; set; } = null;

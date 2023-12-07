@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class CustomEntities : Form
+    public partial class CustomEntities : Form, IFormInterface
     {
         public string context { get; set; } = "Custom Entity";
 
@@ -24,8 +24,11 @@ namespace SSSystemGenerator.Forms
         public CustomEntities()
         {
             InitializeComponent();
+            UpdateColors();
             Load();
         }
+
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
         #region focusStuff
 

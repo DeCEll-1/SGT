@@ -69,15 +69,15 @@ namespace SSSystemGenerator.Render
         public void Render(object sender, PaintEventArgs e)
         {
 
-            using (Graphics g = Panel.CreateGraphics())
+            using (Graphics g = e.Graphics)
             {
 
                 try
                 {
                     g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
                     //g values crashes with System.ArgumentException for god knows why
-                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                    g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
+                    g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
                     g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                     //g.RenderingOrigin = new Point(-500, -500);
                 }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class AstreoidBelts : Form
+    public partial class AstreoidBelts : Form, IFormInterface
     {
         public List<VeBlib_AstreoidBeltData> deletedAstreoidBeltsThisSession { get; set; } = new List<VeBlib_AstreoidBeltData>();
 
@@ -24,8 +24,11 @@ namespace SSSystemGenerator.Forms
         public AstreoidBelts()
         {
             InitializeComponent();
+            UpdateColors();
             Load();
         }
+
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
         #region customFunctions
 

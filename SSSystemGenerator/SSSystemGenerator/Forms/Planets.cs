@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class Planets : Form
+    public partial class Planets : Form, IFormInterface
     {
 
         public List<VeBlib_PlanetData> deletedPlanetsInThisSessionList { get; set; } = new List<VeBlib_PlanetData>();
@@ -24,8 +24,11 @@ namespace SSSystemGenerator.Forms
         public Planets()
         {
             InitializeComponent();
+            UpdateColors();
             Load();
         }
+
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls);}
 
         #region focusStuff
 

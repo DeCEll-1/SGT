@@ -1,4 +1,5 @@
-﻿using SSSystemGenerator.Classes;
+﻿using Newtonsoft.Json.Linq;
+using SSSystemGenerator.Classes;
 using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
@@ -7,18 +8,23 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SSSystemGenerator
 {
-    public partial class SGTBaseMDIContainer : Form
+    public partial class SGTBaseMDIContainer : Form, IFormInterface
     {
         public SGTBaseMDIContainer()
         {
             InitializeComponent();
-
+            Statics.SGTBaseMDIContainer = this;
+            UpdateColors();
         }
+
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+
 
         private void SGTBaseMDIContainer_Load(object sender, EventArgs e)
         {
@@ -171,27 +177,6 @@ namespace SSSystemGenerator
             }
         }
 
-        private void loadingOrderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadingOrder loadingOrder = new LoadingOrder();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == loadingOrder.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    loadingOrder.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                loadingOrder.MdiParent = this;
-                loadingOrder.Show();
-            }
-        }
-
         private void mapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Map map = new Map();
@@ -246,14 +231,14 @@ namespace SSSystemGenerator
 
         }
 
-        private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             ItemEditingAdding.UpdateLoadOrder();
 
             if (TSPB_Saving.Value == 100) TSPB_Saving.Value = 0;
 
-            if (TSPB_Saving.Value != 0) { MessageBox.Show("saving"); return; }
+            if (JsonHelper.saving == true) { MessageBox.Show("saving"); return; }
 
             var progress = new Progress<int>(
                 value =>
@@ -274,12 +259,65 @@ namespace SSSystemGenerator
                 }
                 );
 
+
+
             TSSL_Saving.Text = "Starting Saving...";
 
-            await JSONSerialiser.SerialiseToBaseJSONFile(Statics.baseClass, progress);
+            //https://stackoverflow.com/questions/1195896/threadstart-with-parameters lambda is cool
+            //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions yet i dont really know how they work
+            Thread thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.baseClass, progress));
+
+            thread.IsBackground = true;
+            thread.Start();
         }
 
+        public void UpdateSaving(byte savePercent)
+        {
+            TSPB_Saving.Value = savePercent;
+            if (savePercent == 0)
+            {
+                TSSL_Saving.Text = "Starting Saving...";
+            }
+            else if (savePercent == 100)
+            {
+                TSSL_Saving.Text = "Saved Successfully";
+            }
+            else
+            {
+                TSSL_Saving.Text = "Saving In Progress... Completion %: " + savePercent;
+            }
+        }
 
+        private void TSMI_DarkMode_Click(object sender, EventArgs e)
+        {
+            Statics.colorMode = !Statics.colorMode;
+
+            UpdateColors();
+
+            if (Statics.colorMode)//is light mode
+            {
+                TSMI_DarkMode.Text = "Switch To Dark Mode";
+
+                foreach (IFormInterface form in this.MdiChildren)
+                {
+
+                    form.UpdateColors();
+
+                }
+
+            }
+            else//on dark mode
+            {
+                TSMI_DarkMode.Text = "Switch To Light Mode";
+
+                foreach (IFormInterface form in this.MdiChildren)
+                {
+
+                    form.UpdateColors();
+
+                }
+            }
+        }
 
 
     }

@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Colors.cs" />
     <Compile Include="Classes\CSVClasses\CSVs.cs" />
     <Compile Include="Classes\CSVClasses\IndustriesCSV.cs" />
     <Compile Include="Classes\CSVClasses\MarketConditions.cs" />
@@ -94,7 +95,7 @@
     <Compile Include="Classes\Extend.cs" />
     <Compile Include="Classes\fileHelper.cs" />
     <Compile Include="Classes\Helper.cs" />
-    <Compile Include="Classes\JSONSerialiser.cs" />
+    <Compile Include="Classes\JsonHelper.cs" />
     <Compile Include="Classes\Statics.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_AstreoidBeltData.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_MarketData.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Forms\CustomEntities.Designer.cs">
       <DependentUpon>CustomEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\IFormInterface.cs" />
     <Compile Include="Forms\Info.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +179,11 @@
     <Compile Include="Forms\Stars.Designer.cs">
       <DependentUpon>Stars.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Render\Circles.cs" />
     <Compile Include="Render\Lines.cs" />
     <Compile Include="Render\PanelRenderer.cs" />
@@ -213,14 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\SGTBaseMDIContainer.resx">
       <DependentUpon>SGTBaseMDIContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,7 +244,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Undo.png" />
+    <Content Include="Images\UndoLightMode.png" />
+    <Content Include="Images\UndoDarkMode.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

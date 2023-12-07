@@ -11,12 +11,15 @@ using System.Windows.Forms;
 
 namespace SSSystemGenerator.Forms
 {
-    public partial class Info : Form
+    public partial class Info : Form, IFormInterface
     {
         public Info()
         {
             InitializeComponent();
+            UpdateColors();
         }
+
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
         private void Info_Load(object sender, EventArgs e)
         {
