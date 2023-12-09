@@ -1,1 +1,0 @@
-[![Lines Of Code](https://tokei.rs/b1/github/DeCEll-1/SGT?category=code)](https://github.com/XAMPPRocky/tokei).
