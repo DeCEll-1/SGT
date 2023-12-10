@@ -92,7 +92,6 @@ namespace SSSystemGenerator.Classes
 
         public String backgroundTextureFilename;
 
-
         public List<VeBlib_StarData> starList;
 
         public List<VeBlib_PlanetData> planetList;

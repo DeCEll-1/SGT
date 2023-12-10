@@ -25,7 +25,6 @@ namespace SSSystemGenerator
 
         public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
-
         private void SGTBaseMDIContainer_Load(object sender, EventArgs e)
         {
         }
@@ -198,6 +197,27 @@ namespace SSSystemGenerator
             }
         }
 
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            bool a = true;
+            foreach (var item in this.MdiChildren)
+            {
+                if (item.GetType() == settings.GetType())
+                {
+                    this.ActivateMdiChild(item);
+                    settings.BringToFront();
+                    a = false;
+                    break;
+                }
+            }
+            if (a)
+            {
+                settings.MdiParent = this;
+                settings.Show();
+            }
+        }
+
         private void TSMII_Info_Click(object sender, EventArgs e)
         {
             Info info = new Info();
@@ -319,6 +339,6 @@ namespace SSSystemGenerator
             }
         }
 
-
+        
     }
 }

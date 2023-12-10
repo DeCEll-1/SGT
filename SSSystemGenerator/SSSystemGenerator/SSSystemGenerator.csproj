@@ -159,6 +159,12 @@
     <Compile Include="Forms\RingBands.Designer.cs">
       <DependentUpon>RingBands.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Systems.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -49,6 +49,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TSSL_Saving = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSPB_Saving = new System.Windows.Forms.ToolStripProgressBar();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_Main.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -196,7 +197,8 @@
             // TSMI_Preferances
             // 
             this.TSMI_Preferances.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMI_DarkMode});
+            this.TSMI_DarkMode,
+            this.settingsToolStripMenuItem});
             this.TSMI_Preferances.Name = "TSMI_Preferances";
             this.TSMI_Preferances.Size = new System.Drawing.Size(80, 20);
             this.TSMI_Preferances.Text = "Preferances";
@@ -228,6 +230,13 @@
             // 
             this.TSPB_Saving.Name = "TSPB_Saving";
             this.TSPB_Saving.Size = new System.Drawing.Size(100, 16);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // SGTBaseMDIContainer
             // 
@@ -274,5 +283,6 @@
         public System.Windows.Forms.ToolStripProgressBar TSPB_Saving;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Preferances;
         private System.Windows.Forms.ToolStripMenuItem TSMI_DarkMode;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
