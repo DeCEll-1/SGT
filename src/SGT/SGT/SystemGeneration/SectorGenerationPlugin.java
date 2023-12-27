@@ -81,17 +81,17 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                     if (data.orderHashMap.get(i) instanceof VeBlib_PlanetData) {
                         VeBlib_PlanetData planetData = (VeBlib_PlanetData) data.orderHashMap.get(i);
                         PlanetAPI planet = system.addPlanet(
-                                planetData.Id,
+                                planetData.ID,
                                 SectorEntittyTokenHashMap.get(planetData.focusID),
-                                planetData.Name,
+                                planetData.name,
                                 planetData.typeID,
                                 planetData.angle,
-                                planetData.Radius,
+                                planetData.radius,
                                 planetData.orbitRadius,
                                 planetData.orbitDays
                         );
 
-                        SectorEntittyTokenHashMap.put(planetData.Id, planet);
+                        SectorEntittyTokenHashMap.put(planetData.ID, planet);
 
                     }
 
@@ -184,7 +184,7 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                     if (data.orderHashMap.get(i) instanceof VeBlib_AstreoidBeltData) {
                         VeBlib_AstreoidBeltData astreoidData = (VeBlib_AstreoidBeltData) data.orderHashMap.get(i);
 
-                        if (astreoidData.terrainId.equals("") || astreoidData.optionalName.equals("")) {
+                        if (astreoidData.terrainId.equals("") || astreoidData.name.equals("")) {
                             SectorEntityToken astreoidBelt = system.addAsteroidBelt(
                                     SectorEntittyTokenHashMap.get(astreoidData.focusID),
                                     astreoidData.numAsteroids,
@@ -193,7 +193,7 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                                     astreoidData.minOrbitDays,
                                     astreoidData.maxOrbitDays
                             );
-                            SectorEntittyTokenHashMap.put(astreoidData.optionalName, astreoidBelt);
+                            SectorEntittyTokenHashMap.put(astreoidData.name, astreoidBelt);
                         } else {
                             SectorEntityToken astreoidBelt = system.addAsteroidBelt(
                                     SectorEntittyTokenHashMap.get(astreoidData.focusID),
@@ -203,9 +203,9 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                                     astreoidData.minOrbitDays,
                                     astreoidData.maxOrbitDays,
                                     astreoidData.terrainId,
-                                    astreoidData.optionalName
+                                    astreoidData.name
                             );
-                            SectorEntittyTokenHashMap.put(astreoidData.optionalName, astreoidBelt);
+                            SectorEntittyTokenHashMap.put(astreoidData.name, astreoidBelt);
                         }
 
                     }
@@ -213,7 +213,7 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                     if (data.orderHashMap.get(i) instanceof VeBlib_RingBandData) {
                         VeBlib_RingBandData ringBandData = (VeBlib_RingBandData) data.orderHashMap.get(i);
 
-                        if (ringBandData.terrainId.equals("") || ringBandData.optionalName.equals("")) {
+                        if (ringBandData.terrainId.equals("") || ringBandData.name.equals("")) {
                             SectorEntityToken ringBand = system.addRingBand(
                                     SectorEntittyTokenHashMap.get(ringBandData.focusID),
                                     ringBandData.category,
@@ -238,7 +238,7 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                                     ringBandData.middleRadius,
                                     ringBandData.orbitDays,
                                     ringBandData.terrainId,
-                                    ringBandData.optionalName
+                                    ringBandData.name
                             );
                             SectorEntittyTokenHashMap.put(ringBandData.ID, ringBand);
                         }

@@ -3,7 +3,18 @@ package SGT.SGT.SystemGeneration.systemFiles;
 public class VeBlib_StarData extends VeBlib_SGTExtend {
 
     //region overloads
-    public VeBlib_StarData(String ID, String typeID, String focusID, float radius, float coronaSize) {
+    public VeBlib_StarData()
+    {
+        this.ID = "";
+        this.typeID = "";
+        this.focusID = "";
+        this.radius = 0;
+        this.coronaSize = 0;
+
+    }
+
+    public VeBlib_StarData(String ID, String typeID, String focusID, float radius, float coronaSize)
+    {
         this.ID = ID;
         this.typeID = typeID;
         this.focusID = focusID;
@@ -12,7 +23,8 @@ public class VeBlib_StarData extends VeBlib_SGTExtend {
 
     }
 
-    public VeBlib_StarData(String ID, String typeID, String focusID, float radius, float coronaSize, float windBurnLevel, float flareProbability, float crLossMult) {
+    public VeBlib_StarData(String ID, String typeID, String focusID, float radius, float coronaSize, float windBurnLevel, float flareProbability, float crLossMult)
+    {
         this.ID = ID;
         this.typeID = typeID;
         this.focusID = focusID;
@@ -23,7 +35,8 @@ public class VeBlib_StarData extends VeBlib_SGTExtend {
         this.crLossMult = crLossMult;
     }
 
-    public VeBlib_StarData(String ID, String name, String typeID, String focusID, float radius, float coronaSize) {
+    public VeBlib_StarData(String ID, String name, String typeID, String focusID, float radius, float coronaSize)
+    {
         this.ID = ID;
         this.name = name;
         this.typeID = typeID;
@@ -33,7 +46,8 @@ public class VeBlib_StarData extends VeBlib_SGTExtend {
 
     }
 
-    public VeBlib_StarData(String ID, String name, String typeID, String focusID, float radius, float coronaSize, float windBurnLevel, float flareProbability, float crLossMult) {
+    public VeBlib_StarData(String ID, String name, String typeID, String focusID, float radius, float coronaSize, float windBurnLevel, float flareProbability, float crLossMult)
+    {
         this.ID = ID;
         this.name = name;
         this.typeID = typeID;
@@ -46,13 +60,6 @@ public class VeBlib_StarData extends VeBlib_SGTExtend {
     }
 
 
-    //endregion
-
-
-    public String ID;//unique id
-    public String name;//its name
-    public String focusID;//"" for center
-    public float radius;//radius of the star
     public float coronaSize;//size of the covid-1984
     public float windBurnLevel = -1;//idk mayn star things
     public float flareProbability = -1;//idk mayn star things

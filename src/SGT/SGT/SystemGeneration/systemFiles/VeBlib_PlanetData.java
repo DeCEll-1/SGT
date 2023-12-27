@@ -2,21 +2,23 @@ package SGT.SGT.SystemGeneration.systemFiles;
 
 public class VeBlib_PlanetData extends VeBlib_SGTExtend {
 
-    public VeBlib_PlanetData(String Id, String OrbitFocus, String Name, String TypeId, float angle, float Radius, float orbitRadius, float orbitDays) {
-        this.Id = Id;
+    public VeBlib_PlanetData()
+    {
+
+    }
+
+    public VeBlib_PlanetData(String ID, String OrbitFocus, String name, String TypeId, float angle, float radius, float orbitRadius, float orbitDays)
+    {
+        this.ID = ID;
         this.focusID = OrbitFocus;
-        this.Name = Name;
+        this.name = name;
         this.typeID = TypeId;
         this.angle = angle;
-        this.Radius = Radius;
+        this.radius = radius;
         this.orbitRadius = orbitRadius;
         this.orbitDays = orbitDays;
 
     }
-
-    public String Id;
-    public String Name;
-    public float Radius;
 
 
 }

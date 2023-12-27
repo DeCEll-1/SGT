@@ -7,6 +7,42 @@ import java.util.List;
 
 public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
 
+    public VeBlib_StarSystemData() {
+
+        this.ID = "";
+
+        this.systemX = 0;
+
+        this.systemY = 0;
+
+        this.backgroundTextureFilename = "";
+
+
+        this.starList = new ArrayList<>();
+
+        this.planetList = new ArrayList<>();
+
+        this.marketList = new ArrayList<>();
+
+        //        this.WithJunkAndChatter= WithJunkAndChatter;
+        //        this.PirateMode= PirateMode;
+
+        this.astreoidBeltDataList = new ArrayList<>();
+        this.ringBandDataList = new ArrayList<>();
+
+        this.sectorEntityTokenList = new ArrayList<>();
+
+
+        this.autoGenerateEntrancesAtGasGiants = false;
+
+        this.autoGenerateFringeJumpPoint = false;
+        this.generatePlanetConditions = false;
+
+        this.minHyperspaceRadius = 0;
+
+
+    }
+
     public VeBlib_StarSystemData(String ID, float systemX, float systemY, String backgroundTextureFilename, List<VeBlib_StarData> starList, List<VeBlib_PlanetData> planetList, List<VeBlib_MarketData> marketList, List<VeBlib_AstreoidBeltData> astreoidBeltDataList, List<VeBlib_RingBandData> ringBandDataList, List<VeBlib_SectorEntittyTokenData> sectorEntityTokenList, boolean autoGenerateEntrancesAtGasGiants, boolean autoGenerateFringeJumpPoint, boolean generatePlanetConditions, float minHyperspaceRadius) {
         this.ID = ID;
 
@@ -173,7 +209,6 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
 
     public HashMap<Integer, Object> orderHashMap;
 
-    public String ID;
     public String systemName;
 
     public float systemX;
@@ -182,15 +217,14 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
 
     public String backgroundTextureFilename;
 
-
     public List<VeBlib_StarData> starList;
 
     public List<VeBlib_PlanetData> planetList;
 
     public List<VeBlib_MarketData> marketList;
 
-//    public ArrayList<Boolean> WithJunkAndChatter;//if its null will be false
-//    public ArrayList<Boolean> PirateMode;//if its null will be false
+    //    public ArrayList<Boolean> WithJunkAndChatter;//if its null will be false
+    //    public ArrayList<Boolean> PirateMode;//if its null will be false
 
     public List<VeBlib_AstreoidBeltData> astreoidBeltDataList;
     public List<VeBlib_RingBandData> ringBandDataList;

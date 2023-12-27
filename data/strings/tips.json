@@ -12,7 +12,9 @@
     },
     { "freq": 0.001, "tip": "Should I quit being a maid Should I quit being a human" },
     { "freq": 1, "tip": "read if cute" },
-    { "freq": 1, "tip": "you are pretty today!" },
+    { "freq": 1, "tip": "hey, did you knew that youre my favorite player? dont tell the others!" },
+    { "freq": 1, "tip": "you look so pretty today!" },
+    { "freq": 1, "tip": "you make cool stuff" },
     { "freq": 0.0, "tip": "note to self: get glowes, fan is cooling my hand too much" }
   ]
 }

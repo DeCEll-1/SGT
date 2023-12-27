@@ -1,9 +1,12 @@
 package SGT.SGT.Statics;
 
 import SGT.SGT.SystemGeneration.systemFiles.VeBlib_StarSystemData;
+import SGT.SGT.test.SGT_ParseJson;
 import com.fs.starfarer.api.Global;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import sun.org.mozilla.javascript.internal.json.JsonParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,10 +18,12 @@ public class SGT_Statics {
 
     static {
         try {
+//            JSONArray starSystemJsonList = Global.getSettings().getMergedJSONForMod("data/strings/SGTSystems.json", "SGT").getJSONArray("StarSystemDataList");
+
+            SGT_ParseJson.GetJson("data/strings/SGTSystems.json");
 
 
-            starSystemList = (List<VeBlib_StarSystemData>) Global.getSettings().getMergedJSONForMod("data/strings/SGTSystems.json", "SGT").getJSONArray("StarSystemDataList");
-        } catch (JSONException | IOException e) {
+        } catch (JSONException | IOException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,16 +1,37 @@
 package SGT.SGT.SystemGeneration.systemFiles;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class VeBlib_SGTExtend {
 
-    public int order;
+    public int order = -1;
+
+
+    public String GUID;
+
+    public String ID;
+    public String name;
+
+    public float radius;
+
+    public float bandWidthInEngine = 0; //ring band
+
+    public float width = 0;//astreoid belt
+
+
+    public String systemID;
+    public String systemGUID;
 
     public float x;
     public float y;
 
-    public String ID;
-
+    public String focusID;//"" for center
+    public List<String> stuffOrbitingAround = new ArrayList<>();
     public String typeID;
-    public String focusID;
+
+    public String WhatIsThis;
 
     public float angle;
     public float orbitRadius;
