@@ -36,20 +36,20 @@
             this.TSMI_SystemGeneration = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Systems = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Stars = new System.Windows.Forms.ToolStripMenuItem();
-            this.planetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.marketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customEntitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ringBandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.astreoidBeltsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Planets = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Markets = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_CustomEntities = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_RingBands = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_AstreoidBelts = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Map = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMII_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Preferances = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_DarkMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TSSL_Saving = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSPB_Saving = new System.Windows.Forms.ToolStripProgressBar();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_Main.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -104,12 +104,12 @@
             this.TSMI_SystemGeneration.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_Systems,
             this.TSMI_Stars,
-            this.planetsToolStripMenuItem,
-            this.marketsToolStripMenuItem,
-            this.customEntitiesToolStripMenuItem,
-            this.ringBandsToolStripMenuItem,
-            this.astreoidBeltsToolStripMenuItem,
-            this.mapToolStripMenuItem});
+            this.TSMI_Planets,
+            this.TSMI_Markets,
+            this.TSMI_CustomEntities,
+            this.TSMI_RingBands,
+            this.TSMI_AstreoidBelts,
+            this.TSMI_Map});
             this.TSMI_SystemGeneration.Name = "TSMI_SystemGeneration";
             this.TSMI_SystemGeneration.Size = new System.Drawing.Size(118, 20);
             this.TSMI_SystemGeneration.Text = "System Generation";
@@ -117,7 +117,7 @@
             // TSMI_Systems
             // 
             this.TSMI_Systems.Name = "TSMI_Systems";
-            this.TSMI_Systems.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.TSMI_Systems.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
             this.TSMI_Systems.Size = new System.Drawing.Size(199, 22);
             this.TSMI_Systems.Text = "Systems";
             this.TSMI_Systems.Click += new System.EventHandler(this.TSMI_Systems_Click);
@@ -125,58 +125,58 @@
             // TSMI_Stars
             // 
             this.TSMI_Stars.Name = "TSMI_Stars";
-            this.TSMI_Stars.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.TSMI_Stars.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
             this.TSMI_Stars.Size = new System.Drawing.Size(199, 22);
             this.TSMI_Stars.Text = "Stars";
             this.TSMI_Stars.Click += new System.EventHandler(this.TSMI_Stars_Click);
             // 
-            // planetsToolStripMenuItem
+            // TSMI_Planets
             // 
-            this.planetsToolStripMenuItem.Name = "planetsToolStripMenuItem";
-            this.planetsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.planetsToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.planetsToolStripMenuItem.Text = "Planets";
-            this.planetsToolStripMenuItem.Click += new System.EventHandler(this.planetsToolStripMenuItem_Click);
+            this.TSMI_Planets.Name = "TSMI_Planets";
+            this.TSMI_Planets.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
+            this.TSMI_Planets.Size = new System.Drawing.Size(197, 22);
+            this.TSMI_Planets.Text = "Planets";
+            this.TSMI_Planets.Click += new System.EventHandler(this.planetsToolStripMenuItem_Click);
             // 
-            // marketsToolStripMenuItem
+            // TSMI_Markets
             // 
-            this.marketsToolStripMenuItem.Name = "marketsToolStripMenuItem";
-            this.marketsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.marketsToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.marketsToolStripMenuItem.Text = "Markets";
-            this.marketsToolStripMenuItem.Click += new System.EventHandler(this.marketsToolStripMenuItem_Click);
+            this.TSMI_Markets.Name = "TSMI_Markets";
+            this.TSMI_Markets.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.TSMI_Markets.Size = new System.Drawing.Size(197, 22);
+            this.TSMI_Markets.Text = "Markets";
+            this.TSMI_Markets.Click += new System.EventHandler(this.marketsToolStripMenuItem_Click);
             // 
-            // customEntitiesToolStripMenuItem
+            // TSMI_CustomEntities
             // 
-            this.customEntitiesToolStripMenuItem.Name = "customEntitiesToolStripMenuItem";
-            this.customEntitiesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.customEntitiesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.customEntitiesToolStripMenuItem.Text = "Custom Entities";
-            this.customEntitiesToolStripMenuItem.Click += new System.EventHandler(this.customEntitiesToolStripMenuItem_Click);
+            this.TSMI_CustomEntities.Name = "TSMI_CustomEntities";
+            this.TSMI_CustomEntities.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
+            this.TSMI_CustomEntities.Size = new System.Drawing.Size(197, 22);
+            this.TSMI_CustomEntities.Text = "Custom Entities";
+            this.TSMI_CustomEntities.Click += new System.EventHandler(this.customEntitiesToolStripMenuItem_Click);
             // 
-            // ringBandsToolStripMenuItem
+            // TSMI_RingBands
             // 
-            this.ringBandsToolStripMenuItem.Name = "ringBandsToolStripMenuItem";
-            this.ringBandsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.ringBandsToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.ringBandsToolStripMenuItem.Text = "Ring Bands";
-            this.ringBandsToolStripMenuItem.Click += new System.EventHandler(this.ringBandsToolStripMenuItem_Click);
+            this.TSMI_RingBands.Name = "TSMI_RingBands";
+            this.TSMI_RingBands.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
+            this.TSMI_RingBands.Size = new System.Drawing.Size(197, 22);
+            this.TSMI_RingBands.Text = "Ring Bands";
+            this.TSMI_RingBands.Click += new System.EventHandler(this.ringBandsToolStripMenuItem_Click);
             // 
-            // astreoidBeltsToolStripMenuItem
+            // TSMI_AstreoidBelts
             // 
-            this.astreoidBeltsToolStripMenuItem.Name = "astreoidBeltsToolStripMenuItem";
-            this.astreoidBeltsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.astreoidBeltsToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.astreoidBeltsToolStripMenuItem.Text = "Astreoid Belts";
-            this.astreoidBeltsToolStripMenuItem.Click += new System.EventHandler(this.astreoidBeltsToolStripMenuItem_Click);
+            this.TSMI_AstreoidBelts.Name = "TSMI_AstreoidBelts";
+            this.TSMI_AstreoidBelts.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
+            this.TSMI_AstreoidBelts.Size = new System.Drawing.Size(197, 22);
+            this.TSMI_AstreoidBelts.Text = "Astreoid Belts";
+            this.TSMI_AstreoidBelts.Click += new System.EventHandler(this.astreoidBeltsToolStripMenuItem_Click);
             // 
-            // mapToolStripMenuItem
+            // TSMI_Map
             // 
-            this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
-            this.mapToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.mapToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.mapToolStripMenuItem.Text = "Map";
-            this.mapToolStripMenuItem.Click += new System.EventHandler(this.mapToolStripMenuItem_Click);
+            this.TSMI_Map.Name = "TSMI_Map";
+            this.TSMI_Map.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
+            this.TSMI_Map.Size = new System.Drawing.Size(197, 22);
+            this.TSMI_Map.Text = "Map";
+            this.TSMI_Map.Click += new System.EventHandler(this.mapToolStripMenuItem_Click);
             // 
             // TSMI_Info
             // 
@@ -210,6 +210,13 @@
             this.TSMI_DarkMode.Text = "Switch To Dark Mode";
             this.TSMI_DarkMode.Click += new System.EventHandler(this.TSMI_DarkMode_Click);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -230,13 +237,6 @@
             // 
             this.TSPB_Saving.Name = "TSPB_Saving";
             this.TSPB_Saving.Size = new System.Drawing.Size(100, 16);
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // SGTBaseMDIContainer
             // 
@@ -267,13 +267,13 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_SystemGeneration;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Systems;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Stars;
-        private System.Windows.Forms.ToolStripMenuItem planetsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem marketsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customEntitiesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ringBandsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem astreoidBeltsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Planets;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Markets;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_CustomEntities;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_RingBands;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_AstreoidBelts;
         private System.Windows.Forms.ToolStripMenuItem closeAppToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Map;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;

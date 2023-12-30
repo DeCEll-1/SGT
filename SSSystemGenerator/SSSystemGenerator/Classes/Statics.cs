@@ -30,7 +30,7 @@ namespace SSSystemGenerator.Classes
 
         public static DirectoryInfo GameCoreCampaignFolder { get; set; } = new DirectoryInfo(GameCore.FullName + "\\data\\campaign");
 
-        public const string Version = "0" + "." + "0" + "." + "0";
+        public const string Version = "0" + "." + "0" + "." + "1";
 
         public static List<DirectoryInfo> ModsToRead { get; set; } = new List<DirectoryInfo>();//TODO: add settings and save this thing
 
