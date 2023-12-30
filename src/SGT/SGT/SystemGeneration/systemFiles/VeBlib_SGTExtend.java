@@ -28,7 +28,7 @@ public class VeBlib_SGTExtend {
     public float y;
 
     public String focusID;//"" for center
-    public List<String> stuffOrbitingAround = new ArrayList<>();
+    public String[] stuffOrbitingAround ;
     public String typeID;
 
     public String WhatIsThis;

@@ -10,8 +10,10 @@ import com.fs.starfarer.api.util.Misc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class SectorGenerationPlugin implements SectorGeneratorPlugin {
+
 
     public List<VeBlib_StarSystemData> starSystemDataList;
 
@@ -26,15 +28,23 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
 
 
             for (VeBlib_StarSystemData data : starSystemDataList) {
+
+                if (sector.getStarSystem(data.name) != null) {
+                    continue;//if the same system already exist dont generate a new one
+                }
+
                 StarSystemAPI system = sector.createStarSystem(data.ID);
                 system.getLocation().set(data.systemX, data.systemY);
                 system.setBackgroundTextureFilename(data.backgroundTextureFilename);
 
-                system.setBaseName(data.systemName);
+                system.setBaseName(data.name);
+
 
                 HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap = new HashMap<>();
 
-                for (int i = 0; i < data.astreoidBeltDataList.size() + data.marketList.size() + data.planetList.size() + data.ringBandDataList.size() + data.starList.size() + data.sectorEntityTokenList.size(); i++) {
+                data.GenerateOrderHasMap();
+
+                for (int i = 0; i < data.orderHashMap.size(); i++) {
 
                     if (data.orderHashMap.get(i) instanceof VeBlib_StarData) {
                         //çalış
@@ -91,7 +101,18 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                                 planetData.orbitDays
                         );
 
+                        if (planetData.orbitLocationMode == 0) {
+                            planet.setLocation(planetData.x, planetData.y);
+                        } else if (planetData.orbitLocationMode == 1) {
+                            planet.setCircularOrbit(SectorEntittyTokenHashMap.get(planetData.focusID), planetData.angle, planetData.orbitRadius, planetData.orbitDays);
+                        } else if (planetData.orbitLocationMode == 2) {
+                            planet.setCircularOrbitPointingDown(SectorEntittyTokenHashMap.get(planetData.focusID), planetData.angle, planetData.orbitRadius, planetData.orbitDays);
+                        } else {//orbitLocationMode = 3
+                            planet.setCircularOrbitWithSpin(SectorEntittyTokenHashMap.get(planetData.focusID), planetData.angle, planetData.orbitRadius, planetData.orbitDays, planetData.minSpin, planetData.maxSpin);
+                        }
+
                         SectorEntittyTokenHashMap.put(planetData.ID, planet);
+
 
                     }
 
@@ -245,9 +266,22 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
                     }
                 }
 
-                if (data.autoGenerateEntrancesAtGasGiants || data.autoGenerateFringeJumpPoint || data.generatePlanetConditions) {
-                    system.autogenerateHyperspaceJumpPoints(data.autoGenerateEntrancesAtGasGiants, data.autoGenerateFringeJumpPoint, data.generatePlanetConditions);
+                if (data.starList.size() == 0) {
+
+//                    system.initNonStarCenter();
+                    PlanetAPI star = system.initStar(
+                            "SGT_SystemCenter" + "SGTNebulaSystemTempInitStar" + data.systemName,
+                            "SGT_SystemCenter",
+                            0,
+                            0
+                    );
+
                 }
+
+                system.autogenerateHyperspaceJumpPoints(data.autoGenerateEntrancesAtGasGiants, data.autoGenerateFringeJumpPoint, data.generatePlanetConditions);
+
+                system.removeEntity(system.getStar());
+
 
                 HyperspaceTerrainPlugin hyperspaceTerrainPlugin = (HyperspaceTerrainPlugin) Misc.getHyperspaceTerrain().getPlugin(); //get instance of hyperspace terrain
                 NebulaEditor nebulaEditor = new NebulaEditor(hyperspaceTerrainPlugin); //object used to make changes to hyperspace nebula
@@ -260,4 +294,5 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
             }
         }
     }
+
 }
