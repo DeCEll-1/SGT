@@ -69,7 +69,7 @@ Undo: Restores last deleted item **for this session**
     <img src="./graphics/READMEImages/SGT_OrbitForm.png" alt="Main Form">
 </p>
 
-<h3>  Values: </h3> 
+<h4>  Values: </h4> 
 
 Orbit Mode: The selected style of "orbit".
 
@@ -93,7 +93,7 @@ Orbit Days: The amount of days the item takes to complete an orbit
 Min Spin, Max Spin: < spin amount should change, i dont know exactly how >
 
 
-<h5 id="Systems">Systems  </h5>
+<h3 id="Systems">Systems  </h3>
 
 Systems can be generated here
 
@@ -101,7 +101,7 @@ Systems can be generated here
     <img src="./graphics/READMEImages/SGT_SystemsForm.png" alt="Main Form">
 </p>
 
-<h3>  Values: </h3> 
+<h4>  Values: </h4> 
   Selected System: The system selected for editing, select `New System` to generate a new one.
 
   
@@ -122,25 +122,25 @@ Systems can be generated here
   
   Auto Generate Fringe Jump Point: Automatical jump point creation
 
-<h5 id="Stars">Stars  </h5>     
+<h3 id="Stars">Stars  </h3>     
 
 <p align="center">
     <img src="./graphics/READMEImages/SGT_StarsForm.png" alt="Main Form">
 </p>
 
-<h3>  Values: </h3> 
+<h4>  Values: </h4> 
 
 
 
 
 
 
-<h5 id="Planets">Planets  </h5>     
-<h5 id="Markets">Markets  </h5>     
-<h5 id="CustomEntities">Custom Entities  </h5>     
-<h5 id="RingBands">Ring Bands  </h5>     
-<h5 id="AstreoidBelts">Astreoid Belts  </h5>     
-<h5 id="Map">Map </h5>     
+<h3 id="Planets">Planets  </h3>     
+<h3 id="Markets">Markets  </h3>     
+<h3 id="CustomEntities">Custom Entities  </h3>     
+<h3 id="RingBands">Ring Bands  </h3>     
+<h3 id="AstreoidBelts">Astreoid Belts  </h3>     
+<h3 id="Map">Map </h3>     
 
 
 
