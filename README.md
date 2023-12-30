@@ -15,14 +15,14 @@ Menu items
     - [Save](#Save)
     - [Export](#Export)
   - [System Generation](#File)
-        - [Systems](#Systems)
-        - [Stars](#Stars)
-        - [Planets](#Planets)
-        - [Markets](#Markets)
-        - [Custom Entities](#CustomEntities)
-        - [Ring Bands](#RingBands)
-        - [Astreoid Belts](#AstreoidBelts)
-        - [Map](#Map)
+    - [Systems](#Systems)
+    - [Stars](#Stars)
+    - [Planets](#Planets)
+    - [Markets](#Markets)
+    - [Custom Entities](#CustomEntities)
+    - [Ring Bands](#RingBands)
+    - [Astreoid Belts](#AstreoidBelts)
+    - [Map](#Map)
   - [Info](#Info)
   - [Preferances](#Preferances)
     - [Settings](#Settings)
@@ -73,19 +73,33 @@ Systems can be generated here
     <img src="./graphics/READMEImages/SGT_SystemsForm.png" alt="Main Form">
 </p>
 
-- Values: 
-  - Selected System: The system selected for editing, select `New System` to generate a new one.
-  - ID: The in-game ID for the system, must be unique from every other system ID that will be generated in-game (tool doesnt allow creation of items with the same id)
-  - Name: An optional variable for the system, the name will be selected randomly if not inputted
-  - X,Y: The coordinates of the system over hyper-space
-  - Background Texture Path: The path of the background image for the system, must be relative to the root of the mod 
-    - As example: `graphics/backgrounds/background3.jpg` will work but `C:/Program Files (x86)/Fractal Softworks/0.96a-RC9/mods/SGT/graphics/backgrounds/background3.jpg` will not work
-  - MinHyperspaceRadius: the radius which will remove the hyperspace clouds around the system.
-  - Auto Generate Enterances At Gas Giants: If set to true gas giants will generate enterances at hyperspace
-  - Generate Planet Conditions: If set to true planets will have automatic condition generation
-  - Auto Generate Fringe Jump Point: Automatical jump point creation
+<h3>  Values: </h3> 
+  Selected System: The system selected for editing, select `New System` to generate a new one.
+
+  
+  ID: The in-game ID for the system, must be unique from every other system ID that will be generated in-game (tool doesnt allow creation of items with the same id)
+  
+  Name: An optional variable for the system, the name will be selected randomly if not inputted
+  
+  X,Y: The coordinates of the system over hyper-space
+  
+  Background Texture Path: The path of the background image for the system, must be relative to the root of the mod 
+   - As example: `graphics/backgrounds/background3.jpg` will work but `C:/Program Files (x86)/Fractal Softworks/0.96a-RC9/mods/SGT/graphics/backgrounds/background3.jpg` will not work
+  
+  MinHyperspaceRadius: the radius which will remove the hyperspace clouds around the system.
+  
+  Auto Generate Enterances At Gas Giants: If set to true gas giants will generate enterances at hyperspace
+  
+  Generate Planet Conditions: If set to true planets will have automatic condition generation
+  
+  Auto Generate Fringe Jump Point: Automatical jump point creation
 
 <h5 id="Stars">Stars  </h5>     
+
+<p align="center">
+    <img src="./graphics/READMEImages/SGT_StarsForm.png" alt="Main Form">
+</p>
+
 
 
 
