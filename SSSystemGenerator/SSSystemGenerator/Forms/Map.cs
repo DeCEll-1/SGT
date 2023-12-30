@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,6 +100,7 @@ namespace SSSystemGenerator.Forms
 
         private void pnl_Map_MouseWheel(object sender, MouseEventArgs e)
         {//https://stackoverflow.com/questions/45325726/move-shapes-on-a-panel-by-mouse
+            //zoomValue = e.Delta > 0 ? zoomValue == 0 ? zoomValue = 1 : zoomValue * zoomValue : -(float)Math.Sqrt(zoomValue);
             zoomValue += e.Delta > 0 ? 0.3f : -0.3f;
 
             try
@@ -109,7 +111,7 @@ namespace SSSystemGenerator.Forms
             {
             }
 
-            if (zoomValue < -1f || zoomValue == -1f)
+            if (zoomValue <= -1f || zoomValue > float.MaxValue)
             {
                 zoomValue = -0.99f;
                 RefreshPanel();
@@ -180,7 +182,6 @@ namespace SSSystemGenerator.Forms
             UpdateColors();
 
             this.MouseWheel += new MouseEventHandler(pnl_Map_MouseWheel);
-            this.MouseMove += new MouseEventHandler(pnl_Map_MouseWheel);
 
             Statics.Map = this;
 
@@ -246,7 +247,7 @@ namespace SSSystemGenerator.Forms
                 lbl_PanelInfo.Text =
                     "Panel Values:\nHeight: " + pnl_Map.Height +
                     "\nWidth: " + pnl_Map.Width +
-                    "\nZoom Value: " + (zoomValue > 0 ? zoomValue.ToString().Substring(0, 4) : zoomValue.ToString().Substring(0, 5)) +
+                    "\nZoom Value: " + (zoomValue > 0 && zoomValue.ToString().Length > 5 ? zoomValue.ToString().Substring(0, 4) : zoomValue.ToString()) +
                     "\nCenter: " + renderCenter.X + " , " + renderCenter.Y;
             }
             catch (Exception ex)
@@ -286,7 +287,7 @@ namespace SSSystemGenerator.Forms
                 lines.Add(
                     new Lines(
                             new PointF(i, 0),
-                            new PointF(i, pnl_Map.Height),
+                            new PointF(i, 1000f),
                             lineThickness,
                             Finals.MAP_GRID_LINE_COLOR
                         )
@@ -295,7 +296,7 @@ namespace SSSystemGenerator.Forms
                 lines.Add(
                     new Lines(
                             new PointF(0, i),
-                            new PointF(pnl_Map.Width, i),
+                            new PointF(1000f, i),
                             lineThickness,
                             Finals.MAP_GRID_LINE_COLOR
                         )
@@ -333,8 +334,8 @@ namespace SSSystemGenerator.Forms
                 if (extend.orbitLocationMode == 0)//location is determined by coordinate
                 {
                     PointF center = new PointF(
-                    adjustedExtend.x + pnl_Map.Width / 2,
-                    adjustedExtend.y + pnl_Map.Height / 2
+                    adjustedExtend.x + 1000f / 2,
+                    adjustedExtend.y + 1000f / 2
                     );
 
                     Circles extendCircle = new Circles(
@@ -363,8 +364,8 @@ namespace SSSystemGenerator.Forms
                     #region ring for showing that this circle orbits another one
 
                     PointF centerForOrbitRing = new PointF(
-                          focusPoint.X + pnl_Map.Width / 2,
-                          focusPoint.Y + pnl_Map.Height / 2
+                          focusPoint.X + 1000f / 2,
+                          focusPoint.Y + 1000f   / 2
                        );
 
 
@@ -385,8 +386,8 @@ namespace SSSystemGenerator.Forms
 
                     PointF center = Helper.GetPointOnCircumference(
                        new PointF(
-                           focusPoint.X + pnl_Map.Width / 2,
-                           focusPoint.Y + pnl_Map.Height / 2
+                           focusPoint.X + 1000f / 2,
+                           focusPoint.Y + 1000f / 2
                         ),
                         extend.angle,
                         adjustedExtend.orbitRadius
@@ -541,6 +542,19 @@ namespace SSSystemGenerator.Forms
             RefreshPanel();
         }
 
+        #region FormSize
+        private void btn_FormSizeDecrease_Click(object sender, EventArgs e)
+        {
+            this.Width += this.Width > 100 ? -100 : 0;
+            this.Height += this.Height > 100 ? -100 : 0;
+        }
+
+        private void btn_FormSizeIncrease_Click(object sender, EventArgs e)
+        {
+            this.Width += 100;
+            this.Height += 100;
+        }
+        #endregion
     }
 
 

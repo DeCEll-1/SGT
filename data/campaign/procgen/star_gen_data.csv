@@ -1,0 +1,3 @@
+id,age,tags,freqYOUNG,freqAVERAGE,freqOLD,minRadius,maxRadius,habZoneStart,probOrbits,minOrbits,maxOrbits,coronaMin,coronaMult,coronaVar,solarWind,minFlare,maxFlare,crLossMult,lightColorMin,lightColorMax
+#nebula_center_average,ANY,NEBULA,0,5,0,0,0,-20,1,3,10,0,0,0,0,0,0,0,125 125 125,125 125 125
+SGT_SystemCenter,ANY,,0,0,0,0,0,0,1,3,10,0,0,0,0,0,0,0,125 125 125 0,125 125 125 0
