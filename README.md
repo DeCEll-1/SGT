@@ -65,6 +65,34 @@ Delete X: Deletes the item for **this session**.
 
 Undo: Restores last deleted item **for this session**
 
+<p align="center">
+    <img src="./graphics/READMEImages/SGT_OrbitForm.png" alt="Main Form">
+</p>
+
+<h3>  Values: </h3> 
+
+Orbit Mode: The selected style of "orbit".
+
+- 0: Fixed Location. Only requires X and Y.
+
+- 1: Circular Orbit. Only requires Focus, Angle, Orbit Radius and Orbit Days.
+
+- 2: Circular Orbit Pointing Down. Same as 1 but the orbiting item points down into its orbit.
+
+- 3: Circular Orbit With Spin. Same as 1 but the item spins around itself, Requires Min Spin and Max Spin on top of 1s requirenments.
+
+
+X, Y: Coordinates of the item.
+
+Angle: The angle which the item spawns at, center being the focus.
+
+Orbit Radius: The furtherness of the item from its focus.
+
+Orbit Days: The amount of days the item takes to complete an orbit
+
+Min Spin, Max Spin: < spin amount should change, i dont know exactly how >
+
+
 <h5 id="Systems">Systems  </h5>
 
 Systems can be generated here
@@ -99,6 +127,10 @@ Systems can be generated here
 <p align="center">
     <img src="./graphics/READMEImages/SGT_StarsForm.png" alt="Main Form">
 </p>
+
+<h3>  Values: </h3> 
+
+
 
 
 
