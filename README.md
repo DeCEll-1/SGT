@@ -4,7 +4,7 @@ open the exe under SGTExe (cant relocate)
 
 do stuff
 
-save it (dont forget to save)
+save it (dont forget to save)(can use ctrl s)
 
 open game
 
