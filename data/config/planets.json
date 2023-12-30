@@ -1,0 +1,20 @@
+{
+	"SGT_SystemCenter":{
+		"name":"",
+		"tilt":0,
+		"pitch":0,
+		"rotation":0,
+		"planetColor":[0,0,0,0],
+		"atmosphereThickness":0,
+		"atmosphereThicknessMin":0,
+		"atmosphereColor":[0,0,0,0],
+		"texture":"",
+		"icon":"graphics/starscape/nebula_center.png",
+		"starscapeIcon":"graphics/starscape/nebula_center.png",
+		"iconColor":[255,161,46,255],
+		"isStar":true,
+		"isNebulaCenter":true,
+		"scaleMultMapIcon":2,
+		"scaleMultStarscapeIcon":0
+	}
+}

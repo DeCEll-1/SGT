@@ -1,7 +1,13 @@
 {
   "tips": [
-    { "freq": 0.001, "tip": "why people dont walk fast? dont they have stuff to do?" },
-    { "freq": 0.001, "tip": "i want to get my own house, everythingll be much easier then" },
+    {
+      "freq": 0.001,
+      "tip": "why people dont walk fast? dont they have stuff to do?"
+    },
+    {
+      "freq": 0.001,
+      "tip": "i want to get my own house, everythingll be much easier then"
+    },
     {
       "freq": 0.001,
       "tip": "does anyone actually care about kys? its not like anyone wants anyone to die irl, we just mean that youre acting weirdly. atleast me"
@@ -10,11 +16,69 @@
       "freq": 0.001,
       "tip": "why do i work on this when i have a more important project? do i dont wanna work with it? is it too boring? too hard? or is this just relatively more interesting? or is it just for the attention i couldnt get with triangles?, damn triangles, as much as i love them, they doesnt work do they?"
     },
-    { "freq": 0.001, "tip": "Should I quit being a maid Should I quit being a human" },
-    { "freq": 1, "tip": "read if cute" },
-    { "freq": 1, "tip": "hey, did you knew that youre my favorite player? dont tell the others!" },
-    { "freq": 1, "tip": "you look so pretty today!" },
-    { "freq": 1, "tip": "you make cool stuff" },
-    { "freq": 0.0, "tip": "note to self: get glowes, fan is cooling my hand too much" }
+    {
+      "freq": 0.001,
+      "tip": "Should I quit being a maid Should I quit being a human"
+    },
+    {
+      "freq": 0.001,
+      "tip": "i dont understand why people would put \"trans\" rights on tips & stuff. really, do you think that will effect anything at all? or making ships with those colors, its a weird way to suppost a group, if it supports at all"
+    },
+    {
+      "freq": 0.001,
+      "tip": "*\"java i regret\"*\n    -"
+    },
+    {
+      "freq": 1,
+      "tip": "Still Alive!"
+    },
+    {
+      "freq": 1,
+      "tip": "We're Rich!"
+    },
+    {
+      "freq": 1,
+      "tip": "Ludd stole the precious thing"
+    },
+    {
+      "freq": 1,
+      "tip": "\"Hey, VSauce here. This system looks pretty safe.\n Or does it?\""
+    },
+    {
+      "freq": 1,
+      "tip": "read if cute"
+    },
+    {
+      "freq": 1,
+      "tip": "hey, did you knew that youre my favorite player? dont tell the others!"
+    },
+    {
+      "freq": 1,
+      "tip": "you look so pretty today!"
+    },
+    {
+      "freq": 1,
+      "tip": "you make cool stuff"
+    },
+    {
+      "freq": 1,
+      "tip": "you can do it!"
+    },
+    {
+      "freq": 1,
+      "tip": "dont worry, it will get better :)"
+    },
+    {
+      "freq": 1,
+      "tip": "you are the best in the sector!"
+    },
+    {
+      "freq": 0.0,
+      "tip": "note to self: get glowes, fan is cooling my hand too much // thankfully its winter now so it wont happen, atleast currently, fuck summer"
+    },
+    {
+      "freq": 0.0,
+      "tip": "i like mineral water dude, the ones in glass bottles are just pure perfection"
+    }
   ]
 }

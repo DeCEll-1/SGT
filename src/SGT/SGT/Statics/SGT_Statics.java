@@ -1,19 +1,13 @@
 package SGT.SGT.Statics;
 
 import SGT.SGT.SystemGeneration.systemFiles.VeBlib_StarSystemData;
-import SGT.SGT.test.SGT_ParseJson;
-import com.fs.starfarer.api.Global;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import sun.org.mozilla.javascript.internal.json.JsonParser;
+import SGT.SGT.Parser.SGT_ParseJson;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class SGT_Statics {
-
+    @Deprecated
     public static List<VeBlib_StarSystemData> starSystemList;
 
     static {
@@ -23,7 +17,7 @@ public class SGT_Statics {
             SGT_ParseJson.GetJson("data/strings/SGTSystems.json");
 
 
-        } catch (JSONException | IOException | InstantiationException | IllegalAccessException e) {
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
