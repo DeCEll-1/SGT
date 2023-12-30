@@ -46,7 +46,7 @@ Closes the app, ctrl q for shortcut
 
 <h5 id="Save">Save</h5>
 
-Saves the JSON file thats required for the system generation **not generated automatically when exiting**
+Saves the JSON file thats required for the system generation. **Not generated automatically when exiting**
 
 
 <h5 id="Export">Export</h5>
@@ -60,7 +60,9 @@ Everything that will be generated in-game can be found here.
 <h3>Common Controls</h3>
 
 Add X: Saves the item (doesnt save the json). 
+
 Delete X: Deletes the item for **this session**.
+
 Undo: Restores last deleted item **for this session**
 
 <h5 id="Systems">Systems  </h5>
@@ -77,7 +79,7 @@ Systems can be generated here
   - Name: An optional variable for the system, the name will be selected randomly if not inputted
   - X,Y: The coordinates of the system over hyper-space
   - Background Texture Path: The path of the background image for the system, must be relative to the root of the mod 
-        - As example: `graphics/backgrounds/background3.jpg` will work but `C:/Program Files (x86)/Fractal Softworks/0.96a-RC9/mods/SGT/graphics/backgrounds/background3.jpg` will not work
+    - As example: `graphics/backgrounds/background3.jpg` will work but `C:/Program Files (x86)/Fractal Softworks/0.96a-RC9/mods/SGT/graphics/backgrounds/background3.jpg` will not work
   - MinHyperspaceRadius: the radius which will remove the hyperspace clouds around the system.
   - Auto Generate Enterances At Gas Giants: If set to true gas giants will generate enterances at hyperspace
   - Generate Planet Conditions: If set to true planets will have automatic condition generation
