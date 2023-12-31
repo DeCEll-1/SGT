@@ -26,7 +26,11 @@
     },
     {
       "freq": 0.001,
-      "tip": "*\"java i regret\"*\n    -"
+      "tip": "*\"java is regret, kotlin is regret\"*\n    -"
+    },
+    {
+      "freq": 0.001,
+      "tip": "*https://youtube.com/clip/Ugkxu48ohe0Uc3aJcFuQL30pGPAYJR2wSQF9?si=yh4xmbABjNbLMaSi"
     },
     {
       "freq": 1,
