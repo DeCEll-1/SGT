@@ -17,7 +17,8 @@ namespace SSSystemGenerator.Classes
         public static Color DARK_MODE_FG = Color.FromArgb(255, 251, 251, 254);
         public static Color DARK_MODE_BORDER = Color.FromArgb(255, 43, 42, 51);
 
-        public static Bitmap DARK_MODE_REFRESH_IMAGE_PATH = Properties.Resources.UndoDarkMode;
+        public static Bitmap DARK_MODE_REFRESH_IMAGE = Properties.Resources.UndoDarkMode;
+        public static Bitmap DARK_MODE_CLONE_IMAGE = Properties.Resources.CloneDarkMode;
 
 
         [ObsoleteAttribute]
@@ -32,7 +33,8 @@ namespace SSSystemGenerator.Classes
         public static Color LIGHT_MODE_FG = SystemColors.WindowText;
         public static Color LIGHT_MODE_BORDER = SystemColors.ActiveBorder;
 
-        public static Bitmap LIGHT_MODE_REFRESH_IMAGE_PATH = Properties.Resources.UndoLightMode;
+        public static Bitmap LIGHT_MODE_REFRESH_IMAGE = Properties.Resources.UndoLightMode;
+        public static Bitmap LIGHT_MODE_CLONE_IMAGE = Properties.Resources.CloneLightMode;
 
 
         [ObsoleteAttribute]

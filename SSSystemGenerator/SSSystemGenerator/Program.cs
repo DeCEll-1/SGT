@@ -18,10 +18,6 @@ namespace SSSystemGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            fileHelper.SetupFiles();//generate the data/strings/STGSystems.json
-
-            fileHelper.UpdateStaticWithSystemJson();
-
             object s = Statics.EXEPath;
             s = Statics.JSONPath;
             s = Statics.ModFolderRoot;

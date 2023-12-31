@@ -28,7 +28,7 @@ namespace SSSystemGenerator.Forms
             Load();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls);}
+        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
         #region focusStuff
 
@@ -189,6 +189,17 @@ namespace SSSystemGenerator.Forms
             tb_ID.Text = item.ID;
             tb_Name.Text = item.name;
             tb_TypeID.Text = item.typeID;
+
+            lbl_Order.Text = "Order: " + item.order;
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (string stuffOrbitingAround in item.stuffOrbitingAround)
+            {
+                sb.Append(stuffOrbitingAround + "\n");
+            }
+
+            lbl_StuffOrbitingAround.Text = "Stuff Orbiting Around :\n" + sb.ToString();
         }
 
         //reset extend elements on the form to default values
@@ -321,7 +332,6 @@ namespace SSSystemGenerator.Forms
 
         private void update(VeBlib_PlanetData planetData)
         {
-
 
             updateExtends(planetData);
 
@@ -500,7 +510,16 @@ namespace SSSystemGenerator.Forms
 
         private void btn_PlanetsRefresh_Click(object sender, EventArgs e) { UpdatePlanets(); }
 
+        private void btn_Clone_Click(object sender, EventArgs e)
+        {
+            tb_ID.Text += " / " + Guid.NewGuid().ToString().Substring(0, 4);
+
+            AddPlanet();
+
+        }
+
         #endregion
+
 
     }
 }

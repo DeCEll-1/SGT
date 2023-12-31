@@ -81,7 +81,7 @@
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
             this.closeAppToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeAppToolStripMenuItem.Text = "Close App";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 
@@ -89,14 +89,14 @@
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // TSMI_SystemGeneration
@@ -118,7 +118,7 @@
             // 
             this.TSMI_Systems.Name = "TSMI_Systems";
             this.TSMI_Systems.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.TSMI_Systems.Size = new System.Drawing.Size(199, 22);
+            this.TSMI_Systems.Size = new System.Drawing.Size(197, 22);
             this.TSMI_Systems.Text = "Systems";
             this.TSMI_Systems.Click += new System.EventHandler(this.TSMI_Systems_Click);
             // 
@@ -126,7 +126,7 @@
             // 
             this.TSMI_Stars.Name = "TSMI_Stars";
             this.TSMI_Stars.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.TSMI_Stars.Size = new System.Drawing.Size(199, 22);
+            this.TSMI_Stars.Size = new System.Drawing.Size(197, 22);
             this.TSMI_Stars.Text = "Stars";
             this.TSMI_Stars.Click += new System.EventHandler(this.TSMI_Stars_Click);
             // 
@@ -274,7 +274,6 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_AstreoidBelts;
         private System.Windows.Forms.ToolStripMenuItem closeAppToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Map;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Info;
@@ -284,5 +283,6 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_Preferances;
         private System.Windows.Forms.ToolStripMenuItem TSMI_DarkMode;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }

@@ -46,7 +46,7 @@ Closes the app, ctrl q for shortcut
 
 <h5 id="Save">Save</h5>
 
-Saves the JSON file thats required for the system generation. **Not generated automatically when exiting**
+Saves the JSON file thats required for the system generation. Auto save is on my default when closing the app.
 
 
 <h5 id="Export">Export</h5>

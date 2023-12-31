@@ -318,7 +318,7 @@ namespace SSSystemGenerator.Forms
                 //one grid should be 1k
 
 
-                Extend adjustedExtend = Helper.SSCoordinatesToPanelCoordinates(extend, 26000 / pnl_Map.Height);
+                Extend adjustedExtend = Helper.SSCoordinatesToPanelCoordinates(extend, 26000 / 1000);
 
 
                 bool filled = true;
@@ -359,13 +359,13 @@ namespace SSSystemGenerator.Forms
 
                     PointF focusPoint = Helper.GetLocationOfFocus(focusExtend);
 
-                    focusPoint = Helper.SSPointToPanelPoint(focusPoint, 26000 / pnl_Map.Height);
+                    focusPoint = Helper.SSPointToPanelPoint(focusPoint, 26000 / 1000);
 
                     #region ring for showing that this circle orbits another one
 
                     PointF centerForOrbitRing = new PointF(
                           focusPoint.X + 1000f / 2,
-                          focusPoint.Y + 1000f   / 2
+                          focusPoint.Y + 1000f / 2
                        );
 
 

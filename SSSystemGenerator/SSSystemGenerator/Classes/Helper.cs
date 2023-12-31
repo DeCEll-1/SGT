@@ -1023,6 +1023,11 @@ namespace SSSystemGenerator.Classes
 
         #region misc
 
+        public static bool IsSaving()
+        {
+            return JsonHelper.saving;
+        }
+
         public static CSVs GetCSV()
         {
             return Statics.csvs;
@@ -1220,6 +1225,10 @@ namespace SSSystemGenerator.Classes
             if (component.Name.Contains("Refresh") || component.Name.Contains("Undo"))
             {
                 component.BackgroundImage = RefreshButton();
+            }
+            if (component.Name.Contains("Clone"))
+            {
+                component.BackgroundImage = CloneButton();
             }
 
             //component.EnabledChanged -= EnabledColorUpdateEvent;
@@ -1479,9 +1488,17 @@ namespace SSSystemGenerator.Classes
         public static Bitmap RefreshButton()
         {
             if (Statics.colorMode)//lightMode
-            { return Colors.LIGHT_MODE_REFRESH_IMAGE_PATH; }
+            { return Colors.LIGHT_MODE_REFRESH_IMAGE; }
             else
-            { return Colors.DARK_MODE_REFRESH_IMAGE_PATH; }
+            { return Colors.DARK_MODE_REFRESH_IMAGE; }
+        }
+
+        public static Bitmap CloneButton()//make those generalised
+        {
+            if (Statics.colorMode)//lightMode
+            { return Colors.LIGHT_MODE_CLONE_IMAGE; }
+            else
+            { return Colors.DARK_MODE_CLONE_IMAGE; }
         }
 
         public static Color Hover()

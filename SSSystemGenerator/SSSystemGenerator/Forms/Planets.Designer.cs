@@ -37,8 +37,6 @@
             this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.btn_Planet = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
-            this.btn_Undo = new System.Windows.Forms.Button();
-            this.btn_FocusRefresh = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tb_Info = new System.Windows.Forms.TextBox();
@@ -64,8 +62,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.tb_ID = new System.Windows.Forms.TextBox();
-            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
             this.btn_PlanetsRefresh = new System.Windows.Forms.Button();
+            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
+            this.btn_FocusRefresh = new System.Windows.Forms.Button();
+            this.btn_Clone = new System.Windows.Forms.Button();
+            this.btn_Undo = new System.Windows.Forms.Button();
+            this.lbl_Order = new System.Windows.Forms.Label();
+            this.lbl_StuffOrbitingAround = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinSpin)).BeginInit();
@@ -100,7 +103,7 @@
             -2147483648});
             this.nud_Radius.Name = "nud_Radius";
             this.nud_Radius.Size = new System.Drawing.Size(72, 20);
-            this.nud_Radius.TabIndex = 5;
+            this.nud_Radius.TabIndex = 6;
             // 
             // ComboBox_Planets
             // 
@@ -145,10 +148,10 @@
             // btn_Planet
             // 
             this.btn_Planet.Enabled = false;
-            this.btn_Planet.Location = new System.Drawing.Point(11, 380);
+            this.btn_Planet.Location = new System.Drawing.Point(12, 389);
             this.btn_Planet.Name = "btn_Planet";
-            this.btn_Planet.Size = new System.Drawing.Size(179, 46);
-            this.btn_Planet.TabIndex = 15;
+            this.btn_Planet.Size = new System.Drawing.Size(136, 37);
+            this.btn_Planet.TabIndex = 17;
             this.btn_Planet.Text = "Add Planet";
             this.btn_Planet.UseVisualStyleBackColor = true;
             this.btn_Planet.Click += new System.EventHandler(this.btn_Planet_Click);
@@ -161,34 +164,10 @@
             this.btn_Delete.Location = new System.Drawing.Point(11, 432);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(136, 36);
-            this.btn_Delete.TabIndex = 16;
+            this.btn_Delete.TabIndex = 19;
             this.btn_Delete.Text = "Delete Planet";
             this.btn_Delete.UseVisualStyleBackColor = true;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
-            // 
-            // btn_Undo
-            // 
-            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_Undo.Location = new System.Drawing.Point(153, 432);
-            this.btn_Undo.Name = "btn_Undo";
-            this.btn_Undo.Size = new System.Drawing.Size(37, 36);
-            this.btn_Undo.TabIndex = 17;
-            this.btn_Undo.UseVisualStyleBackColor = true;
-            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
-            // 
-            // btn_FocusRefresh
-            // 
-            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_FocusRefresh.Location = new System.Drawing.Point(354, 64);
-            this.btn_FocusRefresh.Name = "btn_FocusRefresh";
-            this.btn_FocusRefresh.Size = new System.Drawing.Size(22, 22);
-            this.btn_FocusRefresh.TabIndex = 83;
-            this.btn_FocusRefresh.UseVisualStyleBackColor = true;
-            this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click);
             // 
             // label14
             // 
@@ -232,7 +211,7 @@
             this.ComboBox_OrbitMode.Location = new System.Drawing.Point(199, 25);
             this.ComboBox_OrbitMode.Name = "ComboBox_OrbitMode";
             this.ComboBox_OrbitMode.Size = new System.Drawing.Size(177, 21);
-            this.ComboBox_OrbitMode.TabIndex = 6;
+            this.ComboBox_OrbitMode.TabIndex = 7;
             this.ComboBox_OrbitMode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_OrbitMode_SelectedIndexChanged);
             // 
             // ComboBox_FocusID
@@ -243,7 +222,8 @@
             this.ComboBox_FocusID.Location = new System.Drawing.Point(199, 64);
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
             this.ComboBox_FocusID.Size = new System.Drawing.Size(149, 21);
-            this.ComboBox_FocusID.TabIndex = 7;
+            this.ComboBox_FocusID.TabIndex = 8;
+            this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // label6
             // 
@@ -315,7 +295,8 @@
             -2147483648});
             this.nud_OrbitDays.Name = "nud_OrbitDays";
             this.nud_OrbitDays.Size = new System.Drawing.Size(69, 20);
-            this.nud_OrbitDays.TabIndex = 12;
+            this.nud_OrbitDays.TabIndex = 14;
+            this.nud_OrbitDays.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // nud_MinSpin
             // 
@@ -333,7 +314,8 @@
             -2147483648});
             this.nud_MinSpin.Name = "nud_MinSpin";
             this.nud_MinSpin.Size = new System.Drawing.Size(69, 20);
-            this.nud_MinSpin.TabIndex = 13;
+            this.nud_MinSpin.TabIndex = 15;
+            this.nud_MinSpin.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // label8
             // 
@@ -360,7 +342,8 @@
             -2147483648});
             this.nud_MaxSpin.Name = "nud_MaxSpin";
             this.nud_MaxSpin.Size = new System.Drawing.Size(69, 20);
-            this.nud_MaxSpin.TabIndex = 14;
+            this.nud_MaxSpin.TabIndex = 16;
+            this.nud_MaxSpin.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // nud_OrbitRadius
             // 
@@ -378,7 +361,8 @@
             -2147483648});
             this.nud_OrbitRadius.Name = "nud_OrbitRadius";
             this.nud_OrbitRadius.Size = new System.Drawing.Size(69, 20);
-            this.nud_OrbitRadius.TabIndex = 11;
+            this.nud_OrbitRadius.TabIndex = 13;
+            this.nud_OrbitRadius.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // nud_Angle
             // 
@@ -396,7 +380,8 @@
             -2147483648});
             this.nud_Angle.Name = "nud_Angle";
             this.nud_Angle.Size = new System.Drawing.Size(69, 20);
-            this.nud_Angle.TabIndex = 10;
+            this.nud_Angle.TabIndex = 12;
+            this.nud_Angle.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // nud_Y
             // 
@@ -414,7 +399,8 @@
             -2147483648});
             this.nud_Y.Name = "nud_Y";
             this.nud_Y.Size = new System.Drawing.Size(69, 20);
-            this.nud_Y.TabIndex = 9;
+            this.nud_Y.TabIndex = 11;
+            this.nud_Y.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // nud_X
             // 
@@ -432,7 +418,8 @@
             -2147483648});
             this.nud_X.Name = "nud_X";
             this.nud_X.Size = new System.Drawing.Size(69, 20);
-            this.nud_X.TabIndex = 8;
+            this.nud_X.TabIndex = 10;
+            this.nud_X.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // label13
             // 
@@ -448,7 +435,7 @@
             this.tb_TypeID.Location = new System.Drawing.Point(11, 182);
             this.tb_TypeID.Name = "tb_TypeID";
             this.tb_TypeID.Size = new System.Drawing.Size(176, 20);
-            this.tb_TypeID.TabIndex = 4;
+            this.tb_TypeID.TabIndex = 5;
             this.tb_TypeID.TextChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // label16
@@ -474,15 +461,27 @@
             this.tb_Name.Location = new System.Drawing.Point(11, 143);
             this.tb_Name.Name = "tb_Name";
             this.tb_Name.Size = new System.Drawing.Size(176, 20);
-            this.tb_Name.TabIndex = 3;
+            this.tb_Name.TabIndex = 4;
             // 
             // tb_ID
             // 
             this.tb_ID.Location = new System.Drawing.Point(11, 104);
             this.tb_ID.Name = "tb_ID";
             this.tb_ID.Size = new System.Drawing.Size(176, 20);
-            this.tb_ID.TabIndex = 2;
+            this.tb_ID.TabIndex = 3;
             this.tb_ID.TextChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
+            // 
+            // btn_PlanetsRefresh
+            // 
+            this.btn_PlanetsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_PlanetsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_PlanetsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_PlanetsRefresh.Location = new System.Drawing.Point(165, 65);
+            this.btn_PlanetsRefresh.Name = "btn_PlanetsRefresh";
+            this.btn_PlanetsRefresh.Size = new System.Drawing.Size(22, 22);
+            this.btn_PlanetsRefresh.TabIndex = 2;
+            this.btn_PlanetsRefresh.UseVisualStyleBackColor = true;
+            this.btn_PlanetsRefresh.Click += new System.EventHandler(this.btn_PlanetsRefresh_Click);
             // 
             // btn_SystemsRefresh
             // 
@@ -496,23 +495,67 @@
             this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
             this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
             // 
-            // btn_PlanetsRefresh
+            // btn_FocusRefresh
             // 
-            this.btn_PlanetsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_PlanetsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_PlanetsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_PlanetsRefresh.Location = new System.Drawing.Point(165, 65);
-            this.btn_PlanetsRefresh.Name = "btn_PlanetsRefresh";
-            this.btn_PlanetsRefresh.Size = new System.Drawing.Size(22, 22);
-            this.btn_PlanetsRefresh.TabIndex = 91;
-            this.btn_PlanetsRefresh.UseVisualStyleBackColor = true;
-            this.btn_PlanetsRefresh.Click += new System.EventHandler(this.btn_PlanetsRefresh_Click);
+            this.btn_FocusRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_FocusRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_FocusRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_FocusRefresh.Location = new System.Drawing.Point(354, 64);
+            this.btn_FocusRefresh.Name = "btn_FocusRefresh";
+            this.btn_FocusRefresh.Size = new System.Drawing.Size(22, 22);
+            this.btn_FocusRefresh.TabIndex = 9;
+            this.btn_FocusRefresh.UseVisualStyleBackColor = true;
+            this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click);
+            // 
+            // btn_Clone
+            // 
+            this.btn_Clone.BackgroundImage = global::SSSystemGenerator.Properties.Resources.CloneLightMode;
+            this.btn_Clone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Clone.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_Clone.Location = new System.Drawing.Point(153, 389);
+            this.btn_Clone.Name = "btn_Clone";
+            this.btn_Clone.Size = new System.Drawing.Size(37, 37);
+            this.btn_Clone.TabIndex = 18;
+            this.btn_Clone.UseVisualStyleBackColor = true;
+            this.btn_Clone.Click += new System.EventHandler(this.btn_Clone_Click);
+            // 
+            // btn_Undo
+            // 
+            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_Undo.Location = new System.Drawing.Point(153, 432);
+            this.btn_Undo.Name = "btn_Undo";
+            this.btn_Undo.Size = new System.Drawing.Size(37, 36);
+            this.btn_Undo.TabIndex = 20;
+            this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
+            // 
+            // lbl_Order
+            // 
+            this.lbl_Order.AutoSize = true;
+            this.lbl_Order.Location = new System.Drawing.Point(12, 245);
+            this.lbl_Order.Name = "lbl_Order";
+            this.lbl_Order.Size = new System.Drawing.Size(36, 13);
+            this.lbl_Order.TabIndex = 91;
+            this.lbl_Order.Text = "Order:";
+            // 
+            // lbl_StuffOrbitingAround
+            // 
+            this.lbl_StuffOrbitingAround.AutoSize = true;
+            this.lbl_StuffOrbitingAround.Location = new System.Drawing.Point(12, 258);
+            this.lbl_StuffOrbitingAround.Name = "lbl_StuffOrbitingAround";
+            this.lbl_StuffOrbitingAround.Size = new System.Drawing.Size(108, 13);
+            this.lbl_StuffOrbitingAround.TabIndex = 91;
+            this.lbl_StuffOrbitingAround.Text = "Stuff Orbiting Around:";
             // 
             // Planets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 476);
+            this.Controls.Add(this.lbl_StuffOrbitingAround);
+            this.Controls.Add(this.lbl_Order);
             this.Controls.Add(this.btn_PlanetsRefresh);
             this.Controls.Add(this.btn_SystemsRefresh);
             this.Controls.Add(this.label13);
@@ -541,6 +584,7 @@
             this.Controls.Add(this.nud_Angle);
             this.Controls.Add(this.nud_Y);
             this.Controls.Add(this.nud_X);
+            this.Controls.Add(this.btn_Clone);
             this.Controls.Add(this.btn_Undo);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Planet);
@@ -604,5 +648,8 @@
         private System.Windows.Forms.TextBox tb_ID;
         private System.Windows.Forms.Button btn_SystemsRefresh;
         private System.Windows.Forms.Button btn_PlanetsRefresh;
+        private System.Windows.Forms.Button btn_Clone;
+        private System.Windows.Forms.Label lbl_Order;
+        private System.Windows.Forms.Label lbl_StuffOrbitingAround;
     }
 }

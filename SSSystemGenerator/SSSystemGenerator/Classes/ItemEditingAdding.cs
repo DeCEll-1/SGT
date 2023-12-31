@@ -1,4 +1,5 @@
 ﻿using SSSystemGenerator.Classes.SystemFiles;
+using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,8 @@ namespace SSSystemGenerator.Classes
 
                 Extend orbitingExtend = Helper.GetExtendFromID(orbitingExtendID);
 
+                if (orbitingExtend == null) continue;
+
                 if (orbitingExtend.order != -1) continue;
 
                 if (
@@ -127,9 +130,26 @@ namespace SSSystemGenerator.Classes
                 AddExtendToOrbitingList(extend);
             }
 
+
         }
 
         #endregion
+
+        private static void UpdateStuffOrbitingAround(List<Extend> listToFindStuffOrbitingAroundIn, Extend oldExtend, Extend newExtend)
+        {
+            foreach (Extend planetData in listToFindStuffOrbitingAroundIn)
+            {
+
+                if (planetData.stuffOrbitingAround.Contains(oldExtend.ID))
+                {
+                    planetData.stuffOrbitingAround.Remove(oldExtend.ID);
+
+                    planetData.stuffOrbitingAround.Add(newExtend.ID);
+
+                }
+
+            }
+        }
 
         #endregion
 
@@ -183,9 +203,9 @@ namespace SSSystemGenerator.Classes
                 Helper.ThrowCrash("ItemEditingAdding.cs", "AddStar");
             }
 
-            AddExtendToOrbitingList(star);
-
             system.starList.Add(star);//add star to system
+
+            UpdateLoadOrder();
 
             MapRefresh();
         }
@@ -203,11 +223,12 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newStar.systemID);//get the star system 
 
-            AddExtendToOrbitingList(newStar);
 
             system.starList.Remove(oldStar);//remove the old star
 
             system.starList.Add(newStar);//add the new star
+
+            UpdateLoadOrder();
 
             MapRefresh();
         }
@@ -237,9 +258,12 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
-            AddExtendToOrbitingList(planet);
+  
 
             system.planetList.Add(planet);
+
+            UpdateLoadOrder();
+
 
             MapRefresh();
         }
@@ -257,11 +281,15 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newPlanet.systemID);//get the system
 
-            AddExtendToOrbitingList(newPlanet);
+
+            UpdateStuffOrbitingAround(Helper.ListUpcasting(system.planetList.ToArray()), oldPlanet, newPlanet);
 
             system.planetList.Remove(oldPlanet);
 
             system.planetList.Add(newPlanet);
+
+            UpdateLoadOrder();
+
 
             MapRefresh();
         }
@@ -328,9 +356,10 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
-            AddExtendToOrbitingList(customEntity);
 
             system.sectorEntityTokenList.Add(customEntity);
+            
+            UpdateLoadOrder();
 
             MapRefresh();
         }
@@ -348,11 +377,13 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newEntity.systemID);
 
-            AddExtendToOrbitingList(newEntity);
+
 
             system.sectorEntityTokenList.Remove(oldEntity);
 
             system.sectorEntityTokenList.Add(newEntity);
+
+            UpdateLoadOrder();
 
             MapRefresh();
         }
@@ -381,9 +412,11 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
-            AddExtendToOrbitingList(ringBandToAdd);
+ 
 
             system.ringBandDataList.Add(ringBandToAdd);
+
+            UpdateLoadOrder();
 
             MapRefresh();
         }
@@ -403,12 +436,12 @@ namespace SSSystemGenerator.Classes
 
             newRingBand.x = Helper.GetExtendFromID(newRingBand.focusID).x;
             newRingBand.y = Helper.GetExtendFromID(newRingBand.focusID).y;
-
-            AddExtendToOrbitingList(newRingBand);
-
+  
             system.ringBandDataList.Remove(oldRingBand);//remove the old star
 
             system.ringBandDataList.Add(newRingBand);//add the new star
+
+            UpdateLoadOrder();
 
             MapRefresh();
         }
@@ -437,9 +470,11 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
-            AddExtendToOrbitingList(astreoidBeltToAdd);
+ 
 
             system.astreoidBeltDataList.Add(astreoidBeltToAdd);
+
+            UpdateLoadOrder();
 
             MapRefresh();
         }
@@ -460,11 +495,13 @@ namespace SSSystemGenerator.Classes
             newAstreoidBelt.x = Helper.GetExtendFromID(newAstreoidBelt.focusID).x;
             newAstreoidBelt.y = Helper.GetExtendFromID(newAstreoidBelt.focusID).y;
 
-            AddExtendToOrbitingList(newAstreoidBelt);
+ 
 
             system.astreoidBeltDataList.Remove(oldAstreoidBelt);//remove the old star
 
             system.astreoidBeltDataList.Add(newAstreoidBelt);//add the new star
+
+            UpdateLoadOrder();
 
             MapRefresh();
         }

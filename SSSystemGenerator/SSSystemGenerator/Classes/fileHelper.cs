@@ -52,7 +52,21 @@ namespace SSSystemGenerator.Classes
 
         public static void UpdateStaticWithSystemJson()
         {
-            Statics.baseClass = JsonHelper.GetBaseClassFromJsonFile(Statics.JSONPath.FullName) as BaseClass;
+            BaseClass baseClass = JsonHelper.GetBaseClassFromJsonFile(Statics.JSONPath.FullName) as BaseClass;
+
+            if (baseClass == null)
+            {
+
+                Statics.SGTBaseMDIContainer.Invoke((MethodInvoker)delegate
+                {
+                    Statics.SGTBaseMDIContainer.saveToolStripMenuItem_Click(null, null);
+                });
+                
+                return;
+
+            }
+            Statics.baseClass = baseClass;
+
         }
 
     }

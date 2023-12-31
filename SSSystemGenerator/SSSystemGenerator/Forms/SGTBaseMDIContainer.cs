@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace SSSystemGenerator
@@ -19,14 +20,21 @@ namespace SSSystemGenerator
         public SGTBaseMDIContainer()
         {
             InitializeComponent();
-            Statics.SGTBaseMDIContainer = this;
-            UpdateColors();
         }
 
         public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
 
         private void SGTBaseMDIContainer_Load(object sender, EventArgs e)
         {
+
+            Statics.SGTBaseMDIContainer = this;
+
+            fileHelper.SetupFiles();//generate the data/strings/STGSystems.json
+
+            fileHelper.UpdateStaticWithSystemJson();
+
+            UpdateColors();
+
         }
 
         private void TSMI_Systems_Click(object sender, EventArgs e)
@@ -246,12 +254,17 @@ namespace SSSystemGenerator
 
             if (result == DialogResult.Yes)
             {
-                this.Close();
+                saveToolStripMenuItem_Click(null, null);
+
+                Misc.WaitUntilSaveEnds();
+
+                Statics.CloseTheForm = true;
+
             }
 
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        public void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             ItemEditingAdding.UpdateLoadOrder();
@@ -285,11 +298,13 @@ namespace SSSystemGenerator
 
             //https://stackoverflow.com/questions/1195896/threadstart-with-parameters lambda is cool
             //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions yet i dont really know how they work
-            Thread thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.baseClass, progress));
+            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.baseClass, progress));
 
-            thread.IsBackground = true;
-            thread.Start();
+            this.thread.IsBackground = true;
+            this.thread.Start();
         }
+
+        public Thread thread = null;
 
         public void UpdateSaving(byte savePercent)
         {
@@ -339,6 +354,6 @@ namespace SSSystemGenerator
             }
         }
 
-        
+
     }
 }

@@ -96,6 +96,7 @@
     <Compile Include="Classes\fileHelper.cs" />
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\JsonHelper.cs" />
+    <Compile Include="Classes\Misc.cs" />
     <Compile Include="Classes\Statics.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_AstreoidBeltData.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_MarketData.cs" />
@@ -250,6 +251,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\CloneLightMode.png" />
+    <None Include="Images\CloneDarkMode.png" />
     <Content Include="Images\UndoLightMode.png" />
     <Content Include="Images\UndoDarkMode.png" />
     <Content Include="TODO.txt" />

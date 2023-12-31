@@ -46,5 +46,7 @@ namespace SSSystemGenerator.Classes
         public static Map Map { get; set; } = null;
         public static SGTBaseMDIContainer SGTBaseMDIContainer { get; set; } = null;
 
+        public static bool CloseTheForm = false;//for saving
+
     }
 }

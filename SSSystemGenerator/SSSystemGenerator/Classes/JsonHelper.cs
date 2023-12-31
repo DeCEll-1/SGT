@@ -76,19 +76,23 @@ namespace SSSystemGenerator.Classes
 
 
 
+
                     //https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/csharp/language-compilers/create-thread
                     Thread.Sleep(1);//wait by 0.01 seconds aka 10 miliseconds
                 }
 
             }
 
-            progress.Report(100);
+            if (progress != null) progress.Report(100);
+
 
             File.Delete(saveFilePath);
 
             File.Move(tempFilePath, saveFilePath);
 
             saving = false;
+
+            if (Statics.CloseTheForm) Misc.FireMethodOnDifferentThread(Statics.SGTBaseMDIContainer, Statics.SGTBaseMDIContainer.GetType(), "Close", new object[0]);
 
         }
 
@@ -108,6 +112,8 @@ namespace SSSystemGenerator.Classes
         public static BaseClass GetBaseClassFromJsonFile(string path)
         {
 
+            Misc.WaitUntilSaveEnds();
+
             using (StreamReader sr = new StreamReader(path))
             {
 
@@ -115,6 +121,7 @@ namespace SSSystemGenerator.Classes
 
                 return JsonConvert.DeserializeObject<BaseClass>(json);
             }
+
 
         }
 
