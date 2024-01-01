@@ -67,7 +67,7 @@ namespace SSSystemGenerator.Classes
                 return;
 
             }
-            Statics.baseClass = baseClass;
+            Statics.BaseClass = baseClass;
 
         }
 

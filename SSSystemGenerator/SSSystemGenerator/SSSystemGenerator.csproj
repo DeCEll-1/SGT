@@ -97,6 +97,7 @@
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\JsonHelper.cs" />
     <Compile Include="Classes\Misc.cs" />
+    <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\Statics.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_AstreoidBeltData.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_MarketData.cs" />
@@ -160,11 +161,11 @@
     <Compile Include="Forms\RingBands.Designer.cs">
       <DependentUpon>RingBands.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings.cs">
+    <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Systems.cs">
       <SubType>Form</SubType>

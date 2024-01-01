@@ -26,7 +26,7 @@ namespace SSSystemGenerator
             s = Statics.GameRoot;
             s = Statics.GameCore;
             s = Statics.GameCoreCampaignFolder;
-            s = Statics.baseClass;//for testing
+            s = Statics.BaseClass;//for testing
             Statics.SGTBaseMDIContainer = new SGTBaseMDIContainer();
             Application.Run(Statics.SGTBaseMDIContainer);
         }

@@ -219,7 +219,7 @@ namespace SSSystemGenerator.Render
 
                     g.DrawEllipse(pen, circleRect);//draw the outline regardless if its filled or not
 
-                    if (Statics.debugMode)
+                    if (Settings.DebugMode)
                     {
                         pen.Color = Color.Green;
 
