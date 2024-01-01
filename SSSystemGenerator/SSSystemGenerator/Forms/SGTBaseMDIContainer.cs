@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -267,6 +268,12 @@ namespace SSSystemGenerator
         public void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            StartSave(Statics.JSONPath.ToString());
+
+        }
+
+        private void StartSave(string jsonPath)
+        {
             ItemEditingAdding.UpdateLoadOrder();
 
             if (TSPB_Saving.Value == 100) TSPB_Saving.Value = 0;
@@ -294,11 +301,12 @@ namespace SSSystemGenerator
 
 
 
+
             TSSL_Saving.Text = "Starting Saving...";
 
             //https://stackoverflow.com/questions/1195896/threadstart-with-parameters lambda is cool
             //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions yet i dont really know how they work
-            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.baseClass, progress));
+            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.baseClass, progress, jsonPath));
 
             this.thread.IsBackground = true;
             this.thread.Start();
@@ -354,6 +362,26 @@ namespace SSSystemGenerator
             }
         }
 
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+
+                sfd.Filter = "JSON | *.json";
+
+                DialogResult result = sfd.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+
+                    StartSave(sfd.FileName);
+
+                }
+
+            }
+
+
+        }
     }
 }

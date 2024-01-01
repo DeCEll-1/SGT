@@ -17,14 +17,14 @@ namespace SSSystemGenerator.Classes
     public class JsonHelper
     {
 
-        public static Task SerialiseToBaseJSONFile(BaseClass baseClass, IProgress<int> progress)
+        public static Task SerialiseToBaseJSONFile(BaseClass baseClass, IProgress<int> progress, string jsonPath)
         {
-            return Task.Run(() => SerialiseToBaseJSONFilePrivate(baseClass, progress));
+            return Task.Run(() => SerialiseToBaseJSONFilePrivate(baseClass, progress, jsonPath));
         }//is not used because switched to threads
 
         public static bool saving { get; set; } = false;
 
-        private static void SerialiseToBaseJSONFilePrivate(BaseClass baseClass, IProgress<int> progress)
+        private static void SerialiseToBaseJSONFilePrivate(BaseClass baseClass, IProgress<int> progress, string jsonPath)
         {
 
             if (saving) { MessageBox.Show("saving"); return; }
@@ -40,13 +40,13 @@ namespace SSSystemGenerator.Classes
             String jsonString = SerialiseToJson(baseClass);
 
             UpdateMDIFormSavingStatusLabel("Getting Json File Info");
-            FileInfo saveFile = new FileInfo(Statics.JSONPath.FullName);
+            FileInfo saveFile = new FileInfo(jsonPath);
 
             string saveFilePath = saveFile.FullName;
 
             if (!saveFile.Exists)
             {
-                Helper.ThrowCrash("JSONSerialiser.cs", "SerialiseToBaseJSON");
+                saveFile.Create();
             }
 
             UpdateMDIFormSavingStatusLabel("Generating Temp File");

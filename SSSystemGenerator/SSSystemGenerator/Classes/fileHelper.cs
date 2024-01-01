@@ -43,6 +43,8 @@ namespace SSSystemGenerator.Classes
                 fi.Create();
             }
 
+
+
             //this is so that when you dont run as admin you can still use the app (atleast thats what i remember of what this does),
             //but it runs every time this function runs which takes a lot of time and i dont really wanna find a way to make it faster
             //TODO: make this faster so the app haves a higher chance to run without admin, not neccessary, or however you spell that

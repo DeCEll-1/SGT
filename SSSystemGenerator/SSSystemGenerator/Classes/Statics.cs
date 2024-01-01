@@ -12,6 +12,7 @@ namespace SSSystemGenerator.Classes
     public class Statics
     {
 
+        #region Paths
         public static DirectoryInfo EXEPath { get; set; } = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);//mod/SGTExe//exe
 
         public static DirectoryInfo JSONPath { get; set; } = new DirectoryInfo(EXEPath.Parent.FullName + "\\data\\strings\\SGTSystems.json");
@@ -29,6 +30,10 @@ namespace SSSystemGenerator.Classes
         public static DirectoryInfo GameCore { get; set; } = new DirectoryInfo(GameRoot.FullName + "\\starsector-core");
 
         public static DirectoryInfo GameCoreCampaignFolder { get; set; } = new DirectoryInfo(GameCore.FullName + "\\data\\campaign");
+
+        public static DirectoryInfo SettingsFile { get; set; } = new DirectoryInfo(Environment.SpecialFolder.MyDocuments.ToString() + "\\SGT\\Settings.json");
+
+        #endregion
 
         public const string Version = "0" + "." + "0" + "." + "2";
 
