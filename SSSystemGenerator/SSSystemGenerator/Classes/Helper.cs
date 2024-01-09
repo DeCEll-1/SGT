@@ -304,12 +304,14 @@ namespace SSSystemGenerator.Classes
 
             if (extend == null) return new PointF(0, 0);
 
-            if (extend.focusID == null)
+            if (String.IsNullOrEmpty(extend.focusID) )
             {
                 return new PointF(extend.x, extend.y);
             }
 
             Extend focusOfExtend = Helper.GetExtendFromID(extend.focusID);
+
+
 
             PointF theLocationOfTheFocus = new PointF();
 

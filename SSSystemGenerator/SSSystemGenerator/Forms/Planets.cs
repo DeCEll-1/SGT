@@ -190,7 +190,7 @@ namespace SSSystemGenerator.Forms
             tb_Name.Text = item.name;
             tb_TypeID.Text = item.typeID;
 
-            lbl_Order.Text = "Order: " + item.order;
+            lbl_Order.Text = "Load Order: " + item.order;
 
             StringBuilder sb = new StringBuilder();
 
