@@ -111,7 +111,7 @@ namespace SSSystemGenerator.Forms
         private void LoadSystems()
         {
             ComboBox_Systems.Items.Clear();
-            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.BaseClass.StarSystemDataList.ToArray())).ToArray());
 
             if (ComboBox_Systems.Items.Count != 0)
             {

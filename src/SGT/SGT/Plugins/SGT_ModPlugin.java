@@ -17,15 +17,19 @@ public class SGT_ModPlugin extends BaseModPlugin {
 
     @Override
     public void onGameLoad(boolean newGame) {
+
         VeBlib_WorldGen worldGen = null;
         try {
             worldGen = new VeBlib_WorldGen(SGT_GetSystemsList.GetSystems());
+
+            if (worldGen != null) {
+                worldGen.generate(Global.getSector());
+            }
+
         } catch (Throwable ex) {
             throw new RuntimeException("SGT-ErrorGeneratingSystems\nError:" + ex.toString());
         }
-        if (worldGen != null) {
-            worldGen.generate(Global.getSector());
-        }
+
 
 
     }

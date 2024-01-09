@@ -76,7 +76,7 @@ namespace SSSystemGenerator.Forms
             ComboBox_SystemSelection.SelectedItem = "New System";
 
 
-            ComboBox_SystemSelection.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            ComboBox_SystemSelection.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.BaseClass.StarSystemDataList.ToArray())).ToArray());
             //upcasts array of a list, turns it to the list for ids and then arrays that
 
         }
@@ -246,7 +246,7 @@ namespace SSSystemGenerator.Forms
 
                 currSystem = systemToAdd;
 
-                Statics.baseClass.StarSystemDataList.Add(systemToAdd);
+                Statics.BaseClass.StarSystemDataList.Add(systemToAdd);
 
                 Load();
 
@@ -266,7 +266,7 @@ namespace SSSystemGenerator.Forms
 
             deletedSystemsInThisSessionList.Add(currSystem);
 
-            Statics.baseClass.StarSystemDataList.Remove(currSystem);
+            Statics.BaseClass.StarSystemDataList.Remove(currSystem);
 
             currSystem = new VeBlib_StarSystemData();
 

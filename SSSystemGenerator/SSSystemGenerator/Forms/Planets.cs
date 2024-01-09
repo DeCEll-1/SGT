@@ -190,7 +190,7 @@ namespace SSSystemGenerator.Forms
             tb_Name.Text = item.name;
             tb_TypeID.Text = item.typeID;
 
-            lbl_Order.Text = "Order: " + item.order;
+            lbl_Order.Text = "Load Order: " + item.order;
 
             StringBuilder sb = new StringBuilder();
 
@@ -321,7 +321,7 @@ namespace SSSystemGenerator.Forms
         private void LoadSystems()
         {
             ComboBox_Systems.Items.Clear();
-            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.BaseClass.StarSystemDataList.ToArray())).ToArray());
 
             if (ComboBox_Systems.Items.Count != 0)
             {

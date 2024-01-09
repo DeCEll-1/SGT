@@ -67,6 +67,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btn_FocusRefresh = new System.Windows.Forms.Button();
+            this.btn_Clone = new System.Windows.Forms.Button();
+            this.lbl_StuffOrbitingAround = new System.Windows.Forms.Label();
+            this.lbl_Order = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CoronaSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Radius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_X)).BeginInit();
@@ -176,9 +179,9 @@
             // btn_Star
             // 
             this.btn_Star.Enabled = false;
-            this.btn_Star.Location = new System.Drawing.Point(12, 380);
+            this.btn_Star.Location = new System.Drawing.Point(12, 389);
             this.btn_Star.Name = "btn_Star";
-            this.btn_Star.Size = new System.Drawing.Size(179, 46);
+            this.btn_Star.Size = new System.Drawing.Size(136, 37);
             this.btn_Star.TabIndex = 16;
             this.btn_Star.Text = "Add Star";
             this.btn_Star.UseVisualStyleBackColor = true;
@@ -524,11 +527,44 @@
             this.btn_FocusRefresh.UseVisualStyleBackColor = true;
             this.btn_FocusRefresh.Click += new System.EventHandler(this.btn_FocusRefresh_Click);
             // 
+            // btn_Clone
+            // 
+            this.btn_Clone.BackgroundImage = global::SSSystemGenerator.Properties.Resources.CloneLightMode;
+            this.btn_Clone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Clone.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_Clone.Location = new System.Drawing.Point(154, 389);
+            this.btn_Clone.Name = "btn_Clone";
+            this.btn_Clone.Size = new System.Drawing.Size(37, 37);
+            this.btn_Clone.TabIndex = 43;
+            this.btn_Clone.UseVisualStyleBackColor = true;
+            this.btn_Clone.Click += new System.EventHandler(this.btn_Clone_Click);
+            // 
+            // lbl_StuffOrbitingAround
+            // 
+            this.lbl_StuffOrbitingAround.AutoSize = true;
+            this.lbl_StuffOrbitingAround.Location = new System.Drawing.Point(12, 258);
+            this.lbl_StuffOrbitingAround.Name = "lbl_StuffOrbitingAround";
+            this.lbl_StuffOrbitingAround.Size = new System.Drawing.Size(108, 13);
+            this.lbl_StuffOrbitingAround.TabIndex = 92;
+            this.lbl_StuffOrbitingAround.Text = "Stuff Orbiting Around:";
+            // 
+            // lbl_Order
+            // 
+            this.lbl_Order.AutoSize = true;
+            this.lbl_Order.Location = new System.Drawing.Point(12, 245);
+            this.lbl_Order.Name = "lbl_Order";
+            this.lbl_Order.Size = new System.Drawing.Size(36, 13);
+            this.lbl_Order.TabIndex = 93;
+            this.lbl_Order.Text = "Order:";
+            // 
             // Stars
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 480);
+            this.Controls.Add(this.lbl_StuffOrbitingAround);
+            this.Controls.Add(this.lbl_Order);
+            this.Controls.Add(this.btn_Clone);
             this.Controls.Add(this.btn_SystemsRefresh);
             this.Controls.Add(this.btn_FocusRefresh);
             this.Controls.Add(this.btn_Undo);
@@ -624,5 +660,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btn_FocusRefresh;
+        private System.Windows.Forms.Button btn_Clone;
+        private System.Windows.Forms.Label lbl_StuffOrbitingAround;
+        private System.Windows.Forms.Label lbl_Order;
     }
 }

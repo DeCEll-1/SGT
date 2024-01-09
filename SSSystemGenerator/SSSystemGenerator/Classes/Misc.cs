@@ -31,5 +31,12 @@ namespace SSSystemGenerator.Classes
             invokeOnDifferentThread.Invoke(thingToInvokeIn, new object[1] { methodInvokerDelegate });
         }
 
+        public static void SetDoubleBuffer(Panel panel, bool DoubleBuffered)
+        {
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+           | BindingFlags.Instance | BindingFlags.NonPublic, null,
+           panel, new object[] { DoubleBuffered });
+        }
+
     }
 }

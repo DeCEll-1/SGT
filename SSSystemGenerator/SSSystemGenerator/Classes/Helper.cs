@@ -304,12 +304,14 @@ namespace SSSystemGenerator.Classes
 
             if (extend == null) return new PointF(0, 0);
 
-            if (extend.focusID == null)
+            if (String.IsNullOrEmpty(extend.focusID) )
             {
                 return new PointF(extend.x, extend.y);
             }
 
             Extend focusOfExtend = Helper.GetExtendFromID(extend.focusID);
+
+
 
             PointF theLocationOfTheFocus = new PointF();
 
@@ -349,7 +351,7 @@ namespace SSSystemGenerator.Classes
         ///</summary>
         public static List<VeBlib_StarSystemData> GetAllSystems()
         {
-            return Statics.baseClass.StarSystemDataList;
+            return Statics.BaseClass.StarSystemDataList;
         }
 
         ///<summary>
@@ -1030,12 +1032,12 @@ namespace SSSystemGenerator.Classes
 
         public static CSVs GetCSV()
         {
-            return Statics.csvs;
+            return Statics.CSVs;
         }
 
         public static void UpdateCSV()
         {
-            Statics.csvs = CSVHelper.GetAllCSVs();
+            Statics.CSVs = CSVHelper.GetAllCSVs();
         }
 
         public static String IDWithNameToID(String IDPName)
@@ -1209,7 +1211,7 @@ namespace SSSystemGenerator.Classes
 
             if (component is Button && !component.Enabled)
             {
-                if (!Statics.colorMode)//Dark mode
+                if (!Settings.ColorMode)//Dark mode
                 {
                     return;
                 }
@@ -1291,7 +1293,7 @@ namespace SSSystemGenerator.Classes
 
             int borderWidth = 6;
             ButtonBorderStyle borderStyle = ButtonBorderStyle.Solid;
-            if (Statics.colorMode)//light mode
+            if (Settings.ColorMode)//light mode
             {
                 e.Graphics.Clear(Colors.LIGHT_MODE_BG);
                 var borderColor = Colors.LIGHT_MODE_BORDER;
@@ -1445,7 +1447,7 @@ namespace SSSystemGenerator.Classes
 
         public static Color Text()
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             { return Colors.LIGHT_MODE_FG; }
             else
             { return Colors.DARK_MODE_FG; }
@@ -1453,7 +1455,7 @@ namespace SSSystemGenerator.Classes
 
         public static Color Background()
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             { return Colors.LIGHT_MODE_BG; }
             else
             { return Colors.DARK_MODE_BG; }
@@ -1461,7 +1463,7 @@ namespace SSSystemGenerator.Classes
 
         public static Color FormText()
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             //{ return Colors.LIGHT_MODE_FORM_FG; }
             { return Form.DefaultForeColor; }
             else
@@ -1470,7 +1472,7 @@ namespace SSSystemGenerator.Classes
 
         public static Color FormBackground()
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             //{ return Colors.LIGHT_MODE_FORM_BG; }
             { return Form.DefaultBackColor; }
             else
@@ -1479,7 +1481,7 @@ namespace SSSystemGenerator.Classes
 
         public static Color Border()
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             { return Colors.LIGHT_MODE_BORDER; }
             else
             { return Colors.DARK_MODE_BORDER; }
@@ -1487,7 +1489,7 @@ namespace SSSystemGenerator.Classes
 
         public static Bitmap RefreshButton()
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             { return Colors.LIGHT_MODE_REFRESH_IMAGE; }
             else
             { return Colors.DARK_MODE_REFRESH_IMAGE; }
@@ -1495,7 +1497,7 @@ namespace SSSystemGenerator.Classes
 
         public static Bitmap CloneButton()//make those generalised
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             { return Colors.LIGHT_MODE_CLONE_IMAGE; }
             else
             { return Colors.DARK_MODE_CLONE_IMAGE; }
@@ -1503,7 +1505,7 @@ namespace SSSystemGenerator.Classes
 
         public static Color Hover()
         {
-            if (Statics.colorMode)//lightMode
+            if (Settings.ColorMode)//lightMode
             { return Colors.LIGHT_MODE_HOVER_COLOR; }
             else
             { return Colors.DARK_MODE_HOVER_COLOR; }

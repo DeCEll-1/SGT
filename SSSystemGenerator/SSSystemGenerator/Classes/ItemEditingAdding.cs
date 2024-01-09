@@ -37,7 +37,7 @@ namespace SSSystemGenerator.Classes
 
             RefreshAllExtendsOrbitingList();
 
-            foreach (VeBlib_StarSystemData system in Statics.baseClass.StarSystemDataList)
+            foreach (VeBlib_StarSystemData system in Statics.BaseClass.StarSystemDataList)
             {
 
                 //get in system
@@ -160,7 +160,7 @@ namespace SSSystemGenerator.Classes
 
             systemToAdd.GUID = Guid.NewGuid().ToString();//add the guid for later editing
 
-            Statics.baseClass.StarSystemDataList.Add(systemToAdd);
+            Statics.BaseClass.StarSystemDataList.Add(systemToAdd);
         }
 
 
@@ -179,9 +179,9 @@ namespace SSSystemGenerator.Classes
 
 
 
-            Statics.baseClass.StarSystemDataList.Remove(systemToRemove);//remove system
+            Statics.BaseClass.StarSystemDataList.Remove(systemToRemove);//remove system
 
-            Statics.baseClass.StarSystemDataList.Add(newSystem);//add system
+            Statics.BaseClass.StarSystemDataList.Add(newSystem);//add system
 
         }
         #endregion

@@ -208,7 +208,7 @@ namespace SSSystemGenerator
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
+            SettingsForm settings = new SettingsForm();
             bool a = true;
             foreach (var item in this.MdiChildren)
             {
@@ -306,7 +306,7 @@ namespace SSSystemGenerator
 
             //https://stackoverflow.com/questions/1195896/threadstart-with-parameters lambda is cool
             //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions yet i dont really know how they work
-            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.baseClass, progress, jsonPath));
+            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.BaseClass, progress, jsonPath));
 
             this.thread.IsBackground = true;
             this.thread.Start();
@@ -333,11 +333,11 @@ namespace SSSystemGenerator
 
         private void TSMI_DarkMode_Click(object sender, EventArgs e)
         {
-            Statics.colorMode = !Statics.colorMode;
+            Settings.ColorMode = !Settings.ColorMode;
 
             UpdateColors();
 
-            if (Statics.colorMode)//is light mode
+            if (Settings.ColorMode)//is light mode
             {
                 TSMI_DarkMode.Text = "Switch To Dark Mode";
 

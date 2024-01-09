@@ -186,6 +186,17 @@ namespace SSSystemGenerator
             tb_ID.Text = item.ID;
             tb_Name.Text = item.name;
             tb_TypeID.Text = item.typeID;
+
+            lbl_Order.Text = "Load Order: " + item.order;
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (string stuffOrbitingAround in item.stuffOrbitingAround)
+            {
+                sb.Append(stuffOrbitingAround + "\n");
+            }
+
+            lbl_StuffOrbitingAround.Text = "Stuff Orbiting Around :\n" + sb.ToString();
         }
 
         //reset extend elements on the form to default values
@@ -276,7 +287,7 @@ namespace SSSystemGenerator
         private void LoadSystems()
         {
             ComboBox_Systems.Items.Clear();
-            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.baseClass.StarSystemDataList.ToArray())).ToArray());
+            ComboBox_Systems.Items.AddRange(Helper.IDNameList(Helper.ListUpcasting(Statics.BaseClass.StarSystemDataList.ToArray())).ToArray());
 
             if (ComboBox_Systems.Items.Count != 0)
             {
@@ -444,7 +455,7 @@ namespace SSSystemGenerator
 
                 update(Star);// update the star with variables
 
-
+                currStar= Star;
 
                 btn_Star.Text = "Update " + context;
 
@@ -498,6 +509,13 @@ namespace SSSystemGenerator
 
 
 
+        }
+
+        private void btn_Clone_Click(object sender, EventArgs e)
+        {
+            tb_ID.Text += " / " + Guid.NewGuid().ToString().Substring(0, 4);
+
+            AddStar();
         }
 
         #endregion

@@ -1,0 +1,45 @@
+    public static float getVectorThrusterDirection(WeaponAPI weapon){
+        float result = 0;
+        ShipAPI ship = weapon.getShip();
+        ShipAPI host = ship;
+        if(ship.getParentStation()!=null)host=ship.getParentStation();
+        ShipEngineControllerAPI ec = host.getEngineController();
+        boolean burn=false;
+        boolean turn=false;
+
+        float SA = weapon.getSlot().getAngle()+ship.getFacing();
+
+        float SD = host.getFacing();
+        float Dir_Move = SA;
+        float Dir_Goal = Dir_Move;
+
+
+        if(ec.isAccelerating()){Dir_Move=SD+180f; burn=true;}
+        if(ec.isAcceleratingBackwards()){Dir_Move=SD+0.f; burn=true;}
+        if(ec.isStrafingLeft()){Dir_Move=SD+(-90f); burn=true;}
+        if(ec.isStrafingRight()){Dir_Move=SD+90f; burn=true;}
+
+        if(ec.isAccelerating()&&ec.isStrafingLeft()){Dir_Move=SD+(-135f);}
+        if(ec.isAccelerating()&&ec.isStrafingRight()){Dir_Move=SD+135f;}
+        if(ec.isAcceleratingBackwards()&&ec.isStrafingLeft()){Dir_Move=SD+(-45f);}
+        if(ec.isAcceleratingBackwards()&&ec.isStrafingRight()){Dir_Move=SD+45f;}
+
+        if(ec.isDecelerating()){Dir_Move=VectorUtils.getFacing(host.getVelocity()); burn=true;}
+
+        if(burn)Dir_Goal=Dir_Move;
+
+        float SLA =  VectorUtils.getAngle(host.getLocation(),weapon.getLocation());
+        float Dir_Turn=SLA;
+        if(ec.isTurningLeft()){Dir_Turn=SLA-90f; turn=true;}
+        if(ec.isTurningRight()){Dir_Turn=SLA+90f; turn=true;}
+
+        if(turn)Dir_Goal=Dir_Turn;
+
+        if(burn && turn){
+            Dir_Goal=(Dir_Move+Dir_Turn)/2f;
+        }
+
+
+
+        return Dir_Goal;
+    }

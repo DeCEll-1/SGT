@@ -39,14 +39,11 @@ namespace SSSystemGenerator.Classes
 
         public static List<DirectoryInfo> ModsToRead { get; set; } = new List<DirectoryInfo>();//TODO: add settings and save this thing
 
-        public static BaseClass baseClass { get; set; } = new BaseClass();
+        public static BaseClass BaseClass { get; set; } = new BaseClass();
 
-        public static CSVs csvs { get; set; } = CSVHelper.GetAllCSVs();
+        public static CSVs CSVs { get; set; } = CSVHelper.GetAllCSVs();
 
-        public static Boolean debugMode { get; set; } = false;//TODO: add settings for this
 
-        //true is for light false is for dark
-        public static Boolean colorMode { get; set; } = true;//TODO: add settings for this
 
         public static Map Map { get; set; } = null;
         public static SGTBaseMDIContainer SGTBaseMDIContainer { get; set; } = null;
