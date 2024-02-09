@@ -8,6 +8,8 @@ import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+
 public class SGT_ModPlugin extends BaseModPlugin {
 
     @Override
@@ -27,7 +29,7 @@ public class SGT_ModPlugin extends BaseModPlugin {
             }
 
         } catch (Throwable ex) {
-            throw new RuntimeException("SGT-ErrorGeneratingSystems\nError:" + ex.toString());
+            throw new RuntimeException("SGT-ErrorGeneratingSystems\nError:" + ex.toString() + Arrays.toString(ex.getStackTrace()));
         }
 
 

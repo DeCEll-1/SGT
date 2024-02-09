@@ -319,7 +319,7 @@
             this.ComboBox_FocusID.Name = "ComboBox_FocusID";
             this.ComboBox_FocusID.Size = new System.Drawing.Size(139, 21);
             this.ComboBox_FocusID.TabIndex = 2;
-            this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
+            this.ComboBox_FocusID.SelectedIndexChanged += new System.EventHandler(this.ComboBox_FocusID_SelectedIndexChanged);
             // 
             // btn_FocusRefresh
             // 

@@ -2,6 +2,19 @@ package SGT.SGT.SystemGeneration.systemFiles;
 
 public class VeBlib_AstreoidBeltData  extends VeBlib_SGTExtend{
 
+    public VeBlib_AstreoidBeltData(){
+        this.ID = "";//this is for identifieing the belt, maybe it will be used, might crash if you dont give it an id, you can do java.util.UUID.randomUUID(); which will give a random string (just do toString), there can be duplicate ones but its pratically ibloppable so dont worry
+        //İTS USED İN ORBİTS HOW THE HELL SOMETHİNG CAN ORBİT AROUND SOMETHİNG AAAAAAAAAAAAAAAAAAAAA
+        this.focusID = "";
+        this.numAsteroids = 0;
+        this.orbitRadius = 0;
+        this.width = 0;
+        this.minOrbitDays = 0;
+        this.maxOrbitDays = 0;
+        this.terrainId = "";
+        this.name = "";//display name
+    }
+
     public VeBlib_AstreoidBeltData(String ID, String focus, int numAsteroids, float orbitRadius, float width, float minOrbitDays, float maxOrbitDays, String terrainId, String optionalName)
     {
         this.ID = ID;//this is for identifieing the belt, maybe it will be used, might crash if you dont give it an id, you can do java.util.UUID.randomUUID(); which will give a random string (just do toString), there can be duplicate ones but its pratically ibloppable so dont worry
