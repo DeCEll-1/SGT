@@ -257,7 +257,7 @@ namespace SSSystemGenerator.Forms
         private void btn_SystemsRefresh_Click(object sender, EventArgs e) { LoadSystems(); }
 
         //system selection
-        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { TextChangedBTNAddUpdateCheck(null, null); }
+        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { TextChangedBTNAddUpdateCheck(null, null); UpdatePlanets(); }
 
         private void TextChangedBTNAddUpdateCheck(object sender, EventArgs e)
         {
@@ -300,6 +300,9 @@ namespace SSSystemGenerator.Forms
 
         private void UpdatePlanets()
         {
+
+            ComboBox_Planets.Items.Clear();
+
             try
             {
                 //use the numbers for read order
