@@ -67,7 +67,7 @@ namespace SSSystemGenerator.Forms
         {
             resetExtend();
 
-            ComboBox_Systems.SelectedItem = "";
+            //ComboBox_Systems.SelectedItem = "";
             ComboBox_TerrainID.Text = "";
 
             nud_OrbitRadius.Value = 0;
@@ -179,7 +179,7 @@ namespace SSSystemGenerator.Forms
         {
             updateExtends(astreoidRing);
 
-            ComboBox_Systems.SelectedItem = astreoidRing.systemID;
+            //ComboBox_Systems.SelectedItem = astreoidRing.systemID;
 
             nud_OrbitRadius.Value = (decimal)astreoidRing.orbitRadius;
             nud_MinOrbitDays.Value = (decimal)astreoidRing.minOrbitDays;
@@ -188,7 +188,7 @@ namespace SSSystemGenerator.Forms
             nud_AstreoidCount.Value = astreoidRing.numAsteroids;
             nud_Width.Value = (decimal)astreoidRing.width;
 
-
+            currAstreoid = astreoidRing;
         }
 
         private void UpdateAstreoidRing()
@@ -262,6 +262,8 @@ namespace SSSystemGenerator.Forms
             item.ID = tb_ID.Text;
             item.name = tb_Name.Text;
 
+            item.focusID = ComboBox_FocusID.Text;
+
             item.WhatIsThis = Finals.ASTREOID_BELT;
         }
 
@@ -277,7 +279,7 @@ namespace SSSystemGenerator.Forms
         //reset extend elements on the form to default values
         private void resetExtend()
         {
-            resetOrbit();
+            //resetOrbit();
 
             nud_AstreoidCount.Value = 0;
             nud_Width.Value = 0;
@@ -308,7 +310,32 @@ namespace SSSystemGenerator.Forms
         #region nullChecks
 
         //system selection
-        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { nullCheck(); }
+        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nullCheck();
+            //the orbit list doesnt get updated, fix it
+
+            ComboBox_FocusID.Items.Clear();
+            ComboBox_FocusID.Items.AddRange(Helper.IDList(Helper.ListUpcasting(Helper.GetOrbitablesInSystem(getSystem()).ToArray())).ToArray());
+
+            //why the fuck do you not select the first item in initilisation but work properly othervise? the shit?
+            if (ComboBox_FocusID.Items.Count != 0) ComboBox_FocusID.SelectedIndex = 0;
+        }
+
+        private void ComboBox_FocusID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nullCheck();
+            //the ring list doesnt get updated, fix it
+
+            ComboBox_AstreoidBelts.Items.Clear();
+
+            ComboBox_AstreoidBelts.Items.Add("New " + context);
+
+            ComboBox_AstreoidBelts.Items.AddRange(Helper.IDList(Helper.ListUpcasting(getSystem().astreoidBeltDataList.FindAll(s => Helper.IDWithNameToID(s.focusID) == Helper.IDWithNameToID(ComboBox_FocusID.SelectedItem.ToString())).ToArray())).ToArray());
+
+
+            ComboBox_AstreoidBelts.SelectedIndex = (ComboBox_AstreoidBelts.Items.Count == 1) ? 0 : 1;
+        }
 
         private void TextChangedBTNAddUpdateCheck(object sender, EventArgs e) { nullCheck(); }
 
@@ -367,6 +394,8 @@ namespace SSSystemGenerator.Forms
 
         private void ComboBox_RingBands_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ComboBox_AstreoidBelts.SelectedItem.ToString() == "" && ComboBox_AstreoidBelts.Items.Count != 0) ComboBox_AstreoidBelts.SelectedIndex = 0;
+
             if (ComboBox_AstreoidBelts.SelectedItem.ToString() == "New " + context)
             {
                 btn_RingBand.Text = "Add " + context;
@@ -394,9 +423,11 @@ namespace SSSystemGenerator.Forms
             {
                 btn_Delete.Enabled = false;
             }
+            nullCheck();
         }
 
         #endregion
+
 
     }
 }

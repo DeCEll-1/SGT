@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,7 +60,7 @@ namespace SSSystemGenerator.Forms
 
             if (ComboBox_FocusID.Items.Count == 0) return;
 
-            ComboBox_FocusID.SelectedIndex = 0;
+            //ComboBox_FocusID.SelectedIndex = 0;
 
         }
 
@@ -80,7 +81,7 @@ namespace SSSystemGenerator.Forms
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
         private void updateExtends(Extend item)
         {
-            ComboBox_FocusID.SelectedText = item.focusID;
+            //ComboBox_FocusID.SelectedText = item.focusID;
 
             nud_MiddleRadius.Value = (int)item.radius;
             nud_OrbitDays.Value = (int)item.orbitDays;
@@ -92,7 +93,7 @@ namespace SSSystemGenerator.Forms
         //reset extend elements on the form to default values
         private void resetExtend()
         {
-            resetOrbit();
+            //resetOrbit();
 
             nud_OrbitDays.Value = 0;
             nud_MiddleRadius.Value = 0;
@@ -170,7 +171,7 @@ namespace SSSystemGenerator.Forms
         {
             resetExtend();
 
-            ComboBox_Systems.SelectedItem = "";
+            //ComboBox_Systems.SelectedItem = "";
             ComboBox_TerrainID.Text = "";
 
             nud_BandIndex.Value = 0;
@@ -276,7 +277,7 @@ namespace SSSystemGenerator.Forms
 
             currRingBand = ringBand;
 
-            Load();
+            ComboBox_FocusID_SelectedIndexChanged(null, null);
 
             ComboBox_RingBands.SelectedItem = ringBand.ID + " - " + ringBand.name;//select the added planet
 
@@ -294,6 +295,8 @@ namespace SSSystemGenerator.Forms
 
         private void update(VeBlib_RingBandData ringBand)
         {
+            if (ringBand == null) return;
+
             updateExtends(ringBand);
 
             ComboBox_Systems.SelectedItem = ringBand.systemID;
@@ -398,7 +401,33 @@ namespace SSSystemGenerator.Forms
         #region nullChecks
 
         //system selection
-        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e) { nullCheck(); }
+        private void ComboBox_Systems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nullCheck();
+            //the orbit list doesnt get updated, fix it
+
+            ComboBox_FocusID.Items.Clear();
+            ComboBox_FocusID.Items.AddRange(Helper.IDList(Helper.ListUpcasting(Helper.GetOrbitablesInSystem(getSystem()).ToArray())).ToArray());
+
+            //why the fuck do you not select the first item in initilisation but work properly othervise? the shit?
+            if (ComboBox_FocusID.Items.Count != 0) ComboBox_FocusID.SelectedIndex = 0;
+
+        }
+
+        private void ComboBox_FocusID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nullCheck();
+            //the ring list doesnt get updated, fix it
+
+            ComboBox_RingBands.Items.Clear();
+
+            ComboBox_RingBands.Items.Add("New " + context);
+
+            ComboBox_RingBands.Items.AddRange(Helper.IDList(Helper.ListUpcasting(getSystem().ringBandDataList.FindAll(s => Helper.IDWithNameToID(s.focusID) == Helper.IDWithNameToID(ComboBox_FocusID.SelectedItem.ToString())).ToArray())).ToArray());
+
+
+            ComboBox_RingBands.SelectedIndex = (ComboBox_RingBands.Items.Count == 1) ? 0 : 1;
+        }
 
         private void TextChangedBTNAddUpdateCheck(object sender, EventArgs e) { nullCheck(); }
 
@@ -477,6 +506,9 @@ namespace SSSystemGenerator.Forms
 
         private void ComboBox_RingBands_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            if (ComboBox_RingBands.SelectedItem.ToString() == "" && ComboBox_RingBands.Items.Count != 0) ComboBox_RingBands.SelectedIndex = 0;
+
             if (ComboBox_RingBands.SelectedItem.ToString() == "New " + context)
             {
                 btn_RingBand.Text = "Add " + context;
@@ -504,7 +536,10 @@ namespace SSSystemGenerator.Forms
             {
                 btn_Delete.Enabled = false;
             }
+
+            nullCheck();
         }
+
 
         #endregion
 

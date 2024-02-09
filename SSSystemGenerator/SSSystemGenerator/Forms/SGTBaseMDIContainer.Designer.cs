@@ -168,7 +168,7 @@
             // TSMI_AstreoidBelts
             // 
             this.TSMI_AstreoidBelts.Name = "TSMI_AstreoidBelts";
-            this.TSMI_AstreoidBelts.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
+            this.TSMI_AstreoidBelts.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
             this.TSMI_AstreoidBelts.Size = new System.Drawing.Size(197, 22);
             this.TSMI_AstreoidBelts.Text = "Astreoid Belts";
             this.TSMI_AstreoidBelts.Click += new System.EventHandler(this.astreoidBeltsToolStripMenuItem_Click);
@@ -176,7 +176,7 @@
             // TSMI_Map
             // 
             this.TSMI_Map.Name = "TSMI_Map";
-            this.TSMI_Map.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
+            this.TSMI_Map.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8)));
             this.TSMI_Map.Size = new System.Drawing.Size(197, 22);
             this.TSMI_Map.Text = "Map";
             this.TSMI_Map.Click += new System.EventHandler(this.mapToolStripMenuItem_Click);

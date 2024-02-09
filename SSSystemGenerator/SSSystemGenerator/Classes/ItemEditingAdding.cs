@@ -412,8 +412,6 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
- 
-
             system.ringBandDataList.Add(ringBandToAdd);
 
             UpdateLoadOrder();
@@ -469,8 +467,6 @@ namespace SSSystemGenerator.Classes
             string systemID = astreoidBeltToAdd.systemID;
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
-
- 
 
             system.astreoidBeltDataList.Add(astreoidBeltToAdd);
 

@@ -21,7 +21,7 @@ public class SGT_ParseJson {
 
         List<VeBlib_StarSystemData> systemList = new ArrayList<>();
 
-        JSONObject jsonObject = Global.getSettings().getMergedJSONForMod(path, "SGT");
+        JSONObject jsonObject = Global.getSettings().getMergedJSON(path);
 
         JSONArray systemJsonList = jsonObject.getJSONArray("StarSystemDataList");
 
