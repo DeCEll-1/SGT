@@ -25,7 +25,9 @@ namespace SSSystemGenerator.Forms
         {
             InitializeComponent();
             UpdateColors();
+            LoadSystems();
             Load();
+            loadOrbits();
         }
 
         public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
@@ -81,7 +83,6 @@ namespace SSSystemGenerator.Forms
 
         private void Load()
         {
-            LoadSystems();
             ComboBox_AstreoidBelts.Items.Clear();
 
             ComboBox_AstreoidBelts.Items.Add("New " + context);
@@ -92,7 +93,6 @@ namespace SSSystemGenerator.Forms
                 UpdateAstreoidBeltsList();
             }
 
-            loadOrbits();
         }
 
         private void UpdateAstreoidBeltsList()

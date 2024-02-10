@@ -258,8 +258,6 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
 
-  
-
             system.planetList.Add(planet);
 
             UpdateLoadOrder();
@@ -281,7 +279,6 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newPlanet.systemID);//get the system
 
-
             UpdateStuffOrbitingAround(Helper.ListUpcasting(system.planetList.ToArray()), oldPlanet, newPlanet);
 
             system.planetList.Remove(oldPlanet);
@@ -289,7 +286,6 @@ namespace SSSystemGenerator.Classes
             system.planetList.Add(newPlanet);
 
             UpdateLoadOrder();
-
 
             MapRefresh();
         }
@@ -358,7 +354,7 @@ namespace SSSystemGenerator.Classes
 
 
             system.sectorEntityTokenList.Add(customEntity);
-            
+
             UpdateLoadOrder();
 
             MapRefresh();
@@ -432,9 +428,12 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newRingBand.systemID);//get the star system 
 
-            newRingBand.x = Helper.GetExtendFromID(newRingBand.focusID).x;
-            newRingBand.y = Helper.GetExtendFromID(newRingBand.focusID).y;
-  
+            //newRingBand.x = Helper.GetExtendFromID(newRingBand.focusID).x;
+            //newRingBand.y = Helper.GetExtendFromID(newRingBand.focusID).y;
+
+            newRingBand.x = Helper.GetLocationOfFocus(Helper.GetExtendFromID(newRingBand.focusID)).X;
+            newRingBand.y = Helper.GetLocationOfFocus(Helper.GetExtendFromID(newRingBand.focusID)).Y;
+
             system.ringBandDataList.Remove(oldRingBand);//remove the old star
 
             system.ringBandDataList.Add(newRingBand);//add the new star
@@ -488,10 +487,8 @@ namespace SSSystemGenerator.Classes
 
             VeBlib_StarSystemData system = Helper.GetSystemFromID(newAstreoidBelt.systemID);//get the star system 
 
-            newAstreoidBelt.x = Helper.GetExtendFromID(newAstreoidBelt.focusID).x;
-            newAstreoidBelt.y = Helper.GetExtendFromID(newAstreoidBelt.focusID).y;
-
- 
+            newAstreoidBelt.x = Helper.GetLocationOfFocus(Helper.GetExtendFromID(newAstreoidBelt.focusID)).X;
+            newAstreoidBelt.y = Helper.GetLocationOfFocus(Helper.GetExtendFromID(newAstreoidBelt.focusID)).Y;
 
             system.astreoidBeltDataList.Remove(oldAstreoidBelt);//remove the old star
 
