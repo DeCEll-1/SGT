@@ -27,7 +27,9 @@ namespace SSSystemGenerator.Forms
         {
             InitializeComponent();
             UpdateColors();
+            LoadSystems();
             Load();
+            loadOrbits();
         }
 
         public void UpdateColors() { Helper.ChangeColorMode(this.Controls); UpdateColorPanel(); }
@@ -197,7 +199,6 @@ namespace SSSystemGenerator.Forms
 
         private void Load()
         {
-            LoadSystems();
             ComboBox_RingBands.Items.Clear();
 
             ComboBox_RingBands.Items.Add("New " + context);
@@ -208,7 +209,6 @@ namespace SSSystemGenerator.Forms
                 UpdateRingBands();
             }
 
-            loadOrbits();
         }
 
         private void UpdateRingBands()
@@ -467,6 +467,8 @@ namespace SSSystemGenerator.Forms
                 currRingBand = updatedRingBand;//set current star to updated star
 
             }
+
+            nullCheck();
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
