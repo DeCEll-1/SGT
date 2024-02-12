@@ -21,19 +21,23 @@ public class JSONParserForSGT<T> {
     //    @Deprecated
     public T Convert(JSONObject jsonObject) throws InstantiationException, IllegalAccessException, JSONException, Throwable {
 //https://stackoverflow.com/a/2126722
+        VeBlib_Logger.log(this.getClass(), "Getting Fields");
         Field[] fields = clazz.getFields();
 
 //        VeBlib_StarSystemData system = new VeBlib_StarSystemData();
-
+        VeBlib_Logger.log(this.getClass(), "Instancing Variable");
         T TVariable = clazz.newInstance();
 
         //https://stackoverflow.com/a/1090488
 
 
+        VeBlib_Logger.log(this.getClass(), "Foreach fields");
         for (Field field : fields) {
             try {
 
+                VeBlib_Logger.log(this.getClass(), "Get the name of the variable");
                 String fieldName = SGT_Fields.GetVariableName(field);//get the name of the variable
+                VeBlib_Logger.log(this.getClass(), "Get the variable class");
                 Class<?> fieldClass = SGT_Fields.GetVariableType(field);//fields class
 
                 String stringClass = String.class.getSimpleName();
@@ -45,7 +49,10 @@ public class JSONParserForSGT<T> {
                 String shortClass = short.class.getSimpleName();
                 String booleanClass = boolean.class.getSimpleName();
 
+                VeBlib_Logger.log(this.getClass(), "Get fields simple name");
                 String fieldClassName = fieldClass.getSimpleName();//float and stuff
+
+                VeBlib_Logger.log(this.getClass(), "Assigning Field To " + fieldName + " : " + fieldClassName + " For Class " + clazz.getSimpleName());
 
                 switch (fieldClassName) {
                     case "boolean":
@@ -86,13 +93,12 @@ public class JSONParserForSGT<T> {
                         break;
                     default:
 
-
                         VeBlib_Logger.log(this.getClass(), "Error Assigning Field To " + fieldName + " : " + fieldClassName + " For Class " + clazz.getSimpleName());
 
-                        //https://stackoverflow.com/a/21789658 // "it cant be run at runtime so sowwy 3:"
-//                    JSONParserForSGT < Class.forName(fieldClassName) > s = new JSONParserForSGT<Class.forName(fieldClassName) > ();
+//                      https://stackoverflow.com/a/21789658 // "it cant be run at runtime so sowwy 3:"
+//                      JSONParserForSGT < Class.forName(fieldClassName) > s = new JSONParserForSGT<Class.forName(fieldClassName) > ();
 
-//                    field.set(TVariable, jsonObject.getJSONObject(fieldName));
+//                      field.set(TVariable, jsonObject.getJSONObject(fieldName));
 
                         break;
 
@@ -100,6 +106,7 @@ public class JSONParserForSGT<T> {
 
 
             } catch (Exception ex) {
+                VeBlib_Logger.log(this.getClass(), ex.toString());
             }
         }
 

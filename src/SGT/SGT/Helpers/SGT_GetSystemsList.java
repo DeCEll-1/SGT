@@ -9,6 +9,7 @@ public class SGT_GetSystemsList {
 
 
     public static List<VeBlib_StarSystemData> GetSystems() throws Throwable {
+        VeBlib_Logger.log(SGT_GetSystemsList.class, "Getting Json");
         return SGT_ParseJson.GetJson("data/strings/SGTSystems.json");
     }
 
