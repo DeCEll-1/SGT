@@ -13,7 +13,8 @@ public class VeBlib_RingBandData extends VeBlib_SGTExtend {
         this.key = "";//texture id, idk why its named key :taxevasion:
         this.bandWidthInTexture = 0;
         this.bandIndex = 0;//idfk what this is the default system i got from the fat fetishist is 1 and there arent any comments on it so use 1
-        this.color = Color.red;//colour tint, end text
+        this.color = "255, 255, 0, 0";
+        this.colorColor = Color.red;//colour tint, end text
         this.bandWidthInEngine = 0;//band width in game, idk what the texture thing does but i think its for scaling nuts
         this.middleRadius = 0;//probably the orbit radiussy
         this.orbitDays = 0;//orbit days, do 1 for it to orbit once everyday (funi)
@@ -31,7 +32,7 @@ public class VeBlib_RingBandData extends VeBlib_SGTExtend {
         this.key = key;//texture id, idk why its named key :taxevasion:
         this.bandWidthInTexture = bandWidthInTexture;
         this.bandIndex = bandIndex;//idfk what this is the default system i got from the fat fetishist is 1 and there arent any comments on it so use 1
-        this.color = color;//colour tint, end text
+        this.colorColor = color;//colour tint, end text
         this.bandWidthInEngine = bandWidthInEngine;//band width in game, idk what the texture thing does but i think its for scaling nuts
         this.middleRadius = middleRadius;//probably the orbit radiussy
         this.orbitDays = orbitDays;//orbit days, do 1 for it to orbit once everyday (funi)
@@ -44,7 +45,8 @@ public class VeBlib_RingBandData extends VeBlib_SGTExtend {
     public String key;
     public float bandWidthInTexture;
     public int bandIndex;
-    public Color color;
+    public String color = "255, 255, 0, 0";
+    public Color colorColor;
     public float middleRadius;
     public String terrainId;
 
