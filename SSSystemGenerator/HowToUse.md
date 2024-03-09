@@ -30,7 +30,7 @@ Menu items
 
 <h id="MainForm">When first opening the form, you will see this panel.</h>
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_MainForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_MainForm.png" alt="Main Form">
 </p>
 This form is the main panel for the tool, containing every other panel in itself.
 
@@ -68,7 +68,7 @@ Undo: Restores last deleted item **for this session**
 Refresh: Haves the same icon as Undo but is smaller and next to elements, refreshes the list of the element next to it.
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_OrbitForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_OrbitForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -98,7 +98,7 @@ Min Spin, Max Spin: < spin amount should change, i dont know exactly how >
 <h3 id="Systems">Systems  </h3>
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_SystemsForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_SystemsForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -125,7 +125,7 @@ Min Spin, Max Spin: < spin amount should change, i dont know exactly how >
 <h3 id="Stars">Stars  </h3>     
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_StarsForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_StarsForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -147,7 +147,7 @@ Corona Size: The size of the corona.
 <h3 id="Planets">Planets  </h3>     
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_PlanetsForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_PlanetsForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -167,7 +167,7 @@ Radius: Radius of the Planet.
 <h3 id="Markets">Markets  </h3>     
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_MarketsForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_MarketsForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -189,7 +189,7 @@ Use < and > to switch between `Industries`, `Submarkets`, `Conditions`, `Connect
 When an addable is selected, they will be readen from the CSV files and be putten into the drop box under.
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_MarketDropBox.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_MarketDropBox.png" alt="Main Form">
 </p>
 
 Then items to add can be selected or removed from here.
@@ -206,7 +206,7 @@ Faction ID: Which faction the Market belongs to.
 <h3 id="CustomEntities">Custom Entities  </h3>     
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_CustomEntitiesForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_CustomEntitiesForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -226,7 +226,7 @@ Faction ID: Which faction the Entity belongs to.
 <h3 id="RingBands">Ring Bands  </h3>     
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_RingBandsForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_RingBandsForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -262,7 +262,7 @@ Color: Tint of the Band.
 <h3 id="AstreoidBelts">Astreoid Belts  </h3>     
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_AstreoidBeltForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_AstreoidBeltForm.png" alt="Main Form">
 </p>
 
 <h4>  Values: </h4> 
@@ -290,7 +290,7 @@ Width: Width of the belt in-game.
 <h3 id="Map">Map </h3>     
 
 <p align="center">
-    <img src="./graphics/READMEImages/SGT_MapForm.png" alt="Main Form">
+    <img src="./../graphics/READMEImages/SGT_MapForm.png" alt="Main Form">
 </p>
 
 The preview of the system.
