@@ -129,7 +129,9 @@ public class SGT_ParseJson {
 
                 int[] colors = Str2IntArray(colorsStr);
 
-                ringBand.colorColor = new Color(colors[1], colors[2], colors[3], colors[0]);
+                if (colors.length == 4) ringBand.colorColor = new Color(colors[1], colors[2], colors[3], colors[0]);
+                if (colors.length == 3) ringBand.colorColor = new Color(colors[0], colors[1], colors[2]);
+
 
                 system.ringBandDataList.add(ringBand);
             }
