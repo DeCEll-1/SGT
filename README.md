@@ -2,4 +2,4 @@ Tool icons are from [pictogrammers](https://pictogrammers.com/). Thank you for m
 
 This tool allow screation of systems with a Windows Form Interface
 
-Tutorial can be found [here](./SSSystemGenerator/HowToUse.md)
+Tutorial can be found [here](./HowToUse.md)
