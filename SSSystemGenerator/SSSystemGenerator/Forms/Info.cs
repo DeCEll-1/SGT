@@ -29,14 +29,14 @@ namespace SSSystemGenerator.Forms
 
             #region statics
 
-            string s = "EXEPath: " + Statics.EXEPath.FullName + "\n\n";
-            s += "JSONPath: " + Statics.JSONPath.FullName + "\n\n";
-            s += "ModFolderRoot: " + Statics.ModFolderRoot.FullName + "\n\n";
-            s += "ModsFolderRoot: " + Statics.ModsFolderRoot.FullName + "\n\n";
-            s += "ModCampaignRoot: " + Statics.ModCampaignRoot.FullName + "\n\n";
-            s += "GameRoot: " + Statics.GameRoot.FullName + "\n\n";
-            s += "GameCore: " + Statics.GameCore.FullName + "\n\n";
-            s += "GameCoreCampaignFolder: " + Statics.GameCoreCampaignFolder.FullName + "\n\n";
+            string s = "EXEPath: " + Paths.EXEPath.FullName + "\n\n";
+            s += "JSONPath: " + Paths.JsonMetadataPath.FullName + "\n\n";
+            s += "ModFolderRoot: " + Paths.ModFolderRoot.FullName + "\n\n";
+            s += "ModsFolderRoot: " + Paths.ModsFolderRoot.FullName + "\n\n";
+            s += "ModCampaignRoot: " + Paths.ModCampaignRoot.FullName + "\n\n";
+            s += "GameRoot: " + Paths.GameRoot.FullName + "\n\n";
+            s += "GameCore: " + Paths.GameCore.FullName + "\n\n";
+            s += "GameCoreCampaignFolder: " + Paths.GameCoreCampaignFolder.FullName + "\n\n";
 
             lbl_Info.Text += "Statics\n" + s;
 

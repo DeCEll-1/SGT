@@ -268,7 +268,7 @@ namespace SSSystemGenerator
         public void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            StartSave(Statics.JSONPath.ToString());
+            StartSave(Paths.JsonMetadataPath.ToString());
 
         }
 
@@ -304,7 +304,7 @@ namespace SSSystemGenerator
 
             //https://stackoverflow.com/questions/1195896/threadstart-with-parameters lambda is cool
             //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions yet i dont really know how they work
-            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.BaseClass, progress, jsonPath));
+            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.BaseClass,  jsonPath));
 
             this.thread.IsBackground = true;
             this.thread.Start();

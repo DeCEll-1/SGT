@@ -90,12 +90,14 @@
     <Compile Include="Classes\CSVClasses\SubmarketsCSV.cs" />
     <Compile Include="Classes\CSVHelper.cs" />
     <Compile Include="Classes\Finals.cs" />
+    <Compile Include="Classes\Paths.cs" />
+    <Compile Include="Classes\SavingProccess\ImageWorks.cs" />
     <Compile Include="Classes\ItemEditingAdding.cs" />
-    <Compile Include="Classes\BaseClass.cs" />
+    <Compile Include="Classes\SavingProccess\BaseClass.cs" />
     <Compile Include="Classes\Extend.cs" />
     <Compile Include="Classes\fileHelper.cs" />
     <Compile Include="Classes\Helper.cs" />
-    <Compile Include="Classes\JsonHelper.cs" />
+    <Compile Include="Classes\SavingProccess\JsonHelper.cs" />
     <Compile Include="Classes\Misc.cs" />
     <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\Statics.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Classes\SystemFiles\VeBlib_SectorEntittyTokenData.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_StarData.cs" />
     <Compile Include="Classes\SystemFiles\VeBlib_StarSystemData.cs" />
+    <Compile Include="Classes\SavingProccess\SystemMetadata.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,5 +261,6 @@
     <Content Include="Images\UndoDarkMode.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

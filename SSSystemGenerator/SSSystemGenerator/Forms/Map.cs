@@ -16,6 +16,18 @@ namespace SSSystemGenerator.Forms
 {
     public partial class Map : Form, IFormInterface
     {
+
+        #region Image
+
+        public Bitmap ReturnPanelImage()
+        {
+            Bitmap image = new Bitmap(pnl_Map.Width, pnl_Map.Height);
+            pnl_Map.DrawToBitmap(image, new Rectangle(0, 0, image.Width, image.Height));
+            return image;
+        }
+
+        #endregion
+
         public float zoomValue { get; set; } = 0f;
 
         public PointF renderCenter { get; set; } = new PointF(0f, 0f);

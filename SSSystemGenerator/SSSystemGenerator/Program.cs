@@ -1,6 +1,7 @@
 ﻿using SSSystemGenerator.Classes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,14 +19,15 @@ namespace SSSystemGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            object s = Statics.EXEPath;
-            s = Statics.JSONPath;
-            s = Statics.ModFolderRoot;
-            s = Statics.ModsFolderRoot;
-            s = Statics.ModCampaignRoot;
-            s = Statics.GameRoot;
-            s = Statics.GameCore;
-            s = Statics.GameCoreCampaignFolder;
+            fileHelper.SetupFiles();
+            object s = Paths.EXEPath;
+            s = Paths.JsonMetadataPath;
+            s = Paths.ModFolderRoot;
+            s = Paths.ModsFolderRoot;
+            s = Paths.ModCampaignRoot;
+            s = Paths.GameRoot;
+            s = Paths.GameCore;
+            s = Paths.GameCoreCampaignFolder;
             s = Statics.BaseClass;//for testing
             Statics.SGTBaseMDIContainer = new SGTBaseMDIContainer();
             Application.Run(Statics.SGTBaseMDIContainer);
