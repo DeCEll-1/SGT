@@ -9,8 +9,8 @@
     "patch": 0
   },
   "description": "SGT",
-  "gameVersion": "0.96a-RC9",
-  "modPlugin":"SGT.SGT.Plugins.SGT_ModPlugin",
+  "gameVersion": "0.97a-RC11",
+  "modPlugin": "SGT.SGT.Plugins.SGT_ModPlugin",
   "jars": [
     "jars/SGT.jar"
   ]

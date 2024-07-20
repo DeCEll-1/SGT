@@ -1,7 +1,11 @@
 package SGT.SGT.SystemGeneration.systemFiles;
 
+import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.api.campaign.StarSystemAPI;
+
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class VeBlib_SGTExtend {
@@ -43,5 +47,9 @@ public class VeBlib_SGTExtend {
     //1 = setCircularOrbit; needs focusID;angle;orbitRadius;orbitDays;
     //2 = setCircularOrbitPointingDown; same as 1
     //3 = setCircularOrbitWithSpin; same as 1/2 just with minSpin  maxSpin additions
+
+    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
+
+    }
 
 }

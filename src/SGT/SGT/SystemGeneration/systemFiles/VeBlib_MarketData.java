@@ -1,6 +1,13 @@
 package SGT.SGT.SystemGeneration.systemFiles;
 
+import SGT.SGT.Helpers.VeBlib_Logger;
+import SGT.SGT.SystemGeneration.VeBlib_AddMarket;
+import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.api.campaign.StarSystemAPI;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class VeBlib_MarketData extends VeBlib_SGTExtend {
@@ -40,5 +47,70 @@ public class VeBlib_MarketData extends VeBlib_SGTExtend {
     public List<String> industries;
     public Boolean WithJunkAndChatter;
     public Boolean PirateMode;
+
+    @Override
+    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
+        VeBlib_Logger.log(this.getClass(), "market");
+        VeBlib_MarketData marketData = (VeBlib_MarketData) data.orderHashMap.get(i);
+        VeBlib_Logger.log(this.getClass(), "market " + marketData.name);
+
+
+//                boolean currentWithJunkAndChatter = false;
+
+//                if (WithJunkAndChatterIterator.hasNext()) {
+//                    currentWithJunkAndChatter = (boolean) WithJunkAndChatterIterator.next();
+//                }
+//
+//                boolean PirateMode = false;
+//
+//                if (PirateModeIterator.hasNext()) {
+//                    PirateMode = (boolean) PirateModeIterator.next();
+//                }
+        ArrayList<String> marketDataConditionAList = new ArrayList<>();
+        marketDataConditionAList.addAll(marketData.marketConditions);
+
+        ArrayList<String> marketDataSubmarketList = new ArrayList<>();
+        marketDataSubmarketList.addAll(marketData.submarkets);
+
+        ArrayList<String> marketDataIndustriesList = new ArrayList<>();
+        marketDataIndustriesList.addAll(marketData.industries);
+
+        ArrayList<SectorEntityToken> connectedEntittys = new ArrayList<>();
+
+        for (String entittyID : marketData.connectedEntities) {
+            connectedEntittys.add(SectorEntittyTokenHashMap.get(entittyID));
+        }
+
+        VeBlib_Logger.log(this.getClass(), "generate market");
+        if (marketData.ID.equals(""))//doesnt have an id
+        {
+            MarketAPI market = VeBlib_AddMarket.addMarketplace(
+                    marketData.factionID,
+                    SectorEntittyTokenHashMap.get(marketData.primaryEntity),
+                    connectedEntittys,
+                    marketData.name,
+                    marketData.size,
+                    marketDataConditionAList,
+                    marketDataSubmarketList,
+                    marketDataIndustriesList,
+                    marketData.WithJunkAndChatter,
+                    marketData.PirateMode
+            );
+        } else {//haves an id
+            MarketAPI market = VeBlib_AddMarket.addMarketplace(
+                    marketData.ID,
+                    marketData.factionID,
+                    SectorEntittyTokenHashMap.get(marketData.primaryEntity),
+                    connectedEntittys,
+                    marketData.name,
+                    marketData.size,
+                    marketDataConditionAList,
+                    marketDataSubmarketList,
+                    marketDataIndustriesList,
+                    marketData.WithJunkAndChatter,
+                    marketData.PirateMode
+            );
+        }
+    }
 
 }

@@ -1,6 +1,11 @@
 package SGT.SGT.SystemGeneration.systemFiles;
 
+import SGT.SGT.Helpers.VeBlib_Logger;
+import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.api.campaign.StarSystemAPI;
+
 import java.awt.*;
+import java.util.HashMap;
 
 public class VeBlib_RingBandData extends VeBlib_SGTExtend {
 
@@ -50,5 +55,43 @@ public class VeBlib_RingBandData extends VeBlib_SGTExtend {
     public float middleRadius;
     public String terrainId;
 
+    @Override
+    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i) {
+        VeBlib_Logger.log(this.getClass(), "rings ");
+        VeBlib_RingBandData ringBandData = (VeBlib_RingBandData) data.orderHashMap.get(i);
+        VeBlib_Logger.log(this.getClass(), "rings " + ringBandData.ID);
+
+        VeBlib_Logger.log(this.getClass(), "generate ring");
+        if (ringBandData.terrainId.equals("") || ringBandData.name.equals("")) {
+            SectorEntityToken ringBand = system.addRingBand(
+                    SectorEntittyTokenHashMap.get(ringBandData.focusID),
+                    ringBandData.category,
+                    ringBandData.key,
+                    ringBandData.bandWidthInTexture,
+                    ringBandData.bandIndex,
+                    ringBandData.colorColor,
+                    ringBandData.bandWidthInEngine,
+                    ringBandData.middleRadius,
+                    ringBandData.orbitDays
+            );
+            SectorEntittyTokenHashMap.put(ringBandData.ID, ringBand);
+        } else {
+            SectorEntityToken ringBand = system.addRingBand(
+                    SectorEntittyTokenHashMap.get(ringBandData.focusID),
+                    ringBandData.category,
+                    ringBandData.key,
+                    ringBandData.bandWidthInTexture,
+                    ringBandData.bandIndex,
+                    ringBandData.colorColor,
+                    ringBandData.bandWidthInEngine,
+                    ringBandData.middleRadius,
+                    ringBandData.orbitDays,
+                    ringBandData.terrainId,
+                    ringBandData.name
+            );
+            VeBlib_Logger.log(this.getClass(), "ring map");
+            SectorEntittyTokenHashMap.put(ringBandData.ID, ringBand);
+        }
+    }
 
 }

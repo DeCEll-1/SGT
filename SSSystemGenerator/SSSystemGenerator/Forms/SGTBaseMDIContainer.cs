@@ -297,9 +297,7 @@ namespace SSSystemGenerator
                         TSSL_Saving.Text = "Saving In Progress... Completion %: " + value;
                     }
                 }
-                );
-
-
+            );
 
 
             TSSL_Saving.Text = "Starting Saving...";
