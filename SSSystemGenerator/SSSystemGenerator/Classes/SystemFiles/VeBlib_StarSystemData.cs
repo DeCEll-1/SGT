@@ -1,8 +1,11 @@
-﻿using SSSystemGenerator.Classes.SystemFiles;
+﻿using Newtonsoft.Json;
+using SSSystemGenerator.Classes.SystemFiles;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SSSystemGenerator.Classes
@@ -113,6 +116,9 @@ namespace SSSystemGenerator.Classes
         public bool generatePlanetConditions;
 
         public float minHyperspaceRadius;
+
+        [Newtonsoft.Json.JsonIgnore]
+        public Bitmap systemImage;
 
     }
 }

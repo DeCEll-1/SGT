@@ -117,7 +117,7 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
     }
 
     public void GenerateOrderHasMap() {
-        List<Object> everything = new ArrayList<>();
+        List<VeBlib_SGTExtend> everything = new ArrayList<>();
 
         AddToList(everything,astreoidBeltDataList);
         AddToList(everything,marketList);
@@ -162,13 +162,13 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
         }
     }
 
-    private void AddToList(List<Object> list, List<? extends Object> toAddList) {
+    private void AddToList(List<VeBlib_SGTExtend> list, List<? extends VeBlib_SGTExtend> toAddList) {
 
         if (toAddList != null) list.addAll(toAddList);
 
     }
 
-    public HashMap<Integer, Object> orderHashMap = new HashMap<>();
+    public HashMap<Integer, VeBlib_SGTExtend> orderHashMap = new HashMap<>();
 
     public String systemName;
 

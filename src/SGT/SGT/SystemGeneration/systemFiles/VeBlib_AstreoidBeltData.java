@@ -1,5 +1,11 @@
 package SGT.SGT.SystemGeneration.systemFiles;
 
+import SGT.SGT.Helpers.VeBlib_Logger;
+import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.api.campaign.StarSystemAPI;
+
+import java.util.HashMap;
+
 public class VeBlib_AstreoidBeltData  extends VeBlib_SGTExtend{
 
     public VeBlib_AstreoidBeltData(){
@@ -35,5 +41,37 @@ public class VeBlib_AstreoidBeltData  extends VeBlib_SGTExtend{
     public float maxOrbitDays;
     public String terrainId;//ID of the terrain type that appears in the section above the abilities bar//Terrain.PULSAR_BEAM;//this
 
+    @Override
+    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
+        VeBlib_Logger.log(this.getClass(), "astreoids");
+        VeBlib_AstreoidBeltData astreoidData = (VeBlib_AstreoidBeltData) data.orderHashMap.get(i);
+        VeBlib_Logger.log(this.getClass(), "astreoids " + astreoidData.ID);
+
+        VeBlib_Logger.log(this.getClass(), "generate astreoids");
+        if (astreoidData.terrainId.equals("") || astreoidData.name.equals("")) {
+            SectorEntityToken astreoidBelt = system.addAsteroidBelt(
+                    SectorEntittyTokenHashMap.get(astreoidData.focusID),
+                    astreoidData.numAsteroids,
+                    astreoidData.orbitRadius,
+                    astreoidData.width,
+                    astreoidData.minOrbitDays,
+                    astreoidData.maxOrbitDays
+            );
+            SectorEntittyTokenHashMap.put(astreoidData.name, astreoidBelt);
+        } else {
+            SectorEntityToken astreoidBelt = system.addAsteroidBelt(
+                    SectorEntittyTokenHashMap.get(astreoidData.focusID),
+                    astreoidData.numAsteroids,
+                    astreoidData.orbitRadius,
+                    astreoidData.width,
+                    astreoidData.minOrbitDays,
+                    astreoidData.maxOrbitDays,
+                    astreoidData.terrainId,
+                    astreoidData.name
+            );
+            VeBlib_Logger.log(this.getClass(), "asteroids map");
+            SectorEntittyTokenHashMap.put(astreoidData.name, astreoidBelt);
+        }
+    }
 
 }

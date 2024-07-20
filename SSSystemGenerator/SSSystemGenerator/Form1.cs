@@ -24,8 +24,8 @@ namespace SSSystemGenerator
 
         private void MyLoad()
         {
-            lbl_EXEPath.Text = "EXEPath: " + Statics.EXEPath;
-            lbl_JSONPath.Text = "JSONPath: " + Statics.JSONPath;
+            lbl_EXEPath.Text = "EXEPath: " + Paths.EXEPath;
+            lbl_JSONPath.Text = "JSONPath: " + Paths.JsonMetadataPath;
 
             fileHelper.SetupFiles();
 

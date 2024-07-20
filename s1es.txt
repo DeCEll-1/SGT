@@ -1,0 +1,18 @@
+public static void OrderInSystemExtends(VeBlib_StarSystemData system)
+{
+    int order = 0;
+    OrderExtendsRecursive(system.Extends, ref order);
+}
+
+private static int OrderExtendsRecursive(List<Extend> extends, ref int order)
+{
+    foreach (var extend in extends)
+    {
+        if (string.IsNullOrEmpty(extend.focusID))
+        {
+            extend.order = order++;
+            order = OrderExtendsRecursive(extends.FindAll(e => e.focusID == extend.id), ref order);
+        }
+    }
+    return order;
+}

@@ -74,3 +74,25 @@ C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SS
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.pdb
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Map.resources
 C:\Program Files (x86)\Fractal Softworks\0.96a-RC9\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Info.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SGTExe\.SSSystemGenerator.exe.config
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SGTExe\.SSSystemGenerator.exe
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SGTExe\.SSSystemGenerator.pdb
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.AssemblyReference.cache
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Form1.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.AstreoidBelts.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.CustomEntities.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Info.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.LoadingOrder.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Map.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Markets.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Planets.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.RingBands.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Systems.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Properties.Resources.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.SGTBaseMDIContainer.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Stars.resources
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.GenerateResource.cache
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.CoreCompileInputs.cache
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystem.CD443CEB.Up2Date
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.exe
+C:\Users\poedx\OneDrive\Masaüstü\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.pdb

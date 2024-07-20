@@ -18,7 +18,7 @@ namespace SSSystemGenerator.Classes
         {
             CSVs csv = new CSVs();
 
-            string coreCampaignFolderPath = Statics.GameCoreCampaignFolder.FullName;
+            string coreCampaignFolderPath = Paths.GameCoreCampaignFolder.FullName;
 
             csv.Industries.AddRange(GetIndrustryListFromPath(coreCampaignFolderPath + "\\" + Finals.INDUSTRIES_FILE_NAME));
 

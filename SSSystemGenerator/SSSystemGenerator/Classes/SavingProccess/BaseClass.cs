@@ -14,11 +14,21 @@ namespace SSSystemGenerator.Classes
         {
             StarSystemDataList = new List<VeBlib_StarSystemData>();
         }
-
         public List<VeBlib_StarSystemData> StarSystemDataList { get; set; } = new List<VeBlib_StarSystemData> { };
 
+        public List<SystemMetadata> SystemMetadata { get; set; } = new List<SystemMetadata> { };
 
+        public void GenerateMetadata()
+        {
+            this.SystemMetadata.Clear();
 
+            StarSystemDataList.ForEach(system =>
+            {
+
+                this.SystemMetadata.Add(new SystemMetadata(system.ID));
+
+            });
+        }
 
     }
 }

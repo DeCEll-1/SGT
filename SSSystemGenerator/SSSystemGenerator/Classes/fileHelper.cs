@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataEmbeddingInImageTest;
+using SSSystemGenerator.Forms;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,7 +36,7 @@ namespace SSSystemGenerator.Classes
 
         public static void SetupFiles()
         {
-            FileInfo fi = new FileInfo(Statics.JSONPath.FullName);
+            FileInfo fi = new FileInfo(Paths.JsonMetadataPath.FullName);
 
             if (!fi.Exists)
             {
@@ -54,20 +56,39 @@ namespace SSSystemGenerator.Classes
 
         public static void UpdateStaticWithSystemJson()
         {
-            BaseClass baseClass = JsonHelper.GetBaseClassFromJsonFile(Statics.JSONPath.FullName) as BaseClass;
+            List<SystemMetadata> metadatas = JsonHelper.GetSystemMetadataListFromJsonFile(Paths.JsonMetadataPath.FullName); // get the system metadata
 
-            if (baseClass == null)
+            if (metadatas == null) metadatas = new List<SystemMetadata>();
+
+            List<VeBlib_StarSystemData> systems = new List<VeBlib_StarSystemData>();
+
+            ImageWorks imageWorks = new ImageWorks();
+
+            metadatas.ForEach(metadata =>
+            {
+                string systemJson = imageWorks.BitmapToText(new System.Drawing.Bitmap(Paths.SystemsFolder.FullName + "\\" + metadata.ID + ".png"));
+
+                systems.Add(JsonHelper.GetSystemListFromJsonFile(systemJson));
+
+            });
+
+
+            BaseClass bc = new BaseClass();
+
+            bc.StarSystemDataList = systems;
+
+            if (systems == null)
             {
 
                 Statics.SGTBaseMDIContainer.Invoke((MethodInvoker)delegate
                 {
                     Statics.SGTBaseMDIContainer.saveToolStripMenuItem_Click(null, null);
                 });
-                
+
                 return;
 
             }
-            Statics.BaseClass = baseClass;
+            Statics.BaseClass = bc;
 
         }
 

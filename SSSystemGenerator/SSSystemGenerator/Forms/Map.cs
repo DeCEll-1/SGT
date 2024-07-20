@@ -16,6 +16,18 @@ namespace SSSystemGenerator.Forms
 {
     public partial class Map : Form, IFormInterface
     {
+
+        #region Image
+
+        public Bitmap ReturnPanelImage()
+        {
+            Bitmap image = new Bitmap(pnl_Map.Width, pnl_Map.Height);
+            pnl_Map.DrawToBitmap(image, new Rectangle(0, 0, image.Width, image.Height));
+            return image;
+        }
+
+        #endregion
+
         public float zoomValue { get; set; } = 0f;
 
         public PointF renderCenter { get; set; } = new PointF(0f, 0f);
@@ -317,19 +329,14 @@ namespace SSSystemGenerator.Forms
                 //26 grids on y
                 //one grid should be 1k
 
-
                 Extend adjustedExtend = Helper.SSCoordinatesToPanelCoordinates(extend, 26000 / 1000);
 
-
                 bool filled = true;
-
-
 
                 if (extend.WhatIsThis == Finals.RING_BAND || extend.WhatIsThis == Finals.ASTREOID_BELT)
                 {
                     filled = false;
                 }
-
 
                 if (extend.orbitLocationMode == 0)//location is determined by coordinate
                 {
@@ -407,10 +414,6 @@ namespace SSSystemGenerator.Forms
 
                     circles.Add(extendCircle);
                     #endregion
-
-
-
-
 
                     continue;
                 }
