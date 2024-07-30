@@ -1,5 +1,7 @@
 {
     "graphics": {
-        "SGT_SGTLogo": "graphics/SGT.png"
+        "SGT": {
+            "SGT_SGTLogo": "graphics/SGT.png"
+        }
     }
 }

@@ -3,40 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|c:\\users\\poedx\\onedrive\\masa\u00FCst\u00FC\\game files\\fractal softworks\\0.97a-rc11\\mods\\sgt\\sssystemgenerator\\sssystemgenerator\\classes\\filehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\filehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\savingproccess\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|c:\\users\\poedx\\onedrive\\masa\u00FCst\u00FC\\game files\\fractal softworks\\0.97a-rc11\\mods\\sgt\\sssystemgenerator\\sssystemgenerator\\classes\\savingproccess\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\savingproccess\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\systemfiles\\veblib_starsystemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\systemfiles\\veblib_starsystemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\paths.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\paths.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\forms\\sgtbasemdicontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\sgtbasemdicontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\statics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\statics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\forms\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\savingproccess\\baseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\savingproccess\\baseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\savingproccess\\imageworks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\savingproccess\\imageworks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,112 +38,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VeBlib_StarSystemData.cs",
-              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SystemFiles\\VeBlib_StarSystemData.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\SystemFiles\\VeBlib_StarSystemData.cs",
-              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SystemFiles\\VeBlib_StarSystemData.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Classes\\SystemFiles\\VeBlib_StarSystemData.cs",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAgwHcAAAAZAAAA",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Program.cs",
+              "RelativeDocumentMoniker": "SSSystemGenerator\\Program.cs",
+              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Program.cs",
+              "RelativeToolTip": "SSSystemGenerator\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAB8AAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T19:55:21.798Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Paths.cs",
-              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Paths.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\Paths.cs",
-              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Paths.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Classes\\Paths.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAkwA8AAACHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T19:33:15.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Statics.cs",
-              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Statics.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\Statics.cs",
-              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Statics.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Classes\\Statics.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAxwA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T19:32:02.325Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Map.cs",
-              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\Map.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\Map.cs",
-              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\Map.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Forms\\Map.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T19:22:38.224Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SGTBaseMDIContainer.cs",
-              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\SGTBaseMDIContainer.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\SGTBaseMDIContainer.cs",
-              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\SGTBaseMDIContainer.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Forms\\SGTBaseMDIContainer.cs",
-              "ViewState": "AQIAAPwAAAAAAAAAAAAAwBgBAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T19:22:02.042Z"
+              "WhenOpened": "2024-07-25T21:34:30.655Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "fileHelper.cs",
-              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\fileHelper.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\fileHelper.cs",
-              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\fileHelper.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Classes\\fileHelper.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAArwEIAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T18:54:34.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Settings.cs",
-              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Settings.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\Settings.cs",
-              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Settings.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Classes\\Settings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T18:32:07.184Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "JsonHelper.cs",
               "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SavingProccess\\JsonHelper.cs",
               "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\SavingProccess\\JsonHelper.cs",
               "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SavingProccess\\JsonHelper.cs",
               "RelativeToolTip": "SSSystemGenerator\\Classes\\SavingProccess\\JsonHelper.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAYwFAAAAAAAAAA",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAgwGkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T18:31:11.944Z"
+              "WhenOpened": "2024-07-25T16:42:53.027Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "BaseClass.cs",
               "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SavingProccess\\BaseClass.cs",
               "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\SavingProccess\\BaseClass.cs",
               "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SavingProccess\\BaseClass.cs",
               "RelativeToolTip": "SSSystemGenerator\\Classes\\SavingProccess\\BaseClass.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwB8AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T18:24:06.942Z"
+              "WhenOpened": "2024-07-25T17:00:37.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ImageWorks.cs",
+              "DocumentMoniker": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SavingProccess\\ImageWorks.cs",
+              "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\SavingProccess\\ImageWorks.cs",
+              "ToolTip": "C:\\Users\\poedx\\OneDrive\\Masa\u00FCst\u00FC\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SavingProccess\\ImageWorks.cs",
+              "RelativeToolTip": "SSSystemGenerator\\Classes\\SavingProccess\\ImageWorks.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowD4AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T15:46:15.664Z"
             }
           ]
         }

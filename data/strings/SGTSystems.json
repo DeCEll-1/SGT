@@ -1,5 +1,8 @@
-[
-  {
-    "ID": "SGT_ExampleSystem"
-  }
-]
+{
+  "SystemMetadatas": [
+    {
+      "ID": "SGT_ExampleSystem",
+      "ImagePath": "C:\\Users\\poedx\\OneDrive\\Masaüstü\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\data\\strings\\systems\\SGT_ExampleSystem.png"
+    }
+  ]
+}

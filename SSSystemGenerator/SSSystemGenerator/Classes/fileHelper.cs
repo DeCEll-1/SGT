@@ -56,15 +56,15 @@ namespace SSSystemGenerator.Classes
 
         public static void UpdateStaticWithSystemJson()
         {
-            List<SystemMetadata> metadatas = JsonHelper.GetSystemMetadataListFromJsonFile(Paths.JsonMetadataPath.FullName); // get the system metadata
+            MetadataHolder metadataHolder = JsonHelper.GetSystemMetadataListFromJsonFile(Paths.JsonMetadataPath.FullName); // get the system metadata
 
-            if (metadatas == null) metadatas = new List<SystemMetadata>();
+            if (metadataHolder == null) metadataHolder = new MetadataHolder();
 
             List<VeBlib_StarSystemData> systems = new List<VeBlib_StarSystemData>();
 
             ImageWorks imageWorks = new ImageWorks();
 
-            metadatas.ForEach(metadata =>
+            metadataHolder.SystemMetadatas.ForEach(metadata =>
             {
                 string systemJson = imageWorks.BitmapToText(new System.Drawing.Bitmap(Paths.SystemsFolder.FullName + "\\" + metadata.ID + ".png"));
 

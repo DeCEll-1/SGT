@@ -2,10 +2,11 @@ package SGT.SGT.Plugins;
 
 import SGT.SGT.Helpers.SGT_GetSystemsList;
 import SGT.SGT.Helpers.VeBlib_Logger;
-import SGT.SGT.Statics.SGT_Statics;
 import SGT.SGT.SystemGeneration.VeBlib_WorldGen;
+import com.fs.graphics.Sprite;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.graphics.SpriteAPI;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -29,6 +30,8 @@ public class SGT_ModPlugin extends BaseModPlugin {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+
+
         VeBlib_Logger.log(this.getClass(), "finished try");
 
 //        } catch (Throwable ex) {

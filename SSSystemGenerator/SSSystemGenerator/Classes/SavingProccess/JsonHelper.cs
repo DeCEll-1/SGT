@@ -60,7 +60,7 @@ namespace SSSystemGenerator.Classes
             fileHelper.SetupFiles();
 
             UpdateMDIFormSavingStatusLabel("Parsing SystemMetadata to Json");
-            String jsonString = SerialiseToJson(baseClass.SystemMetadata);
+            String jsonString = SerialiseToJson(baseClass.MetadataHolder);
 
             UpdateMDIFormSavingStatusLabel("Saving Metadata");
             SaveStringToFile(jsonString, jsonPath);
@@ -99,12 +99,12 @@ namespace SSSystemGenerator.Classes
             return JsonConvert.SerializeObject(system, Formatting.Indented);
         }
 
-        public static String SerialiseToJson(List<SystemMetadata> systemInfo)
+        public static String SerialiseToJson(MetadataHolder systemInfo)
         {
             return JsonConvert.SerializeObject(systemInfo, Formatting.Indented);
         }
 
-        public static List<SystemMetadata> GetSystemMetadataListFromJsonFile(string path)
+        public static MetadataHolder GetSystemMetadataListFromJsonFile(string path)
         {
             Misc.WaitUntilSaveEnds();
 
@@ -114,7 +114,7 @@ namespace SSSystemGenerator.Classes
             {
                 string json = sr.ReadToEnd();
 
-                return JsonConvert.DeserializeObject<List<SystemMetadata>>(json);
+                return JsonConvert.DeserializeObject<MetadataHolder>(json);
             }
         }
 

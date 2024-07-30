@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,14 @@ namespace SSSystemGenerator.Classes
     public class SystemMetadata
     {
 
-        public SystemMetadata(string ID)
+        public SystemMetadata(string ID, string ImagePath)
         {
             this.ID = ID;
+            this.ImagePath = ImagePath;
         }
 
-        public string ID { get; set; }
+        public string ID;
+        public string ImagePath;
 
     }
 }
