@@ -55,7 +55,7 @@ public class ImageWorks {
         return getByte(BitsToDecrypt);
     }
 
-    public String BitmapToText(ByteBuffer encodedImage, SpriteAPI texture) {
+    public String BitmapToText(BufferedImage encodedImage, SpriteAPI texture) {
 
 
         String outputText = "";
@@ -72,7 +72,7 @@ public class ImageWorks {
 
             // y * width + x
 
-            Color pixelToDecode = new Color((int) encodedImage.get(coordinateToIndex((int) (texture.getWidth() - j - 1), (int) (texture.getHeight() - 1), (int) texture.getWidth())));
+            Color pixelToDecode = new Color((int) encodedImage.getRGB((int) (texture.getWidth() - j - 1), (int) (texture.getHeight() - 1)));
             byte delength = extract(pixelToDecode);
             tlength += new String(new byte[]{delength, 0}, StandardCharsets.UTF_8);
         }
@@ -86,7 +86,7 @@ public class ImageWorks {
         for (int i = 0; i < texture.getHeight(); i++) {
             for (int j = 0; j < texture.getWidth(); j++) {
                 if (k < length) {
-                    Color pixelToDecode = new Color((int) encodedImage.get(coordinateToIndex(j, i, (int) texture.getWidth())));
+                    Color pixelToDecode = new Color((int) encodedImage.getRGB(j, i));
                     byte demsg = extract(pixelToDecode);
                     String messageChar = new String(new byte[]{demsg, 0}, StandardCharsets.UTF_8);
                     outputText += messageChar;

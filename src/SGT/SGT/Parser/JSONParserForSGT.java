@@ -1,7 +1,7 @@
 package SGT.SGT.Parser;
 
 import SGT.SGT.Helpers.VeBlib_Logger;
-import SGT.SGT.etc.SGT_Fields;
+import SGT.SGT.etc.SGT_ReflectionWorks;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,9 +36,9 @@ public class JSONParserForSGT<T> {
             try {
 
                 VeBlib_Logger.log(this.getClass(), "Get the name of the variable");
-                String fieldName = SGT_Fields.GetVariableName(field);//get the name of the variable
+                String fieldName = SGT_ReflectionWorks.GetVariableName(field);//get the name of the variable
                 VeBlib_Logger.log(this.getClass(), "Get the variable class");
-                Class<?> fieldClass = SGT_Fields.GetVariableType(field);//fields class
+                Class<?> fieldClass = SGT_ReflectionWorks.GetVariableType(field);//fields class
 
                 String stringClass = String.class.getSimpleName();
                 String chClass = char.class.getSimpleName();
@@ -56,39 +56,39 @@ public class JSONParserForSGT<T> {
 
                 switch (fieldClassName) {
                     case "boolean":
-                        SGT_Fields.SetVariable(field, TVariable, jsonObject.getBoolean(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getBoolean(fieldName));
 //                    field.setBoolean(TVariable, jsonObject.getBoolean(fieldName));
                         break;
                     case "float":
-                        SGT_Fields.SetVariable(field, TVariable, (float) jsonObject.getDouble(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, (float) jsonObject.getDouble(fieldName));
 //                    field.setFloat(TVariable, (float) jsonObject.getDouble(fieldName));
                         break;
                     case "double":
-                        SGT_Fields.SetVariable(field, TVariable, jsonObject.getDouble(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getDouble(fieldName));
 //                    field.setDouble(TVariable, jsonObject.getDouble(fieldName));
                         break;
                     case "byte"://because i love bytes
-                        SGT_Fields.SetVariable(field, TVariable, (byte) jsonObject.getInt(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, (byte) jsonObject.getInt(fieldName));
 //                    field.setByte(TVariable, (byte) jsonObject.getInt(fieldName));
                         break;
                     case "int":
-                        SGT_Fields.SetVariable(field, TVariable, jsonObject.getInt(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getInt(fieldName));
 //                    field.setInt(TVariable, jsonObject.getInt(fieldName));
                         break;
                     case "long":
-                        SGT_Fields.SetVariable(field, TVariable, jsonObject.getLong(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getLong(fieldName));
 //                    field.setLong(TVariable, jsonObject.getLong(fieldName));
                         break;
                     case "short":
-                        SGT_Fields.SetVariable(field, TVariable, (short) jsonObject.getInt(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, (short) jsonObject.getInt(fieldName));
 //                    field.setShort(TVariable, (short) jsonObject.getInt(fieldName));
                         break;
                     case "char":
-                        SGT_Fields.SetVariable(field, TVariable, jsonObject.getString(fieldName).toCharArray()[0]);
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getString(fieldName).toCharArray()[0]);
 //                    field.setChar(TVariable, jsonObject.getString(fieldName).toCharArray()[0]);
                         break;
                     case "String":
-                        SGT_Fields.SetVariable(field, TVariable, jsonObject.getString(fieldName));
+                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getString(fieldName));
 //                    field.set(TVariable, jsonObject.getString(fieldName));
                         break;
                     default:

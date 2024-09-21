@@ -21,6 +21,8 @@ public class SGT_ModPlugin extends BaseModPlugin {
     @Override
     public void onGameLoad(boolean newGame) {
 
+//        if(true )return;
+
         VeBlib_Logger.log(this.getClass(), "Nulling worldGen");
         VeBlib_WorldGen worldGen = null;
 //        try {

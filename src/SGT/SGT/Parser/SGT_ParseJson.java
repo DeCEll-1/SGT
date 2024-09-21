@@ -2,21 +2,21 @@ package SGT.SGT.Parser;
 
 import SGT.SGT.Helpers.VeBlib_Logger;
 import SGT.SGT.SystemGeneration.systemFiles.*;
+import SGT.SGT.etc.SGT_ReflectionWorks;
 import com.fs.graphics.Sprite;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.graphics.SpriteAPI;
-import com.sun.deploy.util.ReflectionUtil;
 import com.sun.xml.internal.ws.api.addressing.WSEndpointReference;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.lwjgl.opengl.GL11;
-import sun.org.mozilla.javascript.internal.json.JsonParser;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
@@ -54,12 +54,11 @@ public class SGT_ParseJson {
 
         VeBlib_Logger.log(SGT_ParseJson.class, "System For Start");
         for (int currMetadataNo = 0; currMetadataNo < metadatas.length(); currMetadataNo++) {
-
-
             JSONParserForSGT<SystemMetadata> metadataParser = new JSONParserForSGT<SystemMetadata>(SystemMetadata.class);
             SystemMetadata metadata = metadataParser.Convert(metadatas.getJSONObject(currMetadataNo));
 
             String savedImagePath = "data/strings/systems/" + metadata.ID + ".png";
+            String savedImagePathRoot = metadata.ImagePath;
             Global.getSettings().loadTexture(savedImagePath);
 
             SpriteAPI systemImage = Global.getSettings().getSprite(savedImagePath);
@@ -68,9 +67,14 @@ public class SGT_ParseJson {
 
             // https://stackoverflow.com/a/26111170/21149029 WE HAD A PARSER ALL ALONG ARE YOU FUCKİNG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-            BufferedImage image = (BufferedImage) texture.getTexture();
+//            BufferedImage image = (BufferedImage) texture.getTexture();
 
-            String json = iw.BitmapToText(null, systemImage);
+
+//            BufferedImage image = ImageIO.read((new File(savedImagePathRoot)));
+
+            BufferedImage image = SGT_ReflectionWorks.GetBufferedImage(savedImagePathRoot);
+
+            String json = iw.BitmapToText(image, systemImage);
 
             VeBlib_Logger.log(SGT_ParseJson.class, "Get System");
             JSONObject systemJsonObject = new JSONObject(json);

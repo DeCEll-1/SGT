@@ -64,9 +64,6 @@ namespace SSSystemGenerator.Forms
 
             moveEnabled = true;
 
-
-
-
             //pnl_Map.MouseMove += Pnl_Map_MouseMove;
             pnl_Map.MouseUp += Pnl_Map_MouseUp;
         }
