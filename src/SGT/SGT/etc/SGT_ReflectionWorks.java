@@ -25,6 +25,7 @@ public class SGT_ReflectionWorks {
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Get Name Method - Invoke ");
         return getNameMethod.invoke(field).toString();
     }
+
     public static Class<?> GetVariableType(Object field) throws Throwable {
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Get Field Class - Get Variable Type");
         final Class<?> fieldClass = Class.forName("java.lang.reflect.Field", false, Class.class.getClassLoader());
@@ -40,6 +41,7 @@ public class SGT_ReflectionWorks {
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Get Type Method - Invoke ");
         return (Class<?>) getTypeMethod.invoke(field);
     }
+
     public static void SetVariable(Object field, Object thingToSetTo, Object setValue) throws Throwable {
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Get Field Class - Set Variable");
         final Class<?> fieldClass = Class.forName("java.lang.reflect.Field", false, Class.class.getClassLoader());
@@ -55,6 +57,7 @@ public class SGT_ReflectionWorks {
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Set Variable Method - Invoke ");
         setMethod.invoke(field, thingToSetTo, setValue);
     }
+
     public static BufferedImage GetBufferedImage(String filePath) throws Throwable {
         //https://www.baeldung.com/java-reflection
 
@@ -62,16 +65,17 @@ public class SGT_ReflectionWorks {
         final Class<?> fileClass = Class.forName("java.io.File", false, Class.class.getClassLoader());
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Get File Constructor");
         Constructor<?> fileConstructor = fileClass.getConstructor(String.class);
-//        MethodHandles.lookup().findConstructor(fileClass.getClass(), MethodType.methodType());
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Construct File Object");
-        Object file = (Object) fileConstructor.newInstance((String) filePath);
+        Object file = MethodHandles.lookup().findConstructor(fileClass, MethodType.methodType(void.class, String.class)).invoke((String) filePath);
+//        Object file = (Object) fileConstructor.newInstance((String) filePath);
 
 
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Get ImageIO Class");
-        final Class<?> imageioClass = Class.forName("java.io.File", true, Class.class.getClassLoader());
+        final Class<?> imageioClass = Class.forName("javax.imageio.ImageIO", true, Class.class.getClassLoader());
 
         VeBlib_Logger.log(SGT_ReflectionWorks.class, "Find Static - ImageIO Read");
         final MethodHandle imageioRead = MethodHandles.lookup().findStatic(imageioClass, "read", MethodType.methodType(BufferedImage.class, fileClass));
+//        final MethodHandle setMethod = MethodHandles.lookup().findVirtual(fieldClass, "set", MethodType.methodType(void.class, Object.class, Object.class));
 
         BufferedImage image = (BufferedImage) imageioRead.invoke(file);
 

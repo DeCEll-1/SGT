@@ -1,12 +1,15 @@
 package SGT.SGT.Parser;
 
 import com.fs.starfarer.api.graphics.SpriteAPI;
+import sun.security.util.ArrayUtil;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ImageWorks {
     // https://github.com/ktekeli/img-stego
@@ -22,6 +25,14 @@ public class ImageWorks {
 
     private byte[] getBits(byte simplepixel) {
         String byteString = Integer.toBinaryString(simplepixel);
+
+        while (true) {
+            if (byteString.length() == 8)
+                break;
+
+            byteString = "0" + byteString;
+        }
+
         byte[] bitsArray = new byte[8];
 
         char[] charArray = byteString.toCharArray();
@@ -38,9 +49,13 @@ public class ImageWorks {
 
     /*This method is used to extract data from pixels*/
     public byte extract(Color pixel) {
+
         byte[] RedBits = getBits((byte) pixel.getRed());
+//        RedBits = reverseArray(RedBits);
         byte[] GreenBits = getBits((byte) pixel.getGreen());
+//        GreenBits = reverseArray(GreenBits);
         byte[] BlueBits = getBits((byte) pixel.getBlue());
+//        reverseArray(BlueBits);
         byte[] BitsToDecrypt = new byte[8];
 
         BitsToDecrypt[0] = RedBits[5];
@@ -74,10 +89,13 @@ public class ImageWorks {
 
             Color pixelToDecode = new Color((int) encodedImage.getRGB((int) (texture.getWidth() - j - 1), (int) (texture.getHeight() - 1)));
             byte delength = extract(pixelToDecode);
-            tlength += new String(new byte[]{delength, 0}, StandardCharsets.UTF_8);
+
+            String ourChar = new String(new byte[]{delength}, StandardCharsets.UTF_8);
+
+            tlength += ourChar;
         }
 
-        int length = Integer.parseInt(tlength);
+        int length = Integer.parseInt(tlength.toString());
 
         //endregion
 
@@ -88,7 +106,7 @@ public class ImageWorks {
                 if (k < length) {
                     Color pixelToDecode = new Color((int) encodedImage.getRGB(j, i));
                     byte demsg = extract(pixelToDecode);
-                    String messageChar = new String(new byte[]{demsg, 0}, StandardCharsets.UTF_8);
+                    String messageChar = new String(new byte[]{demsg}, StandardCharsets.UTF_8);
                     outputText += messageChar;
                     k++;
                 }
@@ -102,5 +120,15 @@ public class ImageWorks {
 
     private int coordinateToIndex(int x, int y, int width) {
         return y * width + x;
+    }
+
+    private byte[] reverseArray(byte[] array) {
+        for (int i = 0; i < array.length / 2; i++) {
+            byte temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+        }
+
+        return array;
     }
 }
