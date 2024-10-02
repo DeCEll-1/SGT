@@ -1,20 +1,20 @@
 package SGT.SGT.Parser;
 
 import SGT.SGT.Helpers.VeBlib_Logger;
-import SGT.SGT.etc.SGT_ReflectionWorks;
+import SGT.SGT.Reflection.ReflectionWorks;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 
 //@Deprecated
-public class JSONParserForSGT<T> {
+public class JSONParser<T> {
 
     //    @Deprecated
     private Class<T> clazz;
 
     //    @Deprecated
-    public JSONParserForSGT(Class<T> clazz) {
+    public JSONParser(Class<T> clazz) {
         this.clazz = clazz;
     }
 
@@ -36,9 +36,9 @@ public class JSONParserForSGT<T> {
             try {
 
                 VeBlib_Logger.log(this.getClass(), "Get the name of the variable");
-                String fieldName = SGT_ReflectionWorks.GetVariableName(field);//get the name of the variable
+                String fieldName = ReflectionWorks.GetVariableName(field);//get the name of the variable
                 VeBlib_Logger.log(this.getClass(), "Get the variable class");
-                Class<?> fieldClass = SGT_ReflectionWorks.GetVariableType(field);//fields class
+                Class<?> fieldClass = ReflectionWorks.GetVariableType(field);//fields class
 
                 String stringClass = String.class.getSimpleName();
                 String chClass = char.class.getSimpleName();
@@ -56,39 +56,39 @@ public class JSONParserForSGT<T> {
 
                 switch (fieldClassName) {
                     case "boolean":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getBoolean(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, jsonObject.getBoolean(fieldName));
 //                    field.setBoolean(TVariable, jsonObject.getBoolean(fieldName));
                         break;
                     case "float":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, (float) jsonObject.getDouble(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, (float) jsonObject.getDouble(fieldName));
 //                    field.setFloat(TVariable, (float) jsonObject.getDouble(fieldName));
                         break;
                     case "double":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getDouble(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, jsonObject.getDouble(fieldName));
 //                    field.setDouble(TVariable, jsonObject.getDouble(fieldName));
                         break;
                     case "byte"://because i love bytes
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, (byte) jsonObject.getInt(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, (byte) jsonObject.getInt(fieldName));
 //                    field.setByte(TVariable, (byte) jsonObject.getInt(fieldName));
                         break;
                     case "int":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getInt(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, jsonObject.getInt(fieldName));
 //                    field.setInt(TVariable, jsonObject.getInt(fieldName));
                         break;
                     case "long":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getLong(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, jsonObject.getLong(fieldName));
 //                    field.setLong(TVariable, jsonObject.getLong(fieldName));
                         break;
                     case "short":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, (short) jsonObject.getInt(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, (short) jsonObject.getInt(fieldName));
 //                    field.setShort(TVariable, (short) jsonObject.getInt(fieldName));
                         break;
                     case "char":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getString(fieldName).toCharArray()[0]);
+                        ReflectionWorks.SetVariable(field, TVariable, jsonObject.getString(fieldName).toCharArray()[0]);
 //                    field.setChar(TVariable, jsonObject.getString(fieldName).toCharArray()[0]);
                         break;
                     case "String":
-                        SGT_ReflectionWorks.SetVariable(field, TVariable, jsonObject.getString(fieldName));
+                        ReflectionWorks.SetVariable(field, TVariable, jsonObject.getString(fieldName));
 //                    field.set(TVariable, jsonObject.getString(fieldName));
                         break;
                     default:
@@ -115,13 +115,4 @@ public class JSONParserForSGT<T> {
     }
 
 
-}
-
-@Deprecated
-enum variableNames {
-    BOOLEAN,
-    DOUBLE,
-    INT,
-    LONG,
-    STRING;
 }

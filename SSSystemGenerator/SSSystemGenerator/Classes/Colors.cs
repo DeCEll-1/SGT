@@ -19,6 +19,7 @@ namespace SSSystemGenerator.Classes
 
         public static Bitmap DARK_MODE_REFRESH_IMAGE = Properties.Resources.UndoDarkMode;
         public static Bitmap DARK_MODE_CLONE_IMAGE = Properties.Resources.CloneDarkMode;
+        public static Bitmap DARK_MODE_IMAGE_SELECTION = Properties.Resources.ImageSearchDarkMode;
 
 
         [ObsoleteAttribute]
@@ -35,6 +36,7 @@ namespace SSSystemGenerator.Classes
 
         public static Bitmap LIGHT_MODE_REFRESH_IMAGE = Properties.Resources.UndoLightMode;
         public static Bitmap LIGHT_MODE_CLONE_IMAGE = Properties.Resources.CloneLightMode;
+        public static Bitmap LIGHT_MODE_IMAGE_SELECTION = Properties.Resources.ImageSearchLightMode;
 
 
         [ObsoleteAttribute]

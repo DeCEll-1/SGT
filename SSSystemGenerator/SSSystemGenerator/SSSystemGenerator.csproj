@@ -259,6 +259,8 @@
     <None Include="Images\CloneDarkMode.png" />
     <Content Include="Images\UndoLightMode.png" />
     <Content Include="Images\UndoDarkMode.png" />
+    <None Include="Resources\ImageSearchDarkMode.png" />
+    <None Include="Resources\ImageSearchWhiteMode.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup />

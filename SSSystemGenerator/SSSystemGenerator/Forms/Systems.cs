@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -275,5 +277,47 @@ namespace SSSystemGenerator.Forms
 
         }
 
+        private void btn_GetSystemBackground_Click(object sender, EventArgs e)
+        {
+            if (ofd_BackgroundTexture.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+
+                    string filePath = ofd_BackgroundTexture.FileName;
+
+                    if (!filePath.Contains(Paths.ModFolderRoot.FullName) && !filePath.Contains(Paths.GameCore.FullName))
+                    {
+                        MessageBox.Show("Selected file should be under the games directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (filePath.Contains(Paths.ModFolderRoot.FullName))
+                    {
+                        filePath = filePath.Replace(Paths.ModFolderRoot.FullName, "");
+                    }
+
+                    if (filePath.Contains(Paths.GameCore.FullName))
+                    {
+                        filePath = filePath.Replace(Paths.GameCore.FullName, "");
+                    }
+
+                    filePath = filePath.Replace("\\", "/");
+
+                    if (filePath[0] == '/')
+                    {
+                        filePath = filePath.Remove(0, 1);
+                    }
+
+                    tb_StarBackgroundTexturePath.Text = filePath;
+
+                }
+                catch (SecurityException ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+                    $"Details:\n\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

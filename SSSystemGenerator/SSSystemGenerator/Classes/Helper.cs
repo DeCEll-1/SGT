@@ -1165,16 +1165,12 @@ namespace SSSystemGenerator.Classes
 
         public static void ChangeColorMode(Control.ControlCollection container)
         {
-
-
             UpdateComponentColors(container.Owner);
 
             foreach (Control component in container)
             {
 
                 //if (!component.Enabled) continue;
-
-
 
                 DrawBorderToComplonent(component);
 
@@ -1231,6 +1227,10 @@ namespace SSSystemGenerator.Classes
             if (component.Name.Contains("Clone"))
             {
                 component.BackgroundImage = CloneButton();
+            }
+            if (component.Name.Contains("btn_GetSystemBackground"))
+            {
+                component.BackgroundImage = ImageSelect();
             }
 
             //component.EnabledChanged -= EnabledColorUpdateEvent;
@@ -1501,6 +1501,14 @@ namespace SSSystemGenerator.Classes
             { return Colors.LIGHT_MODE_CLONE_IMAGE; }
             else
             { return Colors.DARK_MODE_CLONE_IMAGE; }
+        }
+
+        public static Bitmap ImageSelect()//make those generalised
+        {
+            if (Settings.ColorMode)//lightMode
+            { return Colors.LIGHT_MODE_IMAGE_SELECTION; }
+            else
+            { return Colors.DARK_MODE_IMAGE_SELECTION; }
         }
 
         public static Color Hover()

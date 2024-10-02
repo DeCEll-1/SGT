@@ -1,7 +1,7 @@
 package SGT.SGT.Statics;
 
 import SGT.SGT.SystemGeneration.systemFiles.VeBlib_StarSystemData;
-import SGT.SGT.Parser.SGT_ParseJson;
+import SGT.SGT.Parser.ParseJson;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class SGT_Statics {
         try {
 //            JSONArray starSystemJsonList = Global.getSettings().getMergedJSONForMod("data/strings/SGTSystems.json", "SGT").getJSONArray("StarSystemDataList");
 
-            SGT_ParseJson.GetJson("data/strings/SGTSystems.json");
+            ParseJson.GetJson("data/strings/SGTSystems.json");
 
 
         } catch (Throwable e) {

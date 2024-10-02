@@ -83,6 +83,26 @@ namespace SSSystemGenerator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ImageSearchDarkMode {
+            get {
+                object obj = ResourceManager.GetObject("ImageSearchDarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ImageSearchLightMode {
+            get {
+                object obj = ResourceManager.GetObject("ImageSearchLightMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap UndoDarkMode {
             get {
                 object obj = ResourceManager.GetObject("UndoDarkMode", resourceCulture);
