@@ -94,7 +94,7 @@ namespace SSSystemGenerator.Classes
             });
         }
 
-        public static String SerialiseToJson(VeBlib_StarSystemData system)
+        public static String SerialiseToJson(StarSystemData system)
         {
             return JsonConvert.SerializeObject(system, Formatting.Indented);
         }
@@ -118,11 +118,11 @@ namespace SSSystemGenerator.Classes
             }
         }
 
-        public static VeBlib_StarSystemData GetSystemListFromJsonFile(string value)
+        public static StarSystemData GetSystemListFromJsonFile(string value)
         {
             Misc.WaitUntilSaveEnds();
 
-            return JsonConvert.DeserializeObject<VeBlib_StarSystemData>(value);
+            return JsonConvert.DeserializeObject<StarSystemData>(value);
         }
 
         public static void SaveStringToFile(string value, string path)

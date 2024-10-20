@@ -18,11 +18,11 @@ namespace SSSystemGenerator.Forms
     public partial class Markets : Form, IFormInterface
     {
 
-        public List<VeBlib_MarketData> deletedMarketsInThisSessionList { get; set; } = new List<VeBlib_MarketData>();
+        public List<MarketData> deletedMarketsInThisSessionList { get; set; } = new List<MarketData>();
 
-        public static VeBlib_MarketData marketAddablesHolder { get; set; } = new VeBlib_MarketData();
+        public static MarketData marketAddablesHolder { get; set; } = new MarketData();
 
-        public static VeBlib_MarketData currMarket { get; set; }
+        public static MarketData currMarket { get; set; }
 
         public const string context = "Market";
 
@@ -36,7 +36,7 @@ namespace SSSystemGenerator.Forms
             Load();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
 
         #region customFunctions
@@ -79,7 +79,7 @@ namespace SSSystemGenerator.Forms
 
         private void reset()
         {
-            marketAddablesHolder = new VeBlib_MarketData();
+            marketAddablesHolder = new MarketData();
 
             cb_MarketPirateMode.Checked = false;
             cb_MarketWithJunkAndChatter.Checked = false;
@@ -89,9 +89,9 @@ namespace SSSystemGenerator.Forms
             tb_MarketFactionID.Text = "";
         }
 
-        private VeBlib_MarketData getData()
+        private MarketData getData()
         {
-            VeBlib_MarketData market = new VeBlib_MarketData();
+            MarketData market = new MarketData();
 
             market.primaryEntity = Helper.IDWithNameToID(ComboBox_PrimaryEntity.SelectedItem.ToString());
 
@@ -120,7 +120,7 @@ namespace SSSystemGenerator.Forms
             return market;
         }
 
-        private VeBlib_StarSystemData getSystem()
+        private StarSystemData getSystem()
         {
             if (ComboBox_Systems.SelectedItem != null) { return Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString()); }
             return null;
@@ -134,7 +134,7 @@ namespace SSSystemGenerator.Forms
 
         private void AddMarket()
         {
-            VeBlib_MarketData marketToAdd = getData();
+            MarketData marketToAdd = getData();
 
             if (Helper.DoesIDExists(marketToAdd.ID))
             {
@@ -156,7 +156,7 @@ namespace SSSystemGenerator.Forms
 
         private void EditMarket()
         {
-            VeBlib_MarketData updatedMarket = getData();
+            MarketData updatedMarket = getData();
 
             if (Helper.DoesIDExists(updatedMarket.ID, currMarket.ID))
             {
@@ -188,7 +188,7 @@ namespace SSSystemGenerator.Forms
             ComboBox_PrimaryEntity.Items.AddRange(Helper.IDNameList(Helper.GetOrbitablesInSystem(getSystemID())).ToArray());
         }
 
-        private void update(VeBlib_MarketData marketToUpdateFormWith)
+        private void update(MarketData marketToUpdateFormWith)
         {
             ComboBox_PrimaryEntity.SelectedItem = marketToUpdateFormWith.primaryEntity;
 
@@ -522,7 +522,7 @@ namespace SSSystemGenerator.Forms
         {
             if (deletedMarketsInThisSessionList.Count() == 0) { return; }
 
-            VeBlib_MarketData lastDeletedItem = deletedMarketsInThisSessionList.ElementAt(deletedMarketsInThisSessionList.Count() - 1);
+            MarketData lastDeletedItem = deletedMarketsInThisSessionList.ElementAt(deletedMarketsInThisSessionList.Count() - 1);
 
             if (Helper.DoesIDExists(lastDeletedItem.ID))
             {
@@ -559,7 +559,7 @@ namespace SSSystemGenerator.Forms
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            VeBlib_MarketData marketToDelete = Helper.GetMarketWithID(getID());
+            MarketData marketToDelete = Helper.GetMarketWithID(getID());
 
             deletedMarketsInThisSessionList.Add(marketToDelete);
 

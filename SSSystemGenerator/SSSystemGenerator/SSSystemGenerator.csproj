@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ColorManager.cs" />
     <Compile Include="Classes\Colors.cs" />
     <Compile Include="Classes\CSVClasses\CSVs.cs" />
     <Compile Include="Classes\CSVClasses\IndustriesCSV.cs" />
@@ -101,13 +102,13 @@
     <Compile Include="Classes\Misc.cs" />
     <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\Statics.cs" />
-    <Compile Include="Classes\SystemFiles\VeBlib_AstreoidBeltData.cs" />
-    <Compile Include="Classes\SystemFiles\VeBlib_MarketData.cs" />
-    <Compile Include="Classes\SystemFiles\VeBlib_PlanetData.cs" />
-    <Compile Include="Classes\SystemFiles\VeBlib_RingBandData.cs" />
-    <Compile Include="Classes\SystemFiles\VeBlib_SectorEntittyTokenData.cs" />
-    <Compile Include="Classes\SystemFiles\VeBlib_StarData.cs" />
-    <Compile Include="Classes\SystemFiles\VeBlib_StarSystemData.cs" />
+    <Compile Include="Classes\SystemFiles\AstreoidBeltData.cs" />
+    <Compile Include="Classes\SystemFiles\MarketData.cs" />
+    <Compile Include="Classes\SystemFiles\PlanetData.cs" />
+    <Compile Include="Classes\SystemFiles\RingBandData.cs" />
+    <Compile Include="Classes\SystemFiles\SectorEntittyTokenData.cs" />
+    <Compile Include="Classes\SystemFiles\StarData.cs" />
+    <Compile Include="Classes\SystemFiles\StarSystemData.cs" />
     <Compile Include="Classes\SavingProccess\SystemMetadata.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

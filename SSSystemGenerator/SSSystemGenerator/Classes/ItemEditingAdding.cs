@@ -37,7 +37,7 @@ namespace SSSystemGenerator.Classes
 
             RefreshAllExtendsOrbitingList();
 
-            foreach (VeBlib_StarSystemData system in Statics.BaseClass.StarSystemDataList)
+            foreach (StarSystemData system in Statics.BaseClass.StarSystemDataList)
             {
 
                 //get in system
@@ -61,7 +61,7 @@ namespace SSSystemGenerator.Classes
 
         }
 
-        public static void OrderInSystemExtends(VeBlib_StarSystemData system)
+        public static void OrderInSystemExtends(StarSystemData system)
         {
             int order = 0;
             foreach (Extend extend in Helper.GetOrbitablesInSystem(system))
@@ -154,7 +154,7 @@ namespace SSSystemGenerator.Classes
         #endregion
 
         #region system
-        public static void AddSystem(VeBlib_StarSystemData systemToAdd)//add the system
+        public static void AddSystem(StarSystemData systemToAdd)//add the system
         {
             RemoveEmpthyCharacters(systemToAdd);
 
@@ -164,12 +164,12 @@ namespace SSSystemGenerator.Classes
         }
 
 
-        public static void UpdateSystem(VeBlib_StarSystemData newSystem)//update the system
+        public static void UpdateSystem(StarSystemData newSystem)//update the system
         {
 
             RemoveEmpthyCharacters(newSystem);
 
-            VeBlib_StarSystemData systemToRemove = Helper.GetSystemFromGUID(newSystem.GUID);//get the system thatll get removed by using the new systems guid
+            StarSystemData systemToRemove = Helper.GetSystemFromGUID(newSystem.GUID);//get the system thatll get removed by using the new systems guid
 
             if (systemToRemove == null)
             {
@@ -187,7 +187,7 @@ namespace SSSystemGenerator.Classes
         #endregion
 
         #region star
-        public static void AddStar(VeBlib_StarData star)//add star
+        public static void AddStar(StarData star)//add star
         {
             RemoveEmpthyCharacters(star);
 
@@ -196,7 +196,7 @@ namespace SSSystemGenerator.Classes
             //add the star to the system 
             string systemID = star.systemID;//get system id
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);//get system from id
+            StarSystemData system = Helper.GetSystemFromID(systemID);//get system from id
 
             if (system == null)//if couldnt find system then crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
@@ -210,18 +210,18 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void UpdateStar(VeBlib_StarData newStar)
+        public static void UpdateStar(StarData newStar)
         {
             RemoveEmpthyCharacters(newStar);
 
-            VeBlib_StarData oldStar = Helper.GetStarWithGUID(newStar.GUID);//get old star with stars guid
+            StarData oldStar = Helper.GetStarWithGUID(newStar.GUID);//get old star with stars guid
 
             if (oldStar == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
                 Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateStar");
             }
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(newStar.systemID);//get the star system 
+            StarSystemData system = Helper.GetSystemFromID(newStar.systemID);//get the star system 
 
 
             system.starList.Remove(oldStar);//remove the old star
@@ -237,7 +237,7 @@ namespace SSSystemGenerator.Classes
         /// removes star from its system
         /// </summary>
         /// <param name="starToDelete"></param>
-        public static void DeleteStar(VeBlib_StarData starToDelete)
+        public static void DeleteStar(StarData starToDelete)
         {
             Helper.GetSystemFromGUID(starToDelete.systemGUID).starList.Remove(starToDelete);
 
@@ -248,7 +248,7 @@ namespace SSSystemGenerator.Classes
 
         #region planet
 
-        public static void AddPlanet(VeBlib_PlanetData planet)
+        public static void AddPlanet(PlanetData planet)
         {
             RemoveEmpthyCharacters(planet);
 
@@ -256,7 +256,7 @@ namespace SSSystemGenerator.Classes
 
             string systemID = planet.systemID;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+            StarSystemData system = Helper.GetSystemFromID(systemID);
 
             system.planetList.Add(planet);
 
@@ -266,18 +266,18 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void UpdatePlanet(VeBlib_PlanetData newPlanet)
+        public static void UpdatePlanet(PlanetData newPlanet)
         {
             RemoveEmpthyCharacters(newPlanet);
 
-            VeBlib_PlanetData oldPlanet = Helper.GetPlanetWithGUID(newPlanet.GUID);
+            PlanetData oldPlanet = Helper.GetPlanetWithGUID(newPlanet.GUID);
 
             if (oldPlanet == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
                 Helper.ThrowCrash("ItemEditingAdding.cs", "UpdatePlanet");
             }
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(newPlanet.systemID);//get the system
+            StarSystemData system = Helper.GetSystemFromID(newPlanet.systemID);//get the system
 
             UpdateStuffOrbitingAround(Helper.ListUpcasting(system.planetList.ToArray()), oldPlanet, newPlanet);
 
@@ -290,7 +290,7 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void DeletePlanet(VeBlib_PlanetData planetToDelete)
+        public static void DeletePlanet(PlanetData planetToDelete)
         {
             Helper.GetSystemFromGUID(planetToDelete.systemGUID).planetList.Remove(planetToDelete);
 
@@ -301,7 +301,7 @@ namespace SSSystemGenerator.Classes
 
         #region market
 
-        public static void AddMarket(VeBlib_MarketData market)
+        public static void AddMarket(MarketData market)
         {
             RemoveEmpthyCharacters(market);
 
@@ -309,31 +309,31 @@ namespace SSSystemGenerator.Classes
 
             string systemID = market.systemID;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+            StarSystemData system = Helper.GetSystemFromID(systemID);
 
             system.marketList.Add(market);
 
         }
 
-        public static void UpdateMarket(VeBlib_MarketData marketToUpdate)
+        public static void UpdateMarket(MarketData marketToUpdate)
         {
             RemoveEmpthyCharacters(marketToUpdate);
 
-            VeBlib_MarketData oldMarket = Helper.GetMarketWithGUID(marketToUpdate.GUID);
+            MarketData oldMarket = Helper.GetMarketWithGUID(marketToUpdate.GUID);
 
             if (oldMarket == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
                 Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateMarket");
             }
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(marketToUpdate.systemID);
+            StarSystemData system = Helper.GetSystemFromID(marketToUpdate.systemID);
 
             system.marketList.Remove(oldMarket);
 
             system.marketList.Add(marketToUpdate);
         }
 
-        public static void DeleteMarket(VeBlib_MarketData marketToDelete)
+        public static void DeleteMarket(MarketData marketToDelete)
         {
             Helper.GetSystemFromGUID(marketToDelete.systemGUID).marketList.Remove(marketToDelete);
         }
@@ -342,7 +342,7 @@ namespace SSSystemGenerator.Classes
 
         #region customEntity
 
-        public static void AddCustomEntity(VeBlib_SectorEntittyTokenData customEntity)
+        public static void AddCustomEntity(SectorEntittyTokenData customEntity)
         {
             RemoveEmpthyCharacters(customEntity);
 
@@ -350,7 +350,7 @@ namespace SSSystemGenerator.Classes
 
             string systemID = customEntity.systemID;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+            StarSystemData system = Helper.GetSystemFromID(systemID);
 
 
             system.sectorEntityTokenList.Add(customEntity);
@@ -360,18 +360,18 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void UpdateCustomEntity(VeBlib_SectorEntittyTokenData newEntity)
+        public static void UpdateCustomEntity(SectorEntittyTokenData newEntity)
         {
             RemoveEmpthyCharacters(newEntity);
 
-            VeBlib_SectorEntittyTokenData oldEntity = Helper.GetCustomEntityWithGUID(newEntity.GUID);
+            SectorEntittyTokenData oldEntity = Helper.GetCustomEntityWithGUID(newEntity.GUID);
 
             if (oldEntity == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
                 Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateCustomEntity");
             }
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(newEntity.systemID);
+            StarSystemData system = Helper.GetSystemFromID(newEntity.systemID);
 
 
 
@@ -384,7 +384,7 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void DeleteCustomEntity(VeBlib_SectorEntittyTokenData customEntityToDelete)
+        public static void DeleteCustomEntity(SectorEntittyTokenData customEntityToDelete)
         {
             Helper.GetSystemFromGUID(customEntityToDelete.systemGUID).sectorEntityTokenList.Remove(customEntityToDelete);
 
@@ -395,7 +395,7 @@ namespace SSSystemGenerator.Classes
 
         #region ringBand
 
-        public static void AddRingBand(VeBlib_RingBandData ringBandToAdd)
+        public static void AddRingBand(RingBandData ringBandToAdd)
         {
             RemoveEmpthyCharacters(ringBandToAdd);
 
@@ -406,7 +406,7 @@ namespace SSSystemGenerator.Classes
 
             string systemID = ringBandToAdd.systemID;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+            StarSystemData system = Helper.GetSystemFromID(systemID);
 
             system.ringBandDataList.Add(ringBandToAdd);
 
@@ -415,18 +415,18 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void UpdateRingBand(VeBlib_RingBandData newRingBand)
+        public static void UpdateRingBand(RingBandData newRingBand)
         {
             RemoveEmpthyCharacters(newRingBand);
 
-            VeBlib_RingBandData oldRingBand = Helper.GetRingBandWithGUID(newRingBand.GUID);//get old star with stars guid
+            RingBandData oldRingBand = Helper.GetRingBandWithGUID(newRingBand.GUID);//get old star with stars guid
 
             if (oldRingBand == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
                 Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateStar");
             }
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(newRingBand.systemID);//get the star system 
+            StarSystemData system = Helper.GetSystemFromID(newRingBand.systemID);//get the star system 
 
             //newRingBand.x = Helper.GetExtendFromID(newRingBand.focusID).x;
             //newRingBand.y = Helper.GetExtendFromID(newRingBand.focusID).y;
@@ -443,7 +443,7 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void DeleteRingBand(VeBlib_RingBandData ringBandTodlete)
+        public static void DeleteRingBand(RingBandData ringBandTodlete)
         {
             Helper.GetSystemFromGUID(ringBandTodlete.systemGUID).ringBandDataList.Remove(ringBandTodlete);
 
@@ -454,7 +454,7 @@ namespace SSSystemGenerator.Classes
 
         #region astreoidBelt
 
-        public static void AddAstreoidBelt(VeBlib_AstreoidBeltData astreoidBeltToAdd)
+        public static void AddAstreoidBelt(AstreoidBeltData astreoidBeltToAdd)
         {
             RemoveEmpthyCharacters(astreoidBeltToAdd);
 
@@ -465,7 +465,7 @@ namespace SSSystemGenerator.Classes
 
             string systemID = astreoidBeltToAdd.systemID;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(systemID);
+            StarSystemData system = Helper.GetSystemFromID(systemID);
 
             system.astreoidBeltDataList.Add(astreoidBeltToAdd);
 
@@ -474,18 +474,18 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void UpdateAstreoidBelt(VeBlib_AstreoidBeltData newAstreoidBelt)
+        public static void UpdateAstreoidBelt(AstreoidBeltData newAstreoidBelt)
         {
             RemoveEmpthyCharacters(newAstreoidBelt);
 
-            VeBlib_AstreoidBeltData oldAstreoidBelt = Helper.GetAstreoidBeltWithGUID(newAstreoidBelt.GUID);//get old star with stars guid
+            AstreoidBeltData oldAstreoidBelt = Helper.GetAstreoidBeltWithGUID(newAstreoidBelt.GUID);//get old star with stars guid
 
             if (oldAstreoidBelt == null)//if couldnt find old star the crash, i cant be fucked to make this work when its null i am already having smoothbrain
             {
                 Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateAstreoidBelt");
             }
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(newAstreoidBelt.systemID);//get the star system 
+            StarSystemData system = Helper.GetSystemFromID(newAstreoidBelt.systemID);//get the star system 
 
             newAstreoidBelt.x = Helper.GetLocationOfFocus(Helper.GetExtendFromID(newAstreoidBelt.focusID)).X;
             newAstreoidBelt.y = Helper.GetLocationOfFocus(Helper.GetExtendFromID(newAstreoidBelt.focusID)).Y;
@@ -499,7 +499,7 @@ namespace SSSystemGenerator.Classes
             MapRefresh();
         }
 
-        public static void DeleteAstreoidBelt(VeBlib_AstreoidBeltData astreoidBeltToDelete)
+        public static void DeleteAstreoidBelt(AstreoidBeltData astreoidBeltToDelete)
         {
             Helper.GetSystemFromGUID(astreoidBeltToDelete.systemGUID).astreoidBeltDataList.Remove(astreoidBeltToDelete);
 

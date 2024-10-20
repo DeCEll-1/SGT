@@ -15,9 +15,9 @@ namespace SSSystemGenerator.Forms
 {
     public partial class AstreoidBelts : Form, IFormInterface
     {
-        public List<VeBlib_AstreoidBeltData> deletedAstreoidBeltsThisSession { get; set; } = new List<VeBlib_AstreoidBeltData>();
+        public List<AstreoidBeltData> deletedAstreoidBeltsThisSession { get; set; } = new List<AstreoidBeltData>();
 
-        private VeBlib_AstreoidBeltData currAstreoid;
+        private AstreoidBeltData currAstreoid;
 
         public string context { get; set; } = "Astreoid Belt";
 
@@ -30,23 +30,23 @@ namespace SSSystemGenerator.Forms
             loadOrbits();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         #region customFunctions
 
-        private VeBlib_StarSystemData getSystem()
+        private StarSystemData getSystem()
         {
 
             if (ComboBox_Systems.SelectedItem == null) return null;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
+            StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
 
             return system;
         }
 
-        private VeBlib_AstreoidBeltData getData()
+        private AstreoidBeltData getData()
         {
-            VeBlib_AstreoidBeltData astreoidBelt = new VeBlib_AstreoidBeltData();
+            AstreoidBeltData astreoidBelt = new AstreoidBeltData();
 
             addExtendValues(astreoidBelt);
 
@@ -144,7 +144,7 @@ namespace SSSystemGenerator.Forms
 
         private void AddAstreoidBelt()
         {
-            VeBlib_AstreoidBeltData astreoidBelt = getData();
+            AstreoidBeltData astreoidBelt = getData();
 
             if (Helper.DoesIDExists(astreoidBelt.ID))//if ringBand with same id exists
             {
@@ -175,7 +175,7 @@ namespace SSSystemGenerator.Forms
             return "";
         }
 
-        private void update(VeBlib_AstreoidBeltData astreoidRing)
+        private void update(AstreoidBeltData astreoidRing)
         {
             updateExtends(astreoidRing);
 
@@ -193,7 +193,7 @@ namespace SSSystemGenerator.Forms
 
         private void UpdateAstreoidRing()
         {
-            VeBlib_AstreoidBeltData updatedAstreoidData = getData();//get planet 
+            AstreoidBeltData updatedAstreoidData = getData();//get planet 
 
             if (Helper.DoesIDExists(updatedAstreoidData.ID, currAstreoid.ID))
             {
@@ -234,7 +234,7 @@ namespace SSSystemGenerator.Forms
         {
             ComboBox_FocusID.Items.Clear();
 
-            VeBlib_StarSystemData system = getSystem();
+            StarSystemData system = getSystem();
 
             List<Extend> orbitables = Helper.GetOrbitablesInSystem(system);
 
@@ -360,7 +360,7 @@ namespace SSSystemGenerator.Forms
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
-            VeBlib_AstreoidBeltData ringBandToDelete = Helper.GetAstreoidBeltWithID(getID());
+            AstreoidBeltData ringBandToDelete = Helper.GetAstreoidBeltWithID(getID());
 
             deletedAstreoidBeltsThisSession.Add(ringBandToDelete);
 
@@ -376,7 +376,7 @@ namespace SSSystemGenerator.Forms
         {
             if (deletedAstreoidBeltsThisSession.Count() == 0) { return; }
 
-            VeBlib_AstreoidBeltData lastDeletedItem = deletedAstreoidBeltsThisSession.ElementAt(deletedAstreoidBeltsThisSession.Count() - 1);
+            AstreoidBeltData lastDeletedItem = deletedAstreoidBeltsThisSession.ElementAt(deletedAstreoidBeltsThisSession.Count() - 1);
 
             if (Helper.DoesIDExists(lastDeletedItem.ID))
             {
@@ -410,7 +410,7 @@ namespace SSSystemGenerator.Forms
 
                 string systemID = ComboBox_Systems.SelectedItem.ToString();
 
-                VeBlib_AstreoidBeltData ringBand = Helper.GetAstreoidBeltInSystem(systemID, selectedID);//get star in the system
+                AstreoidBeltData ringBand = Helper.GetAstreoidBeltInSystem(systemID, selectedID);//get star in the system
 
                 update(ringBand);// update the star with variables
 

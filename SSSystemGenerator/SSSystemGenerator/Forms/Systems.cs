@@ -16,8 +16,8 @@ namespace SSSystemGenerator.Forms
     public partial class Systems : Form, IFormInterface
     {
 
-        public List<VeBlib_StarSystemData> deletedSystemsInThisSessionList { get; set; } = new List<VeBlib_StarSystemData> { };
-        public VeBlib_StarSystemData currSystem { get; set; } = null;
+        public List<StarSystemData> deletedSystemsInThisSessionList { get; set; } = new List<StarSystemData> { };
+        public StarSystemData currSystem { get; set; } = null;
 
 
         public Systems()
@@ -29,13 +29,13 @@ namespace SSSystemGenerator.Forms
             Load();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         #region customFunctions
 
-        private VeBlib_StarSystemData addValuesToSystem()
+        private StarSystemData addValuesToSystem()
         {
-            VeBlib_StarSystemData system = new VeBlib_StarSystemData();
+            StarSystemData system = new StarSystemData();
 
             system.ID = tb_ID.Text;
             system.name = tb_Name.Text;
@@ -52,7 +52,7 @@ namespace SSSystemGenerator.Forms
             return system;
         }
 
-        private VeBlib_StarSystemData addValuesToSystem(VeBlib_StarSystemData system)
+        private StarSystemData addValuesToSystem(StarSystemData system)
         {
 
             system.ID = tb_ID.Text;
@@ -83,7 +83,7 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        private void update(VeBlib_StarSystemData systemToUpdate)
+        private void update(StarSystemData systemToUpdate)
         {
 
             if (systemToUpdate == null) return;
@@ -162,7 +162,7 @@ namespace SSSystemGenerator.Forms
 
             if (btn_AddUpdateSystem.Text == "Add System")
             {
-                VeBlib_StarSystemData systemToAdd = addValuesToSystem();
+                StarSystemData systemToAdd = addValuesToSystem();
 
                 if (Helper.DoesIDExists(systemToAdd.ID))
                 {
@@ -183,7 +183,7 @@ namespace SSSystemGenerator.Forms
             {
 
 
-                VeBlib_StarSystemData updatedSystem = Helper.GetSystemFromGUID(currSystem.GUID);//get the old system with the guid to keep the stars and planets and such other things
+                StarSystemData updatedSystem = Helper.GetSystemFromGUID(currSystem.GUID);//get the old system with the guid to keep the stars and planets and such other things
 
 
 
@@ -242,7 +242,7 @@ namespace SSSystemGenerator.Forms
 
                 #region adds the system back, copied from add system
 
-                VeBlib_StarSystemData systemToAdd = addValuesToSystem();
+                StarSystemData systemToAdd = addValuesToSystem();
 
                 currSystem = addValuesToSystem();
 
@@ -270,7 +270,7 @@ namespace SSSystemGenerator.Forms
 
             Statics.BaseClass.StarSystemDataList.Remove(currSystem);
 
-            currSystem = new VeBlib_StarSystemData();
+            currSystem = new StarSystemData();
 
             Load();
             reset();

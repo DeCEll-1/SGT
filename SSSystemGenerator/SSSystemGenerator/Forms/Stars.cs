@@ -16,8 +16,8 @@ namespace SSSystemGenerator
 {
     public partial class Stars : Form, IFormInterface
     {
-        public List<VeBlib_StarData> deletedStarsInThisSessionList { get; set; } = new List<VeBlib_StarData> { };
-        public VeBlib_StarData currStar { get; set; } = null;
+        public List<StarData> deletedStarsInThisSessionList { get; set; } = new List<StarData> { };
+        public StarData currStar { get; set; } = null;
 
         public string context { get; set; } = "Star";
 
@@ -29,7 +29,7 @@ namespace SSSystemGenerator
 
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         #region focusStuff
 
@@ -296,7 +296,7 @@ namespace SSSystemGenerator
 
         }
 
-        private void update(VeBlib_StarData star)
+        private void update(StarData star)
         {
             updateExtends(star);
 
@@ -315,19 +315,19 @@ namespace SSSystemGenerator
             nud_CoronaSize.Value = 0;
         }
 
-        private VeBlib_StarSystemData getSystem()
+        private StarSystemData getSystem()
         {
 
             if (ComboBox_Systems.SelectedItem == null) return null;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
+            StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
 
             return system;
         }
 
-        private VeBlib_StarData getData()
+        private StarData getData()
         {
-            VeBlib_StarData gettenStar = new VeBlib_StarData();
+            StarData gettenStar = new StarData();
 
             addExtendValues(gettenStar);
 
@@ -351,7 +351,7 @@ namespace SSSystemGenerator
 
         private void AddStar()
         {
-            VeBlib_StarData starToAdd = getData();//gets star
+            StarData starToAdd = getData();//gets star
 
 
 
@@ -392,7 +392,7 @@ namespace SSSystemGenerator
             else//update star
             {
 
-                VeBlib_StarData updatedStar = getData();//get updated star
+                StarData updatedStar = getData();//get updated star
 
                 updatedStar.GUID = currStar.GUID;//give currstars guid to updated to keep the guid same
 
@@ -451,7 +451,7 @@ namespace SSSystemGenerator
 
                 string systemID = ComboBox_Systems.SelectedItem.ToString();
 
-                VeBlib_StarData Star = Helper.GetStarOnSystem(systemID, selectedID);//get star in the system
+                StarData Star = Helper.GetStarOnSystem(systemID, selectedID);//get star in the system
 
                 update(Star);// update the star with variables
 
@@ -475,7 +475,7 @@ namespace SSSystemGenerator
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
-            VeBlib_StarData starToDelete = Helper.GetStarWithID(getID());//gets the star
+            StarData starToDelete = Helper.GetStarWithID(getID());//gets the star
 
             deletedStarsInThisSessionList.Add(starToDelete);//add it to deleteds list
 
@@ -491,7 +491,7 @@ namespace SSSystemGenerator
 
             if (deletedStarsInThisSessionList.Count() == 0) { return; }
 
-            VeBlib_StarData lastDeletedItem = deletedStarsInThisSessionList.ElementAt(deletedStarsInThisSessionList.Count() - 1);
+            StarData lastDeletedItem = deletedStarsInThisSessionList.ElementAt(deletedStarsInThisSessionList.Count() - 1);
 
             if (Helper.DoesStarIDExist(lastDeletedItem.ID))
             {

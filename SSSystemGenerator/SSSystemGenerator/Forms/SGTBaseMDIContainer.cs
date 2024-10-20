@@ -23,7 +23,7 @@ namespace SSSystemGenerator
             InitializeComponent();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         private void SGTBaseMDIContainer_Load(object sender, EventArgs e)
         {

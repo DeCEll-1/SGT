@@ -78,7 +78,7 @@ namespace SSSystemGenerator.Classes
         public static Boolean DoesIDExists(string IDToCheck)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())
+            foreach (StarSystemData system in GetAllSystems())
             {
 
                 if (IDToCheck == system.ID)
@@ -148,7 +148,7 @@ namespace SSSystemGenerator.Classes
         public static Boolean DoesIDExists(string IDToCheck, string IDToExclude)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())
+            foreach (StarSystemData system in GetAllSystems())
             {
 
                 if (IDToCheck == system.ID && IDToExclude != system.ID)
@@ -218,7 +218,7 @@ namespace SSSystemGenerator.Classes
 
             List<Extend> extendList = new List<Extend>();
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())
+            foreach (StarSystemData system in GetAllSystems())
             {
 
                 extendList.AddRange(GetOrbitablesInSystem(system.ID).ToArray());
@@ -349,7 +349,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///gets all systems
         ///</summary>
-        public static List<VeBlib_StarSystemData> GetAllSystems()
+        public static List<StarSystemData> GetAllSystems()
         {
             return Statics.BaseClass.StarSystemDataList;
         }
@@ -357,10 +357,10 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///returns null if couldnt find any
         ///</summary>
-        public static VeBlib_StarSystemData GetSystemFromGUID(String systemGUID)
+        public static StarSystemData GetSystemFromGUID(String systemGUID)
         {
 
-            foreach (VeBlib_StarSystemData foreSystem in GetAllSystems())
+            foreach (StarSystemData foreSystem in GetAllSystems())
             {
                 if (foreSystem.GUID == systemGUID)
                 {
@@ -375,7 +375,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///returns null if couldnt find any
         ///</summary>
-        public static VeBlib_StarSystemData GetSystemFromID(String systemID)
+        public static StarSystemData GetSystemFromID(String systemID)
         {
 
             if (systemID == null) { return null; }
@@ -385,7 +385,7 @@ namespace SSSystemGenerator.Classes
                 return GetSystemFromID(IDWithNameToID(systemID));
             }
 
-            foreach (VeBlib_StarSystemData foreSystem in GetAllSystems())
+            foreach (StarSystemData foreSystem in GetAllSystems())
             {
                 if (foreSystem.ID == systemID)
                 {
@@ -399,7 +399,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///gets orbitables on the system and exclude connected entities on the market
         ///</summary>
-        public static List<Extend> GetOrbitablesInSystem(VeBlib_StarSystemData system, VeBlib_MarketData market)
+        public static List<Extend> GetOrbitablesInSystem(StarSystemData system, MarketData market)
         {
             return GetOrbitablesInSystem(system.ID, market);
         }
@@ -407,7 +407,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///gets orbitables on the system
         ///</summary>
-        public static List<Extend> GetOrbitablesInSystem(VeBlib_StarSystemData system)
+        public static List<Extend> GetOrbitablesInSystem(StarSystemData system)
         {
             if (system == null) return null;
 
@@ -450,7 +450,7 @@ namespace SSSystemGenerator.Classes
 
             if (systemID == null) { return null; }
 
-            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+            StarSystemData system = GetSystemFromID(systemID);
 
             if (system == null) return null;
 
@@ -488,9 +488,9 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///gets orbitables on the system and exclude connected entities on the market
         ///</summary>
-        public static List<Extend> GetOrbitablesInSystem(string systemID, VeBlib_MarketData market)
+        public static List<Extend> GetOrbitablesInSystem(string systemID, MarketData market)
         {
-            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+            StarSystemData system = GetSystemFromID(systemID);
 
             if (system == null) return null;
 
@@ -543,16 +543,16 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///returns null if couldnt find any
         ///</summary>
-        public static VeBlib_StarData GetStarOnSystem(String systemID, String starID)
+        public static StarData GetStarOnSystem(String systemID, String starID)
         {
             if (systemID.Contains(" - ") || starID.Contains(" - "))
             {
                 return GetStarOnSystem(IDWithNameToID(systemID), IDWithNameToID(starID));
             }
 
-            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+            StarSystemData system = GetSystemFromID(systemID);
 
-            foreach (VeBlib_StarData star in system.starList)
+            foreach (StarData star in system.starList)
             {
                 if (star.ID == starID)
                 {
@@ -571,12 +571,12 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_StarData GetStarWithGUID(String GUID)
+        public static StarData GetStarWithGUID(String GUID)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_StarData star in system.starList)//scroll through star list
+                foreach (StarData star in system.starList)//scroll through star list
                 {
                     if (star.GUID == GUID)//if guid is found return the star
                     {
@@ -592,7 +592,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_StarData GetStarWithID(String ID)
+        public static StarData GetStarWithID(String ID)
         {
 
             if (ID.Contains(" - "))
@@ -600,9 +600,9 @@ namespace SSSystemGenerator.Classes
                 return GetStarWithID(IDWithNameToID(ID));
             }
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_StarData star in system.starList)//scroll through star list
+                foreach (StarData star in system.starList)//scroll through star list
                 {
                     if (star.ID == ID)//if guid is found return the star
                     {
@@ -617,9 +617,9 @@ namespace SSSystemGenerator.Classes
 
         public static Boolean DoesStarIDExist(string IDToCheck)
         {
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_StarData star in system.starList)//scroll through star list
+                foreach (StarData star in system.starList)//scroll through star list
                 {
                     if (star.ID == IDToCheck)//if ID is found
                     {
@@ -636,9 +636,9 @@ namespace SSSystemGenerator.Classes
         ///</summary>
         public static Boolean DoesStarIDExist(string IDToCheck, string starIDToExclude)
         {
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_StarData star in system.starList)//scroll through star list
+                foreach (StarData star in system.starList)//scroll through star list
                 {
                     if (star.ID == IDToCheck)//if ID is found
                     {
@@ -663,16 +663,16 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///returns null if couldnt find any
         ///</summary>
-        public static VeBlib_PlanetData GetPlanetOnSystem(String systemID, String planetID)
+        public static PlanetData GetPlanetOnSystem(String systemID, String planetID)
         {
             if (systemID.Contains(" - ") || planetID.Contains(" - "))
             {
                 return GetPlanetOnSystem(IDWithNameToID(systemID), IDWithNameToID(planetID));
             }
 
-            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+            StarSystemData system = GetSystemFromID(systemID);
 
-            foreach (VeBlib_PlanetData planet in system.planetList)
+            foreach (PlanetData planet in system.planetList)
             {
                 if (planet.ID == planetID)
                 {
@@ -686,12 +686,12 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_PlanetData GetPlanetWithGUID(string GUID)
+        public static PlanetData GetPlanetWithGUID(string GUID)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_PlanetData planet in system.planetList)//scroll through planet list
+                foreach (PlanetData planet in system.planetList)//scroll through planet list
                 {
                     if (planet.GUID == GUID)//if guid is found return the planet
                     {
@@ -707,7 +707,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_PlanetData GetPlanetWithID(string ID)
+        public static PlanetData GetPlanetWithID(string ID)
         {
 
             if (ID.Contains(" - "))
@@ -715,9 +715,9 @@ namespace SSSystemGenerator.Classes
                 return GetPlanetWithID(IDWithNameToID(ID));
             }
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_PlanetData planet in system.planetList)//scroll through planet list
+                foreach (PlanetData planet in system.planetList)//scroll through planet list
                 {
                     if (planet.ID == ID)//if id is found return the planet
                     {
@@ -736,12 +736,12 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_MarketData GetMarketWithGUID(String GUID)
+        public static MarketData GetMarketWithGUID(String GUID)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_MarketData market in system.marketList)//scroll through planet list
+                foreach (MarketData market in system.marketList)//scroll through planet list
                 {
                     if (market.GUID == GUID)//if guid is found return the planet
                     {
@@ -757,7 +757,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_MarketData GetMarketWithID(string ID)
+        public static MarketData GetMarketWithID(string ID)
         {
 
             if (ID.Contains(" - "))
@@ -765,9 +765,9 @@ namespace SSSystemGenerator.Classes
                 return GetMarketWithID(IDWithNameToID(ID));
             }
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_MarketData market in system.marketList)//scroll through market list
+                foreach (MarketData market in system.marketList)//scroll through market list
                 {
                     if (market.ID == ID)//if id is found return the planet
                     {
@@ -782,7 +782,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_MarketData GetMarketWithPrimaryEntityID(string ID)
+        public static MarketData GetMarketWithPrimaryEntityID(string ID)
         {
 
             if (ID.Contains(" - "))
@@ -790,9 +790,9 @@ namespace SSSystemGenerator.Classes
                 return GetMarketWithPrimaryEntityID(IDWithNameToID(ID));
             }
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_MarketData market in system.marketList)//scroll through market list
+                foreach (MarketData market in system.marketList)//scroll through market list
                 {
                     if (market.primaryEntity == ID)//if id is found return the market
                     {
@@ -811,16 +811,16 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///returns null if couldnt find any
         ///</summary>
-        public static VeBlib_SectorEntittyTokenData GetCustomEntityInSystem(String systemID, String customEntityID)
+        public static SectorEntittyTokenData GetCustomEntityInSystem(String systemID, String customEntityID)
         {
             if (systemID.Contains(" - ") || customEntityID.Contains(" - "))
             {
                 return GetCustomEntityInSystem(IDWithNameToID(systemID), IDWithNameToID(customEntityID));
             }
 
-            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+            StarSystemData system = GetSystemFromID(systemID);
 
-            foreach (VeBlib_SectorEntittyTokenData customEntity in system.sectorEntityTokenList)
+            foreach (SectorEntittyTokenData customEntity in system.sectorEntityTokenList)
             {
                 if (customEntity.ID == customEntityID)
                 {
@@ -834,12 +834,12 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_SectorEntittyTokenData GetCustomEntityWithGUID(String GUID)
+        public static SectorEntittyTokenData GetCustomEntityWithGUID(String GUID)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_SectorEntittyTokenData customEntity in system.sectorEntityTokenList)//scroll through planet list
+                foreach (SectorEntittyTokenData customEntity in system.sectorEntityTokenList)//scroll through planet list
                 {
                     if (customEntity.GUID == GUID)//if guid is found return the planet
                     {
@@ -855,7 +855,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_SectorEntittyTokenData GetEntityFromID(string ID)
+        public static SectorEntittyTokenData GetEntityFromID(string ID)
         {
 
             if (ID.Contains(" - "))
@@ -863,9 +863,9 @@ namespace SSSystemGenerator.Classes
                 return GetEntityFromID(IDWithNameToID(ID));
             }
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_SectorEntittyTokenData customEntity in system.sectorEntityTokenList)//scroll through planet list
+                foreach (SectorEntittyTokenData customEntity in system.sectorEntityTokenList)//scroll through planet list
                 {
                     if (customEntity.ID == ID)//if id is found return the planet
                     {
@@ -884,16 +884,16 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///returns null if couldnt find any
         ///</summary>
-        public static VeBlib_RingBandData GetRingBandInSystem(String systemID, String ringBandID)
+        public static RingBandData GetRingBandInSystem(String systemID, String ringBandID)
         {
             if (systemID.Contains(" - ") || ringBandID.Contains(" - "))
             {
                 return GetRingBandInSystem(IDWithNameToID(systemID), IDWithNameToID(ringBandID));
             }
 
-            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+            StarSystemData system = GetSystemFromID(systemID);
 
-            foreach (VeBlib_RingBandData ringBand in system.ringBandDataList)
+            foreach (RingBandData ringBand in system.ringBandDataList)
             {
                 if (ringBand.ID == ringBandID)
                 {
@@ -907,7 +907,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_RingBandData GetRingBandWithID(string GUID)
+        public static RingBandData GetRingBandWithID(string GUID)
         {
 
             if (GUID.Contains(" - "))
@@ -915,9 +915,9 @@ namespace SSSystemGenerator.Classes
                 return GetRingBandWithID(IDWithNameToID(GUID));
             }
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_RingBandData ringBand in system.ringBandDataList)//scroll through planet list
+                foreach (RingBandData ringBand in system.ringBandDataList)//scroll through planet list
                 {
                     if (ringBand.ID == GUID)//if id is found return the planet
                     {
@@ -932,12 +932,12 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_RingBandData GetRingBandWithGUID(string GUID)
+        public static RingBandData GetRingBandWithGUID(string GUID)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_RingBandData ringBand in system.ringBandDataList)//scroll through planet list
+                foreach (RingBandData ringBand in system.ringBandDataList)//scroll through planet list
                 {
                     if (ringBand.GUID == GUID)//if guid is found return the planet
                     {
@@ -956,16 +956,16 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///returns null if couldnt find any
         ///</summary>
-        public static VeBlib_AstreoidBeltData GetAstreoidBeltInSystem(String systemID, String astreoidBeltID)
+        public static AstreoidBeltData GetAstreoidBeltInSystem(String systemID, String astreoidBeltID)
         {
             if (systemID.Contains(" - ") || astreoidBeltID.Contains(" - "))
             {
                 return GetAstreoidBeltInSystem(IDWithNameToID(systemID), IDWithNameToID(astreoidBeltID));
             }
 
-            VeBlib_StarSystemData system = GetSystemFromID(systemID);
+            StarSystemData system = GetSystemFromID(systemID);
 
-            foreach (VeBlib_AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)
+            foreach (AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)
             {
                 if (astreoidBelt.ID == astreoidBeltID)
                 {
@@ -979,7 +979,7 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_AstreoidBeltData GetAstreoidBeltWithID(string GUID)
+        public static AstreoidBeltData GetAstreoidBeltWithID(string GUID)
         {
 
             if (GUID.Contains(" - "))
@@ -987,9 +987,9 @@ namespace SSSystemGenerator.Classes
                 return GetAstreoidBeltWithID(IDWithNameToID(GUID));
             }
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)//scroll through planet list
+                foreach (AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)//scroll through planet list
                 {
                     if (astreoidBelt.ID == GUID)//if id is found return the planet
                     {
@@ -1004,12 +1004,12 @@ namespace SSSystemGenerator.Classes
         ///<summary>
         ///return null if couldnt find anything
         ///</summary>
-        public static VeBlib_AstreoidBeltData GetAstreoidBeltWithGUID(string GUID)
+        public static AstreoidBeltData GetAstreoidBeltWithGUID(string GUID)
         {
 
-            foreach (VeBlib_StarSystemData system in GetAllSystems())//scroll through system list
+            foreach (StarSystemData system in GetAllSystems())//scroll through system list
             {
-                foreach (VeBlib_AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)//scroll through planet list
+                foreach (AstreoidBeltData astreoidBelt in system.astreoidBeltDataList)//scroll through planet list
                 {
                     if (astreoidBelt.GUID == GUID)//if guid is found return the planet
                     {
@@ -1075,7 +1075,7 @@ namespace SSSystemGenerator.Classes
             throw new Exception(
                 "filename:" + fileName +
                 "\nfunctionname:" + functionName +
-                "\nping me on corvus or usc with the reproduction way and your system JSON");
+                "\nping me on corvus or usc with the reproduction way and your systems");
 
         }
 
@@ -1160,419 +1160,9 @@ namespace SSSystemGenerator.Classes
         public static Map GetMap() { return Statics.Map; }
         public static SGTBaseMDIContainer GetMDIContainer() { return Statics.SGTBaseMDIContainer; }
 
-        //TODO: get this on a seperate file
-        #region Colors 
 
-        public static void ChangeColorMode(Control.ControlCollection container)
-        {
-            UpdateComponentColors(container.Owner);
-
-            foreach (Control component in container)
-            {
-
-                //if (!component.Enabled) continue;
-
-                DrawBorderToComplonent(component);
-
-                //HoverColorEventSetup(component);
-
-                UpdateComponentColors(component);
-
-                if (component is MenuStrip)
-                {
-                    ChangeColorMode((component as MenuStrip).Items);
-                }
-
-                if (component.Controls.Count != 0)
-                {
-                    ChangeColorMode(component.Controls);
-
-                    continue;
-                }
-
-
-            }
-
-
-
-        }
-
-        private static void UpdateComponentColors(Control component)
-        {
-            ////https://stackoverflow.com/a/19315175 // remove it before adding so you dont add it multiple times
-            //component.EnabledChanged -= EnabledColorUpdateEvent;
-            //component.EnabledChanged += EnabledColorUpdateEvent;//except it doesnt work
-
-            bool wasDisabled = false;
-
-            if (component is Button && !component.Enabled)
-            {
-                if (!Settings.ColorMode)//Dark mode
-                {
-                    return;
-                }
-
-            }
-
-            //if (!component.Enabled)
-            //{//https://stackoverflow.com/a/46100278
-            //    wasDisabled = true;
-            //    component.Enabled = true;
-            //}
-
-            if (component.Name.Contains("Refresh") || component.Name.Contains("Undo"))
-            {
-                component.BackgroundImage = RefreshButton();
-            }
-            if (component.Name.Contains("Clone"))
-            {
-                component.BackgroundImage = CloneButton();
-            }
-            if (component.Name.Contains("btn_GetSystemBackground"))
-            {
-                component.BackgroundImage = ImageSelect();
-            }
-
-            //component.EnabledChanged -= EnabledColorUpdateEvent;
-            //component.EnabledChanged += EnabledColorUpdateEvent;
-
-            //if (!component.Enabled) return;
-
-
-
-            foreach (var borderlessControl in borderlessControls)
-            {
-                if (component.GetType() == borderlessControl.GetType() || component.GetType().GetInterface("IFormInterface") != null)
-                {
-                    component.BackColor = FormBackground();
-                    component.ForeColor = FormText();
-
-                    //if (wasDisabled) component.Enabled = false;
-                    return;
-                }
-            }
-
-            component.BackColor = Background();
-            component.ForeColor = Text();
-
-            //if (wasDisabled) component.Enabled = false;
-
-        }
-
-        private static void EnabledColorUpdateEvent(object sender, System.EventArgs eventArgs)
-        {
-            Control senderControl = (Control)sender;
-            UpdateComponentColors(senderControl);
-
-            DrawBorderToComplonent(senderControl);
-        }
-
-        #region Border
-
-        private static void DrawBorderToComplonent(Control component)
-        {
-
-            component.Paint += Component_Paint;
-
-            component.Refresh();
-
-            component.Paint -= Component_Paint;
-
-        }
-
-        private static void Component_Paint(object sender, PaintEventArgs e)
-        {//https://stackoverflow.com/a/59478243
-
-            foreach (var borderlessControl in borderlessControls)
-            {
-                if (sender.GetType() == borderlessControl.GetType())
-                {
-                    return;
-                }
-            }
-
-            int borderWidth = 6;
-            ButtonBorderStyle borderStyle = ButtonBorderStyle.Solid;
-            if (Settings.ColorMode)//light mode
-            {
-                e.Graphics.Clear(Colors.LIGHT_MODE_BG);
-                var borderColor = Colors.LIGHT_MODE_BORDER;
-                //https://stackoverflow.com/questions/2200974/controlpaint-drawborder-but-thicker
-
-                ControlPaint.DrawBorder(
-                                    e.Graphics,
-                                    e.ClipRectangle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle
-                                    );
-            }
-            else//dark mode
-            {
-                e.Graphics.Clear(Colors.DARK_MODE_BG);
-                var borderColor = Colors.DARK_MODE_BORDER;
-
-
-
-                ControlPaint.DrawBorder(
-                                    e.Graphics,
-                                    e.ClipRectangle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle,
-                                    borderColor,
-                                    borderWidth,
-                                    borderStyle
-                                    );
-            }
-
-        }
 
         #endregion
 
-        #region ToolStrip
-
-        private static void ChangeColorMode(ToolStripItemCollection TSICollection)
-        {
-            foreach (ToolStripItem TSI in TSICollection)
-            {
-
-                UpdateToolStripColors(TSI);
-
-                if (TSI is ToolStripMenuItem)
-                {
-                    //HoverColorEventSetup(TSI);
-                    ChangeColorMode((TSI as ToolStripMenuItem).DropDownItems);
-
-                }
-
-            }
-        }
-
-        private static void UpdateToolStripColors(ToolStripItem toolStripItem)
-        {
-            if (!toolStripItem.Enabled) return;
-
-            toolStripItem.BackColor = FormBackground();
-            toolStripItem.ForeColor = FormText();
-
-        }
-
-        #endregion
-
-        #region Hover // obsolete, doesnt work/makes everything shet itself
-
-        [ObsoleteAttribute]
-        private static void HoverColorEventSetup(Control component)
-        {//https://stackoverflow.com/questions/37777688/c-sharp-how-to-change-menustrip-hover-color
-         //draw stuff when mouse entered and reset when leaved
-
-            component.MouseEnter -= Hover_MouseEnter_Control;
-            component.MouseEnter += Hover_MouseEnter_Control;//enter
-
-            component.MouseLeave -= Hover_MouseLeave_Control;
-            component.MouseLeave += Hover_MouseLeave_Control;//leave
-
-            component.Paint -= Hover_Paint_Control;
-            component.Paint += Hover_Paint_Control;//paint
-        }
-
-        [ObsoleteAttribute]
-        private static void HoverColorEventSetup(ToolStripItem TSI)
-        {//https://stackoverflow.com/questions/37777688/c-sharp-how-to-change-menustrip-hover-color
-            //draw stuff when mouse entered and reset when leaved
-
-            TSI.MouseEnter -= Hover_MouseEnter_TSI;
-            TSI.MouseEnter += Hover_MouseEnter_TSI;//enter
-
-            TSI.MouseLeave -= Hover_MouseLeave_TSI;
-            TSI.MouseLeave += Hover_MouseLeave_TSI;//leave
-
-            TSI.Paint -= Hover_Paint_Control;
-            TSI.Paint += Hover_Paint_Control;//paint
-        }
-
-        [ObsoleteAttribute]
-        private static void Hover_MouseEnter_Control(object sender, EventArgs e) { (sender as Control).Refresh(); }
-
-        [ObsoleteAttribute]
-        private static void Hover_MouseLeave_Control(object sender, EventArgs e) { (sender as Control).Refresh(); }
-
-        [ObsoleteAttribute]
-        private static void Hover_MouseEnter_TSI(object sender, EventArgs e) { (sender as ToolStripItem).Invalidate(); }
-
-        [ObsoleteAttribute]
-        private static void Hover_MouseLeave_TSI(object sender, EventArgs e) { (sender as ToolStripItem).Invalidate(); }
-
-        [ObsoleteAttribute]
-        private static void Hover_Paint_Control(object sender, PaintEventArgs e)
-        {
-            if (sender == null || (sender as Control) == null) return;
-
-            using (sender as Control)
-            {
-                e.Graphics.FillRectangle(new SolidBrush((sender as Control).BackColor), (sender as Control).Bounds);
-            }
-        }
-
-        [ObsoleteAttribute]
-        private static void Hover_PaintTSI(object sender, PaintEventArgs e)
-        {
-            if (sender == null || (sender as Control) == null) return;
-
-            using (sender as Control)
-            {
-                e.Graphics.FillRectangle(new SolidBrush((sender as Control).BackColor), (sender as Control).Bounds);
-            }
-        }
-
-        #endregion
-
-        #region returnColors
-
-        public static Color Text()
-        {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_FG; }
-            else
-            { return Colors.DARK_MODE_FG; }
-        }
-
-        public static Color Background()
-        {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_BG; }
-            else
-            { return Colors.DARK_MODE_BG; }
-        }
-
-        public static Color FormText()
-        {
-            if (Settings.ColorMode)//lightMode
-            //{ return Colors.LIGHT_MODE_FORM_FG; }
-            { return Form.DefaultForeColor; }
-            else
-            { return Colors.DARK_MODE_FORM_FG; }
-        }
-
-        public static Color FormBackground()
-        {
-            if (Settings.ColorMode)//lightMode
-            //{ return Colors.LIGHT_MODE_FORM_BG; }
-            { return Form.DefaultBackColor; }
-            else
-            { return Colors.DARK_MODE_FORM_BG; }
-        }
-
-        public static Color Border()
-        {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_BORDER; }
-            else
-            { return Colors.DARK_MODE_BORDER; }
-        }
-
-        public static Bitmap RefreshButton()
-        {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_REFRESH_IMAGE; }
-            else
-            { return Colors.DARK_MODE_REFRESH_IMAGE; }
-        }
-
-        public static Bitmap CloneButton()//make those generalised
-        {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_CLONE_IMAGE; }
-            else
-            { return Colors.DARK_MODE_CLONE_IMAGE; }
-        }
-
-        public static Bitmap ImageSelect()//make those generalised
-        {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_IMAGE_SELECTION; }
-            else
-            { return Colors.DARK_MODE_IMAGE_SELECTION; }
-        }
-
-        public static Color Hover()
-        {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_HOVER_COLOR; }
-            else
-            { return Colors.DARK_MODE_HOVER_COLOR; }
-        }
-
-        #endregion
-
-        #region ComboBox // not used because the coloring works on flat and this makes it look like flat anyways
-
-        [ObsoleteAttribute]
-        private static void ChangeColorOfDropBoxes(Component component)
-        {
-            if (component is ComboBox)
-            {
-                (component as ComboBox).DrawItem += ComboBox_DrawItem;
-                (component as ComboBox).Refresh();
-                (component as ComboBox).DrawItem -= ComboBox_DrawItem;
-            }
-        }
-
-        [ObsoleteAttribute]
-        private static void ComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {//https://stackoverflow.com/a/60421006/21149029
-
-            ComboBox comboBox = (sender as ComboBox);
-
-            int index = e.Index >= 0 ? e.Index : -1;
-            Brush brush = ((e.State & DrawItemState.Selected) > 0) ? SystemBrushes.HighlightText : new SolidBrush(comboBox.ForeColor);
-            e.DrawBackground();
-            if (index != -1)
-            {
-                e.Graphics.DrawString(comboBox.Items[index].ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
-            }
-            e.DrawFocusRectangle();
-        }
-
-        #endregion
-
-        #region borderlessControls // also stuff that takes form background
-
-        private static List<Control> borderlessControls = new List<Control>()
-        {
-            new Label(),
-            new Button(),
-            new GroupBox(),
-            new Panel(),
-            new Form(),
-        };
-
-        #endregion
-
-        #endregion
-
-        #endregion
-
-        #region obsolete
-
-
-
-        #endregion
     }
 }

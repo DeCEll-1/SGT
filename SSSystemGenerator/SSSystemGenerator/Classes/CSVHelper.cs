@@ -108,7 +108,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns>list of the things market doesnt have</returns>
-        public static List<string> İndustriesListToStringIDNameListExcludingMarketItems(List<IndustriesCSV> industriesList, VeBlib_MarketData market)
+        public static List<string> İndustriesListToStringIDNameListExcludingMarketItems(List<IndustriesCSV> industriesList, MarketData market)
         {
             List<string> stringListToReturn = new List<string>();
 
@@ -131,7 +131,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> İndustriesListToStringIDNameList(List<IndustriesCSV> industriesList, VeBlib_MarketData market)
+        public static List<string> İndustriesListToStringIDNameList(List<IndustriesCSV> industriesList, MarketData market)
         {
             List<string> stringListToReturn = new List<string>();
 
@@ -221,7 +221,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> SubmarketsListToStringIDNaneListExcludingMarketItems(List<SubmarketsCSV> submarkets, VeBlib_MarketData market)
+        public static List<string> SubmarketsListToStringIDNaneListExcludingMarketItems(List<SubmarketsCSV> submarkets, MarketData market)
         {
             List<string> stringListToReturn = new List<string>();
 
@@ -247,7 +247,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> SubmarketsListToStringIDNaneList(List<SubmarketsCSV> submarkets, VeBlib_MarketData market)
+        public static List<string> SubmarketsListToStringIDNaneList(List<SubmarketsCSV> submarkets, MarketData market)
         {
             List<string> stringListToReturn = new List<string>();
 
@@ -340,7 +340,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameListExcludingMarketItems(List<MarketConditions> marketConditionsList, VeBlib_MarketData market)
+        public static List<string> MarketConditionsListToStringIDNameListExcludingMarketItems(List<MarketConditions> marketConditionsList, MarketData market)
         {
             List<string> listToReturn = new List<string>();
 
@@ -367,7 +367,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditions> marketConditionsList, VeBlib_MarketData market)
+        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditions> marketConditionsList, MarketData market)
         {
             List<string> stringListToReturn = new List<string>();
 

@@ -17,9 +17,9 @@ namespace SSSystemGenerator.Forms
     {
         public string context { get; set; } = "Custom Entity";
 
-        public List<VeBlib_SectorEntittyTokenData> deletedEntitiesInThisSessionList { get; set; } = new List<VeBlib_SectorEntittyTokenData>();
+        public List<SectorEntittyTokenData> deletedEntitiesInThisSessionList { get; set; } = new List<SectorEntittyTokenData>();
 
-        public VeBlib_SectorEntittyTokenData currEntity { get; set; } = new VeBlib_SectorEntittyTokenData();
+        public SectorEntittyTokenData currEntity { get; set; } = new SectorEntittyTokenData();
 
         public CustomEntities()
         {
@@ -28,7 +28,7 @@ namespace SSSystemGenerator.Forms
             Load();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         #region focusStuff
 
@@ -96,7 +96,7 @@ namespace SSSystemGenerator.Forms
 
             ComboBox_FocusID.Items.Add("");
 
-            VeBlib_StarSystemData system = getSystem();
+            StarSystemData system = getSystem();
 
             List<Extend> orbitables = Helper.GetOrbitablesInSystem(system);
 
@@ -220,7 +220,7 @@ namespace SSSystemGenerator.Forms
 
         private void AddCustomEntity()
         {
-            VeBlib_SectorEntittyTokenData entityToAdd = getData();//get planet 
+            SectorEntittyTokenData entityToAdd = getData();//get planet 
 
             if (Helper.DoesIDExists(entityToAdd.ID))//if planet with same id exists
             {
@@ -242,7 +242,7 @@ namespace SSSystemGenerator.Forms
 
         private void UpdateEntity()
         {
-            VeBlib_SectorEntittyTokenData updatedEntity = getData();//get planet 
+            SectorEntittyTokenData updatedEntity = getData();//get planet 
 
             if (Helper.DoesIDExists(updatedEntity.ID, currEntity.ID))
             {
@@ -342,7 +342,7 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        private void update(VeBlib_SectorEntittyTokenData entity)
+        private void update(SectorEntittyTokenData entity)
         {
             updateExtends(entity);
 
@@ -354,19 +354,19 @@ namespace SSSystemGenerator.Forms
             resetExtend();
         }
 
-        private VeBlib_StarSystemData getSystem()
+        private StarSystemData getSystem()
         {
 
             if (ComboBox_Systems.SelectedItem == null) return null;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
+            StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
 
             return system;
         }
 
-        private VeBlib_SectorEntittyTokenData getData()
+        private SectorEntittyTokenData getData()
         {
-            VeBlib_SectorEntittyTokenData gettenPlanet = new VeBlib_SectorEntittyTokenData();
+            SectorEntittyTokenData gettenPlanet = new SectorEntittyTokenData();
 
             addExtendValues(gettenPlanet);
 
@@ -401,7 +401,7 @@ namespace SSSystemGenerator.Forms
 
                 string systemID = ComboBox_Systems.SelectedItem.ToString();
 
-                VeBlib_SectorEntittyTokenData customEntity = Helper.GetCustomEntityInSystem(systemID, selectedID);//get entity in the system
+                SectorEntittyTokenData customEntity = Helper.GetCustomEntityInSystem(systemID, selectedID);//get entity in the system
 
                 update(customEntity);// update the entity with variables
 
@@ -432,7 +432,7 @@ namespace SSSystemGenerator.Forms
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            VeBlib_SectorEntittyTokenData entityToDelete = Helper.GetEntityFromID(getID());
+            SectorEntittyTokenData entityToDelete = Helper.GetEntityFromID(getID());
 
             deletedEntitiesInThisSessionList.Add(entityToDelete);
 
@@ -447,7 +447,7 @@ namespace SSSystemGenerator.Forms
         {
             if (deletedEntitiesInThisSessionList.Count() == 0) { return; }
 
-            VeBlib_SectorEntittyTokenData lastDeletedItem = deletedEntitiesInThisSessionList.ElementAt(deletedEntitiesInThisSessionList.Count() - 1);
+            SectorEntittyTokenData lastDeletedItem = deletedEntitiesInThisSessionList.ElementAt(deletedEntitiesInThisSessionList.Count() - 1);
 
             if (Helper.DoesIDExists(lastDeletedItem.ID))
             {

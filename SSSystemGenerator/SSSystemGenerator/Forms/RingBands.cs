@@ -16,8 +16,8 @@ namespace SSSystemGenerator.Forms
 {
     public partial class RingBands : Form, IFormInterface
     {
-        public List<VeBlib_RingBandData> deletedRingBandsInThisSession { get; set; } = new List<VeBlib_RingBandData>();
-        private VeBlib_RingBandData currRingBand { get; set; } = new VeBlib_RingBandData();
+        public List<RingBandData> deletedRingBandsInThisSession { get; set; } = new List<RingBandData>();
+        private RingBandData currRingBand { get; set; } = new RingBandData();
 
         private Color currColor { get; set; } = Color.Red;
 
@@ -32,7 +32,7 @@ namespace SSSystemGenerator.Forms
             loadOrbits();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); UpdateColorPanel(); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); UpdateColorPanel(); }
 
         #region orbit
 
@@ -44,7 +44,7 @@ namespace SSSystemGenerator.Forms
         {
             ComboBox_FocusID.Items.Clear();
 
-            VeBlib_StarSystemData system = getSystem();
+            StarSystemData system = getSystem();
 
             List<Extend> orbitables = Helper.GetOrbitablesInSystem(system);
 
@@ -128,19 +128,19 @@ namespace SSSystemGenerator.Forms
 
         #region customFunctions
 
-        private VeBlib_StarSystemData getSystem()
+        private StarSystemData getSystem()
         {
 
             if (ComboBox_Systems.SelectedItem == null) return null;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
+            StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
 
             return system;
         }
 
-        private VeBlib_RingBandData getData()
+        private RingBandData getData()
         {
-            VeBlib_RingBandData ringBand = new VeBlib_RingBandData();
+            RingBandData ringBand = new RingBandData();
 
             addExtendValues(ringBand);
 
@@ -262,7 +262,7 @@ namespace SSSystemGenerator.Forms
 
         private void AddRingBand()
         {
-            VeBlib_RingBandData ringBand = getData();
+            RingBandData ringBand = getData();
 
             if (Helper.DoesIDExists(ringBand.ID))//if ringBand with same id exists
             {
@@ -293,7 +293,7 @@ namespace SSSystemGenerator.Forms
             return "";
         }
 
-        private void update(VeBlib_RingBandData ringBand)
+        private void update(RingBandData ringBand)
         {
             if (ringBand == null) return;
 
@@ -445,7 +445,7 @@ namespace SSSystemGenerator.Forms
             }
             else
             {
-                VeBlib_RingBandData updatedRingBand = getData();//get planet 
+                RingBandData updatedRingBand = getData();//get planet 
 
                 if (Helper.DoesIDExists(updatedRingBand.ID, currRingBand.ID))
                 {
@@ -474,7 +474,7 @@ namespace SSSystemGenerator.Forms
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
-            VeBlib_RingBandData ringBandToDelete = Helper.GetRingBandWithID(getID());
+            RingBandData ringBandToDelete = Helper.GetRingBandWithID(getID());
 
             deletedRingBandsInThisSession.Add(ringBandToDelete);
 
@@ -490,7 +490,7 @@ namespace SSSystemGenerator.Forms
         {
             if (deletedRingBandsInThisSession.Count() == 0) { return; }
 
-            VeBlib_RingBandData lastDeletedItem = deletedRingBandsInThisSession.ElementAt(deletedRingBandsInThisSession.Count() - 1);
+            RingBandData lastDeletedItem = deletedRingBandsInThisSession.ElementAt(deletedRingBandsInThisSession.Count() - 1);
 
             if (Helper.DoesIDExists(lastDeletedItem.ID))
             {
@@ -525,7 +525,7 @@ namespace SSSystemGenerator.Forms
 
                 string systemID = ComboBox_Systems.SelectedItem.ToString();
 
-                VeBlib_RingBandData ringBand = Helper.GetRingBandInSystem(systemID, selectedID);//get star in the system
+                RingBandData ringBand = Helper.GetRingBandInSystem(systemID, selectedID);//get star in the system
 
                 update(ringBand);// update the star with variables
 

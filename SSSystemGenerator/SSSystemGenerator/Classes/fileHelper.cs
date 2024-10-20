@@ -60,7 +60,7 @@ namespace SSSystemGenerator.Classes
 
             if (metadataHolder == null) metadataHolder = new MetadataHolder();
 
-            List<VeBlib_StarSystemData> systems = new List<VeBlib_StarSystemData>();
+            List<StarSystemData> systems = new List<StarSystemData>();
 
             ImageWorks imageWorks = new ImageWorks();
 

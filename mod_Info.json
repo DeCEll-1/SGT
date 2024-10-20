@@ -1,7 +1,7 @@
 {
   "id": "SGT",
-  "name": "SGT",
-  "author": "SGT",
+  "name": "System Generation Tool",
+  "author": "DeCell",
   "totalConversion": "false",
   "version": {
     "major": 0,
@@ -10,7 +10,7 @@
   },
   "description": "SGT",
   "gameVersion": "0.97a-RC11",
-  "modPlugin": "SGT.SGT.Plugins.SGT_ModPlugin",
+  "modPlugin": "DeCell.SGT.Plugins.ModPlugin",
   "jars": [
     "jars/SGT.jar"
   ]

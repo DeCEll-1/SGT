@@ -19,10 +19,12 @@ namespace SSSystemGenerator.Forms
 
         #region Image
 
+        // TODO: fix this so it only outputs 0, 0 > 1024, 1024
         public Bitmap ReturnPanelImage()
         {
-            Bitmap image = new Bitmap(pnl_Map.Width, pnl_Map.Height);
-            pnl_Map.DrawToBitmap(image, new Rectangle(0, 0, image.Width, image.Height));
+            pnl_Map.Width = 1024; pnl_Map.Height = 1024;
+            Bitmap image = new Bitmap(1024, 1024);
+            pnl_Map.DrawToBitmap(image, new Rectangle(0, 0, 1024, 1024));
             return image;
         }
 
@@ -46,7 +48,7 @@ namespace SSSystemGenerator.Forms
         }
         #endregion
 
-        public VeBlib_StarSystemData selectedSystem { get; set; } = new VeBlib_StarSystemData();
+        public StarSystemData selectedSystem { get; set; } = new StarSystemData();
 
         public PanelRenderer PanelDrawer { get; set; } = null;
 
@@ -203,7 +205,7 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         private void Load()
         {

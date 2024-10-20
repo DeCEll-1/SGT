@@ -16,8 +16,8 @@ namespace SSSystemGenerator.Forms
     public partial class Planets : Form, IFormInterface
     {
 
-        public List<VeBlib_PlanetData> deletedPlanetsInThisSessionList { get; set; } = new List<VeBlib_PlanetData>();
-        public VeBlib_PlanetData currPlanet { get; set; } = null;
+        public List<PlanetData> deletedPlanetsInThisSessionList { get; set; } = new List<PlanetData>();
+        public PlanetData currPlanet { get; set; } = null;
 
         public string context { get; set; } = "Planet";
 
@@ -28,7 +28,7 @@ namespace SSSystemGenerator.Forms
             Load();
         }
 
-        public void UpdateColors() { Helper.ChangeColorMode(this.Controls); }
+        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         #region focusStuff
 
@@ -115,7 +115,7 @@ namespace SSSystemGenerator.Forms
 
             ComboBox_FocusID.Items.Add("");
 
-            VeBlib_StarSystemData system = getSystem();
+            StarSystemData system = getSystem();
 
             List<Extend> orbitables = Helper.GetOrbitablesInSystem(system);
 
@@ -333,7 +333,7 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        private void update(VeBlib_PlanetData planetData)
+        private void update(PlanetData planetData)
         {
 
             updateExtends(planetData);
@@ -350,19 +350,19 @@ namespace SSSystemGenerator.Forms
             nud_Radius.Value = 0;
         }
 
-        private VeBlib_StarSystemData getSystem()
+        private StarSystemData getSystem()
         {
 
             if (ComboBox_Systems.SelectedItem == null) return null;
 
-            VeBlib_StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
+            StarSystemData system = Helper.GetSystemFromID(ComboBox_Systems.SelectedItem.ToString());
 
             return system;
         }
 
-        private VeBlib_PlanetData getData()
+        private PlanetData getData()
         {
-            VeBlib_PlanetData gettenPlanet = new VeBlib_PlanetData();
+            PlanetData gettenPlanet = new PlanetData();
 
             addExtendValues(gettenPlanet);
 
@@ -375,7 +375,7 @@ namespace SSSystemGenerator.Forms
 
         private void AddPlanet()
         {
-            VeBlib_PlanetData planetToAdd = getData();//get planet 
+            PlanetData planetToAdd = getData();//get planet 
 
             if (Helper.DoesIDExists(planetToAdd.ID))//if planet with same id exists
             {
@@ -420,7 +420,7 @@ namespace SSSystemGenerator.Forms
             else//update
             {
 
-                VeBlib_PlanetData updatedPlanet = getData();//get planet 
+                PlanetData updatedPlanet = getData();//get planet 
 
                 if (Helper.DoesIDExists(updatedPlanet.ID, currPlanet.ID))
                 {
@@ -461,7 +461,7 @@ namespace SSSystemGenerator.Forms
 
                 string systemID = ComboBox_Systems.SelectedItem.ToString();
 
-                VeBlib_PlanetData planet = Helper.GetPlanetOnSystem(systemID, selectedID);//get star in the system
+                PlanetData planet = Helper.GetPlanetOnSystem(systemID, selectedID);//get star in the system
 
                 update(planet);// update the star with variables
 
@@ -479,7 +479,7 @@ namespace SSSystemGenerator.Forms
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
-            VeBlib_PlanetData planetToDelete = Helper.GetPlanetWithID(getID());
+            PlanetData planetToDelete = Helper.GetPlanetWithID(getID());
 
             deletedPlanetsInThisSessionList.Add(planetToDelete);
 
@@ -495,7 +495,7 @@ namespace SSSystemGenerator.Forms
         {
             if (deletedPlanetsInThisSessionList.Count() == 0) { return; }
 
-            VeBlib_PlanetData lastDeletedItem = deletedPlanetsInThisSessionList.ElementAt(deletedPlanetsInThisSessionList.Count() - 1);
+            PlanetData lastDeletedItem = deletedPlanetsInThisSessionList.ElementAt(deletedPlanetsInThisSessionList.Count() - 1);
 
             if (Helper.DoesIDExists(lastDeletedItem.ID))
             {

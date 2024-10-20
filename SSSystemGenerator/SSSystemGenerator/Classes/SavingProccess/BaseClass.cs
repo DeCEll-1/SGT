@@ -14,9 +14,9 @@ namespace SSSystemGenerator.Classes
 
         public BaseClass()
         {
-            StarSystemDataList = new List<VeBlib_StarSystemData>();
+            StarSystemDataList = new List<StarSystemData>();
         }
-        public List<VeBlib_StarSystemData> StarSystemDataList { get; set; } = new List<VeBlib_StarSystemData> { };
+        public List<StarSystemData> StarSystemDataList { get; set; } = new List<StarSystemData> { };
 
         public MetadataHolder MetadataHolder{ get; set; } = new MetadataHolder();
 
@@ -27,7 +27,14 @@ namespace SSSystemGenerator.Classes
             StarSystemDataList.ForEach(system =>
             {
 
-                this.MetadataHolder.SystemMetadatas.Add(new SystemMetadata(system.ID, Paths.SystemsFolder.FullName + "\\" + system.ID + ".png"));
+                this.MetadataHolder.SystemMetadatas.Add(
+                    new SystemMetadata(
+                        system.ID,
+                        Paths.SystemsFolder.FullName + "\\" + system.ID + ".png",
+                        system.systemImage.Width,
+                        system.systemImage.Height
+                    )
+                );
 
             });
         }

@@ -48,7 +48,7 @@
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ofd_BackgroundTexture = new System.Windows.Forms.OpenFileDialog();
-            this.btn_GetSystemBackground = new System.Windows.Forms.Button();
+            this.btn_BackgroundImagePick = new System.Windows.Forms.Button();
             this.btn_Undo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud_SystemY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_SystemX)).BeginInit();
@@ -285,16 +285,16 @@
             this.ofd_BackgroundTexture.FileName = "ofd_BackgroundTexture";
             this.ofd_BackgroundTexture.Filter = "PNG (*.png)|*.png|PJEG (*.jpeg)|*.jpeg|All files (*.*)|*.*";
             // 
-            // btn_GetSystemBackground
+            // btn_BackgroundImagePick
             // 
-            this.btn_GetSystemBackground.BackgroundImage = global::SSSystemGenerator.Properties.Resources.ImageSearchLightMode;
-            this.btn_GetSystemBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_GetSystemBackground.Location = new System.Drawing.Point(279, 254);
-            this.btn_GetSystemBackground.Name = "btn_GetSystemBackground";
-            this.btn_GetSystemBackground.Size = new System.Drawing.Size(41, 41);
-            this.btn_GetSystemBackground.TabIndex = 27;
-            this.btn_GetSystemBackground.UseVisualStyleBackColor = true;
-            this.btn_GetSystemBackground.Click += new System.EventHandler(this.btn_GetSystemBackground_Click);
+            this.btn_BackgroundImagePick.BackgroundImage = global::SSSystemGenerator.Properties.Resources.ImageSearchLightMode;
+            this.btn_BackgroundImagePick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_BackgroundImagePick.Location = new System.Drawing.Point(279, 254);
+            this.btn_BackgroundImagePick.Name = "btn_BackgroundImagePick";
+            this.btn_BackgroundImagePick.Size = new System.Drawing.Size(41, 41);
+            this.btn_BackgroundImagePick.TabIndex = 27;
+            this.btn_BackgroundImagePick.UseVisualStyleBackColor = true;
+            this.btn_BackgroundImagePick.Click += new System.EventHandler(this.btn_GetSystemBackground_Click);
             // 
             // btn_Undo
             // 
@@ -314,7 +314,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(332, 496);
-            this.Controls.Add(this.btn_GetSystemBackground);
+            this.Controls.Add(this.btn_BackgroundImagePick);
             this.Controls.Add(this.ComboBox_SystemSelection);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Undo);
@@ -370,6 +370,6 @@
         private System.Windows.Forms.TextBox tb_Name;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog ofd_BackgroundTexture;
-        private System.Windows.Forms.Button btn_GetSystemBackground;
+        private System.Windows.Forms.Button btn_BackgroundImagePick;
     }
 }

@@ -2,7 +2,9 @@
   "SystemMetadatas": [
     {
       "ID": "SGT_ExampleSystem",
-      "ImagePath": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\data\\strings\\systems\\SGT_ExampleSystem.png"
+      "ImagePath": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\data\\strings\\systems\\SGT_ExampleSystem.png",
+      "width": 1024,
+      "height": 1024
     }
   ]
 }
