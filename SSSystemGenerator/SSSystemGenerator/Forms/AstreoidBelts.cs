@@ -134,7 +134,8 @@ namespace SSSystemGenerator.Forms
                ComboBox_Systems.SelectedItem.ToString() == ""
                )
             {
-                btn_RingBand.Enabled = false;
+                btn_RingBand.Enabled
+                    = false;
             }
             else
             {

@@ -25,6 +25,18 @@ namespace SSSystemGenerator
         {
             InitializeComponent();
             UpdateColors();
+
+            nud_MinSpin.ValueChanged += TextChangedBTNAddUpdateCheck;
+            nud_MaxSpin.ValueChanged += TextChangedBTNAddUpdateCheck;
+            nud_X.ValueChanged += TextChangedBTNAddUpdateCheck;
+            nud_Y.ValueChanged += TextChangedBTNAddUpdateCheck;
+            nud_Angle.ValueChanged += TextChangedBTNAddUpdateCheck;
+            nud_OrbitRadius.ValueChanged += TextChangedBTNAddUpdateCheck;
+            nud_OrbitDays.ValueChanged += TextChangedBTNAddUpdateCheck;
+            tb_ID.TextChanged += TextChangedBTNAddUpdateCheck;
+            tb_Name.TextChanged += TextChangedBTNAddUpdateCheck;
+            tb_TypeID.TextChanged += TextChangedBTNAddUpdateCheck;
+
             Load();
 
         }
@@ -38,47 +50,40 @@ namespace SSSystemGenerator
         {
             resetOrbit();
 
-            byte orbitMode = Convert.ToByte(ComboBox_OrbitMode.SelectedItem.ToString());
+            string orbitMode = cb_OrbitMode?.SelectedItem?.ToString();
+            if (orbitMode == null || orbitMode == "") orbitMode = "Fixed Location";
 
             switch (orbitMode)//i dont have any idea on how switches work i work with ifs but why not go fancy when i got the chance
             {
 
-                case 0://if orbit mode is 0 aka only coordinates
+                case "Fixed Location"://if orbit mode is 0 aka only coordinates
 
-                    nud_X.Enabled = true;
-                    nud_Y.Enabled = true;
+                    nud_X.Visible = true;
+                    nud_Y.Visible = true;
+                    lbl_x.Visible = true;
+                    lbl_y.Visible = true;
+
+
 
                     break;//w3 schools says we need a break here but why? cant it just end when it hits the other piece?
-                case 1:
+                case "Circular Orbit":
 
-                    ComboBox_FocusID.Enabled = true;
+                    ComboBox_FocusID.Visible = true;
 
-                    nud_Angle.Enabled = true;
-                    nud_OrbitDays.Enabled = true;
-                    nud_OrbitRadius.Enabled = true;
+                    nud_Angle.Visible = true;
+                    nud_OrbitRadius.Visible = true;
+                    nud_OrbitDays.Visible = true;
+                    cb_Spin.Visible = true;
+                    cb_PointingDown.Visible = true;
 
-                    break;
-                case 2://1 but pointing down
+                    lbl_Angle.Visible = true;
+                    lbl_OrbitRadius.Visible = true;
+                    lbl_OrbitDays.Visible = true;
+                    lbl_Focus.Visible = true;
 
-                    ComboBox_FocusID.Enabled = true;
-
-                    nud_Angle.Enabled = true;
-                    nud_OrbitDays.Enabled = true;
-                    nud_OrbitRadius.Enabled = true;
+                    btn_FocusRefresh.Visible = true;
 
 
-                    break;
-
-                case 3://max-min spin
-
-                    ComboBox_FocusID.Enabled = true;
-
-                    nud_Angle.Enabled = true;
-                    nud_OrbitDays.Enabled = true;
-                    nud_OrbitRadius.Enabled = true;
-
-                    nud_MinSpin.Enabled = true;
-                    nud_MaxSpin.Enabled = true;
 
                     break;
 
@@ -86,24 +91,7 @@ namespace SSSystemGenerator
                     break;
             }
 
-            if (orbitMode != 0)
-            {
-                if (
-                    ComboBox_FocusID.SelectedItem == null ||
-                    ComboBox_FocusID.SelectedItem.ToString() == ""
-                   )
-                {
-                    btn_Star.Enabled = false;
-                }
-                else
-                {
-                    btn_Star.Enabled = true;
-                }
-            }
-            else
-            {
-                TextChangedBTNAddUpdateCheck(sender, e);
-            }
+            TextChangedBTNAddUpdateCheck(sender, e);
         }
 
         //update orbit list on refresh key press
@@ -131,36 +119,11 @@ namespace SSSystemGenerator
             ComboBox_FocusID.Items.AddRange(Helper.IDNameList(orbitables).ToArray());
         }
 
-        //adds extend values to the item, like id or type id or focus or bla bla
-        private void addExtendValues(Extend item)
-        {
-            item.orbitLocationMode = Convert.ToInt32(ComboBox_OrbitMode.SelectedItem);
-
-            if (item.orbitLocationMode != 0) item.focusID = Helper.IDWithNameToID(ComboBox_FocusID.SelectedItem.ToString());
-            //if focus id isnt set then dont add it for not crashing
-            //if no focus itll use x or y or whatever
-
-            item.x = (float)nud_X.Value;
-            item.y = (float)nud_Y.Value;
-
-            item.angle = (float)nud_Angle.Value;
-            item.orbitRadius = (float)nud_OrbitRadius.Value;
-            item.orbitDays = (float)nud_OrbitDays.Value;
-
-            item.minSpin = (float)nud_MinSpin.Value;
-            item.maxSpin = (float)nud_MaxSpin.Value;
-
-            item.ID = tb_ID.Text;
-            item.name = tb_Name.Text;
-            item.typeID = tb_TypeID.Text;
-
-            item.WhatIsThis = Finals.STAR;
-        }
 
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
         private void updateExtends(Extend item)
         {
-            ComboBox_OrbitMode.SelectedItem = item.orbitLocationMode;
+            cb_OrbitMode.SelectedItem = item.orbitLocationMode;
 
             foreach (var comboboxItem in ComboBox_FocusID.Items)//scroll through the list of items in the focusables
             {
@@ -202,7 +165,7 @@ namespace SSSystemGenerator
         //reset extend elements on the form to default values
         private void resetExtend()
         {
-            ComboBox_OrbitMode.SelectedItem = 0;
+            cb_OrbitMode.SelectedItem = 0;
 
             ComboBox_FocusID.SelectedText = "New " + context;//change this in different forms
 
@@ -216,28 +179,38 @@ namespace SSSystemGenerator
         //resets orbit values to the defaults, resetExtend alredy uses this so dont need to run this too
         private void resetOrbit()
         {
-            nud_X.Value = -1;
-            nud_X.Enabled = false;
 
-            nud_Y.Value = -1;
-            nud_Y.Enabled = false;
+            lbl_x.Visible = false;
+            lbl_y.Visible = false;
+            lbl_Angle.Visible = false;
+            lbl_OrbitRadius.Visible = false;
+            lbl_OrbitDays.Visible = false;
+            lbl_MinSpin.Visible = false;
+            lbl_MaxSpin.Visible = false;
 
-            nud_Angle.Value = -1;
-            nud_Angle.Enabled = false;
+            lbl_Focus.Visible = false;
 
-            nud_OrbitRadius.Value = -1;
-            nud_OrbitRadius.Enabled = false;
+            btn_FocusRefresh.Visible = false;
 
-            nud_OrbitDays.Value = -1;
-            nud_OrbitDays.Enabled = false;
 
-            nud_MinSpin.Value = -1;
-            nud_MinSpin.Enabled = false;
+            nud_X.Visible = false;
 
-            nud_MaxSpin.Value = -1;
-            nud_MaxSpin.Enabled = false;
+            nud_Y.Visible = false;
 
-            ComboBox_FocusID.Enabled = false;
+            nud_Angle.Visible = false;
+
+            nud_OrbitRadius.Visible = false;
+
+            nud_OrbitDays.Visible = false;
+
+            nud_MinSpin.Visible = false;
+
+            nud_MaxSpin.Visible = false;
+
+            ComboBox_FocusID.Visible = false;
+
+            cb_Spin.Visible = false;
+            cb_PointingDown.Visible = false;
 
             loadOrbits();
 
@@ -273,11 +246,15 @@ namespace SSSystemGenerator
                     .ToArray());
             }
 
-            ComboBox_OrbitMode.Items.Clear();
+            cb_OrbitMode.Items.Clear();
 
-            ComboBox_OrbitMode.Items.AddRange(new object[] { 0, 1, 2, 3 });
+            cb_OrbitMode.Items.AddRange(new string[]
+            {
+                "Fixed Location",
+                "Circular Orbit"
+            });
 
-            ComboBox_OrbitMode.SelectedItem = 0;
+            cb_OrbitMode.SelectedIndex = 0;
 
             loadOrbits();
 
@@ -307,8 +284,6 @@ namespace SSSystemGenerator
 
         private void reset()
         {
-
-
             resetExtend();
 
             nud_Radius.Value = 0;
@@ -329,7 +304,7 @@ namespace SSSystemGenerator
         {
             StarData gettenStar = new StarData();
 
-            addExtendValues(gettenStar);
+            Helper.AddExtendValues(gettenStar, cb_OrbitMode, cb_PointingDown, cb_Spin, ComboBox_FocusID,nud_X,nud_Y,nud_Angle,nud_OrbitRadius,nud_OrbitDays,nud_MinSpin,nud_MaxSpin,tb_ID,tb_Name, tb_TypeID);
 
             gettenStar.systemID = ComboBox_Systems.SelectedItem.ToString();
 
@@ -416,6 +391,32 @@ namespace SSSystemGenerator
             }
         }
 
+        // spin visiblity change
+        private void cb_Spin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_Spin.Checked)
+            {
+                nud_MinSpin.Visible = true;
+                nud_MaxSpin.Visible = true;
+
+                lbl_MinSpin.Visible = true;
+                lbl_MaxSpin.Visible = true;
+            }
+            else
+            {
+                nud_MinSpin.Visible = false;
+                nud_MaxSpin.Visible = false;
+
+                lbl_MinSpin.Visible = false;
+                lbl_MaxSpin.Visible = false;
+            }
+
+            if (cb_Spin.Checked)
+            {
+                cb_PointingDown.Checked = false;
+            }
+        }
+
         //checks for required stuff like ids or parent system
         private void TextChangedBTNAddUpdateCheck(object sender, EventArgs e)
         {
@@ -432,11 +433,32 @@ namespace SSSystemGenerator
             {
                 btn_Star.Enabled = true;
             }
+            if (
+                ComboBox_FocusID.SelectedItem == null ||
+                ComboBox_FocusID.SelectedItem.ToString() == ""
+                )
+            {
+                btn_Star.Enabled = false;
+            }
+            else
+            {
+                btn_Star.Enabled = true;
+            }
         }
 
+        private void SpinMinMan(object sender, EventArgs e)
+        {
+
+            if (nud_MaxSpin.Value < nud_MinSpin.Value)
+            {
+                nud_MaxSpin.Value = nud_MinSpin.Value;
+            }
+
+        }
         //star selection
         private void ComboBox_Stars_SelectedIndexChanged(object sender, EventArgs e)
         {
+            reset();
             if (ComboBox_Stars.SelectedItem.ToString() == "New " + context)
             {
                 btn_Star.Text = "Add " + context;
@@ -455,7 +477,7 @@ namespace SSSystemGenerator
 
                 update(Star);// update the star with variables
 
-                currStar= Star;
+                currStar = Star;
 
                 btn_Star.Text = "Update " + context;
 
@@ -466,6 +488,7 @@ namespace SSSystemGenerator
             {
                 btn_Delete.Enabled = false;
             }
+            ComboBox_OrbitMode_SelectedIndexChanged(sender, e);
         }
 
         //system selection
@@ -518,8 +541,15 @@ namespace SSSystemGenerator
             AddStar();
         }
 
-        #endregion
+        private void cb_PointingDown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_PointingDown.Checked)
+            {
+                cb_Spin.Checked = false;
+            }
+        }
 
+        #endregion
 
     }
 }
