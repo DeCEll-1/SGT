@@ -343,48 +343,6 @@ namespace SSSystemGenerator.Classes
         }
 
         //adds extend values to the item, like id or type id or focus or bla bla
-        public static void AddExtendValues(Extend item, ComboBox orbitMode, CheckBox pointingDown, CheckBox spin, ComboBox focusID, NumericUpDown X, NumericUpDown Y, NumericUpDown Angle, NumericUpDown OrbitRadius, NumericUpDown OrbitDays, NumericUpDown MinSpin, NumericUpDown MaxSpin, TextBox ID, TextBox Name, TextBox typeID)
-        {
-
-            string mode = orbitMode.SelectedItem.ToString();
-
-            if (mode == "Fixed Location")
-            {
-                item.orbitLocationMode = 0;
-            }
-            else if (!pointingDown.Checked && !spin.Checked)
-            { // just orbits or smthin
-                item.orbitLocationMode = 1;
-            }
-            else if (pointingDown.Checked && !spin.Checked)
-            { // points down but doesnt spin
-                item.orbitLocationMode = 2;
-            }
-            else if (!pointingDown.Checked && spin.Checked)
-            { // spins with min spin
-                item.orbitLocationMode = 3;
-            }
-
-            if (item.orbitLocationMode != 0) item.focusID = Helper.IDWithNameToID(focusID.SelectedItem.ToString());
-            //if focus id isnt set then dont add it for not crashing
-            //if no focus itll use x or y or whatever
-
-            item.x = (float)X.Value;
-            item.y = (float)Y.Value;
-
-            item.angle = (float)Angle.Value;
-            item.orbitRadius = (float)OrbitRadius.Value;
-            item.orbitDays = (float)OrbitDays.Value;
-
-            item.minSpin = (float)MinSpin.Value;
-            item.maxSpin = (float)MaxSpin.Value;
-
-            item.ID = ID.Text;
-            item.name = Name.Text;
-            item.typeID = typeID.Text;
-
-            item.WhatIsThis = Finals.STAR;
-        }
 
         #endregion
 

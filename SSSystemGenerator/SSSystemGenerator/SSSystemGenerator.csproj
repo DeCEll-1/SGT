@@ -156,6 +156,12 @@
     <Compile Include="Forms\Markets.Designer.cs">
       <DependentUpon>Markets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OrbitableMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrbitableMaster.Designer.cs">
+      <DependentUpon>OrbitableMaster.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Planets.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Markets.resx">
       <DependentUpon>Markets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrbitableMaster.resx">
+      <DependentUpon>OrbitableMaster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Planets.resx">
       <DependentUpon>Planets.cs</DependentUpon>
