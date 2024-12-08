@@ -9,7 +9,7 @@ namespace SSSystemGenerator.Classes
 {
     public class Paths
     {
-        public static DirectoryInfo EXEPath { get; set; } = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);//mod/SGTExe//exe
+        public static DirectoryInfo EXEPath { get; set; } = new DirectoryInfo("D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SGTExe");//mod/SGTExe//exe
 
         // D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\data\strings\SGTSystems.json
         public static DirectoryInfo JsonMetadataPath { get; set; } = new DirectoryInfo(EXEPath.Parent.FullName + "\\data\\strings\\SGTSystems.json");

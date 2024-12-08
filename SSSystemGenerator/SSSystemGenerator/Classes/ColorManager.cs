@@ -43,8 +43,6 @@ namespace SSSystemGenerator.Classes
             //component.EnabledChanged -= EnabledColorUpdateEvent;
             //component.EnabledChanged += EnabledColorUpdateEvent;//except it doesnt work
 
-            bool wasDisabled = false;
-
             if (component is Button && !component.Enabled)
             {
                 if (!Settings.ColorMode)//Dark mode

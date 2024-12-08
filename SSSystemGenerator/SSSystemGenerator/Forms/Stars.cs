@@ -19,10 +19,11 @@ namespace SSSystemGenerator
         public List<StarData> deletedStarsInThisSessionList { get; set; } = new List<StarData> { };
         public StarData currStar { get; set; } = null;
 
-        public Stars()
+        public Stars() : base()
         {
             InitializeComponent();
             context = "Star";
+            Load();
         }
 
         #region customFunctions
@@ -31,18 +32,18 @@ namespace SSSystemGenerator
             base.Load();
         }
 
-        private void update(StarData star)
+        internal override void UpdateForm(Extend extend)
         {
-            base.update(star);
+            StarData star = extend as StarData;
+            base.UpdateForm(star);
 
             nud_Radius.Value = (decimal)star.radius;
             nud_CoronaSize.Value = (decimal)star.coronaSize;
-
         }
 
-        internal override void reset()
+        internal override void Reset()
         {
-            base.reset();
+            base.Reset();
 
             nud_Radius.Value = 0;
             nud_CoronaSize.Value = 0;
@@ -52,7 +53,7 @@ namespace SSSystemGenerator
         {
             StarData gettenStar = new StarData();
 
-            addExtendValues(gettenStar, Finals.STAR);
+            AddExtendValues(gettenStar, Finals.STAR);
 
             gettenStar.systemID = ComboBox_Systems.SelectedItem.ToString();
 
@@ -96,10 +97,11 @@ namespace SSSystemGenerator
             if (ComboBox_Selectables.SelectedItem.ToString() == "New " + context)
             {
                 btn_Add.Text = "Add " + context;
+                btn_Delete.Text = "Delete " + context;
 
                 btn_Delete.Enabled = false;
 
-                reset();
+                Reset();
             }
             else if (ComboBox_Selectables.SelectedItem != null)
             {
@@ -109,7 +111,7 @@ namespace SSSystemGenerator
 
                 StarData Star = Helper.GetStarOnSystem(systemID, selectedID);//get star in the system
 
-                update(Star);// update the star with variables
+                UpdateForm(Star);// update the star with variables
 
                 currStar = Star;
 
@@ -123,7 +125,6 @@ namespace SSSystemGenerator
                 btn_Delete.Enabled = false;
             }
         }
-
         internal override void btn_Add_Click(object sender, EventArgs e)
         {
             if (btn_Add.Text == "Add " + context)
@@ -174,7 +175,7 @@ namespace SSSystemGenerator
             }
 
 
-            update(lastDeletedItem);
+            UpdateForm(lastDeletedItem);
 
             AddStar();
 
@@ -182,7 +183,7 @@ namespace SSSystemGenerator
         }
         internal override void btn_Delete_Click(object sender, EventArgs e)
         {
-            StarData starToDelete = Helper.GetStarWithID(getID());//gets the star
+            StarData starToDelete = Helper.GetStarWithID(GetID());//gets the star
 
             deletedStarsInThisSessionList.Add(starToDelete);//add it to deleteds list
 
@@ -190,7 +191,7 @@ namespace SSSystemGenerator
 
             Load();//reload
 
-            reset();
+            Reset();
         }
         #endregion
 

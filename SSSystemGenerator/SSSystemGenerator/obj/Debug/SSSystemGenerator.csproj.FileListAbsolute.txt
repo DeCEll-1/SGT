@@ -100,6 +100,8 @@ D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SGTExe\.SSSystemGenerator.ex
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SGTExe\.SSSystemGenerator.exe
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SGTExe\.SSSystemGenerator.pdb
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.AssemblyReference.cache
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.SuggestedBindingRedirects.cache
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.exe.config
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Form1.resources
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.AstreoidBelts.resources
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.CustomEntities.resources
@@ -107,6 +109,7 @@ D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGe
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.LoadingOrder.resources
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Map.resources
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Markets.resources
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.OrbitableMaster.resources
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Planets.resources
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.RingBands.resources
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.Systems.resources
@@ -118,6 +121,3 @@ D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGe
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystem.CD443CEB.Up2Date
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.exe
 D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.pdb
-D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.csproj.SuggestedBindingRedirects.cache
-D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\.SSSystemGenerator.exe.config
-D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SSSystemGenerator\SSSystemGenerator\obj\Debug\SSSystemGenerator.Forms.OrbitableMaster.resources

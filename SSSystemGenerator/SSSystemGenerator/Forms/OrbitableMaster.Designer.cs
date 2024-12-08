@@ -35,7 +35,7 @@
             this.lbl_Focus = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cb_OrbitMode = new System.Windows.Forms.ComboBox();
-            this.ComboBox_FocusID = new System.Windows.Forms.ComboBox();
+            this.ComboBox_Focus = new System.Windows.Forms.ComboBox();
             this.lbl_OrbitDays = new System.Windows.Forms.Label();
             this.lbl_MinSpin = new System.Windows.Forms.Label();
             this.lbl_MaxSpin = new System.Windows.Forms.Label();
@@ -105,6 +105,7 @@
             this.cb_Spin.TabIndex = 115;
             this.cb_Spin.Text = "Spin";
             this.cb_Spin.UseVisualStyleBackColor = true;
+            this.cb_Spin.CheckedChanged += new System.EventHandler(this.cb_Spin_CheckedChanged);
             // 
             // cb_PointingDown
             // 
@@ -115,6 +116,7 @@
             this.cb_PointingDown.TabIndex = 114;
             this.cb_PointingDown.Text = "Pointing Down";
             this.cb_PointingDown.UseVisualStyleBackColor = true;
+            this.cb_PointingDown.CheckedChanged += new System.EventHandler(this.cb_PointingDown_CheckedChanged);
             // 
             // lbl_Focus
             // 
@@ -149,17 +151,18 @@
             this.cb_OrbitMode.Name = "cb_OrbitMode";
             this.cb_OrbitMode.Size = new System.Drawing.Size(231, 24);
             this.cb_OrbitMode.TabIndex = 95;
+            this.cb_OrbitMode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_OrbitMode_SelectedIndexChanged);
             // 
-            // ComboBox_FocusID
+            // ComboBox_Focus
             // 
-            this.ComboBox_FocusID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_FocusID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ComboBox_FocusID.FormattingEnabled = true;
-            this.ComboBox_FocusID.Location = new System.Drawing.Point(275, 78);
-            this.ComboBox_FocusID.Margin = new System.Windows.Forms.Padding(4);
-            this.ComboBox_FocusID.Name = "ComboBox_FocusID";
-            this.ComboBox_FocusID.Size = new System.Drawing.Size(201, 24);
-            this.ComboBox_FocusID.TabIndex = 96;
+            this.ComboBox_Focus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Focus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComboBox_Focus.FormattingEnabled = true;
+            this.ComboBox_Focus.Location = new System.Drawing.Point(275, 78);
+            this.ComboBox_Focus.Margin = new System.Windows.Forms.Padding(4);
+            this.ComboBox_Focus.Name = "ComboBox_Focus";
+            this.ComboBox_Focus.Size = new System.Drawing.Size(201, 24);
+            this.ComboBox_Focus.TabIndex = 96;
             // 
             // lbl_OrbitDays
             // 
@@ -256,6 +259,7 @@
             this.nud_MinSpin.Name = "nud_MinSpin";
             this.nud_MinSpin.Size = new System.Drawing.Size(92, 22);
             this.nud_MinSpin.TabIndex = 102;
+            this.nud_MinSpin.ValueChanged += new System.EventHandler(this.SpinMinMax);
             // 
             // lbl_x
             // 
@@ -284,6 +288,7 @@
             this.nud_MaxSpin.Name = "nud_MaxSpin";
             this.nud_MaxSpin.Size = new System.Drawing.Size(92, 22);
             this.nud_MaxSpin.TabIndex = 103;
+            this.nud_MaxSpin.ValueChanged += new System.EventHandler(this.SpinMinMax);
             // 
             // nud_OrbitRadius
             // 
@@ -466,6 +471,7 @@
             this.btn_Clone.Size = new System.Drawing.Size(49, 46);
             this.btn_Clone.TabIndex = 127;
             this.btn_Clone.UseVisualStyleBackColor = true;
+            this.btn_Clone.Click += new System.EventHandler(this.btn_Clone_Click);
             // 
             // btn_Undo
             // 
@@ -478,6 +484,7 @@
             this.btn_Undo.Size = new System.Drawing.Size(49, 44);
             this.btn_Undo.TabIndex = 126;
             this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // btn_Delete
             // 
@@ -491,6 +498,7 @@
             this.btn_Delete.TabIndex = 125;
             this.btn_Delete.Text = "Delete Context";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Add
             // 
@@ -502,6 +510,7 @@
             this.btn_Add.TabIndex = 124;
             this.btn_Add.Text = "Add Context";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // ComboBox_Selectables
             // 
@@ -511,8 +520,9 @@
             this.ComboBox_Selectables.Location = new System.Drawing.Point(13, 76);
             this.ComboBox_Selectables.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBox_Selectables.Name = "ComboBox_Selectables";
-            this.ComboBox_Selectables.Size = new System.Drawing.Size(233, 24);
+            this.ComboBox_Selectables.Size = new System.Drawing.Size(199, 24);
             this.ComboBox_Selectables.TabIndex = 128;
+            this.ComboBox_Selectables.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Selectables_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -549,7 +559,7 @@
             this.Controls.Add(this.lbl_Focus);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cb_OrbitMode);
-            this.Controls.Add(this.ComboBox_FocusID);
+            this.Controls.Add(this.ComboBox_Focus);
             this.Controls.Add(this.lbl_OrbitDays);
             this.Controls.Add(this.lbl_MinSpin);
             this.Controls.Add(this.lbl_MaxSpin);
@@ -591,7 +601,7 @@
         internal System.Windows.Forms.Label lbl_Focus;
         internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.ComboBox cb_OrbitMode;
-        internal System.Windows.Forms.ComboBox ComboBox_FocusID;
+        internal System.Windows.Forms.ComboBox ComboBox_Focus;
         internal System.Windows.Forms.Label lbl_OrbitDays;
         internal System.Windows.Forms.Label lbl_MinSpin;
         internal System.Windows.Forms.Label lbl_MaxSpin;

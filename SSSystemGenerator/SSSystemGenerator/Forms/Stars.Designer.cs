@@ -1,6 +1,8 @@
-﻿namespace SSSystemGenerator
+﻿using SSSystemGenerator.Forms;
+
+namespace SSSystemGenerator
 {
-    partial class Stars
+    partial class Stars : OrbitableMaster
     {
         /// <summary>
         /// Required designer variable.

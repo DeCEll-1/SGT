@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|d:\\game files\\fractal softworks\\0.97a-rc11\\mods\\sgt\\sssystemgenerator\\sssystemgenerator\\forms\\stars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\forms\\stars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\stars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\forms\\orbitablemaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\forms\\stars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\stars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|d:\\game files\\fractal softworks\\0.97a-rc11\\mods\\sgt\\sssystemgenerator\\sssystemgenerator\\forms\\orbitablemaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\orbitablemaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,12 +19,8 @@
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\orbitablemaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\forms\\stars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\stars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\classes\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,60 +30,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Helper.cs",
-              "DocumentMoniker": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Helper.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\Helper.cs",
-              "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\Helper.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Classes\\Helper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T19:37:57.44Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Stars.cs [Design]",
               "DocumentMoniker": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\Stars.cs",
               "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\Stars.cs",
               "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\Stars.cs [Design]",
               "RelativeToolTip": "SSSystemGenerator\\Forms\\Stars.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T18:32:01.482Z",
+              "WhenOpened": "2024-12-08T09:15:33.543Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrbitableMaster.cs [Design]",
-              "DocumentMoniker": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\OrbitableMaster.cs",
-              "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs [Design]",
-              "RelativeToolTip": "SSSystemGenerator\\Forms\\OrbitableMaster.cs [Design]",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Program.cs",
+              "RelativeDocumentMoniker": "SSSystemGenerator\\Program.cs",
+              "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Program.cs",
+              "RelativeToolTip": "SSSystemGenerator\\Program.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAhwCAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T17:55:31.221Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrbitableMaster.cs",
-              "DocumentMoniker": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs",
-              "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\OrbitableMaster.cs",
-              "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs",
-              "RelativeToolTip": "SSSystemGenerator\\Forms\\OrbitableMaster.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAowJwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T18:04:52.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-08T09:07:43.482Z"
             },
             {
               "$type": "Document",
@@ -93,10 +64,34 @@
               "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\Stars.cs",
               "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\Stars.cs",
               "RelativeToolTip": "SSSystemGenerator\\Forms\\Stars.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAuwFkAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAmwEUAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-20T19:53:28.034Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrbitableMaster.cs",
+              "DocumentMoniker": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs",
+              "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\OrbitableMaster.cs",
+              "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs",
+              "RelativeToolTip": "SSSystemGenerator\\Forms\\OrbitableMaster.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAuwI4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T18:04:52.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrbitableMaster.cs [Design]",
+              "DocumentMoniker": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs",
+              "RelativeDocumentMoniker": "SSSystemGenerator\\Forms\\OrbitableMaster.cs",
+              "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\OrbitableMaster.cs [Design]",
+              "RelativeToolTip": "SSSystemGenerator\\Forms\\OrbitableMaster.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T08:38:37.793Z"
             }
           ]
         }

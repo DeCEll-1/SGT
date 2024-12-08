@@ -16,7 +16,7 @@ namespace SSSystemGenerator.Forms
     public partial class OrbitableMaster : Form, IFormInterface
     { // holy SHİT THİS İS SO CLEAN AWWWW :3
         public string context { get; set; } = "";
-        public OrbitableMaster()
+        public OrbitableMaster() 
         {
             InitializeComponent();
             UpdateColors();
@@ -31,27 +31,26 @@ namespace SSSystemGenerator.Forms
             tb_ID.TextChanged += TextChangedBTNAddUpdateCheck;
             tb_Name.TextChanged += TextChangedBTNAddUpdateCheck;
             tb_TypeID.TextChanged += TextChangedBTNAddUpdateCheck;
-            ComboBox_FocusID.SelectedIndexChanged += TextChangedBTNAddUpdateCheck;
-
-            Load();
+            ComboBox_Focus.SelectedIndexChanged += TextChangedBTNAddUpdateCheck;
         }
 
         #region orbit & extend stuff
         //updates extend variables thats on the form, aka changes everything on the form thats related to the extend to the item that got sent here
-        internal void updateExtends(Extend item)
+        internal void updateFormWithExtends(Extend item)
         {
-            cb_OrbitMode.SelectedItem = item.orbitLocationMode;
+            cb_OrbitMode.SelectedItem = GetOrbitModeText(item);
 
-            foreach (var comboboxItem in ComboBox_FocusID.Items)//scroll through the list of items in the focusables
+
+
+            foreach (var comboboxItem in ComboBox_Focus.Items)//scroll through the list of items in the focusables
             {
-                if (Helper.IDWithNameToID(comboboxItem.ToString()) == item.focusID)//if the focusables name is equal to the items focus
+                if (Helper.IDWithNameToID(Helper.IDWithNameToID(comboboxItem.ToString())) == item.focusID)//if the focusables name is equal to the items focus
                 {
-                    ComboBox_FocusID.SelectedIndex = ComboBox_FocusID.Items.IndexOf(comboboxItem);//then make selected index be the comboboxItem which is what were looking for 
+                    int i = ComboBox_Focus.Items.IndexOf(comboboxItem);//then make selected index be the comboboxItem which is what were looking for 
+                    ComboBox_Focus.SelectedIndex = i;
                     break;
                 }
             }
-
-            ComboBox_FocusID.SelectedText = item.focusID;
 
             nud_X.Value = (int)item.x;
             nud_Y.Value = (int)item.y;
@@ -80,13 +79,13 @@ namespace SSSystemGenerator.Forms
         }
 
         //reset extend elements on the form to default values
-        internal void resetExtend()
+        internal void ResetExtend()
         {
             cb_OrbitMode.SelectedItem = 0;
 
-            ComboBox_FocusID.SelectedText = "New " + context;//change this in different forms
+            ComboBox_Focus.SelectedText = "New " + context;//change this in different forms
 
-            resetOrbit();
+            ResetOrbit();
 
             tb_ID.Text = "";
             tb_Name.Text = "";
@@ -94,53 +93,75 @@ namespace SSSystemGenerator.Forms
         }
 
         //resets orbit values to the defaults, resetExtend alredy uses this so dont need to run this too
-        internal void resetOrbit()
+        internal void ResetOrbit()
         {
-            lbl_x.Visible = false;
-            lbl_y.Visible = false;
-            lbl_Angle.Visible = false;
-            lbl_OrbitRadius.Visible = false;
-            lbl_OrbitDays.Visible = false;
-            lbl_MinSpin.Visible = false;
-            lbl_MaxSpin.Visible = false;
-
-            lbl_Focus.Visible = false;
-
-            btn_FocusRefresh.Visible = false;
-
-
-            nud_X.Visible = false;
-
-            nud_Y.Visible = false;
-
-            nud_Angle.Visible = false;
-
-            nud_OrbitRadius.Visible = false;
-
-            nud_OrbitDays.Visible = false;
-
-            nud_MinSpin.Visible = false;
-
-            nud_MaxSpin.Visible = false;
-
-            ComboBox_FocusID.Visible = false;
-
-            cb_Spin.Visible = false;
-            cb_PointingDown.Visible = false;
-
-            loadOrbits();
-
-            ComboBox_FocusID.SelectedIndex = 0;
+            SetOrbitVisibility(false);
+            LoadOrbits();
         }
 
-        //updates orbitables list
-        internal void loadOrbits()
+        private void SetOrbitVisibility(bool visibility)
         {
-            ComboBox_FocusID.Items.Clear();
+            lbl_x.Visible = visibility;
+            lbl_y.Visible = visibility;
+            lbl_Angle.Visible = visibility;
+            lbl_OrbitRadius.Visible = visibility;
+            lbl_OrbitDays.Visible = visibility;
+            lbl_MinSpin.Visible = visibility;
+            lbl_MaxSpin.Visible = visibility;
 
-            ComboBox_FocusID.Items.Add("");
+            lbl_Focus.Visible = visibility;
 
-            List<Extend> orbitables = Helper.GetOrbitablesInSystem(getSystem());
+            btn_FocusRefresh.Visible = visibility;
+
+
+            nud_X.Visible = visibility;
+
+            nud_Y.Visible = visibility;
+
+            nud_Angle.Visible = visibility;
+
+            nud_OrbitRadius.Visible = visibility;
+
+            nud_OrbitDays.Visible = visibility;
+
+            nud_MinSpin.Visible = visibility;
+
+            nud_MaxSpin.Visible = visibility;
+
+            ComboBox_Focus.Visible = visibility;
+
+            cb_Spin.Visible = visibility;
+            cb_PointingDown.Visible = visibility;
+        }
+        
+        // gets orbit mode as text 
+        private string GetOrbitModeText(Extend item)
+        {
+            return (item.orbitLocationMode == 0) ? "Fixed Location" : "Circular Orbit";
+        }
+        // gets orbit mode as number
+        private int GetOrbitModeNo()
+        {
+            if(cb_OrbitMode.SelectedText == "Fixed Location")
+                return 0;
+            else if (cb_PointingDown.Checked)
+            {
+                return 2;
+            }
+            else if (cb_Spin.Checked)
+            {
+                return 3;
+            }
+            return 1;
+        }
+
+        internal void LoadOrbits()
+        {
+            ComboBox_Focus.Items.Clear();
+
+            ComboBox_Focus.Items.Add("");
+
+            List<Extend> orbitables = Helper.GetOrbitablesInSystem(GetSystem());
 
             if (orbitables == null) return;
 
@@ -152,15 +173,15 @@ namespace SSSystemGenerator.Forms
                 }
             }
 
-            ComboBox_FocusID.Items.AddRange(Helper.IDNameList(orbitables).ToArray());
+            ComboBox_Focus.Items.AddRange(Helper.IDNameList(orbitables).ToArray());
         }
 
         //adds extend values to the item, like id or type id or focus or bla bla
-        internal void addExtendValues(Extend item, string type)
+        internal void AddExtendValues(Extend item, string type)
         {
             item.orbitLocationMode = Convert.ToInt32(cb_OrbitMode.SelectedItem);
 
-            if (item.orbitLocationMode != 0) item.focusID = Helper.IDWithNameToID(ComboBox_FocusID.SelectedItem.ToString());
+            if (item.orbitLocationMode != 0) item.focusID = Helper.IDWithNameToID(ComboBox_Focus.SelectedItem.ToString());
             //if focus id isnt set then dont add it for not crashing
             //if no focus itll use x or y or whatever
 
@@ -183,7 +204,7 @@ namespace SSSystemGenerator.Forms
         #endregion
 
         #region functions
-        internal string getID()
+        internal string GetID()
         {
             if (ComboBox_Selectables.SelectedItem != null)
             {
@@ -192,8 +213,7 @@ namespace SSSystemGenerator.Forms
 
             return null;
         }
-
-        internal StarSystemData getSystem()
+        internal StarSystemData GetSystem()
         {
 
             if (ComboBox_Systems.SelectedItem == null) return null;
@@ -202,7 +222,6 @@ namespace SSSystemGenerator.Forms
 
             return system;
         }
-
         internal void LoadSystems()
         {
             ComboBox_Systems.Items.Clear();
@@ -214,18 +233,12 @@ namespace SSSystemGenerator.Forms
             }
 
         }
-
-        internal virtual void reset() { resetExtend(); }
+        internal virtual void Reset() { ResetExtend(); }
         internal virtual void SelectablesIndexChanged() { }
-        internal virtual void update(Extend extend)
-        {
-            updateExtends(extend);
-        }
-
+        internal virtual void UpdateForm(Extend extend) { updateFormWithExtends(extend); }
         #endregion
 
         #region triggers
-
         internal virtual void Load()
         {
             LoadSystems();
@@ -256,8 +269,7 @@ namespace SSSystemGenerator.Forms
 
             cb_OrbitMode.SelectedIndex = 0;
 
-            loadOrbits();
-
+            LoadOrbits();
 
         }
 
@@ -265,7 +277,7 @@ namespace SSSystemGenerator.Forms
 
         internal void ComboBox_OrbitMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            resetOrbit();
+            SetOrbitVisibility(false);
 
             string orbitMode = cb_OrbitMode?.SelectedItem?.ToString();
             if (orbitMode == null || orbitMode == "") orbitMode = "Fixed Location";
@@ -285,7 +297,7 @@ namespace SSSystemGenerator.Forms
                     break;//w3 schools says we need a break here but why? cant it just end when it hits the other piece?
                 case "Circular Orbit":
 
-                    ComboBox_FocusID.Visible = true;
+                    ComboBox_Focus.Visible = true;
 
                     nud_Angle.Visible = true;
                     nud_OrbitRadius.Visible = true;
@@ -314,7 +326,7 @@ namespace SSSystemGenerator.Forms
         //star selection
         private void ComboBox_Selectables_SelectedIndexChanged(object sender, EventArgs e)
         {
-            reset();
+            Reset();
             SelectablesIndexChanged();
             ComboBox_OrbitMode_SelectedIndexChanged(sender, e);
         }
@@ -324,7 +336,7 @@ namespace SSSystemGenerator.Forms
         #region buttons
 
         //update orbit list on refresh key press
-        internal void btn_FocusRefresh_Click(object sender, EventArgs e) { loadOrbits(); TextChangedBTNAddUpdateCheck(null, null); ComboBox_OrbitMode_SelectedIndexChanged(null, null); }
+        internal void btn_FocusRefresh_Click(object sender, EventArgs e) { LoadOrbits(); TextChangedBTNAddUpdateCheck(null, null); ComboBox_OrbitMode_SelectedIndexChanged(null, null); }
 
         //system list refresh
         internal void btn_SystemsRefresh_Click(object sender, EventArgs e) { LoadSystems(); }
@@ -341,7 +353,6 @@ namespace SSSystemGenerator.Forms
         #endregion
 
         #region foolproofing 
-
         //checks for required stuff like ids or parent system
         internal virtual void TextChangedBTNAddUpdateCheck(object sender, EventArgs e)
         {
@@ -359,8 +370,8 @@ namespace SSSystemGenerator.Forms
                 btn_Add.Enabled = true;
             }
             if (
-                ComboBox_FocusID.SelectedItem == null ||
-                ComboBox_FocusID.SelectedItem.ToString() == ""
+                ComboBox_Focus.SelectedItem == null ||
+                ComboBox_Focus.SelectedItem.ToString() == ""
                 )
             {
                 btn_Add.Enabled = false;
@@ -370,7 +381,7 @@ namespace SSSystemGenerator.Forms
                 btn_Add.Enabled = true;
             }
         }
-        private void SpinMinMan(object sender, EventArgs e)
+        private void SpinMinMax(object sender, EventArgs e)
         {
 
             if (nud_MaxSpin.Value < nud_MinSpin.Value)
@@ -425,5 +436,6 @@ namespace SSSystemGenerator.Forms
         public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
         #endregion
+
     }
 }
