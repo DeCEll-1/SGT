@@ -53,7 +53,7 @@ namespace SSSystemGenerator
         {
             StarData gettenStar = new StarData();
 
-            AddExtendValues(gettenStar, Finals.STAR);
+            AddExtendValuesFromForm(gettenStar, Finals.STAR);
 
             gettenStar.systemID = ComboBox_Systems.SelectedItem.ToString();
 

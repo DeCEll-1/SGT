@@ -177,9 +177,9 @@ namespace SSSystemGenerator.Forms
         }
 
         //adds extend values to the item, like id or type id or focus or bla bla
-        internal void AddExtendValues(Extend item, string type)
+        internal void AddExtendValuesFromForm(Extend item, string type)
         {
-            item.orbitLocationMode = Convert.ToInt32(cb_OrbitMode.SelectedItem);
+            item.orbitLocationMode = GetOrbitModeNo();
 
             if (item.orbitLocationMode != 0) item.focusID = Helper.IDWithNameToID(ComboBox_Focus.SelectedItem.ToString());
             //if focus id isnt set then dont add it for not crashing
@@ -249,13 +249,26 @@ namespace SSSystemGenerator.Forms
 
             if (ComboBox_Systems.Items.Count != 0)
             {
+                object[] selectableArray = null;
+                switch (context)
+                {
+                    case "Star":
+                        selectableArray = GetSystem().starList.ToArray();
+                        break;
+                    case "Planet":
+                        selectableArray = GetSystem().planetList.ToArray();
+                        break;
+                    case "Custom Entity":
+                       selectableArray = GetSystem().sectorEntityTokenList.ToArray();
+                        break;
+                    default:
+                        break;
+                }
+
                 ComboBox_Selectables.Items.AddRange(
                     Helper.IDNameList(//turns systems into id + name list for the combo box
                         Helper.ListUpcasting(//turn star list to extend
-                            Helper.GetSystemFromID(//get system with id (it automatically removes name)
-                                ComboBox_Systems.SelectedItem.ToString()//selected star systems id + name
-                                )
-                            .starList.ToArray()))//get stars in the selected system
+                         selectableArray))//get stars in the selected system
                     .ToArray());
             }
 

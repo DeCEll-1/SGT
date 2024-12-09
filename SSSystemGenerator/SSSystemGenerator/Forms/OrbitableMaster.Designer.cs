@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cb_Spin = new System.Windows.Forms.CheckBox();
             this.cb_PointingDown = new System.Windows.Forms.CheckBox();
             this.lbl_Focus = new System.Windows.Forms.Label();
@@ -51,21 +49,23 @@
             this.nud_Y = new System.Windows.Forms.NumericUpDown();
             this.nud_X = new System.Windows.Forms.NumericUpDown();
             this.btn_FocusRefresh = new System.Windows.Forms.Button();
-            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tb_Name = new System.Windows.Forms.TextBox();
-            this.tb_ID = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tb_TypeID = new System.Windows.Forms.TextBox();
             this.lbl_StuffOrbitingAround = new System.Windows.Forms.Label();
             this.lbl_Order = new System.Windows.Forms.Label();
             this.btn_Clone = new System.Windows.Forms.Button();
             this.btn_Undo = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
-            this.ComboBox_Selectables = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
+            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
+            this.tb_ID = new System.Windows.Forms.TextBox();
+            this.tb_Name = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tb_TypeID = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ComboBox_Selectables = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinSpin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MaxSpin)).BeginInit();
@@ -74,27 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_X)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ComboBox_Systems
-            // 
-            this.ComboBox_Systems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_Systems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ComboBox_Systems.FormattingEnabled = true;
-            this.ComboBox_Systems.Location = new System.Drawing.Point(13, 29);
-            this.ComboBox_Systems.Margin = new System.Windows.Forms.Padding(4);
-            this.ComboBox_Systems.Name = "ComboBox_Systems";
-            this.ComboBox_Systems.Size = new System.Drawing.Size(199, 24);
-            this.ComboBox_Systems.TabIndex = 43;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "Systems:";
             // 
             // cb_Spin
             // 
@@ -374,72 +353,6 @@
             this.btn_FocusRefresh.TabIndex = 113;
             this.btn_FocusRefresh.UseVisualStyleBackColor = true;
             // 
-            // btn_SystemsRefresh
-            // 
-            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_SystemsRefresh.Location = new System.Drawing.Point(220, 29);
-            this.btn_SystemsRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_SystemsRefresh.Name = "btn_SystemsRefresh";
-            this.btn_SystemsRefresh.Size = new System.Drawing.Size(24, 24);
-            this.btn_SystemsRefresh.TabIndex = 45;
-            this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 154);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 16);
-            this.label16.TabIndex = 118;
-            this.label16.Text = "Name (optional):";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 105);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(23, 16);
-            this.label12.TabIndex = 119;
-            this.label12.Text = "ID:";
-            // 
-            // tb_Name
-            // 
-            this.tb_Name.Location = new System.Drawing.Point(13, 174);
-            this.tb_Name.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_Name.Name = "tb_Name";
-            this.tb_Name.Size = new System.Drawing.Size(233, 22);
-            this.tb_Name.TabIndex = 117;
-            // 
-            // tb_ID
-            // 
-            this.tb_ID.Location = new System.Drawing.Point(13, 126);
-            this.tb_ID.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_ID.Name = "tb_ID";
-            this.tb_ID.Size = new System.Drawing.Size(233, 22);
-            this.tb_ID.TabIndex = 116;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 200);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 16);
-            this.label13.TabIndex = 121;
-            this.label13.Text = "Type ID:";
-            // 
-            // tb_TypeID
-            // 
-            this.tb_TypeID.Location = new System.Drawing.Point(13, 220);
-            this.tb_TypeID.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_TypeID.Name = "tb_TypeID";
-            this.tb_TypeID.Size = new System.Drawing.Size(233, 22);
-            this.tb_TypeID.TabIndex = 120;
-            // 
             // lbl_StuffOrbitingAround
             // 
             this.lbl_StuffOrbitingAround.AutoSize = true;
@@ -512,6 +425,103 @@
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Systems:";
+            // 
+            // ComboBox_Systems
+            // 
+            this.ComboBox_Systems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Systems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComboBox_Systems.FormattingEnabled = true;
+            this.ComboBox_Systems.Location = new System.Drawing.Point(13, 29);
+            this.ComboBox_Systems.Margin = new System.Windows.Forms.Padding(4);
+            this.ComboBox_Systems.Name = "ComboBox_Systems";
+            this.ComboBox_Systems.Size = new System.Drawing.Size(199, 24);
+            this.ComboBox_Systems.TabIndex = 43;
+            // 
+            // btn_SystemsRefresh
+            // 
+            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_SystemsRefresh.Location = new System.Drawing.Point(220, 29);
+            this.btn_SystemsRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_SystemsRefresh.Name = "btn_SystemsRefresh";
+            this.btn_SystemsRefresh.Size = new System.Drawing.Size(24, 24);
+            this.btn_SystemsRefresh.TabIndex = 45;
+            this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
+            // 
+            // tb_ID
+            // 
+            this.tb_ID.Location = new System.Drawing.Point(13, 126);
+            this.tb_ID.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_ID.Name = "tb_ID";
+            this.tb_ID.Size = new System.Drawing.Size(233, 22);
+            this.tb_ID.TabIndex = 116;
+            // 
+            // tb_Name
+            // 
+            this.tb_Name.Location = new System.Drawing.Point(13, 174);
+            this.tb_Name.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_Name.Name = "tb_Name";
+            this.tb_Name.Size = new System.Drawing.Size(233, 22);
+            this.tb_Name.TabIndex = 117;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(13, 105);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 16);
+            this.label12.TabIndex = 119;
+            this.label12.Text = "ID:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(13, 154);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 16);
+            this.label16.TabIndex = 118;
+            this.label16.Text = "Name (optional):";
+            // 
+            // tb_TypeID
+            // 
+            this.tb_TypeID.Location = new System.Drawing.Point(13, 220);
+            this.tb_TypeID.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_TypeID.Name = "tb_TypeID";
+            this.tb_TypeID.Size = new System.Drawing.Size(233, 22);
+            this.tb_TypeID.TabIndex = 120;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 200);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 16);
+            this.label13.TabIndex = 121;
+            this.label13.Text = "Type ID:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 57);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(234, 16);
+            this.label1.TabIndex = 129;
+            this.label1.Text = "Selectables On The Selected System:";
+            // 
             // ComboBox_Selectables
             // 
             this.ComboBox_Selectables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -523,16 +533,6 @@
             this.ComboBox_Selectables.Size = new System.Drawing.Size(199, 24);
             this.ComboBox_Selectables.TabIndex = 128;
             this.ComboBox_Selectables.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Selectables_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 57);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(234, 16);
-            this.label1.TabIndex = 129;
-            this.label1.Text = "Selectables On The Selected System:";
             // 
             // OrbitableMaster
             // 
@@ -592,10 +592,6 @@
         }
 
         #endregion
-
-        internal System.Windows.Forms.Button btn_SystemsRefresh;
-        internal System.Windows.Forms.ComboBox ComboBox_Systems;
-        internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.CheckBox cb_Spin;
         internal System.Windows.Forms.Button btn_FocusRefresh;
         internal System.Windows.Forms.Label lbl_Focus;
@@ -616,12 +612,6 @@
         internal System.Windows.Forms.NumericUpDown nud_Angle;
         internal System.Windows.Forms.NumericUpDown nud_Y;
         internal System.Windows.Forms.NumericUpDown nud_X;
-        internal System.Windows.Forms.Label label16;
-        internal System.Windows.Forms.Label label12;
-        internal System.Windows.Forms.TextBox tb_Name;
-        internal System.Windows.Forms.TextBox tb_ID;
-        internal System.Windows.Forms.Label label13;
-        internal System.Windows.Forms.TextBox tb_TypeID;
         internal System.Windows.Forms.Label lbl_StuffOrbitingAround;
         internal System.Windows.Forms.Label lbl_Order;
         internal System.Windows.Forms.CheckBox cb_PointingDown;
@@ -629,7 +619,16 @@
         internal System.Windows.Forms.Button btn_Undo;
         internal System.Windows.Forms.Button btn_Delete;
         internal System.Windows.Forms.Button btn_Add;
-        internal System.Windows.Forms.ComboBox ComboBox_Selectables;
+        internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.ComboBox ComboBox_Systems;
+        internal System.Windows.Forms.Button btn_SystemsRefresh;
+        internal System.Windows.Forms.TextBox tb_ID;
+        internal System.Windows.Forms.TextBox tb_Name;
+        internal System.Windows.Forms.Label label12;
+        internal System.Windows.Forms.Label label16;
+        internal System.Windows.Forms.TextBox tb_TypeID;
+        internal System.Windows.Forms.Label label13;
         internal System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.ComboBox ComboBox_Selectables;
     }
 }
