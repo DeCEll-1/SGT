@@ -1,0 +1,36 @@
+name: Build .NET Framework 4.7.2
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1
+
+      - name: Restore NuGet packages
+        run: nuget restore SSSystemGenerator/SSSystemGenerator.sln
+
+      - name: Build solution
+        run: msbuild SSSystemGenerator/SSSystemGenerator.sln /p:Configuration=Release
+
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: BuildOutput
+          path: |
+            **/bin/Release/
