@@ -286,15 +286,15 @@ namespace SSSystemGenerator.Forms
 
                     string filePath = ofd_BackgroundTexture.FileName;
 
-                    if (!filePath.Contains(Paths.ModFolderRoot.FullName) && !filePath.Contains(Paths.GameCore.FullName))
+                    if (!filePath.Contains(Paths.SGTFolderRoot.FullName) && !filePath.Contains(Paths.GameCore.FullName))
                     {
                         MessageBox.Show("Selected file should be under the games directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    if (filePath.Contains(Paths.ModFolderRoot.FullName))
+                    if (filePath.Contains(Paths.SGTFolderRoot.FullName))
                     {
-                        filePath = filePath.Replace(Paths.ModFolderRoot.FullName, "");
+                        filePath = filePath.Replace(Paths.SGTFolderRoot.FullName, "");
                     }
 
                     if (filePath.Contains(Paths.GameCore.FullName))

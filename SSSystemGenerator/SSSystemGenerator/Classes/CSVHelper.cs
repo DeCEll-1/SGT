@@ -20,23 +20,25 @@ namespace SSSystemGenerator.Classes
 
             string coreCampaignFolderPath = Paths.GameCoreCampaignFolder.FullName;
 
-            csv.Industries.AddRange(GetIndrustryListFromPath(coreCampaignFolderPath + "\\" + Finals.INDUSTRIES_FILE_NAME));
+            csv.Industries.AddRange(GetIndrustryListFromPath(coreCampaignFolderPath + @"\" + Finals.INDUSTRIES_FILE_NAME));
 
-            csv.Submarkets.AddRange(GetSubmarketsListFromPath(coreCampaignFolderPath + "\\" + Finals.SUBMARKETS_FILE_NAME));
+            csv.Submarkets.AddRange(GetSubmarketsListFromPath(coreCampaignFolderPath + @"\" + Finals.SUBMARKETS_FILE_NAME));
 
-            csv.MarketConditions.AddRange(GetMarketConditionsListFromPath(coreCampaignFolderPath + "\\" + Finals.MARKET_CONDITIONS_FILE_NAME));
+            csv.MarketConditions.AddRange(GetMarketConditionsListFromPath(coreCampaignFolderPath + @"\" + Finals.MARKET_CONDITIONS_FILE_NAME));
 
-            foreach (DirectoryInfo modDirectory in Statics.ModsToRead)
+            foreach (DirectoryInfo modDirectory in Settings.ModsToLoad)
             {
 
                 string modPath = modDirectory.FullName;
 
+                if (File.Exists(modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME))
+                    csv.Industries.AddRange(GetIndrustryListFromPath(modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME));
 
-                csv.Industries.AddRange(GetIndrustryListFromPath(modPath + "\\" + Finals.INDUSTRIES_FILE_NAME));
+                if (File.Exists(modPath + @"\data\campaign\" + Finals.SUBMARKETS_FILE_NAME))
+                    csv.Submarkets.AddRange(GetSubmarketsListFromPath(modPath + @"\data\campaign\" + Finals.SUBMARKETS_FILE_NAME));
 
-                csv.Submarkets.AddRange(GetSubmarketsListFromPath(modPath + "\\" + Finals.SUBMARKETS_FILE_NAME));
-
-                csv.MarketConditions.AddRange(GetMarketConditionsListFromPath(modPath + "\\" + Finals.MARKET_CONDITIONS_FILE_NAME));
+                if (File.Exists(modPath + @"\data\campaign\" + Finals.MARKET_CONDITIONS_FILE_NAME))
+                    csv.MarketConditions.AddRange(GetMarketConditionsListFromPath(modPath + @"\data\campaign\" + Finals.MARKET_CONDITIONS_FILE_NAME));
 
 
             }

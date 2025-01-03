@@ -324,9 +324,9 @@ namespace SSSystemGenerator.Forms
         private void ComboBox_Addables_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            ComboBox comboBox = (sender as ComboBox);
+            ComboBox cb_Addables = (sender as ComboBox);
 
-            if (comboBox.SelectedItem != null && comboBox.SelectedItem.ToString() == "")
+            if (cb_Addables.SelectedItem != null && cb_Addables.SelectedItem.ToString() == "")
             {
                 btn_AddAddable.Enabled = false;
             }
@@ -334,7 +334,9 @@ namespace SSSystemGenerator.Forms
             {
                 string selecting = tb_Selectables.Text;//can be: Industries , Submarkets , Conditions 
 
-                string selectedItem = comboBox.SelectedItem.ToString();
+                string selectedItem = cb_Addables?.SelectedItem?.ToString();
+                if (String.IsNullOrEmpty(selectedItem))
+                    return;
 
                 if (selecting == "Industries")//homie i aint using switch case again that hell man
                 {

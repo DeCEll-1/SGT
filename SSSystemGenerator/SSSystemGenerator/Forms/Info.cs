@@ -31,7 +31,7 @@ namespace SSSystemGenerator.Forms
 
             string s = "EXEPath: " + Paths.EXEPath.FullName + "\n\n";
             s += "JSONPath: " + Paths.JsonMetadataPath.FullName + "\n\n";
-            s += "ModFolderRoot: " + Paths.ModFolderRoot.FullName + "\n\n";
+            s += "ModFolderRoot: " + Paths.SGTFolderRoot.FullName + "\n\n";
             s += "ModsFolderRoot: " + Paths.ModsFolderRoot.FullName + "\n\n";
             s += "ModCampaignRoot: " + Paths.ModCampaignRoot.FullName + "\n\n";
             s += "GameRoot: " + Paths.GameRoot.FullName + "\n\n";

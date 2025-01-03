@@ -22,7 +22,7 @@ namespace SSSystemGenerator
             fileHelper.SetupFiles();
             object s = Paths.EXEPath;
             s = Paths.JsonMetadataPath;
-            s = Paths.ModFolderRoot;
+            s = Paths.SGTFolderRoot;
             s = Paths.ModsFolderRoot;
             s = Paths.ModCampaignRoot;
             s = Paths.GameRoot;
