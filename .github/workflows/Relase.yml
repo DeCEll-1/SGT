@@ -14,6 +14,9 @@ jobs:
       - name: Set up zip tool
         run: sudo apt-get install zip
 
+      - name: Install UUID generator
+        run: sudo apt-get install -y uuid-runtime
+
       - name: Create zip excluding specific folders
         run: |
           # Exclude multiple folders by specifying each one with -x
@@ -22,6 +25,10 @@ jobs:
       - name: Zip SGTExe
         run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
 
+      - name: Generate random GUID
+        id: generate_guid
+        run: echo "GUID=$(uuidgen)" >> $GITHUB_ENV
+
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
@@ -29,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }} - ${{ env.GUID }}
           draft: false
           prerelease: false
 
