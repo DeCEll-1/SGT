@@ -39,6 +39,7 @@ jobs:
           release_name: Release ${{ github.ref_name }} - ${{ env.GUID }}
           draft: false
           prerelease: false
+          allowUpdates: = true
 
       - name: Upload SGTExe
         uses: actions/upload-release-asset@v1
