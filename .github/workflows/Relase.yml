@@ -1,7 +1,12 @@
 name: Zip and Release
 
 on:
-  workflow_dispatch: # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      my_text_input:
+        description: 'Enter the text input'
+        required: true
+        default: 'Default Text'
 
 jobs:
   build:
@@ -25,21 +30,16 @@ jobs:
       - name: Zip SGTExe
         run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
 
-      - name: Generate random GUID
-        id: generate_guid
-        run: echo "GUID=$(uuidgen)" >> $GITHUB_ENV
-
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }} - ${{ env.GUID }}
+          tag_name: ${{ github.event.inputs.my_text_input }}
+          release_name: Release ${{ github.event.inputs.my_text_input }}
           draft: false
           prerelease: false
-          allowUpdates: true
 
       - name: Upload SGTExe
         uses: actions/upload-release-asset@v1
