@@ -1,0 +1,54 @@
+name: Zip and Release
+
+on:
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up zip tool
+        run: sudo apt-get install zip
+
+      - name: Zip SGTExe
+        run: zip -r SGTExe.zip SGTExe
+
+      - name: Create zip excluding specific folders
+        run: |
+          # Exclude multiple folders by specifying each one with -x
+          zip -r SGT.zip . -x ".idea/*" -x ".run/*" -x ".github/*" -x ".SGTExe/*" -x "SSSystemGenerator/*" -x "src/*"
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload SGTExe
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./SGTExe.zip
+          asset_name: SGTExe.zip
+          asset_content_type: application/zip
+
+      - name: Upload SGT
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./SGT.zip
+          asset_name: SGT.zip
+          asset_content_type: application/zip
