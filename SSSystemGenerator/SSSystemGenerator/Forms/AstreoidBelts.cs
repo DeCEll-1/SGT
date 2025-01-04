@@ -81,7 +81,7 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        private void Load()
+        private new void Load()
         {
             ComboBox_AstreoidBelts.Items.Clear();
 

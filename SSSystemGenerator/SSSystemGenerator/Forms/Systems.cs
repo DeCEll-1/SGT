@@ -70,7 +70,7 @@ namespace SSSystemGenerator.Forms
             return system;
         }
 
-        private void Load()
+        private new void Load()
         {
             ComboBox_SystemSelection.Items.Clear();
 

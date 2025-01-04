@@ -83,6 +83,26 @@ namespace SSSystemGenerator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CloseDarkMode {
+            get {
+                object obj = ResourceManager.GetObject("CloseDarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CloseLightMode {
+            get {
+                object obj = ResourceManager.GetObject("CloseLightMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ImageSearchDarkMode {
             get {
                 object obj = ResourceManager.GetObject("ImageSearchDarkMode", resourceCulture);
@@ -116,6 +136,46 @@ namespace SSSystemGenerator.Properties {
         internal static System.Drawing.Bitmap UndoLightMode {
             get {
                 object obj = ResourceManager.GetObject("UndoLightMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WindowMinimizeDarkMode {
+            get {
+                object obj = ResourceManager.GetObject("WindowMinimizeDarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WindowMinimizeLightMode {
+            get {
+                object obj = ResourceManager.GetObject("WindowMinimizeLightMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WindowResizeDarkMode {
+            get {
+                object obj = ResourceManager.GetObject("WindowResizeDarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WindowResizeLightMode {
+            get {
+                object obj = ResourceManager.GetObject("WindowResizeLightMode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

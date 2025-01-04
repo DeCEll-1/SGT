@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using SSSystemGenerator.Classes;
 using SSSystemGenerator.Forms;
+using SSSystemGenerator.Forms.SettingsForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using static Microsoft.WindowsAPICodePack.Shell.PropertySystem.SystemProperties;
 
 namespace SSSystemGenerator
 {
@@ -38,214 +40,84 @@ namespace SSSystemGenerator
 
         }
 
-        private void TSMI_Systems_Click(object sender, EventArgs e)
+        public void AddFormToContainer(Form form)
         {
-            Systems systems = new Systems();
             bool a = true;
             foreach (var item in this.MdiChildren)
             {
-                if (item.GetType() == systems.GetType())
+                if (item.GetType() == form.GetType() && item.Text == form.Text)
                 {
                     this.ActivateMdiChild(item);
-                    systems.BringToFront();
+                    form.BringToFront();
                     a = false;
                     break;
                 }
             }
             if (a)
             {
-                systems.MdiParent = this;
-                systems.Show();
+                form.MdiParent = this;
+                form.Show();
             }
+        }
+
+        private void TSMI_Systems_Click(object sender, EventArgs e)
+        {
+            Systems systems = new Systems();
+            AddFormToContainer(systems);
         }
 
         private void TSMI_Stars_Click(object sender, EventArgs e)
         {
             Stars stars = new Stars();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == stars.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    stars.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                stars.MdiParent = this;
-                stars.Show();
-            }
+            AddFormToContainer(stars);
         }
 
         private void planetsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Planets planets = new Planets();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == planets.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    planets.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                planets.MdiParent = this;
-                planets.Show();
-            }
+            AddFormToContainer(planets);
         }
 
         private void marketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Markets markets = new Markets();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == markets.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    markets.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                markets.MdiParent = this;
-                markets.Show();
-            }
+            AddFormToContainer(markets);
         }
 
         private void customEntitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomEntities customEntities = new CustomEntities();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == customEntities.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    customEntities.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                customEntities.MdiParent = this;
-                customEntities.Show();
-            }
+            AddFormToContainer(customEntities);
         }
 
         private void ringBandsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RingBands ringBands = new RingBands();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == ringBands.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    ringBands.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                ringBands.MdiParent = this;
-                ringBands.Show();
-            }
+            AddFormToContainer(ringBands);
         }
 
         private void astreoidBeltsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AstreoidBelts astreoidBelts = new AstreoidBelts();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == astreoidBelts.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    astreoidBelts.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                astreoidBelts.MdiParent = this;
-                astreoidBelts.Show();
-            }
+            AddFormToContainer(astreoidBelts);
         }
 
         private void mapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Map map = new Map();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == map.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    map.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                map.MdiParent = this;
-                map.Show();
-            }
+            AddFormToContainer(map);
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingsForm settings = new SettingsForm();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == settings.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    settings.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                settings.MdiParent = this;
-                settings.Show();
-            }
+            AddFormToContainer(settings);
         }
 
         private void TSMII_Info_Click(object sender, EventArgs e)
         {
             Info info = new Info();
-            bool a = true;
-            foreach (var item in this.MdiChildren)
-            {
-                if (item.GetType() == info.GetType())
-                {
-                    this.ActivateMdiChild(item);
-                    info.BringToFront();
-                    a = false;
-                    break;
-                }
-            }
-            if (a)
-            {
-                info.MdiParent = this;
-                info.Show();
-            }
+            AddFormToContainer(info);
         }
 
         private void closeAppToolStripMenuItem_Click(object sender, EventArgs e)
@@ -304,7 +176,7 @@ namespace SSSystemGenerator
 
             //https://stackoverflow.com/questions/1195896/threadstart-with-parameters lambda is cool
             //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions yet i dont really know how they work
-            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.BaseClass,  jsonPath));
+            this.thread = new Thread(() => JsonHelper.SerialiseToBaseJSONFile(Statics.BaseClass, jsonPath));
 
             this.thread.IsBackground = true;
             this.thread.Start();
@@ -329,57 +201,46 @@ namespace SSSystemGenerator
             }
         }
 
-        private void TSMI_DarkMode_Click(object sender, EventArgs e)
+        public void ToggleDarkMode(object sender, EventArgs e)
         {
-            Settings.ColorMode = !Settings.ColorMode;
 
             UpdateColors();
 
-            if (Settings.ColorMode)//is light mode
+            foreach (IFormInterface form in this.MdiChildren)
             {
-                TSMI_DarkMode.Text = "Switch To Dark Mode";
-
-                foreach (IFormInterface form in this.MdiChildren)
-                {
-
-                    form.UpdateColors();
-
-                }
-
-            }
-            else//on dark mode
-            {
-                TSMI_DarkMode.Text = "Switch To Light Mode";
-
-                foreach (IFormInterface form in this.MdiChildren)
-                {
-
-                    form.UpdateColors();
-
-                }
+                form.UpdateColors();
             }
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
-
-                sfd.Filter = "JSON | *.json";
-
+                sfd.Filter = "PNG | *.png";
                 DialogResult result = sfd.ShowDialog();
-
                 if (result == DialogResult.OK)
                 {
-
                     StartSave(sfd.FileName);
-
                 }
-
             }
+        }
 
+        private void MS_Main_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            object k = MS_Main.Items;
+            Form form = this.MdiChildren.FirstOrDefault(s => s.WindowState == FormWindowState.Maximized);
+            if (form != null)
+                form.WindowState = FormWindowState.Normal;
+        }
 
+        private void MS_Main_ItemAdded(object sender, ToolStripItemEventArgs e)
+        {
+            if (MS_Main.Items.Count == 8)
+            {
+                MS_Main.Items[0].Image = ColorManager.CloseButton();
+                MS_Main.Items[1].Image = ColorManager.LastSizeButton();
+                MS_Main.Items[2].Image = ColorManager.MinimizeButton();
+            }
         }
     }
 }

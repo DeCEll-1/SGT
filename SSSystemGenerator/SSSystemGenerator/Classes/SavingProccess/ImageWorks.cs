@@ -202,7 +202,7 @@ namespace DataEmbeddingInImageTest
             }
 
             #endregion
-
+            encodedImage.Dispose();
             return outputText.Replace("\0", "");
         }
 

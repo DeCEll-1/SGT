@@ -96,9 +96,9 @@
     <Compile Include="Classes\Colors.cs" />
     <Compile Include="Classes\CSVClasses\CSVs.cs" />
     <Compile Include="Classes\CSVClasses\IndustriesCSV.cs" />
-    <Compile Include="Classes\CSVClasses\MarketConditions.cs" />
+    <Compile Include="Classes\CSVClasses\MarketConditionsCSV.cs" />
     <Compile Include="Classes\CSVClasses\SubmarketsCSV.cs" />
-    <Compile Include="Classes\CSVHelper.cs" />
+    <Compile Include="Classes\CSVClasses\CSVHelper.cs" />
     <Compile Include="Classes\Finals.cs" />
     <Compile Include="Classes\Paths.cs" />
     <Compile Include="Classes\SavingProccess\ImageWorks.cs" />
@@ -180,10 +180,19 @@
     <Compile Include="Forms\RingBands.Designer.cs">
       <DependentUpon>RingBands.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SettingsForm.cs">
+    <Compile Include="Forms\SettingsForm\CSVProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SettingsForm.Designer.cs">
+    <Compile Include="Forms\SettingsForm\CSVProperties.Designer.cs">
+      <DependentUpon>CSVProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\SettingsForm.CSVSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Systems.cs">
@@ -245,7 +254,10 @@
     <EmbeddedResource Include="Forms\RingBands.resx">
       <DependentUpon>RingBands.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SettingsForm.resx">
+    <EmbeddedResource Include="Forms\SettingsForm\CSVProperties.resx">
+      <DependentUpon>CSVProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Systems.resx">
@@ -262,6 +274,9 @@
     <EmbeddedResource Include="Forms\Stars.resx">
       <DependentUpon>Stars.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Forms\SettingsForm\SettingsForm.GeneralSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -277,10 +292,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\CloneLightMode.png" />
-    <None Include="Images\CloneDarkMode.png" />
-    <Content Include="Images\UndoLightMode.png" />
-    <Content Include="Images\UndoDarkMode.png" />
     <None Include="Resources\ImageSearchDarkMode.png" />
     <None Include="Resources\ImageSearchWhiteMode.png" />
     <Content Include="TODO.txt" />

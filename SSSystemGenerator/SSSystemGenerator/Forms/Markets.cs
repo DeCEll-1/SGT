@@ -53,7 +53,7 @@ namespace SSSystemGenerator.Forms
             return "";
         }
 
-        private void Load()
+        private new void Load()
         {
             updateSelectables();
 
@@ -238,7 +238,7 @@ namespace SSSystemGenerator.Forms
                 ComboBox_Addables.Items.Clear();
 
                 ComboBox_Addables.Items.AddRange(
-                    CSVHelper.İndustriesListToStringIDNameList(Helper.GetCSV().Industries, marketAddablesHolder)//get id + name list of industries
+                    CSVHelper.IndustriesListToStringIDNameList(Helper.GetCSV().Industries, marketAddablesHolder)//get id + name list of industries
                     .ToArray()//change to array for combo box
                     );
 

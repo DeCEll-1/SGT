@@ -239,7 +239,7 @@ namespace SSSystemGenerator.Forms
         #endregion
 
         #region triggers
-        internal virtual void Load()
+        internal new virtual void Load()
         {
             LoadSystems();
             ComboBox_Selectables.Items.Clear();

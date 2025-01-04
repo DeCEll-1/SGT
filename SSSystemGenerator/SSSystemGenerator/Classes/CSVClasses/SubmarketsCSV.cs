@@ -8,6 +8,8 @@ namespace SSSystemGenerator.Classes.CSVClasses
 {
     public class SubmarketsCSV
     {
+        [CsvHelper.Configuration.Attributes.Ignore]
+        public string owner { get; set; }
         public string id { get; set; }
 
         public string name { get; set; }

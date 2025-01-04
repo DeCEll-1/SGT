@@ -118,7 +118,7 @@ namespace SSSystemGenerator.Forms
             {
                 //TrackBar_Zoom.Value = (int)(zoomValue * 100f);
             }//"value must be in min-max uwu :3"
-            catch (Exception ex)
+            catch (Exception )
             {
             }
 
@@ -207,7 +207,7 @@ namespace SSSystemGenerator.Forms
 
         public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
 
-        private void Load()
+        private new void Load()
         {
             LoadSystems();
         }
@@ -244,7 +244,7 @@ namespace SSSystemGenerator.Forms
                 PanelDrawer.rendererValues = new RendererBaseClass();
             }
 
-            PanelDrawer.rendererValues.Circles = new List<Circles>(); https://stackoverflow.com/a/60247726
+            PanelDrawer.rendererValues.Circles = new List<Circles>(); // https://stackoverflow.com/a/60247726
 
             AddValuesToRenderer();
 
@@ -261,7 +261,7 @@ namespace SSSystemGenerator.Forms
                     "\nZoom Value: " + (zoomValue > 0 && zoomValue.ToString().Length > 5 ? zoomValue.ToString().Substring(0, 4) : zoomValue.ToString()) +
                     "\nCenter: " + renderCenter.X + " , " + renderCenter.Y;
             }
-            catch (Exception ex)
+            catch (Exception)
             {//getting parameter name lenght System.ArgumentOutOfRangeException from zoom value
 
             }
@@ -537,7 +537,7 @@ namespace SSSystemGenerator.Forms
             return true;
         }
 
-        private void Move(float x, float y)
+        private new void Move(float x, float y)
         {
             renderCenter = Helper.CombineCoordinates(renderCenter, new PointF(x, y));
 

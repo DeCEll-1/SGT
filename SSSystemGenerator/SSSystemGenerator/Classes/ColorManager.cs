@@ -45,7 +45,7 @@ namespace SSSystemGenerator.Classes
 
             if (component is Button && !component.Enabled)
             {
-                if (!Settings.ColorMode)//Dark mode
+                if (Settings.ColorMode == ColorMode.DARK)//Dark mode
                 {
                     return;
                 }
@@ -58,7 +58,9 @@ namespace SSSystemGenerator.Classes
             //    component.Enabled = true;
             //}
 
-            if (component.Name.Contains("Refresh") || component.Name.Contains("Undo"))
+            if (
+                component.Name.Contains("Refresh") || component.Name.Contains("Undo")
+                )
             {
                 component.BackgroundImage = RefreshButton();
             }
@@ -125,7 +127,7 @@ namespace SSSystemGenerator.Classes
 
             int borderWidth = 6;
             ButtonBorderStyle borderStyle = ButtonBorderStyle.Solid;
-            if (Settings.ColorMode)//light mode
+            if (Settings.ColorMode == ColorMode.LIGHT)//light mode
             {
                 e.Graphics.Clear(Colors.LIGHT_MODE_BG);
                 var borderColor = Colors.LIGHT_MODE_BORDER;
@@ -198,69 +200,96 @@ namespace SSSystemGenerator.Classes
         #region returnColors
         public static Color Text()
         {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_FG; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_FG;
             else
-            { return Colors.DARK_MODE_FG; }
+                return Colors.DARK_MODE_FG;
         }
         public static Color Background()
         {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_BG; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_BG;
             else
-            { return Colors.DARK_MODE_BG; }
+                return Colors.DARK_MODE_BG;
         }
         public static Color FormText()
         {
-            if (Settings.ColorMode)//lightMode
-            //{ return Colors.LIGHT_MODE_FORM_FG; }
-            { return Form.DefaultForeColor; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                                                      //{ return Colors.LIGHT_MODE_FORM_FG; }
+                return Form.DefaultForeColor;
             else
-            { return Colors.DARK_MODE_FORM_FG; }
+                return Colors.DARK_MODE_FORM_FG;
         }
         public static Color FormBackground()
         {
-            if (Settings.ColorMode)//lightMode
-            //{ return Colors.LIGHT_MODE_FORM_BG; }
-            { return Form.DefaultBackColor; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                                                      //{ return Colors.LIGHT_MODE_FORM_BG; }
+                return Form.DefaultBackColor;
             else
-            { return Colors.DARK_MODE_FORM_BG; }
+                return Colors.DARK_MODE_FORM_BG;
         }
         public static Color Border()
         {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_BORDER; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_BORDER;
             else
-            { return Colors.DARK_MODE_BORDER; }
+                return Colors.DARK_MODE_BORDER;
         }
         public static Bitmap RefreshButton()
         {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_REFRESH_IMAGE; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_REFRESH_IMAGE;
             else
-            { return Colors.DARK_MODE_REFRESH_IMAGE; }
+                return Colors.DARK_MODE_REFRESH_IMAGE;
         }
         public static Bitmap CloneButton()//make those generalised
         {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_CLONE_IMAGE; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_CLONE_IMAGE;
             else
-            { return Colors.DARK_MODE_CLONE_IMAGE; }
+                return Colors.DARK_MODE_CLONE_IMAGE;
         }
         public static Bitmap ImageSelect()//make those generalised
         {
-            if (Settings.ColorMode)//lightMode
-            { return Colors.LIGHT_MODE_IMAGE_SELECTION; }
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_IMAGE_SELECTION;
             else
-            { return Colors.DARK_MODE_IMAGE_SELECTION; }
+                return Colors.DARK_MODE_IMAGE_SELECTION;
         }
+
+        public static Bitmap CloseButton()//make those generalised
+        {
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_IMAGE_CLOSE;
+            else
+                return Colors.DARK_MODE_IMAGE_CLOSE;
+        }
+
+        public static Bitmap LastSizeButton()//make those generalised
+        {
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_IMAGE_RESIZE;
+            else
+                return Colors.DARK_MODE_IMAGE_RESIZE;
+        }
+
+        public static Bitmap MinimizeButton()//make those generalised
+        {
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+                return Colors.LIGHT_MODE_IMAGE_MINIMIZE;
+            else
+                return Colors.DARK_MODE_IMAGE_MINIMIZE;
+        }
+
+        [Obsolete]
         public static Color Hover()
         {
-            if (Settings.ColorMode)//lightMode
+            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
             { return Colors.LIGHT_MODE_HOVER_COLOR; }
             else
             { return Colors.DARK_MODE_HOVER_COLOR; }
         }
+
         #endregion
         #region borderlessControls // also stuff that takes form background
 

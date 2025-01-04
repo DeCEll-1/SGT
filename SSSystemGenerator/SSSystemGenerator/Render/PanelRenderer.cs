@@ -82,7 +82,7 @@ namespace SSSystemGenerator.Render
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 //g.RenderingOrigin = new Point(-500, -500);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return;
             }
@@ -180,7 +180,7 @@ namespace SSSystemGenerator.Render
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 

@@ -293,7 +293,7 @@ namespace SSSystemGenerator.Forms
             }
         }
 
-        private void Load()
+        private new void Load()
         {
             LoadSystems();
             ComboBox_Entities.Items.Clear();

@@ -119,21 +119,51 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="CloneLightMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\CloneLightMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\CloneLightMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloneDarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\CloneDarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\CloneDarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UndoLightMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\UndoLightMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\UndoLightMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UndoDarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\UndoDarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\UndoDarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ImageSearchDarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageSearchDarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\ImageSearchDarkMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ImageSearchLightMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageSearchWhiteMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\ImageSearchLightMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloseDarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseDarkMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloseLightMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseLightMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowMinimizeDarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WindowMinimizeDarkMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowMinimizeLightMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WindowMinimizeLightMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowResizeDarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WindowResizeDarkMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowResizeLightMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WindowResizeLightMode.png;System.Drawing.Bitmap, System.Drawing,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

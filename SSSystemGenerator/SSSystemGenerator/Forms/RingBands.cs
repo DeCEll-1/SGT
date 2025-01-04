@@ -197,7 +197,7 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        private void Load()
+        private new void Load()
         {
             ComboBox_RingBands.Items.Clear();
 

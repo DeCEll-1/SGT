@@ -11,11 +11,16 @@ namespace SSSystemGenerator.Classes
     {
 
         //true is for light false is for dark
-        public static Boolean ColorMode { get; set; } = true;//TODO: add settings for this
+        public static ColorMode ColorMode { get; set; } = ColorMode.LIGHT;//TODO: add settings for this
 
         public static Boolean DebugMode { get; set; } = false;//TODO: add settings for this
 
         public static List<DirectoryInfo> ModsToLoad { get; set; } = new List<DirectoryInfo>();//TODO: add settings and save this thing
 
+    }
+    public enum ColorMode
+    {
+        LIGHT,
+        DARK
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace SSSystemGenerator.Classes.CSVClasses
 {
-    public class MarketConditions
+    public class MarketConditionsCSV
     {
+        [CsvHelper.Configuration.Attributes.Ignore]
+        public string owner { get; set; }
         public string name { get; set; }
 
         public string id { get; set; }

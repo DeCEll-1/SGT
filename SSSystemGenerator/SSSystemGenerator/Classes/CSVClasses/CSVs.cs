@@ -13,7 +13,7 @@ namespace SSSystemGenerator.Classes.CSVClasses
 
         public List<SubmarketsCSV> Submarkets { get; set; } = new List<SubmarketsCSV> { };
 
-        public List<MarketConditions> MarketConditions { get; set; } = new List<MarketConditions> { };
+        public List<MarketConditionsCSV> MarketConditions { get; set; } = new List<MarketConditionsCSV> { };
 
     }
 }

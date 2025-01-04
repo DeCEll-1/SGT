@@ -30,9 +30,12 @@ namespace SSSystemGenerator.Classes
             {
 
                 string modPath = modDirectory.FullName;
+                int len = modPath.Split('\\').Length;
 
                 if (File.Exists(modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME))
-                    csv.Industries.AddRange(GetIndrustryListFromPath(modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME));
+                    csv.Industries.AddRange(
+                        GetIndrustryListFromPath(modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME))
+                        ;
 
                 if (File.Exists(modPath + @"\data\campaign\" + Finals.SUBMARKETS_FILE_NAME))
                     csv.Submarkets.AddRange(GetSubmarketsListFromPath(modPath + @"\data\campaign\" + Finals.SUBMARKETS_FILE_NAME));
@@ -57,7 +60,6 @@ namespace SSSystemGenerator.Classes
         /// <returns>null if not found anything</returns>
         public static List<IndustriesCSV> GetIndrustryListFromPath(string path)
         {
-
             List<IndustriesCSV> records = null;
 
             //https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file
@@ -67,6 +69,12 @@ namespace SSSystemGenerator.Classes
             {
                 records = csv.GetRecords<IndustriesCSV>().ToList();
             }
+
+            string modName = path.Split('\\')[path.Split('\\').Length - 4];
+            records.ForEach(record =>
+            {
+                record.owner = modName;
+            });
 
             List<IndustriesCSV> stuffToDelete = new List<IndustriesCSV>();
 
@@ -133,7 +141,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> İndustriesListToStringIDNameList(List<IndustriesCSV> industriesList, MarketData market)
+        public static List<string> IndustriesListToStringIDNameList(List<IndustriesCSV> industriesList, MarketData market)
         {
             List<string> stringListToReturn = new List<string>();
 
@@ -183,6 +191,12 @@ namespace SSSystemGenerator.Classes
             {
                 records = csv.GetRecords<SubmarketsCSV>().ToList();
             }
+
+            string modName = path.Split('\\')[path.Split('\\').Length - 4];
+            records.ForEach(record =>
+            {
+                record.owner = modName;
+            });
 
             List<SubmarketsCSV> stuffToDelete = new List<SubmarketsCSV>();
 
@@ -287,22 +301,28 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="path"></param>
         /// <returns>null if not found anything</returns>
-        public static List<MarketConditions> GetMarketConditionsListFromPath(string path)
+        public static List<MarketConditionsCSV> GetMarketConditionsListFromPath(string path)
         {
 
-            List<MarketConditions> records = null;
+            List<MarketConditionsCSV> records = null;
 
             //https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file
 
             using (var reader = new StreamReader(path))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                records = csv.GetRecords<MarketConditions>().ToList();
+                records = csv.GetRecords<MarketConditionsCSV>().ToList();
             }
 
-            List<MarketConditions> stuffToDelete = new List<MarketConditions>();
+            string modName = path.Split('\\')[path.Split('\\').Length - 4];
+            records.ForEach(record =>
+            {
+                record.owner = modName;
+            });
 
-            foreach (MarketConditions conditions in records)
+            List<MarketConditionsCSV> stuffToDelete = new List<MarketConditionsCSV>();
+
+            foreach (MarketConditionsCSV conditions in records)
             {
                 if (conditions.id == "" || conditions.id == null || conditions.id.Contains("#"))
                 {
@@ -311,7 +331,7 @@ namespace SSSystemGenerator.Classes
                 }
             }
 
-            foreach (MarketConditions conditionToRemove in stuffToDelete) { records.Remove(conditionToRemove); }
+            foreach (MarketConditionsCSV conditionToRemove in stuffToDelete) { records.Remove(conditionToRemove); }
 
             return records;
 
@@ -322,11 +342,11 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditions> marketConditionsList)
+        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditionsCSV> marketConditionsList)
         {
             List<string> listToReturn = new List<string>();
 
-            foreach (MarketConditions condition in marketConditionsList)
+            foreach (MarketConditionsCSV condition in marketConditionsList)
             {
 
                 listToReturn.Add(condition.id + " - " + condition.name);
@@ -342,11 +362,11 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameListExcludingMarketItems(List<MarketConditions> marketConditionsList, MarketData market)
+        public static List<string> MarketConditionsListToStringIDNameListExcludingMarketItems(List<MarketConditionsCSV> marketConditionsList, MarketData market)
         {
             List<string> listToReturn = new List<string>();
 
-            foreach (MarketConditions condition in marketConditionsList)
+            foreach (MarketConditionsCSV condition in marketConditionsList)
             {
                 if (market.marketConditions.Contains(condition.id))
                 {
@@ -369,7 +389,7 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditions> marketConditionsList, MarketData market)
+        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditionsCSV> marketConditionsList, MarketData market)
         {
             List<string> stringListToReturn = new List<string>();
 
@@ -377,7 +397,7 @@ namespace SSSystemGenerator.Classes
 
             stringListToReturn.Add("Not Added:");
 
-            foreach (MarketConditions condition in marketConditionsList)
+            foreach (MarketConditionsCSV condition in marketConditionsList)
             {
 
                 if (market.marketConditions.Contains(condition.id))

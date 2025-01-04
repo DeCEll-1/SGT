@@ -1110,7 +1110,7 @@ namespace SSSystemGenerator.Classes
                 }
             }
 
-            foreach (MarketConditions condition in csv.MarketConditions)
+            foreach (MarketConditionsCSV condition in csv.MarketConditions)
             {
                 if (condition.id == unknownID)
                 {

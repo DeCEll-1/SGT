@@ -1,29 +1,20 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using SSSystemGenerator.Classes;
+using SSSystemGenerator.Classes.CSVClasses;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SSSystemGenerator.Forms
+namespace SSSystemGenerator.Forms.SettingsForm
 {
-    public partial class SettingsForm : Form, IFormInterface
+    public partial class SettingsForm
     {
-        public void UpdateColors() { ColorManager.ChangeColorMode(this.Controls); }
-        public SettingsForm()
-        {
-            InitializeComponent();
-            UpdateColors();
-            Load();
-        }
 
-        private void Load()
+        private void LoadCSVSettings()
         {
             lb_ModsToLoad.Items.Clear();
             lb_ModsToLoad.Items.Add(Paths.GameCoreCampaignFolder.FullName.ToString().Replace(Paths.GameRoot.FullName.ToString(), ""));
@@ -60,39 +51,58 @@ namespace SSSystemGenerator.Forms
                 }
                 path = dialog.FileName;
             }
+            else
+                return;
+
 
             if (Settings.ModsToLoad.Contains(new DirectoryInfo(path)))
                 return;
             Settings.ModsToLoad.Add(new DirectoryInfo(path));
-            Load();
-
+            LoadCSVSettings();
+            btn_ReloadCSVs_Click(sender, e);
         }
 
         private void RemoveModFromLoading(object sender, EventArgs e)
         {
+            string pathOfModToRemove = lb_ModsToLoad.SelectedItem.ToString().Split('\\')[1];
 
-        }
-
-        private void lb_ModsToLoad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lb_ModsToLoad.SelectedItem == null)
-            {
-                btn_RemoveModFromLoad.Enabled = false;
-                return;
-            }
-            btn_RemoveModFromLoad.Enabled = true;
+            Settings.ModsToLoad.RemoveAll(s => s.FullName.Contains(pathOfModToRemove));
+            LoadCSVSettings();
+            lb_ModsToLoad_SelectedIndexChanged(null, null);
         }
 
         private void btn_Properties_Click(object sender, EventArgs e)
         {
+            string modToCheck = lb_ModsToLoad.SelectedItem.ToString().Split('\\')[1];
 
+            List<IndustriesCSV> industries = Statics.CSVs.Industries.Where(s => s.owner == modToCheck).ToList();
+            List<MarketConditionsCSV> conditions = Statics.CSVs.MarketConditions.Where(s => s.owner == modToCheck).ToList();
+            List<SubmarketsCSV> submarkets = Statics.CSVs.Submarkets.Where(s => s.owner == modToCheck).ToList();
+
+            CSVProperties properties = new CSVProperties(industries, conditions, submarkets);
+            properties.Text = modToCheck;
+            Statics.SGTBaseMDIContainer.AddFormToContainer(properties);
+        }
+
+        private void lb_ModsToLoad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lb_ModsToLoad.SelectedItem == null || lb_ModsToLoad.SelectedItem.ToString().Contains("starsector-core"))
+            {
+                btn_RemoveModFromLoad.Enabled = false;
+                return;
+            }
+            if (lb_ModsToLoad.SelectedItem == null)
+            {
+                btn_Properties.Enabled = false;
+            }
+            btn_RemoveModFromLoad.Enabled = true;
+            btn_Properties.Enabled = true;
         }
 
         private void btn_ReloadCSVs_Click(object sender, EventArgs e)
         {
             Statics.CSVs = CSVHelper.GetAllCSVs();
         }
-
 
     }
 }

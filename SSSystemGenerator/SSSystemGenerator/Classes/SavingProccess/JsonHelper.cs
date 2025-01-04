@@ -54,35 +54,49 @@ namespace SSSystemGenerator.Classes
 
             saving = true;
 
-            SGTBaseMDIContainer form = Statics.SGTBaseMDIContainer;
-
-            UpdateMDIFormSavingStatusLabel("Setting up files");
-            fileHelper.SetupFiles();
-
-            UpdateMDIFormSavingStatusLabel("Parsing SystemMetadata to Json");
-            String jsonString = SerialiseToJson(baseClass.MetadataHolder);
-
-            UpdateMDIFormSavingStatusLabel("Saving Metadata");
-            SaveStringToFile(jsonString, jsonPath);
-
-            UpdateMDIFormSavingStatusLabel("Saving Embedded Images");
-
-            ImageWorks imageWorks = new ImageWorks(); // class with embedding / extracting functions
-
-            baseClass.StarSystemDataList.ForEach(system =>
+            try
             {
-                string systemString = SerialiseToJson(system); // we turn the system into string
 
-                Bitmap embeddedImage = imageWorks.TextToBitmap(systemString, system.systemImage);
 
-                embeddedImage.Save(Paths.SystemsFolder.FullName + "\\" + system.ID + ".png"); // why does it need \\systems again it already haves it
+                SGTBaseMDIContainer form = Statics.SGTBaseMDIContainer;
 
-            });
+                UpdateMDIFormSavingStatusLabel("Setting up files");
+                fileHelper.SetupFiles();
 
-            UpdateMDIFormSavingStatusLabel("Saved");
-            saving = false;
+                UpdateMDIFormSavingStatusLabel("Parsing SystemMetadata to Json");
+                String jsonString = SerialiseToJson(baseClass.MetadataHolder);
 
-            if (Statics.CloseTheForm) Misc.FireMethodOnDifferentThread(Statics.SGTBaseMDIContainer, Statics.SGTBaseMDIContainer.GetType(), "Close", new object[0]);
+                UpdateMDIFormSavingStatusLabel("Saving Metadata");
+                SaveStringToFile(jsonString, jsonPath);
+
+                UpdateMDIFormSavingStatusLabel("Saving Embedded Images");
+
+                ImageWorks imageWorks = new ImageWorks(); // class with embedding / extracting functions
+                baseClass.StarSystemDataList.ForEach(system =>
+                {
+                    string systemString = SerialiseToJson(system); // we turn the system into string
+
+                    Bitmap embeddedImage = imageWorks.TextToBitmap(systemString, system.systemImage);
+
+                    embeddedImage.Save(Paths.SystemsFolder.FullName + "\\" + system.ID + ".png"); // why does it need \\systems again it already haves it
+
+                });
+
+                UpdateMDIFormSavingStatusLabel("Saved");
+                saving = false;
+
+                if (Statics.CloseTheForm) Misc.FireMethodOnDifferentThread(Statics.SGTBaseMDIContainer, Statics.SGTBaseMDIContainer.GetType(), "Close", new object[0]);
+
+            }
+            catch (Exception ex)
+            {
+                DialogResult res = MessageBox.Show("An error has accured while saving\n" + ex.Message + "\nWould you like to retry saving?", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                saving = false;
+                if (res == DialogResult.Retry)
+                {
+                    SerialiseToBaseJSONFilePrivate(baseClass, jsonPath);
+                }
+            }
 
         }
 

@@ -42,16 +42,16 @@
             this.TSMI_RingBands = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_AstreoidBelts = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Map = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_ActiveWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMII_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Preferances = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_DarkMode = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TSSL_Saving = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSPB_Saving = new System.Windows.Forms.ToolStripProgressBar();
-            this.TSSL_MadeIn = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSSL_Spring = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TSSL_MadeIn = new System.Windows.Forms.ToolStripStatusLabel();
             this.MS_Main.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,13 +62,17 @@
             this.MS_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_File,
             this.TSMI_SystemGeneration,
+            this.TSMI_ActiveWindows,
             this.TSMI_Info,
             this.TSMI_Preferances});
             this.MS_Main.Location = new System.Drawing.Point(0, 0);
+            this.MS_Main.MdiWindowListItem = this.TSMI_ActiveWindows;
             this.MS_Main.Name = "MS_Main";
             this.MS_Main.Size = new System.Drawing.Size(1067, 28);
             this.MS_Main.TabIndex = 1;
             this.MS_Main.Text = "menuStrip1";
+            this.MS_Main.ItemAdded += new System.Windows.Forms.ToolStripItemEventHandler(this.MS_Main_ItemAdded);
+            this.MS_Main.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MS_Main_MouseDoubleClick);
             // 
             // TSMI_File
             // 
@@ -184,6 +188,12 @@
             this.TSMI_Map.Text = "Map";
             this.TSMI_Map.Click += new System.EventHandler(this.mapToolStripMenuItem_Click);
             // 
+            // TSMI_ActiveWindows
+            // 
+            this.TSMI_ActiveWindows.Name = "TSMI_ActiveWindows";
+            this.TSMI_ActiveWindows.Size = new System.Drawing.Size(129, 24);
+            this.TSMI_ActiveWindows.Text = "Active Windows";
+            // 
             // TSMI_Info
             // 
             this.TSMI_Info.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -203,23 +213,15 @@
             // TSMI_Preferances
             // 
             this.TSMI_Preferances.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMI_DarkMode,
             this.settingsToolStripMenuItem});
             this.TSMI_Preferances.Name = "TSMI_Preferances";
             this.TSMI_Preferances.Size = new System.Drawing.Size(99, 24);
             this.TSMI_Preferances.Text = "Preferances";
             // 
-            // TSMI_DarkMode
-            // 
-            this.TSMI_DarkMode.Name = "TSMI_DarkMode";
-            this.TSMI_DarkMode.Size = new System.Drawing.Size(233, 26);
-            this.TSMI_DarkMode.Text = "Switch To Dark Mode";
-            this.TSMI_DarkMode.Click += new System.EventHandler(this.TSMI_DarkMode_Click);
-            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -248,19 +250,19 @@
             this.TSPB_Saving.Name = "TSPB_Saving";
             this.TSPB_Saving.Size = new System.Drawing.Size(133, 18);
             // 
+            // TSSL_Spring
+            // 
+            this.TSSL_Spring.Name = "TSSL_Spring";
+            this.TSSL_Spring.Size = new System.Drawing.Size(893, 20);
+            this.TSSL_Spring.Spring = true;
+            // 
             // TSSL_MadeIn
             // 
             this.TSSL_MadeIn.Name = "TSSL_MadeIn";
             this.TSSL_MadeIn.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TSSL_MadeIn.Size = new System.Drawing.Size(110, 20);
-            this.TSSL_MadeIn.Text = "Made In Turkey";
+            this.TSSL_MadeIn.Size = new System.Drawing.Size(19, 20);
+            this.TSSL_MadeIn.Text = "~";
             this.TSSL_MadeIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TSSL_Spring
-            // 
-            this.TSSL_Spring.Name = "TSSL_Spring";
-            this.TSSL_Spring.Size = new System.Drawing.Size(763, 20);
-            this.TSSL_Spring.Spring = true;
             // 
             // SGTBaseMDIContainer
             // 
@@ -271,7 +273,7 @@
             this.Controls.Add(this.MS_Main);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MS_Main;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SGTBaseMDIContainer";
             this.Text = "SGTBaseMDIContainer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -306,10 +308,10 @@
         public System.Windows.Forms.ToolStripStatusLabel TSSL_Saving;
         public System.Windows.Forms.ToolStripProgressBar TSPB_Saving;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Preferances;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_DarkMode;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel TSSL_MadeIn;
         private System.Windows.Forms.ToolStripStatusLabel TSSL_Spring;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_ActiveWindows;
     }
 }
