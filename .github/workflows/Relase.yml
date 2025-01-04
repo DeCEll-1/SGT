@@ -25,7 +25,7 @@ jobs:
       - name: Create zip excluding specific folders
         run: |
           # Exclude multiple folders by specifying each one with -x
-          zip -r SGT.zip ../ -x "../.idea/*" -x "../.run/*" -x "../.github/*" -x "../.SGTExe/*" -x "../SSSystemGenerator/*" -x "../src/*" -x "../.git/*" -x "../README.*"
+          zip -r SGT.zip ../ -x "../SGT/.idea/*" -x "../SGT/.run/*" -x "../SGT/.github/*" -x "../SGT/.SGTExe/*" -x "../SGT/SSSystemGenerator/*" -x "../SGT/src/*" -x "../SGT/.git/*" -x "../SGT/README.*"
 
       - name: Zip SGTExe
         run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
