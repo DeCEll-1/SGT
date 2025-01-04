@@ -3,10 +3,14 @@ name: Zip and Release
 on:
   workflow_dispatch:
     inputs:
-      my_text_input:
-        description: 'Enter the text input'
+      version:
+        description: 'Enter version'
         required: true
         default: 'Vx.x.x'
+      relaseDescription:
+        description: 'Enter relase description'
+        required: false
+        default: ''
 
 jobs:
   build:
@@ -25,7 +29,7 @@ jobs:
       - name: Create zip excluding specific folders
         run: |
           # Exclude multiple folders by specifying each one with -x
-          zip -r SGT.zip ../ -x "../SGT/.idea/*" -x "../SGT/.run/*" -x "../SGT/.github/*" -x "../SGT/.SGTExe/*" -x "../SGT/SSSystemGenerator/*" -x "../SGT/src/*" -x "../SGT/.git/*" -x "../SGT/README.*"
+          zip -r SGT.zip ../ -x "../SGT/.idea/*" -x "../SGT/.run/*" -x "../SGT/.github/*" -x "../SGT/.SGTExe/*" -x "../SGT/SSSystemGenerator/*" -x "../SGT/src/*" -x "../SGT/.git/*" -x "../SGT/README.*" -x "../SGT/SGTExe/*.xml" -x "../SGT/SGTExe/*.pdb"
 
       - name: Zip SGTExe
         run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
