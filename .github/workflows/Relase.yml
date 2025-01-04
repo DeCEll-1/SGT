@@ -14,13 +14,13 @@ jobs:
       - name: Set up zip tool
         run: sudo apt-get install zip
 
-      - name: Zip SGTExe
-        run: zip -r SGTExe.zip SGTExe
-
       - name: Create zip excluding specific folders
         run: |
           # Exclude multiple folders by specifying each one with -x
-          zip -r SGT.zip . -x ".idea/*" -x ".run/*" -x ".github/*" -x ".SGTExe/*" -x "SSSystemGenerator/*" -x "src/*"
+          zip -r SGT.zip . -x ".idea/*" -x ".run/*" -x ".github/*" -x ".SGTExe/*" -x "SSSystemGenerator/*" -x "src/*" -x ".git/*"
+
+      - name: Zip SGTExe
+        run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
 
       - name: Create GitHub Release
         id: create_release
