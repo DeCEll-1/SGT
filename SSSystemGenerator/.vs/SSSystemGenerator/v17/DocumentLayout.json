@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\classes\\savingproccess\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|d:\\game files\\fractal softworks\\0.97a-rc11\\mods\\sgt\\sssystemgenerator\\sssystemgenerator\\forms\\sgtbasemdicontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\forms\\sgtbasemdicontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\forms\\sgtbasemdicontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|d:\\game files\\fractal softworks\\0.97a-rc11\\mods\\sgt\\sssystemgenerator\\sssystemgenerator\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\sssystemgenerator\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}|SSSystemGenerator\\SSSystemGenerator.csproj|solutionrelative:sssystemgenerator\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "SSSystemGenerator\\Classes\\SavingProccess\\JsonHelper.cs",
               "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Classes\\SavingProccess\\JsonHelper.cs",
               "RelativeToolTip": "SSSystemGenerator\\Classes\\SavingProccess\\JsonHelper.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAAAF8AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAGAAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-04T19:55:04.028Z",
               "EditorCaption": ""
@@ -67,8 +67,7 @@
               "RelativeToolTip": "SSSystemGenerator\\TODO.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-01-04T19:54:06.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T19:54:06.776Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "SSSystemGenerator\\Forms\\SGTBaseMDIContainer.cs",
               "ViewState": "AgIAAKcAAAAAAAAAAAAvwLIAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T19:52:42.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T19:52:42.919Z"
             },
             {
               "$type": "Document",
@@ -92,8 +90,7 @@
               "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\SGTBaseMDIContainer.cs [Design]",
               "RelativeToolTip": "SSSystemGenerator\\Forms\\SGTBaseMDIContainer.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T18:42:54.703Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-01-04T18:42:54.703Z"
             },
             {
               "$type": "Document",
@@ -104,8 +101,7 @@
               "ToolTip": "D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SSSystemGenerator\\SSSystemGenerator\\Forms\\SettingsForm\\CSVProperties.cs [Design]",
               "RelativeToolTip": "SSSystemGenerator\\Forms\\SettingsForm\\CSVProperties.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T16:47:57.454Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-01-04T16:47:57.454Z"
             },
             {
               "$type": "Document",
@@ -117,8 +113,7 @@
               "RelativeToolTip": "SSSystemGenerator\\Forms\\SettingsForm\\CSVProperties.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T16:52:09.138Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T16:52:09.138Z"
             },
             {
               "$type": "Document",
@@ -130,8 +125,7 @@
               "RelativeToolTip": "SSSystemGenerator\\Forms\\SettingsForm\\SettingsForm.CSVSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwE4AAAB8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T16:18:24.047Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T16:18:24.047Z"
             },
             {
               "$type": "Document",
