@@ -28,6 +28,11 @@ jobs:
       - name: Build solution
         run: msbuild SSSystemGenerator/SSSystemGenerator.sln /p:Configuration=Release
 
+      - name: Verify build output
+        run: |
+          echo "Listing contents of SGTExe/"
+          dir SGTExe/
+
       - name: Publish artifacts
         uses: actions/upload-artifact@v3
         with:
