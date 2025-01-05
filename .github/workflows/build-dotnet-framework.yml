@@ -31,7 +31,7 @@ jobs:
       - name: Verify build output
         run: |
           echo "Listing contents of SGTExe/"
-          dir .
+          dir . /s
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v3
