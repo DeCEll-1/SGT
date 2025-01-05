@@ -449,7 +449,7 @@ namespace SSSystemGenerator.Forms
                 PanelDrawer.rendererValues = new RendererBaseClass();
             }
 
-            if (Settings.DebugMode)
+            if (SettingsController.DebugMode)
             {
                 Circles testcircle = new Circles(
                         new Point(panel.Width / 2, panel.Height / 2),

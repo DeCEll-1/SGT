@@ -26,7 +26,7 @@ namespace SSSystemGenerator.Classes
 
             csv.MarketConditions.AddRange(GetMarketConditionsListFromPath(coreCampaignFolderPath + @"\" + Finals.MARKET_CONDITIONS_FILE_NAME));
 
-            foreach (DirectoryInfo modDirectory in Settings.ModsToLoad)
+            foreach (DirectoryInfo modDirectory in SettingsController.ModsToLoad)
             {
 
                 string modPath = modDirectory.FullName;
