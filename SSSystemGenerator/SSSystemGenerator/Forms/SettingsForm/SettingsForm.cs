@@ -32,17 +32,6 @@ namespace SSSystemGenerator.Forms.SettingsForm
                 LoadCSVSettings();
             else if (currentTab == tp_General.ToString())
                 LoadGeneralSettings();
-
-        }
-
-        private void cb_DarkMode_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_DarkMode.Checked)
-                SettingsController.ColorMode = ColorMode.DARK;
-            else
-                SettingsController.ColorMode = ColorMode.LIGHT;
-
-            Statics.SGTBaseMDIContainer.UpdateColors();
         }
 
     }

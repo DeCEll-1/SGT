@@ -126,8 +126,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ColorManager.cs" />
-    <Compile Include="Classes\Colors.cs" />
+    <Compile Include="Classes\Colors\ColorManager.cs" />
+    <Compile Include="Classes\Colors\Colors.cs" />
     <Compile Include="Classes\CSVClasses\CSVs.cs" />
     <Compile Include="Classes\CSVClasses\IndustriesCSV.cs" />
     <Compile Include="Classes\CSVClasses\MarketConditionsCSV.cs" />
@@ -330,7 +330,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ImageSearchDarkMode.png" />
-    <None Include="Resources\ImageSearchWhiteMode.png" />
+    <Content Include="Resources\CloneDarkMode.png" />
+    <Content Include="Resources\CloneLightMode.png" />
+    <Content Include="Resources\CloseDarkMode.png" />
+    <Content Include="Resources\CloseLightMode.png" />
+    <Content Include="Resources\ImageSearchLightMode.png" />
+    <Content Include="Resources\UndoDarkMode.png" />
+    <Content Include="Resources\UndoLightMode.png" />
+    <Content Include="Resources\WindowMinimizeDarkMode.png" />
+    <Content Include="Resources\WindowMinimizeLightMode.png" />
+    <Content Include="Resources\WindowResizeDarkMode.png" />
+    <Content Include="Resources\WindowResizeLightMode.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
