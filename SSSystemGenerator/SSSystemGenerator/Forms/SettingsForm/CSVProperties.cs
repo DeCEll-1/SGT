@@ -41,7 +41,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
 
             for (int i = 0; i < industries.Count; i++)
             {
-                result[i] = industries[i].id + industries[i].name;
+                result[i] = industries[i].id + " - " + industries[i].name;
             }
 
             return result;
@@ -52,7 +52,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
 
             for (int i = 0; i < conditions.Count; i++)
             {
-                result[i] = conditions[i].id + conditions[i].name;
+                result[i] = conditions[i].id + " - " + conditions[i].name;
             }
 
             return result;
@@ -63,7 +63,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
 
             for (int i = 0; i < submarkets.Count; i++)
             {
-                result[i] = submarkets[i].id + submarkets[i].name;
+                result[i] = submarkets[i].id + " - " + submarkets[i].name;
             }
 
             return result;

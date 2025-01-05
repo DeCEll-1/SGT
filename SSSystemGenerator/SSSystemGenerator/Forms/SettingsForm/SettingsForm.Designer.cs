@@ -119,11 +119,12 @@
             // 
             // lb_ModsToLoad
             // 
+            this.lb_ModsToLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lb_ModsToLoad.FormattingEnabled = true;
-            this.lb_ModsToLoad.ItemHeight = 16;
+            this.lb_ModsToLoad.ItemHeight = 18;
             this.lb_ModsToLoad.Location = new System.Drawing.Point(6, 6);
             this.lb_ModsToLoad.Name = "lb_ModsToLoad";
-            this.lb_ModsToLoad.Size = new System.Drawing.Size(410, 324);
+            this.lb_ModsToLoad.Size = new System.Drawing.Size(410, 310);
             this.lb_ModsToLoad.TabIndex = 4;
             this.lb_ModsToLoad.SelectedIndexChanged += new System.EventHandler(this.lb_ModsToLoad_SelectedIndexChanged);
             // 

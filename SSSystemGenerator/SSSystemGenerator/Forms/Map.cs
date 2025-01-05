@@ -19,7 +19,7 @@ namespace SSSystemGenerator.Forms
 
         #region Image
 
-        // TODO: fix this so it only outputs 0, 0 > 1024, 1024
+        // DONE: fix this so it only outputs 0, 0 > 1024, 1024
         public Bitmap ReturnPanelImage()
         {
             pnl_Map.Width = 1024; pnl_Map.Height = 1024;

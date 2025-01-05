@@ -36,8 +36,9 @@
             // lb_Industries
             // 
             this.lb_Industries.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lb_Industries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lb_Industries.FormattingEnabled = true;
-            this.lb_Industries.ItemHeight = 16;
+            this.lb_Industries.ItemHeight = 18;
             this.lb_Industries.Location = new System.Drawing.Point(0, 0);
             this.lb_Industries.Name = "lb_Industries";
             this.lb_Industries.Size = new System.Drawing.Size(150, 316);
@@ -46,8 +47,9 @@
             // lb_Conditions
             // 
             this.lb_Conditions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_Conditions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lb_Conditions.FormattingEnabled = true;
-            this.lb_Conditions.ItemHeight = 16;
+            this.lb_Conditions.ItemHeight = 18;
             this.lb_Conditions.Location = new System.Drawing.Point(150, 0);
             this.lb_Conditions.Name = "lb_Conditions";
             this.lb_Conditions.Size = new System.Drawing.Size(143, 316);
@@ -56,8 +58,9 @@
             // lb_Submarkets
             // 
             this.lb_Submarkets.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lb_Submarkets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lb_Submarkets.FormattingEnabled = true;
-            this.lb_Submarkets.ItemHeight = 16;
+            this.lb_Submarkets.ItemHeight = 18;
             this.lb_Submarkets.Location = new System.Drawing.Point(293, 0);
             this.lb_Submarkets.Name = "lb_Submarkets";
             this.lb_Submarkets.Size = new System.Drawing.Size(150, 316);

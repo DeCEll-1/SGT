@@ -10,7 +10,6 @@ namespace SSSystemGenerator.Classes
 {
     public class ModsToLoadController : List<DirectoryInfo>
     {
-
         public new void Add(DirectoryInfo item)
         {
             base.Add(item);
@@ -21,6 +20,5 @@ namespace SSSystemGenerator.Classes
             Properties.Settings.Default.ModsToLoad = collection;
             Properties.Settings.Default.Save();
         }
-
     }
 }

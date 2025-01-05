@@ -4,6 +4,6 @@ TODO: dark mode, check this //https://stackoverflow.com/questions/61145347/c-how
 //https://stackoverflow.com/a/59478243
 TODO: update the things a body is orbiting when changing its id to not get null pointer exceptioned
 TODO: add strings.csv editing to make planet descriptions in-tool (was it only for markets? idk i never made a real system before)
-TODO: map zooms out when you move your cursor in the form, fix that, somehow
+DONE: map zooms out when you move your cursor in the form, fix that, somehow
 TODO: use inheritence instead of IINterfact
 TODO: add preview of the planet in the planet editor
