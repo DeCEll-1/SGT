@@ -24,6 +24,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
                 lb_ModsToLoad.Items.Add(modPath.FullName.ToString().Replace(Paths.ModsFolderRoot.FullName.ToString(), "") + @"\data\campaign");
             });
 
+            lb_ModsToLoad.SelectedIndex = 0;
         }
 
         private void AddModToLoad(object sender, EventArgs e)
@@ -73,6 +74,13 @@ namespace SSSystemGenerator.Forms.SettingsForm
 
         private void btn_Properties_Click(object sender, EventArgs e)
         {
+
+            if (lb_ModsToLoad.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a mod.");
+                return;
+            }
+
             string modToCheck = lb_ModsToLoad.SelectedItem.ToString().Split('\\')[1];
 
             List<IndustriesCSV> industries = Statics.CSVs.Industries.Where(s => s.owner == modToCheck).ToList();
