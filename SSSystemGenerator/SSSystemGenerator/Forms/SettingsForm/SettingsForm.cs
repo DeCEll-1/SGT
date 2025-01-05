@@ -38,9 +38,9 @@ namespace SSSystemGenerator.Forms.SettingsForm
         private void cb_DarkMode_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_DarkMode.Checked)
-                Settings.ColorMode = ColorMode.DARK;
+                SettingsController.ColorMode = ColorMode.DARK;
             else
-                Settings.ColorMode = ColorMode.LIGHT;
+                SettingsController.ColorMode = ColorMode.LIGHT;
 
             Statics.SGTBaseMDIContainer.UpdateColors();
         }

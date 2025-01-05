@@ -19,7 +19,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
             lb_ModsToLoad.Items.Clear();
             lb_ModsToLoad.Items.Add(Paths.GameCoreCampaignFolder.FullName.ToString().Replace(Paths.GameRoot.FullName.ToString(), ""));
 
-            Settings.ModsToLoad.ForEach(modPath =>
+            SettingsController.ModsToLoad.ForEach(modPath =>
             {
                 lb_ModsToLoad.Items.Add(modPath.FullName.ToString().Replace(Paths.ModsFolderRoot.FullName.ToString(), "") + @"\data\campaign");
             });
@@ -55,9 +55,9 @@ namespace SSSystemGenerator.Forms.SettingsForm
                 return;
 
 
-            if (Settings.ModsToLoad.Contains(new DirectoryInfo(path)))
+            if (SettingsController.ModsToLoad.Contains(new DirectoryInfo(path)))
                 return;
-            Settings.ModsToLoad.Add(new DirectoryInfo(path));
+            SettingsController.ModsToLoad.Add(new DirectoryInfo(path));
             LoadCSVSettings();
             btn_ReloadCSVs_Click(sender, e);
         }
@@ -66,7 +66,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
         {
             string pathOfModToRemove = lb_ModsToLoad.SelectedItem.ToString().Split('\\')[1];
 
-            Settings.ModsToLoad.RemoveAll(s => s.FullName.Contains(pathOfModToRemove));
+            SettingsController.ModsToLoad.RemoveAll(s => s.FullName.Contains(pathOfModToRemove));
             LoadCSVSettings();
             lb_ModsToLoad_SelectedIndexChanged(null, null);
         }

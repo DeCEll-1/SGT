@@ -45,7 +45,7 @@ namespace SSSystemGenerator.Classes
 
             if (component is Button && !component.Enabled)
             {
-                if (Settings.ColorMode == ColorMode.DARK)//Dark mode
+                if (SettingsController.ColorMode == ColorMode.DARK)//Dark mode
                 {
                     return;
                 }
@@ -127,7 +127,7 @@ namespace SSSystemGenerator.Classes
 
             int borderWidth = 6;
             ButtonBorderStyle borderStyle = ButtonBorderStyle.Solid;
-            if (Settings.ColorMode == ColorMode.LIGHT)//light mode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//light mode
             {
                 e.Graphics.Clear(Colors.LIGHT_MODE_BG);
                 var borderColor = Colors.LIGHT_MODE_BORDER;
@@ -200,21 +200,21 @@ namespace SSSystemGenerator.Classes
         #region returnColors
         public static Color Text()
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_FG;
             else
                 return Colors.DARK_MODE_FG;
         }
         public static Color Background()
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_BG;
             else
                 return Colors.DARK_MODE_BG;
         }
         public static Color FormText()
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                                                       //{ return Colors.LIGHT_MODE_FORM_FG; }
                 return Form.DefaultForeColor;
             else
@@ -222,7 +222,7 @@ namespace SSSystemGenerator.Classes
         }
         public static Color FormBackground()
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                                                       //{ return Colors.LIGHT_MODE_FORM_BG; }
                 return Form.DefaultBackColor;
             else
@@ -230,28 +230,28 @@ namespace SSSystemGenerator.Classes
         }
         public static Color Border()
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_BORDER;
             else
                 return Colors.DARK_MODE_BORDER;
         }
         public static Bitmap RefreshButton()
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_REFRESH_IMAGE;
             else
                 return Colors.DARK_MODE_REFRESH_IMAGE;
         }
         public static Bitmap CloneButton()//make those generalised
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_CLONE_IMAGE;
             else
                 return Colors.DARK_MODE_CLONE_IMAGE;
         }
         public static Bitmap ImageSelect()//make those generalised
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_IMAGE_SELECTION;
             else
                 return Colors.DARK_MODE_IMAGE_SELECTION;
@@ -259,7 +259,7 @@ namespace SSSystemGenerator.Classes
 
         public static Bitmap CloseButton()//make those generalised
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_IMAGE_CLOSE;
             else
                 return Colors.DARK_MODE_IMAGE_CLOSE;
@@ -267,7 +267,7 @@ namespace SSSystemGenerator.Classes
 
         public static Bitmap LastSizeButton()//make those generalised
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_IMAGE_RESIZE;
             else
                 return Colors.DARK_MODE_IMAGE_RESIZE;
@@ -275,7 +275,7 @@ namespace SSSystemGenerator.Classes
 
         public static Bitmap MinimizeButton()//make those generalised
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
                 return Colors.LIGHT_MODE_IMAGE_MINIMIZE;
             else
                 return Colors.DARK_MODE_IMAGE_MINIMIZE;
@@ -284,7 +284,7 @@ namespace SSSystemGenerator.Classes
         [Obsolete]
         public static Color Hover()
         {
-            if (Settings.ColorMode == ColorMode.LIGHT)//lightMode
+            if (SettingsController.ColorMode == ColorMode.LIGHT)//lightMode
             { return Colors.LIGHT_MODE_HOVER_COLOR; }
             else
             { return Colors.DARK_MODE_HOVER_COLOR; }
