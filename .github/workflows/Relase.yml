@@ -31,9 +31,6 @@ jobs:
           # Exclude multiple folders by specifying each one with -x
           zip -r SGT.zip ../ -x "../SGT/.idea/*" -x "../SGT/.run/*" -x "../SGT/.github/*" -x "../SGT/.SGTExe/*" -x "../SGT/SSSystemGenerator/*" -x "../SGT/src/*" -x "../SGT/.git/*" -x "../SGT/README.*" -x "../SGT/SGTExe/*.xml" -x "../SGT/SGTExe/*.pdb"
 
-      - name: Zip SGTExe
-        run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
-
       - name: Download build artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v7
@@ -91,6 +88,9 @@ jobs:
           # Optional, include forks when searching for artifacts
           # default false
           allow_forks: false
+
+      - name: Zip SGTExe
+        run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
 
       - name: Create GitHub Release
         id: create_release
