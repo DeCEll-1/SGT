@@ -30,8 +30,7 @@ jobs:
 
       - name: Verify build output
         run: |
-          echo "Listing contents of SGTExe/"
-          dir . /S
+          powershell -command "Get-ChildItem -Recurse"
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v3
