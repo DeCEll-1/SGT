@@ -13,8 +13,15 @@ namespace SSSystemGenerator.Classes
     {
         public static ColorMode ColorMode
         {
-            get { return (ColorMode)Properties.Settings.Default.ColorMode; }
-            set { Properties.Settings.Default.ColorMode = (int)value; }
+            get
+            {
+                return (ColorMode)Properties.Settings.Default.ColorMode;
+            }
+            set
+            {
+                Properties.Settings.Default.ColorMode = (int)value;
+                Properties.Settings.Default.Save();
+            }
         }
 
         public static Boolean DebugMode
@@ -26,6 +33,7 @@ namespace SSSystemGenerator.Classes
             set
             {
                 Properties.Settings.Default.DebugMode = value;
+                Properties.Settings.Default.Save();
             }
         }
 

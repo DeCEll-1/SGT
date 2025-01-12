@@ -100,7 +100,6 @@ namespace SSSystemGenerator.Classes
         /// </summary>
         /// <param name="marketConditionsList"></param>
         /// <returns></returns>
-
         public static List<string> İndustriesListToStringIDNameList(List<IndustriesCSV> industriesList)
         {
             List<string> stringListToReturn = new List<string>();

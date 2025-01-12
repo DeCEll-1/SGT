@@ -1,7 +1,9 @@
-﻿using SSSystemGenerator.Classes;
+﻿using BrightIdeasSoftware;
+using SSSystemGenerator.Classes;
 using SSSystemGenerator.Classes.CSVClasses;
 using SSSystemGenerator.Classes.SystemFiles;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 
 namespace SSSystemGenerator.Forms
 {
@@ -19,9 +22,6 @@ namespace SSSystemGenerator.Forms
     {
 
         public List<MarketData> deletedMarketsInThisSessionList { get; set; } = new List<MarketData>();
-
-        public static MarketData marketAddablesHolder { get; set; } = new MarketData();
-
         public static MarketData currMarket { get; set; }
 
         public const string context = "Market";
@@ -31,8 +31,6 @@ namespace SSSystemGenerator.Forms
             InitializeComponent();
             UpdateColors();
 
-            ReloadCSV();
-
             Load();
         }
 
@@ -40,8 +38,6 @@ namespace SSSystemGenerator.Forms
 
 
         #region customFunctions
-
-        private void ReloadCSV() { updateSelectables(); }
 
         private string getID()
         {
@@ -55,14 +51,68 @@ namespace SSSystemGenerator.Forms
 
         private new void Load()
         {
-            updateSelectables();
-
             LoadSystems();
 
             UpdatePrimaryEntityList();
 
+            Statics.CSVs.Industries.ForEach(s =>
+            {
+                try
+                {
+                    string path = Helper.GetCSVPath(s.owner, s.image);
+                    // add the images of industries to the image list of the listview
+                    il_Industries.Images.Add(path, new Bitmap(path));
+                }
+                catch (Exception)
+                { // sometimes stuff doesnt exist and crashes
+                }
+            });
 
+            il_Industries.ImageSize = new Size(128, 64); // set the size of the images
 
+            olv_Industries.SmallImageList = il_Industries; // assign the listview
+
+            // image selection function
+            olv_ColumnImage.ImageGetter = delegate (object x)
+            {
+                IndustriesCSV s = (IndustriesCSV)x;
+
+                return Helper.GetCSVPath(s.owner, s.image);
+            };
+
+            // checkbox controller
+            olv_Industries.CheckStatePutter = delegate (Object rowObject, CheckState newValue)
+            {
+                // update the checkness of the checkbox
+                olv_ColumnCheckBox.PutCheckState(rowObject, newValue);
+                // update the grouping 
+                if (!olv_Industries.Groups.Cast<ListViewGroup>().ToList().TrueForAll(k => k.Header != "True"  && k.Header != "False"))
+                {
+                    olv_Industries.BuildGroups(olv_ColumnCheckBox, SortOrder.Descending);
+                }
+                // idk what this is for its suppose to update the checkbox but it didnt really worked and idc enough
+                return newValue;
+            };
+
+            // change default sorter to alphabetical
+            olv_Industries.BeforeCreatingGroups += delegate (object sender, CreateGroupsEventArgs e)
+            {
+                e.Parameters.ItemComparer = new AlphabeticalComparer();
+            };
+
+            // finish
+            olv_Industries.SetObjects(Statics.CSVs.Industries);
+        }
+        
+        private void tb_IndustriesFilter_TextChanged(object sender, EventArgs e)
+        {
+            // reaply filter
+            olv_Industries.ModelFilter = new ModelFilter(delegate (object x)
+            {
+                IndustriesCSV s = x as IndustriesCSV;
+
+                return Helper.SimilarContains(s.name, tb_IndustriesFilter.Text, 2);
+            });
         }
 
         private void LoadSystems()
@@ -77,31 +127,11 @@ namespace SSSystemGenerator.Forms
 
         }
 
-        private void reset()
-        {
-            marketAddablesHolder = new MarketData();
-
-            cb_MarketPirateMode.Checked = false;
-            cb_MarketWithJunkAndChatter.Checked = false;
-
-            tb_ID.Text = "";
-            tb_Name.Text = "";
-            tb_MarketFactionID.Text = "";
-        }
-
         private MarketData getData()
         {
             MarketData market = new MarketData();
 
             market.primaryEntity = Helper.IDWithNameToID(ComboBox_PrimaryEntity.SelectedItem.ToString());
-
-            market.industries.AddRange(marketAddablesHolder.industries.ToArray());//add industries
-
-            market.submarkets.AddRange(marketAddablesHolder.submarkets.ToArray());//add submarkets
-
-            market.marketConditions.AddRange(marketAddablesHolder.marketConditions.ToArray());//add conditions
-
-            market.connectedEntities.AddRange(marketAddablesHolder.connectedEntities.ToArray());//add conditions
 
             market.systemID = getSystemID();
 
@@ -192,18 +222,6 @@ namespace SSSystemGenerator.Forms
         {
             ComboBox_PrimaryEntity.SelectedItem = marketToUpdateFormWith.primaryEntity;
 
-            marketAddablesHolder.industries.Clear();
-            marketAddablesHolder.industries.AddRange(marketToUpdateFormWith.industries.ToArray());
-
-            marketAddablesHolder.submarkets.Clear();
-            marketAddablesHolder.submarkets.AddRange(marketToUpdateFormWith.submarkets.ToArray());
-
-            marketAddablesHolder.marketConditions.Clear();
-            marketAddablesHolder.marketConditions.AddRange(marketToUpdateFormWith.marketConditions.ToArray());
-
-            marketAddablesHolder.connectedEntities.Clear();
-            marketAddablesHolder.connectedEntities.AddRange(marketToUpdateFormWith.connectedEntities.ToArray());
-
             tb_ID.Text = marketToUpdateFormWith.ID;
 
             tb_Name.Text = marketToUpdateFormWith.name;
@@ -222,264 +240,6 @@ namespace SSSystemGenerator.Forms
 
         #region formFunctions
 
-        #region prev-next / csv
-
-        public sbyte indexOfPrevNext { get; set; } = 0;
-        public sbyte maxTabs { get; set; } = 3;
-
-        private void btn_CSVRefresh_Click(object sender, EventArgs e) { ReloadCSV(); }
-
-        private void updateSelectables()
-        {
-            if (indexOfPrevNext == 0)// industries
-            {
-                tb_Selectables.Text = "Industries";
-
-                ComboBox_Addables.Items.Clear();
-
-                ComboBox_Addables.Items.AddRange(
-                    CSVHelper.IndustriesListToStringIDNameList(Helper.GetCSV().Industries, marketAddablesHolder)//get id + name list of industries
-                    .ToArray()//change to array for combo box
-                    );
-
-            }
-            else if (indexOfPrevNext == 1)// submarkets
-            {
-                tb_Selectables.Text = "Submarkets";
-
-                ComboBox_Addables.Items.Clear();
-
-                ComboBox_Addables.Items.AddRange(
-                    CSVHelper.SubmarketsListToStringIDNaneList(Helper.GetCSV().Submarkets, marketAddablesHolder)//get id + name list of submarkets
-                    .ToArray()//change to array for combo box
-                    );
-
-            }
-            else if (indexOfPrevNext == 2) // conditions
-            {
-
-                tb_Selectables.Text = "Conditions";
-
-                ComboBox_Addables.Items.Clear();
-
-                ComboBox_Addables.Items.AddRange(
-                    CSVHelper.MarketConditionsListToStringIDNameList(Helper.GetCSV().MarketConditions, marketAddablesHolder)//get id + name list of market conditions
-                    .ToArray()//change to array for combo box
-                    );
-
-            }
-            else if (indexOfPrevNext == 3) // conditions
-            {
-
-                tb_Selectables.Text = "ConnectedEntities";
-
-                ComboBox_Addables.Items.Clear();
-
-                if (getSystem() == null || Helper.GetOrbitablesInSystem(getSystem()).Count == 0)
-                {
-                    ComboBox_Addables.Items.Add("NO_SYSTEMS_SELECTED/SYSTEM_DOESNT_HAVE_ENTITIES");
-                    ComboBox_Addables.SelectedIndex = 0;
-                    return;
-                }
-                else
-                {
-                    ComboBox_Addables.Items.AddRange(Helper.GetOrbitablesInSystem(getSystem(), marketAddablesHolder).ToArray());
-                }
-
-
-            }
-            else //indexOfPrevNext == 4 //is removed, kill this
-            {
-                tb_Selectables.Text = "Remove Market Content";//get everything in the market and then ??? // list them properly
-
-                ComboBox_Addables.Items.Clear();
-
-                ComboBox_Addables.Items.Add("*-Industries-*");
-
-                ComboBox_Addables.Items.AddRange(marketAddablesHolder.industries.ToArray());
-
-                ComboBox_Addables.Items.Add("*-Submarkets-*");
-
-                ComboBox_Addables.Items.AddRange(marketAddablesHolder.submarkets.ToArray());
-
-                ComboBox_Addables.Items.Add("*-Conditions-*");
-
-                ComboBox_Addables.Items.AddRange(marketAddablesHolder.marketConditions.ToArray());
-
-                ComboBox_Addables.Items.Add("*-ConnectedEntities-*");
-
-                ComboBox_Addables.Items.AddRange(marketAddablesHolder.connectedEntities.ToArray());
-
-
-            }
-
-            ComboBox_Addables.Items.Insert(0, "");
-
-            ComboBox_Addables.SelectedIndex = 0;
-
-
-        }
-
-        //addables button enabled disabled
-        private void ComboBox_Addables_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            ComboBox cb_Addables = (sender as ComboBox);
-
-            if (cb_Addables.SelectedItem != null && cb_Addables.SelectedItem.ToString() == "")
-            {
-                btn_AddAddable.Enabled = false;
-            }
-            else
-            {
-                string selecting = tb_Selectables.Text;//can be: Industries , Submarkets , Conditions 
-
-                string selectedItem = cb_Addables?.SelectedItem?.ToString();
-                if (String.IsNullOrEmpty(selectedItem))
-                    return;
-
-                if (selecting == "Industries")//homie i aint using switch case again that hell man
-                {
-                    btn_AddAddable.Text = "Add Industry";
-                    if (marketAddablesHolder.industries.Contains(Helper.IDWithNameToID(selectedItem)))
-                    {//the id is already added
-                        btn_AddAddable.Text = "Remove Industry";
-                    }
-                }
-                else if (selecting == "Submarkets")
-                {
-                    btn_AddAddable.Text = "Add Submarket";
-                    if (marketAddablesHolder.submarkets.Contains(Helper.IDWithNameToID(selectedItem)))
-                    {//the id is already added
-                        btn_AddAddable.Text = "Remove Submarket";
-                    }
-                }
-                else if (selecting == "Conditions")
-                {
-                    btn_AddAddable.Text = "Add Condition";
-                    if (marketAddablesHolder.marketConditions.Contains(Helper.IDWithNameToID(selectedItem)))
-                    {//the id is already added
-                        btn_AddAddable.Text = "Remove Condition";
-                    }
-                }
-                else//ConnectedEntities
-                {
-                    btn_AddAddable.Text = "Add Connected Entity";
-                    if (marketAddablesHolder.connectedEntities.Contains(Helper.IDWithNameToID(selectedItem)))
-                    {//the id is already added
-                        btn_AddAddable.Text = "Remove Connected Entity";
-                    }
-                }
-
-
-                btn_AddAddable.Enabled = true;
-            }
-
-        }
-
-        private void btn_Prev_Click(object sender, EventArgs e)
-        {
-            //scroll through 0-2, so 3 choices for industries submarkets conditions stuff to remove
-            indexOfPrevNext -= 1;//reduce it
-            if (indexOfPrevNext == -1)//if its -1 (was 0) then set it to
-            {
-                indexOfPrevNext = maxTabs;//3 aka connected entities
-            }
-
-            updateSelectables();
-
-        }
-
-        private void btn_Next_Click(object sender, EventArgs e)
-        {
-            indexOfPrevNext += 1;
-            if (indexOfPrevNext == maxTabs + 1)
-            {
-                indexOfPrevNext = 0;//aka industries
-            }
-
-            updateSelectables();
-
-        }
-
-        #endregion
-
-        private void btn_AddAddable_Click(object sender, EventArgs e)
-        {
-            if (ComboBox_Addables.SelectedItem != null)
-            {
-
-                string selecting = tb_Selectables.Text;//can be: Industries , Submarkets , Conditions 
-
-                string IDToAddRemove = ComboBox_Addables.SelectedItem.ToString();
-
-                IDToAddRemove = Helper.IDWithNameToID(IDToAddRemove);
-
-                switch (selecting)//i was should use if the performance doesnt matter this is a windows forms app for gods sakeAAAA
-                {
-                    case "Industries"://add industry
-
-                        if (!marketAddablesHolder.industries.Contains(IDToAddRemove))
-                        {
-                            marketAddablesHolder.industries.Add(IDToAddRemove);
-                        }
-                        else//id is already added to the market
-                        {
-                            marketAddablesHolder.industries.Remove(IDToAddRemove);
-                        }
-
-
-                        break;
-                    case "Submarkets"://add submarket
-
-                        if (!marketAddablesHolder.submarkets.Contains(IDToAddRemove))
-                        {
-                            marketAddablesHolder.submarkets.Add(IDToAddRemove);
-                        }
-                        else
-                        {
-                            marketAddablesHolder.submarkets.Remove(IDToAddRemove);
-                        }
-
-
-
-                        break;
-                    case "Conditions"://add condition
-
-                        if (!marketAddablesHolder.marketConditions.Contains(IDToAddRemove))
-                        {
-                            marketAddablesHolder.marketConditions.Add(IDToAddRemove);
-                        }
-                        else
-                        {
-                            marketAddablesHolder.marketConditions.Remove(IDToAddRemove);//my brain is melting
-                        }
-
-
-                        break;
-
-                    case "ConnectedEntities":
-
-                        if (!marketAddablesHolder.connectedEntities.Contains(IDToAddRemove))
-                        {
-                            marketAddablesHolder.connectedEntities.Add(IDToAddRemove);
-                        }
-                        else
-                        {
-                            marketAddablesHolder.connectedEntities.Remove(IDToAddRemove);
-                        }
-
-
-                        break;
-                    default:
-                        break;
-                }
-
-                updateSelectables();//update the selectables to update the list
-
-                ComboBox_Addables.SelectedItem.ToString();
-            }
-        }
 
         private void btn_AddMarket_Click(object sender, EventArgs e)
         {
@@ -519,7 +279,6 @@ namespace SSSystemGenerator.Forms
             Enable_AddingEditing_KeyPress(null, null);
 
         }
-
         private void btn_Undo_Click(object sender, EventArgs e)
         {
             if (deletedMarketsInThisSessionList.Count() == 0) { return; }
@@ -539,7 +298,6 @@ namespace SSSystemGenerator.Forms
 
             deletedMarketsInThisSessionList.RemoveAt(deletedMarketsInThisSessionList.Count() - 1);
         }
-
         private void Enable_AddingEditing_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (
@@ -558,7 +316,6 @@ namespace SSSystemGenerator.Forms
                 btn_Market.Enabled = true;
             }
         }
-
         private void btn_Delete_Click(object sender, EventArgs e)
         {
             MarketData marketToDelete = Helper.GetMarketWithID(getID());
@@ -570,40 +327,12 @@ namespace SSSystemGenerator.Forms
             Load();
 
         }
-
         private void tb_ID_TextChanged(object sender, EventArgs e) { Enable_AddingEditing_KeyPress(null, null); }
 
+
+
         #endregion
 
-        #region comments
-        //case "Remove Market Content"://to remove
-        //                switch (Helper.WhatTypeIsThisIDIs(IDToAddRemove))//switches are weird mayn
-        //                {
-        //                    case Finals.INDUSTRIES://its an industry
-
-        //                        marketAddablesHolder.industries.Remove(IDToAddRemove);
-
-        //                        break;
-        //                    case Finals.SUBMARKETS://its a submarket
-
-        //                        marketAddablesHolder.submarkets.Remove(IDToAddRemove);
-
-        //                        break;
-        //                    case Finals.MARKET_CONDITIONS://its a condition
-
-        //                        marketAddablesHolder.marketConditions.Remove(IDToAddRemove);
-
-        //                        break;
-        //                    case Finals.ORBITABLE://its a condition
-
-        //                        marketAddablesHolder.connectedEntities.Remove(IDToAddRemove);
-
-        //                        break;
-        //                    default:
-        //                        break;
-        //                }
-        //                break; 
-        #endregion
 
     }
 }

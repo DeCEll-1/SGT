@@ -1,0 +1,10 @@
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\bin\Debug\ObjectListView.XML
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\bin\Debug\ObjectListView.dll
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\bin\Debug\ObjectListView.pdb
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\obj\Debug\ObjectListView2012.csproj.AssemblyReference.cache
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\obj\Debug\BrightIdeasSoftware.Properties.Resources.resources
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\obj\Debug\BrightIdeasSoftware.ColumnSelectionForm.resources
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\obj\Debug\ObjectListView2012.csproj.GenerateResource.cache
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\obj\Debug\ObjectListView2012.csproj.CoreCompileInputs.cache
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\obj\Debug\ObjectListView.dll
+D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\ObjectListViewDemo\ObjectListView\obj\Debug\ObjectListView.pdb

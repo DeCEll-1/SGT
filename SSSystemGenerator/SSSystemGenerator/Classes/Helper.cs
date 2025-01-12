@@ -304,7 +304,7 @@ namespace SSSystemGenerator.Classes
 
             if (extend == null) return new PointF(0, 0);
 
-            if (String.IsNullOrEmpty(extend.focusID) )
+            if (String.IsNullOrEmpty(extend.focusID))
             {
                 return new PointF(extend.x, extend.y);
             }
@@ -1162,7 +1162,62 @@ namespace SSSystemGenerator.Classes
         public static Map GetMap() { return Statics.Map; }
         public static SGTBaseMDIContainer GetMDIContainer() { return Statics.SGTBaseMDIContainer; }
 
+        public static string GetCSVPath(string owner, string path)
+        {
 
+            if (owner == "starsector-core")
+            {
+                return (Paths.GameCore.FullName.ToString() + @"\" + path).Replace("/", @"\");
+            }
+
+            return (Paths.ModsFolderRoot.FullName.ToString() + @"\" + owner + @"\" + path).Replace("/", @"\");
+
+        }
+
+        public static int LevenshteinDistance(String a, String b)
+        {
+            a = a.ToLower();
+            b = b.ToLower();
+            int[,] dp = new int[a.Length + 1, b.Length + 1];
+
+            for (int i = 0; i <= a.Length; ++i)
+            {
+                for (int j = 0; j <= b.Length; ++j)
+                {
+                    if (i == 0)
+                    {
+                        dp[i, j] = j;
+                    }
+                    else if (j == 0)
+                    {
+                        dp[i,j] = i;
+                    }
+                    else
+                    {
+                        dp[i,j] = Math.Min(Math.Min(dp[i - 1, j] + 1, dp[i, j - 1] + 1), dp[i - 1, j - 1] + (a[(i - 1)] == b[(j - 1)] ? 0 : 1));
+                    }
+                }
+            }
+
+            return dp[a.Length, b.Length];
+        }
+
+        public static bool SimilarContains(string source, string target, int maxDistance)
+        {
+            source = source.ToLower();
+            target = target.ToLower();
+
+            // Check each substring of the source with the same length as the target
+            for (int i = 0; i <= source.Length - target.Length; i++)
+            {
+                string substring = source.Substring(i, target.Length);
+                if (LevenshteinDistance(substring, target) <= maxDistance)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         #endregion
 
