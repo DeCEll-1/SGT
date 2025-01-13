@@ -123,6 +123,16 @@ namespace SSSystemGenerator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap s_icon64 {
+            get {
+                object obj = ResourceManager.GetObject("s_icon64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap UndoDarkMode {
             get {
                 object obj = ResourceManager.GetObject("UndoDarkMode", resourceCulture);

@@ -8,9 +8,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
@@ -61,16 +63,49 @@ namespace SSSystemGenerator.Forms
                 {
                     string path = Helper.GetCSVPath(s.owner, s.image);
                     // add the images of industries to the image list of the listview
-                    il_Industries.Images.Add(path, new Bitmap(path));
+                    il_images.Images.Add(path, new Bitmap(path));
                 }
                 catch (Exception)
                 { // sometimes stuff doesnt exist and crashes
                 }
             });
 
-            il_Industries.ImageSize = new Size(128, 64); // set the size of the images
+            // add mods to images
+            SettingsController.ModsToLoad.ForEach(mod =>
+            {
+                string iconPath = mod.FullName + @"\icon.png";
+                if (File.Exists(iconPath))
+                { // https://stackoverflow.com/a/26751218/21149029
 
-            olv_Industries.SmallImageList = il_Industries; // assign the listview
+                    il_Icons.Images.Add(mod.Name, new Bitmap(iconPath));
+                    return;
+                };
+                
+                // "iconPath"\s*:\s*"([^"]+)"
+                Regex reg = new Regex(@"""iconPath""\s*:\s*""([^""]+)""");
+                // https://chatgpt.com/share/67852cc4-2ce4-8006-aab8-a6bcc0b3c041
+
+                string lunaSettingsPath = mod.FullName + @"\data\config\LunaSettingsConfig.json";
+                if (File.Exists(lunaSettingsPath))
+                {
+                    MatchCollection match = null;
+                    using (StreamReader sr = new StreamReader(lunaSettingsPath))
+                    {
+                        string text = sr.ReadToEnd();
+                        match = reg.Matches(text);
+                    }
+                    if (match == null || match.Count < 1)
+                        return;
+                    string relativeIconLoc = match[0].Groups[1].Value;
+
+                    iconPath = mod.FullName + @"\" + relativeIconLoc.Replace(@"/", @"\");
+
+                    il_Icons.Images.Add(mod.Name, new Bitmap(iconPath));
+                }
+            });
+
+            // games own logo
+            il_Icons.Images.Add("starsector-core", Properties.Resources.s_icon64);
 
             // image selection function
             olv_ColumnImage.ImageGetter = delegate (object x)
@@ -86,7 +121,7 @@ namespace SSSystemGenerator.Forms
                 // update the checkness of the checkbox
                 olv_ColumnCheckBox.PutCheckState(rowObject, newValue);
                 // update the grouping 
-                if (!olv_Industries.Groups.Cast<ListViewGroup>().ToList().TrueForAll(k => k.Header != "True"  && k.Header != "False"))
+                if (!olv_Industries.Groups.Cast<ListViewGroup>().ToList().TrueForAll(k => k.Header != "True" && k.Header != "False"))
                 {
                     olv_Industries.BuildGroups(olv_ColumnCheckBox, SortOrder.Descending);
                 }
@@ -100,10 +135,21 @@ namespace SSSystemGenerator.Forms
                 e.Parameters.ItemComparer = new AlphabeticalComparer();
             };
 
+            olv_Industries.AboutToCreateGroups += delegate (object sender, CreateGroupsEventArgs e)
+            {
+                foreach (var item in e.Groups)
+                {
+                    if (item.Header != "True" && item.Header != "False")
+                    {
+                        item.TitleImage = item.Header;
+                    }
+                }
+            };
+
             // finish
             olv_Industries.SetObjects(Statics.CSVs.Industries);
         }
-        
+
         private void tb_IndustriesFilter_TextChanged(object sender, EventArgs e)
         {
             // reaply filter

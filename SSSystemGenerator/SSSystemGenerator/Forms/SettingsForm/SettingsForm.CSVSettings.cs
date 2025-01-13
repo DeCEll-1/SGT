@@ -17,11 +17,11 @@ namespace SSSystemGenerator.Forms.SettingsForm
         private void LoadCSVSettings()
         {
             lb_ModsToLoad.Items.Clear();
-            lb_ModsToLoad.Items.Add(Paths.GameCoreCampaignFolder.FullName.ToString().Replace(Paths.GameRoot.FullName.ToString(), ""));
+            lb_ModsToLoad.Items.Add(Paths.GameCore.Name);
 
             SettingsController.ModsToLoad.ForEach(modPath =>
             {
-                lb_ModsToLoad.Items.Add(modPath.FullName.ToString().Replace(Paths.ModsFolderRoot.FullName.ToString(), "") + @"\data\campaign");
+                lb_ModsToLoad.Items.Add(modPath.Name );
             });
 
             lb_ModsToLoad.SelectedIndex = 0;
@@ -65,7 +65,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
 
         private void RemoveModFromLoading(object sender, EventArgs e)
         {
-            string pathOfModToRemove = lb_ModsToLoad.SelectedItem.ToString().Split('\\')[1];
+            string pathOfModToRemove = lb_ModsToLoad.SelectedItem.ToString();
 
             SettingsController.ModsToLoad.RemoveAll(s => s.FullName.Contains(pathOfModToRemove));
             LoadCSVSettings();
@@ -81,7 +81,7 @@ namespace SSSystemGenerator.Forms.SettingsForm
                 return;
             }
 
-            string modToCheck = lb_ModsToLoad.SelectedItem.ToString().Split('\\')[1];
+            string modToCheck = lb_ModsToLoad.SelectedItem.ToString();
 
             List<IndustriesCSV> industries = Statics.CSVs.Industries.Where(s => s.owner == modToCheck).ToList();
             List<MarketConditionsCSV> conditions = Statics.CSVs.MarketConditions.Where(s => s.owner == modToCheck).ToList();

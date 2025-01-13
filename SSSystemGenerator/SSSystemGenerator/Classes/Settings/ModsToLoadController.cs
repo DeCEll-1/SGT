@@ -20,5 +20,16 @@ namespace SSSystemGenerator.Classes
             Properties.Settings.Default.ModsToLoad = collection;
             Properties.Settings.Default.Save();
         }
+
+        public new void RemoveAll(Predicate<DirectoryInfo> predicate)
+        {
+            base.RemoveAll(predicate);
+            StringCollection collection = new StringCollection();
+            this.ForEach(s => {
+                collection.Add(s.FullName);
+            });
+            Properties.Settings.Default.ModsToLoad = collection;
+            Properties.Settings.Default.Save();
+        }
     }
 }

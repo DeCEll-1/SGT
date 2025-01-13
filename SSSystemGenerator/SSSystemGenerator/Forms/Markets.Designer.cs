@@ -36,8 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_PrimaryEntityReset = new System.Windows.Forms.Button();
-            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
             this.lbl_DoesItHaveMarket = new System.Windows.Forms.Label();
             this.cb_MarketWithJunkAndChatter = new System.Windows.Forms.CheckBox();
             this.cb_MarketPirateMode = new System.Windows.Forms.CheckBox();
@@ -47,10 +45,9 @@
             this.tb_MarketFactionID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_Name = new System.Windows.Forms.TextBox();
-            this.btn_Undo = new System.Windows.Forms.Button();
             this.tb_ID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.il_Industries = new System.Windows.Forms.ImageList(this.components);
+            this.il_images = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tb_IndustriesFilter = new System.Windows.Forms.TextBox();
@@ -60,6 +57,10 @@
             this.olv_ColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olv_ColumnImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.il_Icons = new System.Windows.Forms.ImageList(this.components);
+            this.btn_PrimaryEntityReset = new System.Windows.Forms.Button();
+            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
+            this.btn_Undo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MarketSize)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -155,32 +156,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selection";
-            // 
-            // btn_PrimaryEntityReset
-            // 
-            this.btn_PrimaryEntityReset.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_PrimaryEntityReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_PrimaryEntityReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_PrimaryEntityReset.Location = new System.Drawing.Point(263, 89);
-            this.btn_PrimaryEntityReset.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_PrimaryEntityReset.Name = "btn_PrimaryEntityReset";
-            this.btn_PrimaryEntityReset.Size = new System.Drawing.Size(29, 27);
-            this.btn_PrimaryEntityReset.TabIndex = 3;
-            this.btn_PrimaryEntityReset.UseVisualStyleBackColor = true;
-            this.btn_PrimaryEntityReset.Click += new System.EventHandler(this.btn_PrimaryEntityReset_Click);
-            // 
-            // btn_SystemsRefresh
-            // 
-            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_SystemsRefresh.Location = new System.Drawing.Point(263, 39);
-            this.btn_SystemsRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_SystemsRefresh.Name = "btn_SystemsRefresh";
-            this.btn_SystemsRefresh.Size = new System.Drawing.Size(29, 27);
-            this.btn_SystemsRefresh.TabIndex = 1;
-            this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
-            this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
             // 
             // lbl_DoesItHaveMarket
             // 
@@ -279,19 +254,6 @@
             this.tb_Name.Size = new System.Drawing.Size(304, 22);
             this.tb_Name.TabIndex = 3;
             // 
-            // btn_Undo
-            // 
-            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_Undo.Location = new System.Drawing.Point(276, 405);
-            this.btn_Undo.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Undo.Name = "btn_Undo";
-            this.btn_Undo.Size = new System.Drawing.Size(49, 43);
-            this.btn_Undo.TabIndex = 11;
-            this.btn_Undo.UseVisualStyleBackColor = true;
-            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
-            // 
             // tb_ID
             // 
             this.tb_ID.Location = new System.Drawing.Point(20, 187);
@@ -311,11 +273,11 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Market ID:";
             // 
-            // il_Industries
+            // il_images
             // 
-            this.il_Industries.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.il_Industries.ImageSize = new System.Drawing.Size(16, 16);
-            this.il_Industries.TransparentColor = System.Drawing.Color.Transparent;
+            this.il_images.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.il_images.ImageSize = new System.Drawing.Size(128, 64);
+            this.il_images.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // tabControl1
             // 
@@ -362,11 +324,13 @@
             this.olv_ColumnImage});
             this.olv_Industries.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_Industries.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.olv_Industries.GroupImageList = this.il_Icons;
             this.olv_Industries.HideSelection = false;
             this.olv_Industries.Location = new System.Drawing.Point(3, 29);
             this.olv_Industries.MultiSelect = false;
             this.olv_Industries.Name = "olv_Industries";
             this.olv_Industries.Size = new System.Drawing.Size(563, 409);
+            this.olv_Industries.SmallImageList = this.il_images;
             this.olv_Industries.TabIndex = 104;
             this.olv_Industries.UseCompatibleStateImageBehavior = false;
             this.olv_Industries.UseFiltering = true;
@@ -411,6 +375,51 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // il_Icons
+            // 
+            this.il_Icons.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.il_Icons.ImageSize = new System.Drawing.Size(40, 40);
+            this.il_Icons.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // btn_PrimaryEntityReset
+            // 
+            this.btn_PrimaryEntityReset.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_PrimaryEntityReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_PrimaryEntityReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_PrimaryEntityReset.Location = new System.Drawing.Point(263, 89);
+            this.btn_PrimaryEntityReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_PrimaryEntityReset.Name = "btn_PrimaryEntityReset";
+            this.btn_PrimaryEntityReset.Size = new System.Drawing.Size(29, 27);
+            this.btn_PrimaryEntityReset.TabIndex = 3;
+            this.btn_PrimaryEntityReset.UseVisualStyleBackColor = true;
+            this.btn_PrimaryEntityReset.Click += new System.EventHandler(this.btn_PrimaryEntityReset_Click);
+            // 
+            // btn_SystemsRefresh
+            // 
+            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_SystemsRefresh.Location = new System.Drawing.Point(263, 39);
+            this.btn_SystemsRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_SystemsRefresh.Name = "btn_SystemsRefresh";
+            this.btn_SystemsRefresh.Size = new System.Drawing.Size(29, 27);
+            this.btn_SystemsRefresh.TabIndex = 1;
+            this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
+            this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
+            // 
+            // btn_Undo
+            // 
+            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_Undo.Location = new System.Drawing.Point(276, 405);
+            this.btn_Undo.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Undo.Name = "btn_Undo";
+            this.btn_Undo.Size = new System.Drawing.Size(49, 43);
+            this.btn_Undo.TabIndex = 11;
+            this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // Markets
             // 
@@ -470,7 +479,7 @@
         private System.Windows.Forms.Button btn_SystemsRefresh;
         private System.Windows.Forms.Button btn_PrimaryEntityReset;
         private System.Windows.Forms.Label lbl_DoesItHaveMarket;
-        private System.Windows.Forms.ImageList il_Industries;
+        private System.Windows.Forms.ImageList il_images;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private BrightIdeasSoftware.ObjectListView olv_Industries;
@@ -480,5 +489,6 @@
         private BrightIdeasSoftware.OLVColumn olv_ColumnCheckBox;
         private BrightIdeasSoftware.OLVColumn olv_ColumnOwner;
         private System.Windows.Forms.TextBox tb_IndustriesFilter;
+        private System.Windows.Forms.ImageList il_Icons;
     }
 }
