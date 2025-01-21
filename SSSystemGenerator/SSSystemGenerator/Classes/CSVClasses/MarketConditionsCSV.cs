@@ -10,6 +10,8 @@ namespace SSSystemGenerator.Classes.CSVClasses
     {
         [CsvHelper.Configuration.Attributes.Ignore]
         public string owner { get; set; }
+        [CsvHelper.Configuration.Attributes.Ignore]
+        public bool enabled { get; set; } // for list view
         public string name { get; set; }
 
         public string id { get; set; }

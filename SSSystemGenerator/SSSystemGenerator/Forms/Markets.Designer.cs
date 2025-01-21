@@ -36,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ComboBox_Systems = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_PrimaryEntityReset = new System.Windows.Forms.Button();
+            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
             this.lbl_DoesItHaveMarket = new System.Windows.Forms.Label();
             this.cb_MarketWithJunkAndChatter = new System.Windows.Forms.CheckBox();
             this.cb_MarketPirateMode = new System.Windows.Forms.CheckBox();
@@ -47,25 +49,32 @@
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.tb_ID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.il_images = new System.Windows.Forms.ImageList(this.components);
+            this.il_IndustryImages = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tb_IndustriesFilter = new System.Windows.Forms.TextBox();
             this.olv_Industries = new BrightIdeasSoftware.ObjectListView();
-            this.olv_ColumnCheckBox = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olv_ColumnOwner = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olv_ColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olv_ColumnImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.olv_Industries_Enabled = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Industries_Owner = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Industries_Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Industries_Image = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.il_Icons = new System.Windows.Forms.ImageList(this.components);
-            this.btn_PrimaryEntityReset = new System.Windows.Forms.Button();
-            this.btn_SystemsRefresh = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_Undo = new System.Windows.Forms.Button();
+            this.tb_ConditionsFilter = new System.Windows.Forms.TextBox();
+            this.olv_Conditions = new BrightIdeasSoftware.ObjectListView();
+            this.olv_Conditions_Enabled = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Conditions_Owner = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Conditions_Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Conditions_Image = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.il_ConditionImages = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MarketSize)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_Industries)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.olv_Conditions)).BeginInit();
             this.SuspendLayout();
             // 
             // ComboBox_PrimaryEntity
@@ -156,6 +165,32 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selection";
+            // 
+            // btn_PrimaryEntityReset
+            // 
+            this.btn_PrimaryEntityReset.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_PrimaryEntityReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_PrimaryEntityReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_PrimaryEntityReset.Location = new System.Drawing.Point(263, 89);
+            this.btn_PrimaryEntityReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_PrimaryEntityReset.Name = "btn_PrimaryEntityReset";
+            this.btn_PrimaryEntityReset.Size = new System.Drawing.Size(29, 27);
+            this.btn_PrimaryEntityReset.TabIndex = 3;
+            this.btn_PrimaryEntityReset.UseVisualStyleBackColor = true;
+            this.btn_PrimaryEntityReset.Click += new System.EventHandler(this.btn_PrimaryEntityReset_Click);
+            // 
+            // btn_SystemsRefresh
+            // 
+            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_SystemsRefresh.Location = new System.Drawing.Point(263, 39);
+            this.btn_SystemsRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_SystemsRefresh.Name = "btn_SystemsRefresh";
+            this.btn_SystemsRefresh.Size = new System.Drawing.Size(29, 27);
+            this.btn_SystemsRefresh.TabIndex = 1;
+            this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
+            this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
             // 
             // lbl_DoesItHaveMarket
             // 
@@ -273,11 +308,11 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Market ID:";
             // 
-            // il_images
+            // il_IndustryImages
             // 
-            this.il_images.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.il_images.ImageSize = new System.Drawing.Size(128, 64);
-            this.il_images.TransparentColor = System.Drawing.Color.Transparent;
+            this.il_IndustryImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.il_IndustryImages.ImageSize = new System.Drawing.Size(128, 64);
+            this.il_IndustryImages.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // tabControl1
             // 
@@ -299,7 +334,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(569, 441);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Industries";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tb_IndustriesFilter
@@ -308,20 +343,19 @@
             this.tb_IndustriesFilter.Name = "tb_IndustriesFilter";
             this.tb_IndustriesFilter.Size = new System.Drawing.Size(563, 22);
             this.tb_IndustriesFilter.TabIndex = 105;
-            this.tb_IndustriesFilter.TextChanged += new System.EventHandler(this.tb_IndustriesFilter_TextChanged);
             // 
             // olv_Industries
             // 
-            this.olv_Industries.AllColumns.Add(this.olv_ColumnCheckBox);
-            this.olv_Industries.AllColumns.Add(this.olv_ColumnOwner);
-            this.olv_Industries.AllColumns.Add(this.olv_ColumnName);
-            this.olv_Industries.AllColumns.Add(this.olv_ColumnImage);
+            this.olv_Industries.AllColumns.Add(this.olv_Industries_Enabled);
+            this.olv_Industries.AllColumns.Add(this.olv_Industries_Owner);
+            this.olv_Industries.AllColumns.Add(this.olv_Industries_Name);
+            this.olv_Industries.AllColumns.Add(this.olv_Industries_Image);
             this.olv_Industries.CellEditUseWholeCell = false;
             this.olv_Industries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olv_ColumnCheckBox,
-            this.olv_ColumnOwner,
-            this.olv_ColumnName,
-            this.olv_ColumnImage});
+            this.olv_Industries_Enabled,
+            this.olv_Industries_Owner,
+            this.olv_Industries_Name,
+            this.olv_Industries_Image});
             this.olv_Industries.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_Industries.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.olv_Industries.GroupImageList = this.il_Icons;
@@ -330,51 +364,41 @@
             this.olv_Industries.MultiSelect = false;
             this.olv_Industries.Name = "olv_Industries";
             this.olv_Industries.Size = new System.Drawing.Size(563, 409);
-            this.olv_Industries.SmallImageList = this.il_images;
+            this.olv_Industries.SmallImageList = this.il_IndustryImages;
             this.olv_Industries.TabIndex = 104;
             this.olv_Industries.UseCompatibleStateImageBehavior = false;
             this.olv_Industries.UseFiltering = true;
             this.olv_Industries.View = System.Windows.Forms.View.Details;
             // 
-            // olv_ColumnCheckBox
+            // olv_Industries_Enabled
             // 
-            this.olv_ColumnCheckBox.AspectName = "enabled";
-            this.olv_ColumnCheckBox.CheckBoxes = true;
-            this.olv_ColumnCheckBox.Searchable = false;
-            this.olv_ColumnCheckBox.Text = "Enabled";
+            this.olv_Industries_Enabled.AspectName = "enabled";
+            this.olv_Industries_Enabled.CheckBoxes = true;
+            this.olv_Industries_Enabled.Searchable = false;
+            this.olv_Industries_Enabled.Text = "Enabled";
             // 
-            // olv_ColumnOwner
+            // olv_Industries_Owner
             // 
-            this.olv_ColumnOwner.AspectName = "owner";
-            this.olv_ColumnOwner.Text = "Owner";
-            this.olv_ColumnOwner.Width = 128;
+            this.olv_Industries_Owner.AspectName = "owner";
+            this.olv_Industries_Owner.Text = "Owner";
+            this.olv_Industries_Owner.Width = 128;
             // 
-            // olv_ColumnName
+            // olv_Industries_Name
             // 
-            this.olv_ColumnName.AspectName = "name";
-            this.olv_ColumnName.Groupable = false;
-            this.olv_ColumnName.Sortable = false;
-            this.olv_ColumnName.Text = "Name";
-            this.olv_ColumnName.Width = 128;
+            this.olv_Industries_Name.AspectName = "name";
+            this.olv_Industries_Name.Groupable = false;
+            this.olv_Industries_Name.Sortable = false;
+            this.olv_Industries_Name.Text = "Name";
+            this.olv_Industries_Name.Width = 128;
             // 
-            // olv_ColumnImage
+            // olv_Industries_Image
             // 
-            this.olv_ColumnImage.Groupable = false;
-            this.olv_ColumnImage.IsEditable = false;
-            this.olv_ColumnImage.Searchable = false;
-            this.olv_ColumnImage.Sortable = false;
-            this.olv_ColumnImage.Text = "Image";
-            this.olv_ColumnImage.Width = 128;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(569, 441);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.olv_Industries_Image.Groupable = false;
+            this.olv_Industries_Image.IsEditable = false;
+            this.olv_Industries_Image.Searchable = false;
+            this.olv_Industries_Image.Sortable = false;
+            this.olv_Industries_Image.Text = "Image";
+            this.olv_Industries_Image.Width = 128;
             // 
             // il_Icons
             // 
@@ -382,31 +406,17 @@
             this.il_Icons.ImageSize = new System.Drawing.Size(40, 40);
             this.il_Icons.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // btn_PrimaryEntityReset
+            // tabPage2
             // 
-            this.btn_PrimaryEntityReset.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_PrimaryEntityReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_PrimaryEntityReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_PrimaryEntityReset.Location = new System.Drawing.Point(263, 89);
-            this.btn_PrimaryEntityReset.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_PrimaryEntityReset.Name = "btn_PrimaryEntityReset";
-            this.btn_PrimaryEntityReset.Size = new System.Drawing.Size(29, 27);
-            this.btn_PrimaryEntityReset.TabIndex = 3;
-            this.btn_PrimaryEntityReset.UseVisualStyleBackColor = true;
-            this.btn_PrimaryEntityReset.Click += new System.EventHandler(this.btn_PrimaryEntityReset_Click);
-            // 
-            // btn_SystemsRefresh
-            // 
-            this.btn_SystemsRefresh.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_SystemsRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_SystemsRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_SystemsRefresh.Location = new System.Drawing.Point(263, 39);
-            this.btn_SystemsRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_SystemsRefresh.Name = "btn_SystemsRefresh";
-            this.btn_SystemsRefresh.Size = new System.Drawing.Size(29, 27);
-            this.btn_SystemsRefresh.TabIndex = 1;
-            this.btn_SystemsRefresh.UseVisualStyleBackColor = true;
-            this.btn_SystemsRefresh.Click += new System.EventHandler(this.btn_SystemsRefresh_Click);
+            this.tabPage2.Controls.Add(this.tb_ConditionsFilter);
+            this.tabPage2.Controls.Add(this.olv_Conditions);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(569, 441);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Conditions";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btn_Undo
             // 
@@ -420,6 +430,75 @@
             this.btn_Undo.TabIndex = 11;
             this.btn_Undo.UseVisualStyleBackColor = true;
             this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
+            // 
+            // tb_ConditionsFilter
+            // 
+            this.tb_ConditionsFilter.Location = new System.Drawing.Point(3, 3);
+            this.tb_ConditionsFilter.Name = "tb_ConditionsFilter";
+            this.tb_ConditionsFilter.Size = new System.Drawing.Size(563, 22);
+            this.tb_ConditionsFilter.TabIndex = 107;
+            // 
+            // olv_Conditions
+            // 
+            this.olv_Conditions.AllColumns.Add(this.olv_Conditions_Enabled);
+            this.olv_Conditions.AllColumns.Add(this.olv_Conditions_Owner);
+            this.olv_Conditions.AllColumns.Add(this.olv_Conditions_Name);
+            this.olv_Conditions.AllColumns.Add(this.olv_Conditions_Image);
+            this.olv_Conditions.CellEditUseWholeCell = false;
+            this.olv_Conditions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olv_Conditions_Enabled,
+            this.olv_Conditions_Owner,
+            this.olv_Conditions_Name,
+            this.olv_Conditions_Image});
+            this.olv_Conditions.Cursor = System.Windows.Forms.Cursors.Default;
+            this.olv_Conditions.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.olv_Conditions.GroupImageList = this.il_Icons;
+            this.olv_Conditions.HideSelection = false;
+            this.olv_Conditions.Location = new System.Drawing.Point(3, 29);
+            this.olv_Conditions.MultiSelect = false;
+            this.olv_Conditions.Name = "olv_Conditions";
+            this.olv_Conditions.Size = new System.Drawing.Size(563, 409);
+            this.olv_Conditions.SmallImageList = this.il_ConditionImages;
+            this.olv_Conditions.TabIndex = 106;
+            this.olv_Conditions.UseCompatibleStateImageBehavior = false;
+            this.olv_Conditions.UseFiltering = true;
+            this.olv_Conditions.View = System.Windows.Forms.View.Details;
+            // 
+            // olv_Conditions_Enabled
+            // 
+            this.olv_Conditions_Enabled.AspectName = "enabled";
+            this.olv_Conditions_Enabled.CheckBoxes = true;
+            this.olv_Conditions_Enabled.Searchable = false;
+            this.olv_Conditions_Enabled.Text = "Enabled";
+            // 
+            // olv_Conditions_Owner
+            // 
+            this.olv_Conditions_Owner.AspectName = "owner";
+            this.olv_Conditions_Owner.Text = "Owner";
+            this.olv_Conditions_Owner.Width = 128;
+            // 
+            // olv_Conditions_Name
+            // 
+            this.olv_Conditions_Name.AspectName = "name";
+            this.olv_Conditions_Name.Groupable = false;
+            this.olv_Conditions_Name.Sortable = false;
+            this.olv_Conditions_Name.Text = "Name";
+            this.olv_Conditions_Name.Width = 128;
+            // 
+            // olv_Conditions_Image
+            // 
+            this.olv_Conditions_Image.Groupable = false;
+            this.olv_Conditions_Image.IsEditable = false;
+            this.olv_Conditions_Image.Searchable = false;
+            this.olv_Conditions_Image.Sortable = false;
+            this.olv_Conditions_Image.Text = "Image";
+            this.olv_Conditions_Image.Width = 128;
+            // 
+            // il_ConditionImages
+            // 
+            this.il_ConditionImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.il_ConditionImages.ImageSize = new System.Drawing.Size(64, 64);
+            this.il_ConditionImages.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Markets
             // 
@@ -452,6 +531,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_Industries)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.olv_Conditions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,16 +561,23 @@
         private System.Windows.Forms.Button btn_SystemsRefresh;
         private System.Windows.Forms.Button btn_PrimaryEntityReset;
         private System.Windows.Forms.Label lbl_DoesItHaveMarket;
-        private System.Windows.Forms.ImageList il_images;
+        private System.Windows.Forms.ImageList il_IndustryImages;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private BrightIdeasSoftware.ObjectListView olv_Industries;
-        private BrightIdeasSoftware.OLVColumn olv_ColumnName;
-        private BrightIdeasSoftware.OLVColumn olv_ColumnImage;
+        private BrightIdeasSoftware.OLVColumn olv_Industries_Name;
+        private BrightIdeasSoftware.OLVColumn olv_Industries_Image;
         private System.Windows.Forms.TabPage tabPage2;
-        private BrightIdeasSoftware.OLVColumn olv_ColumnCheckBox;
-        private BrightIdeasSoftware.OLVColumn olv_ColumnOwner;
+        private BrightIdeasSoftware.OLVColumn olv_Industries_Enabled;
+        private BrightIdeasSoftware.OLVColumn olv_Industries_Owner;
         private System.Windows.Forms.TextBox tb_IndustriesFilter;
         private System.Windows.Forms.ImageList il_Icons;
+        private System.Windows.Forms.TextBox tb_ConditionsFilter;
+        private BrightIdeasSoftware.ObjectListView olv_Conditions;
+        private BrightIdeasSoftware.OLVColumn olv_Conditions_Enabled;
+        private BrightIdeasSoftware.OLVColumn olv_Conditions_Owner;
+        private BrightIdeasSoftware.OLVColumn olv_Conditions_Name;
+        private BrightIdeasSoftware.OLVColumn olv_Conditions_Image;
+        private System.Windows.Forms.ImageList il_ConditionImages;
     }
 }

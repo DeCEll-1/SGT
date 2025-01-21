@@ -57,20 +57,7 @@ namespace SSSystemGenerator.Forms
 
             UpdatePrimaryEntityList();
 
-            Statics.CSVs.Industries.ForEach(s =>
-            {
-                try
-                {
-                    string path = Helper.GetCSVPath(s.owner, s.image);
-                    // add the images of industries to the image list of the listview
-                    il_images.Images.Add(path, new Bitmap(path));
-                }
-                catch (Exception)
-                { // sometimes stuff doesnt exist and crashes
-                }
-            });
-
-            // add mods to images
+            // add mods icons to icon list
             SettingsController.ModsToLoad.ForEach(mod =>
             {
                 string iconPath = mod.FullName + @"\icon.png";
@@ -80,7 +67,7 @@ namespace SSSystemGenerator.Forms
                     il_Icons.Images.Add(mod.Name, new Bitmap(iconPath));
                     return;
                 };
-                
+
                 // "iconPath"\s*:\s*"([^"]+)"
                 Regex reg = new Regex(@"""iconPath""\s*:\s*""([^""]+)""");
                 // https://chatgpt.com/share/67852cc4-2ce4-8006-aab8-a6bcc0b3c041
@@ -107,10 +94,30 @@ namespace SSSystemGenerator.Forms
             // games own logo
             il_Icons.Images.Add("starsector-core", Properties.Resources.s_icon64);
 
-            // image selection function
-            olv_ColumnImage.ImageGetter = delegate (object x)
+            IndustriesOLVSetup();
+
+            ConditionsOLVSetup();
+        }
+
+        private void IndustriesOLVSetup()
+        {
+            // add the images of industries to the image list of the listview
+            Statics.CSVs.Industries.ForEach(s =>
             {
-                IndustriesCSV s = (IndustriesCSV)x;
+                try
+                {
+                    string path = Helper.GetCSVPath(s.owner, s.image);
+                    il_IndustryImages.Images.Add(path, new Bitmap(path));
+                }
+                catch (Exception)
+                { // sometimes stuff doesnt exist and crashes
+                }
+            });
+
+            // image selection function
+            olv_Industries_Image.ImageGetter = delegate (object x)
+            {
+                IndustriesCSV s = x as IndustriesCSV;
 
                 return Helper.GetCSVPath(s.owner, s.image);
             };
@@ -119,11 +126,11 @@ namespace SSSystemGenerator.Forms
             olv_Industries.CheckStatePutter = delegate (Object rowObject, CheckState newValue)
             {
                 // update the checkness of the checkbox
-                olv_ColumnCheckBox.PutCheckState(rowObject, newValue);
+                olv_Industries_Enabled.PutCheckState(rowObject, newValue);
                 // update the grouping 
                 if (!olv_Industries.Groups.Cast<ListViewGroup>().ToList().TrueForAll(k => k.Header != "True" && k.Header != "False"))
                 {
-                    olv_Industries.BuildGroups(olv_ColumnCheckBox, SortOrder.Descending);
+                    olv_Industries.BuildGroups(olv_Industries_Enabled, olv_Industries.LastSortOrder);
                 }
                 // idk what this is for its suppose to update the checkbox but it didnt really worked and idc enough
                 return newValue;
@@ -135,6 +142,7 @@ namespace SSSystemGenerator.Forms
                 e.Parameters.ItemComparer = new AlphabeticalComparer();
             };
 
+            // dont display icons if the grouping is enabled or not
             olv_Industries.AboutToCreateGroups += delegate (object sender, CreateGroupsEventArgs e)
             {
                 foreach (var item in e.Groups)
@@ -146,20 +154,89 @@ namespace SSSystemGenerator.Forms
                 }
             };
 
+            // reaply filter
+            tb_IndustriesFilter.TextChanged += delegate (object sender, EventArgs e)
+            {
+                olv_Industries.ModelFilter = new ModelFilter(delegate (object x)
+                {
+                    IndustriesCSV s = x as IndustriesCSV;
+                    return Helper.SimilarContains(s.name, tb_IndustriesFilter.Text, 2);
+                });
+            };
+
             // finish
             olv_Industries.SetObjects(Statics.CSVs.Industries);
         }
 
-        private void tb_IndustriesFilter_TextChanged(object sender, EventArgs e)
+        private void ConditionsOLVSetup()
         {
-            // reaply filter
-            olv_Industries.ModelFilter = new ModelFilter(delegate (object x)
+            // add the images of conditions to the image list of the listview
+            Statics.CSVs.MarketConditions.ForEach(s =>
             {
-                IndustriesCSV s = x as IndustriesCSV;
-
-                return Helper.SimilarContains(s.name, tb_IndustriesFilter.Text, 2);
+                try
+                {
+                    string path = Helper.GetCSVPath(s.owner, s.icon);
+                    il_ConditionImages.Images.Add(path, new Bitmap(path));
+                }
+                catch (Exception)
+                { // sometimes stuff doesnt exist and crashes
+                }
             });
+           
+            // image selection function
+            olv_Conditions_Image.ImageGetter = delegate (object x)
+            {
+                MarketConditionsCSV s = x as MarketConditionsCSV;
+
+                return Helper.GetCSVPath(s.owner, s.icon);
+            };
+
+            // checkbox controller
+            olv_Conditions.CheckStatePutter = delegate (Object rowObject, CheckState newValue)
+            {
+                // update the checkness of the checkbox
+                olv_Conditions_Enabled.PutCheckState(rowObject, newValue);
+                // update the grouping 
+                if (!olv_Conditions.Groups.Cast<ListViewGroup>().ToList().TrueForAll(k => k.Header != "True" && k.Header != "False"))
+                {
+                    olv_Conditions.BuildGroups(olv_Conditions_Enabled, olv_Conditions.LastSortOrder);
+                }
+                // idk what this is for its suppose to update the checkbox but it didnt really worked and idc enough
+                return newValue;
+            };
+
+            // change default sorter to alphabetical
+            olv_Conditions.BeforeCreatingGroups += delegate (object sender, CreateGroupsEventArgs e)
+            {
+                e.Parameters.ItemComparer = new AlphabeticalComparer();
+            };
+
+            // dont display icons if the grouping is enabled or not
+            olv_Conditions.AboutToCreateGroups += delegate (object sender, CreateGroupsEventArgs e)
+            {
+                foreach (var item in e.Groups)
+                {
+                    if (item.Header != "True" && item.Header != "False")
+                    {
+                        item.TitleImage = item.Header;
+                    }
+                }
+            };
+
+            // reaply filter
+            tb_ConditionsFilter.TextChanged += delegate (object sender, EventArgs e)
+            {
+                olv_Conditions.ModelFilter = new ModelFilter(delegate (object x)
+                {
+                    MarketConditionsCSV s = x as MarketConditionsCSV;
+                    return Helper.SimilarContains(s.name, tb_ConditionsFilter.Text, 2);
+                });
+            };
+
+            // finish
+            olv_Conditions.SetObjects(Statics.CSVs.MarketConditions);
         }
+
 
         private void LoadSystems()
         {
