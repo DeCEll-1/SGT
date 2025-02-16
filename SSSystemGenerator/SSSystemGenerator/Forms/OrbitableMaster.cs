@@ -30,7 +30,7 @@ namespace SSSystemGenerator.Forms
             nud_OrbitDays.ValueChanged += TextChangedBTNAddUpdateCheck;
             tb_ID.TextChanged += TextChangedBTNAddUpdateCheck;
             tb_Name.TextChanged += TextChangedBTNAddUpdateCheck;
-            tb_TypeID.TextChanged += TextChangedBTNAddUpdateCheck;
+            cb_TypeID.TextChanged += TextChangedBTNAddUpdateCheck;
             ComboBox_Focus.SelectedIndexChanged += TextChangedBTNAddUpdateCheck;
         }
 
@@ -64,7 +64,7 @@ namespace SSSystemGenerator.Forms
 
             tb_ID.Text = item.ID;
             tb_Name.Text = item.name;
-            tb_TypeID.Text = item.typeID;
+            cb_TypeID.Text = item.typeID;
 
             lbl_Order.Text = "Load Order: " + item.order;
 
@@ -89,7 +89,7 @@ namespace SSSystemGenerator.Forms
 
             tb_ID.Text = "";
             tb_Name.Text = "";
-            tb_TypeID.Text = "";
+            cb_TypeID.Text = "";
         }
 
         //resets orbit values to the defaults, resetExtend alredy uses this so dont need to run this too
@@ -142,7 +142,7 @@ namespace SSSystemGenerator.Forms
         // gets orbit mode as number
         private int GetOrbitModeNo()
         {
-            if(cb_OrbitMode.SelectedText == "Fixed Location")
+            if(cb_OrbitMode.SelectedItem.ToString() == "Fixed Location")
                 return 0;
             else if (cb_PointingDown.Checked)
             {
@@ -197,9 +197,21 @@ namespace SSSystemGenerator.Forms
 
             item.ID = tb_ID.Text;
             item.name = tb_Name.Text;
-            item.typeID = tb_TypeID.Text;
+            item.typeID = cb_TypeID.Text;
 
             item.WhatIsThis = type;
+        }
+
+        internal void LoadTypes()
+        {
+            cb_TypeID.Items.Clear();
+            cb_TypeID.Items.AddRange(
+                Statics.CSVs.PlanetGenDatas
+                .Where(s => s.type == "PLANET") // filter by planets
+                .ToList() // list it
+                .Select(s => s.id) // turn it into a list of ids
+                .ToArray<object>() // array it
+            );
         }
         #endregion
 
@@ -283,6 +295,8 @@ namespace SSSystemGenerator.Forms
             cb_OrbitMode.SelectedIndex = 0;
 
             LoadOrbits();
+
+            LoadTypes();
 
         }
 
@@ -371,7 +385,7 @@ namespace SSSystemGenerator.Forms
         {
             if (
                 tb_ID.Text == "" ||
-                tb_TypeID.Text == "" ||
+                cb_TypeID.Text == "" ||
                 ComboBox_Systems.SelectedItem == null ||
                 ComboBox_Systems.SelectedItem.ToString() == ""
                 )
@@ -384,7 +398,8 @@ namespace SSSystemGenerator.Forms
             }
             if (
                 ComboBox_Focus.SelectedItem == null ||
-                ComboBox_Focus.SelectedItem.ToString() == ""
+                ComboBox_Focus.SelectedItem.ToString() == "" &&
+                cb_OrbitMode.SelectedItem.ToString() == "Circular Orbit"
                 )
             {
                 btn_Add.Enabled = false;

@@ -20,7 +20,7 @@ public class JSONParser<T> {
     }
 
     //    @Deprecated
-    public T Convert(JSONObject jsonObject) throws  Throwable {
+    public T Convert(JSONObject jsonObject) throws Throwable {
 //https://stackoverflow.com/a/2126722
         VeBlib_Logger.log(this.getClass(), "Getting Fields");
         Field[] fields = clazz.getFields();
@@ -115,7 +115,7 @@ public class JSONParser<T> {
 
     }
 
-
+    @Deprecated // gives reflection error idk why
     public T[] Convert(JSONObject[] objects) throws Throwable {
         // ignore the warning
         T[] result = (T[]) Array.newInstance(clazz, objects.length);

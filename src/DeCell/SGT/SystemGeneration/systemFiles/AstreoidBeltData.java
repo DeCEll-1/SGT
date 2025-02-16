@@ -6,9 +6,9 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 
 import java.util.HashMap;
 
-public class VeBlib_AstreoidBeltData  extends VeBlib_SGTExtend{
+public class AstreoidBeltData extends SGTExtend {
 
-    public VeBlib_AstreoidBeltData(){
+    public AstreoidBeltData(){
         this.ID = "";//this is for identifieing the belt, maybe it will be used, might crash if you dont give it an id, you can do java.util.UUID.randomUUID(); which will give a random string (just do toString), there can be duplicate ones but its pratically ibloppable so dont worry
         //İTS USED İN ORBİTS HOW THE HELL SOMETHİNG CAN ORBİT AROUND SOMETHİNG AAAAAAAAAAAAAAAAAAAAA
         this.focusID = "";
@@ -21,7 +21,7 @@ public class VeBlib_AstreoidBeltData  extends VeBlib_SGTExtend{
         this.name = "";//display name
     }
 
-    public VeBlib_AstreoidBeltData(String ID, String focus, int numAsteroids, float orbitRadius, float width, float minOrbitDays, float maxOrbitDays, String terrainId, String optionalName)
+    public AstreoidBeltData(String ID, String focus, int numAsteroids, float orbitRadius, float width, float minOrbitDays, float maxOrbitDays, String terrainId, String optionalName)
     {
         this.ID = ID;//this is for identifieing the belt, maybe it will be used, might crash if you dont give it an id, you can do java.util.UUID.randomUUID(); which will give a random string (just do toString), there can be duplicate ones but its pratically ibloppable so dont worry
         //İTS USED İN ORBİTS HOW THE HELL SOMETHİNG CAN ORBİT AROUND SOMETHİNG AAAAAAAAAAAAAAAAAAAAA
@@ -42,9 +42,9 @@ public class VeBlib_AstreoidBeltData  extends VeBlib_SGTExtend{
     public String terrainId;//ID of the terrain type that appears in the section above the abilities bar//Terrain.PULSAR_BEAM;//this
 
     @Override
-    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
+    public void CreateObject(StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
         VeBlib_Logger.log(this.getClass(), "astreoids");
-        VeBlib_AstreoidBeltData astreoidData = (VeBlib_AstreoidBeltData) data.orderHashMap.get(i);
+        AstreoidBeltData astreoidData = (AstreoidBeltData) data.orderHashMap.get(i);
         VeBlib_Logger.log(this.getClass(), "astreoids " + astreoidData.ID);
 
         VeBlib_Logger.log(this.getClass(), "generate astreoids");

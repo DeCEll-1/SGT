@@ -68,7 +68,7 @@
             this.MS_Main.Location = new System.Drawing.Point(0, 0);
             this.MS_Main.MdiWindowListItem = this.TSMI_ActiveWindows;
             this.MS_Main.Name = "MS_Main";
-            this.MS_Main.Size = new System.Drawing.Size(1067, 28);
+            this.MS_Main.Size = new System.Drawing.Size(1067, 30);
             this.MS_Main.TabIndex = 1;
             this.MS_Main.Text = "menuStrip1";
             this.MS_Main.ItemAdded += new System.Windows.Forms.ToolStripItemEventHandler(this.MS_Main_ItemAdded);
@@ -81,7 +81,7 @@
             this.saveToolStripMenuItem,
             this.exportToolStripMenuItem});
             this.TSMI_File.Name = "TSMI_File";
-            this.TSMI_File.Size = new System.Drawing.Size(46, 24);
+            this.TSMI_File.Size = new System.Drawing.Size(46, 26);
             this.TSMI_File.Text = "File";
             // 
             // closeAppToolStripMenuItem
@@ -121,7 +121,7 @@
             this.TSMI_AstreoidBelts,
             this.TSMI_Map});
             this.TSMI_SystemGeneration.Name = "TSMI_SystemGeneration";
-            this.TSMI_SystemGeneration.Size = new System.Drawing.Size(147, 24);
+            this.TSMI_SystemGeneration.Size = new System.Drawing.Size(147, 26);
             this.TSMI_SystemGeneration.Text = "System Generation";
             // 
             // TSMI_Systems
@@ -191,7 +191,7 @@
             // TSMI_ActiveWindows
             // 
             this.TSMI_ActiveWindows.Name = "TSMI_ActiveWindows";
-            this.TSMI_ActiveWindows.Size = new System.Drawing.Size(129, 24);
+            this.TSMI_ActiveWindows.Size = new System.Drawing.Size(129, 26);
             this.TSMI_ActiveWindows.Text = "Active Windows";
             // 
             // TSMI_Info
@@ -199,7 +199,7 @@
             this.TSMI_Info.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMII_Info});
             this.TSMI_Info.Name = "TSMI_Info";
-            this.TSMI_Info.Size = new System.Drawing.Size(49, 24);
+            this.TSMI_Info.Size = new System.Drawing.Size(49, 26);
             this.TSMI_Info.Text = "Info";
             // 
             // TSMII_Info
@@ -215,7 +215,7 @@
             this.TSMI_Preferances.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem});
             this.TSMI_Preferances.Name = "TSMI_Preferances";
-            this.TSMI_Preferances.Size = new System.Drawing.Size(99, 24);
+            this.TSMI_Preferances.Size = new System.Drawing.Size(99, 26);
             this.TSMI_Preferances.Text = "Preferances";
             // 
             // settingsToolStripMenuItem
@@ -277,6 +277,7 @@
             this.Name = "SGTBaseMDIContainer";
             this.Text = "SGTBaseMDIContainer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SGTBaseMDIContainer_FormClosing);
             this.Load += new System.EventHandler(this.SGTBaseMDIContainer_Load);
             this.MS_Main.ResumeLayout(false);
             this.MS_Main.PerformLayout();

@@ -6,9 +6,9 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 
 import java.util.HashMap;
 
-public class VeBlib_SectorEntittyTokenData extends VeBlib_SGTExtend{
+public class SectorEntittyTokenData extends SGTExtend {
 
-    public VeBlib_SectorEntittyTokenData()
+    public SectorEntittyTokenData()
     {
         this.ID = "";
         this.name = "";
@@ -16,7 +16,7 @@ public class VeBlib_SectorEntittyTokenData extends VeBlib_SGTExtend{
         this.factionID = "";
     }
 
-    public VeBlib_SectorEntittyTokenData(String ID, String name, String customEntittyType, String factionID, float x, float y)
+    public SectorEntittyTokenData(String ID, String name, String customEntittyType, String factionID, float x, float y)
     {
         this.ID = ID;
         this.name = name;
@@ -27,7 +27,7 @@ public class VeBlib_SectorEntittyTokenData extends VeBlib_SGTExtend{
         this.orbitLocationMode = 0;
     }
 
-    public VeBlib_SectorEntittyTokenData(String ID, String name, String customEntittyType, String factionID, String focusID, float angle, float orbitRadius, float orbitDays, boolean setCircularOrbitPointingDown)
+    public SectorEntittyTokenData(String ID, String name, String customEntittyType, String factionID, String focusID, float angle, float orbitRadius, float orbitDays, boolean setCircularOrbitPointingDown)
     {
         this.ID = ID;
         this.name = name;
@@ -41,7 +41,7 @@ public class VeBlib_SectorEntittyTokenData extends VeBlib_SGTExtend{
         else this.orbitLocationMode = 1;
     }
 
-    public VeBlib_SectorEntittyTokenData(String ID, String name, String customEntittyType, String factionID, String focusID, float angle, float orbitRadius, float orbitDays, float minSpin, float maxSpin)
+    public SectorEntittyTokenData(String ID, String name, String customEntittyType, String factionID, String focusID, float angle, float orbitRadius, float orbitDays, float minSpin, float maxSpin)
     {
         this.ID = ID;
         this.name = name;
@@ -61,9 +61,9 @@ public class VeBlib_SectorEntittyTokenData extends VeBlib_SGTExtend{
 
 
     @Override
-    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
+    public void CreateObject(StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
         VeBlib_Logger.log(this.getClass(), "entity");
-        VeBlib_SectorEntittyTokenData sectorEntityTokenData = (VeBlib_SectorEntittyTokenData) data.orderHashMap.get(i);
+        SectorEntittyTokenData sectorEntityTokenData = (SectorEntittyTokenData) data.orderHashMap.get(i);
         VeBlib_Logger.log(this.getClass(), "generate entity " + sectorEntityTokenData.ID);
         SectorEntityToken addCustomEntity = system.addCustomEntity(
                 sectorEntityTokenData.ID,

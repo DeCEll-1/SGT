@@ -7,9 +7,9 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 import java.awt.*;
 import java.util.HashMap;
 
-public class VeBlib_RingBandData extends VeBlib_SGTExtend {
+public class RingBandData extends SGTExtend {
 
-    public VeBlib_RingBandData() {
+    public RingBandData() {
         this.ID = "";//id of the band useless because bands arent used in anything USELESS https://ih1.redbubble.net/image.358838235.6847/raf,360x360,075,t,fafafa:ca443f4786.jpg
         //then why its here? maybe it will be used lol just put null
         this.focusID = "";
@@ -28,7 +28,7 @@ public class VeBlib_RingBandData extends VeBlib_SGTExtend {
 
     }
 
-    public VeBlib_RingBandData(String ID, String focusID, String category, String key, float bandWidthInTexture, int bandIndex, Color color, float bandWidthInEngine, float middleRadius, float orbitDays, String terrainId, String name) {
+    public RingBandData(String ID, String focusID, String category, String key, float bandWidthInTexture, int bandIndex, Color color, float bandWidthInEngine, float middleRadius, float orbitDays, String terrainId, String name) {
         this.ID = ID;//id of the band useless because bands arent used in anything USELESS https://ih1.redbubble.net/image.358838235.6847/raf,360x360,075,t,fafafa:ca443f4786.jpg
         //then why its here? maybe it will be used lol just put null
         this.focusID = focusID;
@@ -56,9 +56,9 @@ public class VeBlib_RingBandData extends VeBlib_SGTExtend {
     public String terrainId;
 
     @Override
-    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i) {
+    public void CreateObject(StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i) {
         VeBlib_Logger.log(this.getClass(), "rings ");
-        VeBlib_RingBandData ringBandData = (VeBlib_RingBandData) data.orderHashMap.get(i);
+        RingBandData ringBandData = (RingBandData) data.orderHashMap.get(i);
         VeBlib_Logger.log(this.getClass(), "rings " + ringBandData.ID);
 
         VeBlib_Logger.log(this.getClass(), "generate ring");

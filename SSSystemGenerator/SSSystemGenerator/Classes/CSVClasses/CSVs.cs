@@ -15,5 +15,7 @@ namespace SSSystemGenerator.Classes.CSVClasses
 
         public List<MarketConditionsCSV> MarketConditions { get; set; } = new List<MarketConditionsCSV> { };
 
+        public List<PlanetGenData> PlanetGenDatas { get; set; } = new List<PlanetGenData> { };
+
     }
 }

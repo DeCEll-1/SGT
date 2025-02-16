@@ -242,5 +242,30 @@ namespace SSSystemGenerator
                 MS_Main.Items[2].Image = ColorManager.MinimizeButton();
             }
         }
+
+        private void SGTBaseMDIContainer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are You Sure You Want To Exit", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes && e.CloseReason == CloseReason.UserClosing)
+            {
+                saveToolStripMenuItem_Click(null, null);
+
+                Misc.WaitUntilSaveEnds();
+
+                Statics.CloseTheForm = true;
+
+                if (JsonHelper.saving)
+                {
+                    return;
+                }
+
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

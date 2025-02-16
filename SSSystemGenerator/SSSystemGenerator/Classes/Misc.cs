@@ -16,7 +16,7 @@ namespace SSSystemGenerator.Classes
 
         public static void WaitUntilSaveEnds()
         {
-            if (Statics.SGTBaseMDIContainer.thread != null) Statics.SGTBaseMDIContainer.thread.Join();
+            if (Statics.SGTBaseMDIContainer.thread != null) Statics.SGTBaseMDIContainer.thread.Join(20);
 
         }
 

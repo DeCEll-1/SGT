@@ -56,8 +56,6 @@ namespace SSSystemGenerator.Classes
 
             try
             {
-
-
                 SGTBaseMDIContainer form = Statics.SGTBaseMDIContainer;
 
                 UpdateMDIFormSavingStatusLabel("Setting up files");
@@ -85,7 +83,10 @@ namespace SSSystemGenerator.Classes
                 UpdateMDIFormSavingStatusLabel("Saved");
                 saving = false;
 
-                if (Statics.CloseTheForm) Misc.FireMethodOnDifferentThread(Statics.SGTBaseMDIContainer, Statics.SGTBaseMDIContainer.GetType(), "Close", new object[0]);
+                if (Statics.CloseTheForm)
+                {
+                    Misc.FireMethodOnDifferentThread(Statics.SGTBaseMDIContainer, Statics.SGTBaseMDIContainer.GetType(), "Close", new object[0]);
+                }
 
             }
             catch (Exception ex)

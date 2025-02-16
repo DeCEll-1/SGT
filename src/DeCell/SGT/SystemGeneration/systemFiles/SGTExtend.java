@@ -5,7 +5,7 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 
 import java.util.HashMap;
 
-public class VeBlib_SGTExtend {
+public class SGTExtend {
 
     public int order = -1;
 
@@ -45,7 +45,7 @@ public class VeBlib_SGTExtend {
     //2 = setCircularOrbitPointingDown; same as 1
     //3 = setCircularOrbitWithSpin; same as 1/2 just with minSpin  maxSpin additions
 
-    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
+    public void CreateObject(StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
 
     }
 

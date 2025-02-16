@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class VeBlib_MarketData extends VeBlib_SGTExtend {
+public class MarketData extends SGTExtend {
 
-    public VeBlib_MarketData() {
+    public MarketData() {
         this.factionID = "";
         this.primaryEntity = "";
         this.connectedEntities = new ArrayList<>();
@@ -25,7 +25,7 @@ public class VeBlib_MarketData extends VeBlib_SGTExtend {
         this.PirateMode = false;
     }
 
-    public VeBlib_MarketData(String factionID, String primaryEntity, List<String> connectedEntities, String name, byte size, List<String> marketConditions, List<String> submarkets, List<String> industries, Boolean WithJunkAndChatter, Boolean PirateMode) {
+    public MarketData(String factionID, String primaryEntity, List<String> connectedEntities, String name, byte size, List<String> marketConditions, List<String> submarkets, List<String> industries, Boolean WithJunkAndChatter, Boolean PirateMode) {
         this.factionID = factionID;
         this.primaryEntity = primaryEntity;
         this.connectedEntities = connectedEntities;
@@ -48,10 +48,7 @@ public class VeBlib_MarketData extends VeBlib_SGTExtend {
     public Boolean WithJunkAndChatter;
     public Boolean PirateMode;
 
-    @Override
-    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
-        VeBlib_Logger.log(this.getClass(), "market");
-        VeBlib_MarketData marketData = (VeBlib_MarketData) data.orderHashMap.get(i);
+    public void CreateObject(StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, MarketData marketData){
         VeBlib_Logger.log(this.getClass(), "market " + marketData.name);
 
 
@@ -84,6 +81,11 @@ public class VeBlib_MarketData extends VeBlib_SGTExtend {
         VeBlib_Logger.log(this.getClass(), "generate market");
         if (marketData.ID.equals(""))//doesnt have an id
         {
+            VeBlib_Logger.log(this.getClass(), "primary entity: " + marketData.primaryEntity);
+            VeBlib_Logger.log(this.getClass(), "connected entities: " + connectedEntittys);
+            VeBlib_Logger.log(this.getClass(), "conditions: " + marketDataConditionAList);
+            VeBlib_Logger.log(this.getClass(), "submarkets: " + marketDataSubmarketList);
+            VeBlib_Logger.log(this.getClass(), "industries: " + industries);
             MarketAPI market = VeBlib_AddMarket.addMarketplace(
                     marketData.factionID,
                     SectorEntittyTokenHashMap.get(marketData.primaryEntity),
@@ -97,6 +99,11 @@ public class VeBlib_MarketData extends VeBlib_SGTExtend {
                     marketData.PirateMode
             );
         } else {//haves an id
+            VeBlib_Logger.log(this.getClass(), "primary entity: " + marketData.primaryEntity);
+            VeBlib_Logger.log(this.getClass(), "connected entities: " + connectedEntittys);
+            VeBlib_Logger.log(this.getClass(), "conditions: " + marketDataConditionAList);
+            VeBlib_Logger.log(this.getClass(), "submarkets: " + marketDataSubmarketList);
+            VeBlib_Logger.log(this.getClass(), "industries: " + industries);
             MarketAPI market = VeBlib_AddMarket.addMarketplace(
                     marketData.ID,
                     marketData.factionID,

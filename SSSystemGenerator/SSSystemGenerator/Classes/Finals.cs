@@ -16,6 +16,9 @@ namespace SSSystemGenerator.Classes
 
         public const string MARKET_CONDITIONS_FILE_NAME = "market_conditions.csv";
 
+        public const string PROCGEN_FOLDER_NAME = "procgen";
+        public const string PLANET_GEN_DATA_FILE_NAME = "planet_gen_data.csv";
+
         public const string INDUSTRIES = "INDUSTRIES";
         public const string SUBMARKETS = "SUBMARKETS";
         public const string MARKET_CONDITIONS = "MARKET_CONDITIONS";
@@ -30,6 +33,8 @@ namespace SSSystemGenerator.Classes
         public const string PLANET = "PLANET";
 
         public const string CUSTOM_ENTITY = "CUSTOM_ENTITY";
+
+        public const string MARKET = "MARKET";
 
         public const string ASTREOID_BELT = "ASTREOID_BELT";
 

@@ -60,7 +60,6 @@
             this.olv_Industries_Image = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.il_Icons = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btn_Undo = new System.Windows.Forms.Button();
             this.tb_ConditionsFilter = new System.Windows.Forms.TextBox();
             this.olv_Conditions = new BrightIdeasSoftware.ObjectListView();
             this.olv_Conditions_Enabled = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -68,6 +67,15 @@
             this.olv_Conditions_Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olv_Conditions_Image = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.il_ConditionImages = new System.Windows.Forms.ImageList(this.components);
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tb_SubmarketsFilter = new System.Windows.Forms.TextBox();
+            this.olv_Submarkets = new BrightIdeasSoftware.ObjectListView();
+            this.olv_Submarkets_Enabled = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Submarkets_Owner = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Submarkets_Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olv_Submarkets_Image = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.il_SubmarketImages = new System.Windows.Forms.ImageList(this.components);
+            this.btn_Undo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MarketSize)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -75,6 +83,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.olv_Industries)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_Conditions)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.olv_Submarkets)).BeginInit();
             this.SuspendLayout();
             // 
             // ComboBox_PrimaryEntity
@@ -229,15 +239,10 @@
             this.nud_MarketSize.Location = new System.Drawing.Point(252, 264);
             this.nud_MarketSize.Margin = new System.Windows.Forms.Padding(4);
             this.nud_MarketSize.Maximum = new decimal(new int[] {
-            999999,
+            255,
             0,
             0,
             0});
-            this.nud_MarketSize.Minimum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            -2147483648});
             this.nud_MarketSize.Name = "nud_MarketSize";
             this.nud_MarketSize.Size = new System.Drawing.Size(37, 22);
             this.nud_MarketSize.TabIndex = 7;
@@ -318,6 +323,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControl1.Location = new System.Drawing.Point(332, 0);
             this.tabControl1.Name = "tabControl1";
@@ -390,6 +396,7 @@
             this.olv_Industries_Name.Sortable = false;
             this.olv_Industries_Name.Text = "Name";
             this.olv_Industries_Name.Width = 128;
+            this.olv_Industries_Name.WordWrap = true;
             // 
             // olv_Industries_Image
             // 
@@ -417,19 +424,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Conditions";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btn_Undo
-            // 
-            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
-            this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btn_Undo.Location = new System.Drawing.Point(276, 405);
-            this.btn_Undo.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Undo.Name = "btn_Undo";
-            this.btn_Undo.Size = new System.Drawing.Size(49, 43);
-            this.btn_Undo.TabIndex = 11;
-            this.btn_Undo.UseVisualStyleBackColor = true;
-            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // tb_ConditionsFilter
             // 
@@ -484,6 +478,7 @@
             this.olv_Conditions_Name.Sortable = false;
             this.olv_Conditions_Name.Text = "Name";
             this.olv_Conditions_Name.Width = 128;
+            this.olv_Conditions_Name.WordWrap = true;
             // 
             // olv_Conditions_Image
             // 
@@ -499,6 +494,99 @@
             this.il_ConditionImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.il_ConditionImages.ImageSize = new System.Drawing.Size(64, 64);
             this.il_ConditionImages.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tb_SubmarketsFilter);
+            this.tabPage3.Controls.Add(this.olv_Submarkets);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(569, 441);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Submarkets";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tb_SubmarketsFilter
+            // 
+            this.tb_SubmarketsFilter.Location = new System.Drawing.Point(3, 3);
+            this.tb_SubmarketsFilter.Name = "tb_SubmarketsFilter";
+            this.tb_SubmarketsFilter.Size = new System.Drawing.Size(563, 22);
+            this.tb_SubmarketsFilter.TabIndex = 107;
+            // 
+            // olv_Submarkets
+            // 
+            this.olv_Submarkets.AllColumns.Add(this.olv_Submarkets_Enabled);
+            this.olv_Submarkets.AllColumns.Add(this.olv_Submarkets_Owner);
+            this.olv_Submarkets.AllColumns.Add(this.olv_Submarkets_Name);
+            this.olv_Submarkets.AllColumns.Add(this.olv_Submarkets_Image);
+            this.olv_Submarkets.CellEditUseWholeCell = false;
+            this.olv_Submarkets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olv_Submarkets_Enabled,
+            this.olv_Submarkets_Owner,
+            this.olv_Submarkets_Name,
+            this.olv_Submarkets_Image});
+            this.olv_Submarkets.Cursor = System.Windows.Forms.Cursors.Default;
+            this.olv_Submarkets.GroupImageList = this.il_Icons;
+            this.olv_Submarkets.HideSelection = false;
+            this.olv_Submarkets.Location = new System.Drawing.Point(3, 29);
+            this.olv_Submarkets.MultiSelect = false;
+            this.olv_Submarkets.Name = "olv_Submarkets";
+            this.olv_Submarkets.Size = new System.Drawing.Size(563, 409);
+            this.olv_Submarkets.SmallImageList = this.il_SubmarketImages;
+            this.olv_Submarkets.TabIndex = 106;
+            this.olv_Submarkets.UseCompatibleStateImageBehavior = false;
+            this.olv_Submarkets.UseFiltering = true;
+            this.olv_Submarkets.View = System.Windows.Forms.View.Details;
+            // 
+            // olv_Submarkets_Enabled
+            // 
+            this.olv_Submarkets_Enabled.AspectName = "enabled";
+            this.olv_Submarkets_Enabled.CheckBoxes = true;
+            this.olv_Submarkets_Enabled.Searchable = false;
+            this.olv_Submarkets_Enabled.Text = "Enabled";
+            // 
+            // olv_Submarkets_Owner
+            // 
+            this.olv_Submarkets_Owner.AspectName = "owner";
+            this.olv_Submarkets_Owner.Text = "Owner";
+            this.olv_Submarkets_Owner.Width = 128;
+            // 
+            // olv_Submarkets_Name
+            // 
+            this.olv_Submarkets_Name.AspectName = "name";
+            this.olv_Submarkets_Name.Groupable = false;
+            this.olv_Submarkets_Name.Sortable = false;
+            this.olv_Submarkets_Name.Text = "Name";
+            this.olv_Submarkets_Name.Width = 128;
+            this.olv_Submarkets_Name.WordWrap = true;
+            // 
+            // olv_Submarkets_Image
+            // 
+            this.olv_Submarkets_Image.Groupable = false;
+            this.olv_Submarkets_Image.IsEditable = false;
+            this.olv_Submarkets_Image.Searchable = false;
+            this.olv_Submarkets_Image.Sortable = false;
+            this.olv_Submarkets_Image.Text = "Image";
+            this.olv_Submarkets_Image.Width = 128;
+            // 
+            // il_SubmarketImages
+            // 
+            this.il_SubmarketImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.il_SubmarketImages.ImageSize = new System.Drawing.Size(102, 64);
+            this.il_SubmarketImages.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // btn_Undo
+            // 
+            this.btn_Undo.BackgroundImage = global::SSSystemGenerator.Properties.Resources.UndoLightMode;
+            this.btn_Undo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btn_Undo.Location = new System.Drawing.Point(276, 405);
+            this.btn_Undo.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Undo.Name = "btn_Undo";
+            this.btn_Undo.Size = new System.Drawing.Size(49, 43);
+            this.btn_Undo.TabIndex = 11;
+            this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // Markets
             // 
@@ -534,6 +622,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_Conditions)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.olv_Submarkets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,5 +670,13 @@
         private BrightIdeasSoftware.OLVColumn olv_Conditions_Name;
         private BrightIdeasSoftware.OLVColumn olv_Conditions_Image;
         private System.Windows.Forms.ImageList il_ConditionImages;
+        private System.Windows.Forms.ImageList il_SubmarketImages;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox tb_SubmarketsFilter;
+        private BrightIdeasSoftware.ObjectListView olv_Submarkets;
+        private BrightIdeasSoftware.OLVColumn olv_Submarkets_Enabled;
+        private BrightIdeasSoftware.OLVColumn olv_Submarkets_Owner;
+        private BrightIdeasSoftware.OLVColumn olv_Submarkets_Name;
+        private BrightIdeasSoftware.OLVColumn olv_Submarkets_Image;
     }
 }

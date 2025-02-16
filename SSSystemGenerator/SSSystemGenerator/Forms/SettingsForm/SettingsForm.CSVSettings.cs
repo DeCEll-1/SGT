@@ -86,8 +86,9 @@ namespace SSSystemGenerator.Forms.SettingsForm
             List<IndustriesCSV> industries = Statics.CSVs.Industries.Where(s => s.owner == modToCheck).ToList();
             List<MarketConditionsCSV> conditions = Statics.CSVs.MarketConditions.Where(s => s.owner == modToCheck).ToList();
             List<SubmarketsCSV> submarkets = Statics.CSVs.Submarkets.Where(s => s.owner == modToCheck).ToList();
+            List<PlanetGenData> planetGenData = Statics.CSVs.PlanetGenDatas.Where(s => s.owner == modToCheck).ToList();
 
-            CSVProperties properties = new CSVProperties(industries, conditions, submarkets);
+            CSVProperties properties = new CSVProperties(industries, conditions, submarkets, planetGenData);
             properties.Text = modToCheck;
             Statics.SGTBaseMDIContainer.AddFormToContainer(properties);
         }

@@ -239,6 +239,13 @@ namespace SSSystemGenerator.Classes
         /// <param name="starToDelete"></param>
         public static void DeleteStar(StarData starToDelete)
         {
+            if (starToDelete.focusID != "")
+            {
+                Helper
+                    .GetExtendFromID(starToDelete.focusID)
+                    .stuffOrbitingAround
+                    .Remove(starToDelete.ID);
+            }
             Helper.GetSystemFromGUID(starToDelete.systemGUID).starList.Remove(starToDelete);
 
             MapRefresh();
@@ -292,6 +299,13 @@ namespace SSSystemGenerator.Classes
 
         public static void DeletePlanet(PlanetData planetToDelete)
         {
+            if (planetToDelete.focusID != "")
+            {
+                Helper
+                    .GetExtendFromID(planetToDelete.focusID)
+                    .stuffOrbitingAround
+                    .Remove(planetToDelete.ID);
+            }
             Helper.GetSystemFromGUID(planetToDelete.systemGUID).planetList.Remove(planetToDelete);
 
             MapRefresh();
@@ -386,6 +400,13 @@ namespace SSSystemGenerator.Classes
 
         public static void DeleteCustomEntity(SectorEntittyTokenData customEntityToDelete)
         {
+            if (customEntityToDelete.focusID != "")
+            {
+                Helper
+                    .GetExtendFromID(customEntityToDelete.focusID)
+                    .stuffOrbitingAround
+                    .Remove(customEntityToDelete.ID);
+            }
             Helper.GetSystemFromGUID(customEntityToDelete.systemGUID).sectorEntityTokenList.Remove(customEntityToDelete);
 
             MapRefresh();

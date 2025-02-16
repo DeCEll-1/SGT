@@ -26,6 +26,8 @@ namespace SSSystemGenerator.Classes
 
             csv.MarketConditions.AddRange(GetMarketConditionsListFromPath(coreCampaignFolderPath + @"\" + Finals.MARKET_CONDITIONS_FILE_NAME));
 
+            csv.PlanetGenDatas.AddRange(GetPlanetGenDataListFromPath(coreCampaignFolderPath + @"\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.PLANET_GEN_DATA_FILE_NAME));
+
             foreach (DirectoryInfo modDirectory in SettingsController.ModsToLoad)
             {
 
@@ -33,21 +35,44 @@ namespace SSSystemGenerator.Classes
                 int len = modPath.Split('\\').Length;
 
                 if (File.Exists(modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME))
+                {
                     csv.Industries.AddRange(
-                        GetIndrustryListFromPath(modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME))
-                        ;
+                        GetIndrustryListFromPath(
+                            modPath + @"\data\campaign\" + Finals.INDUSTRIES_FILE_NAME
+                        )
+                    );
+                }
 
                 if (File.Exists(modPath + @"\data\campaign\" + Finals.SUBMARKETS_FILE_NAME))
-                    csv.Submarkets.AddRange(GetSubmarketsListFromPath(modPath + @"\data\campaign\" + Finals.SUBMARKETS_FILE_NAME));
+                {
+                    csv.Submarkets.AddRange(
+                        GetSubmarketsListFromPath(
+                            modPath + @"\data\campaign\" + Finals.SUBMARKETS_FILE_NAME
+                        )
+                    );
+                }
 
                 if (File.Exists(modPath + @"\data\campaign\" + Finals.MARKET_CONDITIONS_FILE_NAME))
-                    csv.MarketConditions.AddRange(GetMarketConditionsListFromPath(modPath + @"\data\campaign\" + Finals.MARKET_CONDITIONS_FILE_NAME));
+                {
+                    csv.MarketConditions.AddRange(
+                        GetMarketConditionsListFromPath(
+                            modPath + @"\data\campaign\" + Finals.MARKET_CONDITIONS_FILE_NAME
+                        )
+                    );
+                }
 
+                if (File.Exists(modPath + @"\data\campaign\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.PLANET_GEN_DATA_FILE_NAME))
+                {
+                    csv.PlanetGenDatas.AddRange(
+                        GetPlanetGenDataListFromPath(
+                            modPath + @"\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.PLANET_GEN_DATA_FILE_NAME
+                        )
+                    );
+                }
 
             }
 
             return csv;
-
         }
 
 
@@ -95,80 +120,6 @@ namespace SSSystemGenerator.Classes
 
         }
 
-        /// <summary>
-        /// returns industries list as 'id + " - " + name'
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> İndustriesListToStringIDNameList(List<IndustriesCSV> industriesList)
-        {
-            List<string> stringListToReturn = new List<string>();
-
-            foreach (IndustriesCSV industries in industriesList)
-            {
-                stringListToReturn.Add(industries.id + " - " + industries.name);
-            }
-
-            return stringListToReturn;
-        }
-
-        /// <summary>       
-        /// /// doesnt add the things market contains
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns>list of the things market doesnt have</returns>
-        public static List<string> İndustriesListToStringIDNameListExcludingMarketItems(List<IndustriesCSV> industriesList, MarketData market)
-        {
-            List<string> stringListToReturn = new List<string>();
-
-            foreach (IndustriesCSV industries in industriesList)
-            {
-
-                if (market.industries.Contains(industries.id))
-                {
-                    continue;
-                }
-
-                stringListToReturn.Add(industries.id + " - " + industries.name);
-            }
-
-            return stringListToReturn;
-        }
-
-        /// <summary>
-        /// so i need a list that doesnt have the things a market haves so thiss for this
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> IndustriesListToStringIDNameList(List<IndustriesCSV> industriesList, MarketData market)
-        {
-            List<string> stringListToReturn = new List<string>();
-
-            stringListToReturn.Add("Added Items:");
-
-            stringListToReturn.Add("Not Added:");
-
-            foreach (IndustriesCSV industry in industriesList)
-            {
-
-                if (market.industries.Contains(industry.id))
-                {
-                    int indexToInsertTo = stringListToReturn.IndexOf("Added Items:") + 1;//+1 because its suppose to be added after this
-
-                    stringListToReturn.Insert(indexToInsertTo, industry.id + " - " + industry.name);
-                }
-                else
-                {
-                    int indexToInsertTo = stringListToReturn.IndexOf("Not Added:") + 1;//+1 because its suppose to be added after this
-
-                    stringListToReturn.Insert(indexToInsertTo, industry.id + " - " + industry.name);
-                }
-
-            }
-
-            return stringListToReturn;
-        }
-
         #endregion
 
         #region Submarkets
@@ -213,84 +164,6 @@ namespace SSSystemGenerator.Classes
             return records;
 
         }
-
-        /// <summary>
-        /// returns submarkets list as 'id + " - " + name'
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> SubmarketsListToStringIDNaneList(List<SubmarketsCSV> submarkets)
-        {
-            List<string> stringListToReturn = new List<string>();
-
-            foreach (SubmarketsCSV submarket in submarkets)
-            {
-                stringListToReturn.Add(submarket.id + " - " + submarket.name);
-            }
-
-            return stringListToReturn;
-        }
-
-        /// <summary>
-        /// doesnt add the things market contains
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> SubmarketsListToStringIDNaneListExcludingMarketItems(List<SubmarketsCSV> submarkets, MarketData market)
-        {
-            List<string> stringListToReturn = new List<string>();
-
-            foreach (SubmarketsCSV submarket in submarkets)
-            {
-
-                if (market.submarkets.Contains(submarket.id))
-                {
-                    continue;
-                }
-                else
-                {
-                    stringListToReturn.Add(submarket.id + " - " + submarket.name);
-                }
-
-            }
-
-            return stringListToReturn;
-        }
-
-        /// <summary>
-        /// so i need a list that doesnt have the things a market haves so thiss for this
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> SubmarketsListToStringIDNaneList(List<SubmarketsCSV> submarkets, MarketData market)
-        {
-            List<string> stringListToReturn = new List<string>();
-
-            stringListToReturn.Add("Added Items:");
-
-            stringListToReturn.Add("Not Added:");
-
-            foreach (SubmarketsCSV submarket in submarkets)
-            {
-
-                if (market.submarkets.Contains(submarket.id))
-                {
-                    int indexToInsertTo = stringListToReturn.IndexOf("Added Items:") + 1;//+1 because its suppose to be added after this
-
-                    stringListToReturn.Insert(indexToInsertTo, submarket.id + " - " + submarket.name);
-                }
-                else
-                {
-                    int indexToInsertTo = stringListToReturn.IndexOf("Not Added:") + 1;//+1 because its suppose to be added after this
-
-                    stringListToReturn.Insert(indexToInsertTo, submarket.id + " - " + submarket.name);
-                }
-
-            }
-
-            return stringListToReturn;
-        }
-
         #endregion
 
         #region MarketConditions
@@ -336,85 +209,49 @@ namespace SSSystemGenerator.Classes
 
         }
 
+        #endregion
+
+        #region MarketConditions
+
         /// <summary>
-        /// returns condition list as 'id + " - " + name'
+        /// get market conditions csv
         /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditionsCSV> marketConditionsList)
+        /// <param name="path"></param>
+        /// <returns>null if not found anything</returns>
+        public static List<PlanetGenData> GetPlanetGenDataListFromPath(string path)
         {
-            List<string> listToReturn = new List<string>();
 
-            foreach (MarketConditionsCSV condition in marketConditionsList)
+            List<PlanetGenData> records = null;
+
+            //https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file
+
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-
-                listToReturn.Add(condition.id + " - " + condition.name);
-
+                records = csv.GetRecords<PlanetGenData>().ToList();
             }
 
-            return listToReturn;
-
-        }
-
-        /// <summary>
-        /// doesnt add the things market contains
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameListExcludingMarketItems(List<MarketConditionsCSV> marketConditionsList, MarketData market)
-        {
-            List<string> listToReturn = new List<string>();
-
-            foreach (MarketConditionsCSV condition in marketConditionsList)
+            string modName = path.Split('\\')[path.Split('\\').Length - 5];
+            records.ForEach(record =>
             {
-                if (market.marketConditions.Contains(condition.id))
+                record.owner = modName;
+            });
+
+            List<PlanetGenData> stuffToDelete = new List<PlanetGenData>();
+
+            foreach (PlanetGenData genData in records)
+            {
+                if (genData.type == "" || genData.id.Contains("#"))
                 {
+                    stuffToDelete.Add(genData);
                     continue;
                 }
-                else
-                {
-                    listToReturn.Add(condition.id + " - " + condition.name);
-                }
-
-
             }
 
-            return listToReturn;
+            foreach (PlanetGenData genDataToDelete in stuffToDelete) { records.Remove(genDataToDelete); }
 
-        }
+            return records;
 
-        /// <summary>
-        /// so i need a list that doesnt have the things a market haves so thiss for this
-        /// </summary>
-        /// <param name="marketConditionsList"></param>
-        /// <returns></returns>
-        public static List<string> MarketConditionsListToStringIDNameList(List<MarketConditionsCSV> marketConditionsList, MarketData market)
-        {
-            List<string> stringListToReturn = new List<string>();
-
-            stringListToReturn.Add("Added Items:");
-
-            stringListToReturn.Add("Not Added:");
-
-            foreach (MarketConditionsCSV condition in marketConditionsList)
-            {
-
-                if (market.marketConditions.Contains(condition.id))
-                {
-                    int indexToInsertTo = stringListToReturn.IndexOf("Added Items:") + 1;//+1 because its suppose to be added after this
-
-                    stringListToReturn.Insert(indexToInsertTo, condition.id + " - " + condition.name);
-                }
-                else
-                {
-                    int indexToInsertTo = stringListToReturn.IndexOf("Not Added:") + 1;//+1 because its suppose to be added after this
-
-                    stringListToReturn.Insert(indexToInsertTo, condition.id + " - " + condition.name);
-                }
-
-            }
-
-            return stringListToReturn;
         }
 
         #endregion

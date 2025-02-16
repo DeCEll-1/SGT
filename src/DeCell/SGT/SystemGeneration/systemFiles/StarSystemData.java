@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
+public class StarSystemData extends SGTExtend {
 
-    public VeBlib_StarSystemData() {
+    public StarSystemData() {
 
         this.ID = "";
 
@@ -43,7 +43,7 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
 
     }
 
-    public VeBlib_StarSystemData(String ID, float systemX, float systemY, String backgroundTextureFilename, List<VeBlib_StarData> starList, List<VeBlib_PlanetData> planetList, List<VeBlib_MarketData> marketList, List<VeBlib_AstreoidBeltData> astreoidBeltDataList, List<VeBlib_RingBandData> ringBandDataList, List<VeBlib_SectorEntittyTokenData> sectorEntityTokenList, boolean autoGenerateEntrancesAtGasGiants, boolean autoGenerateFringeJumpPoint, boolean generatePlanetConditions, float minHyperspaceRadius) {
+    public StarSystemData(String ID, float systemX, float systemY, String backgroundTextureFilename, List<StarData> starList, List<PlanetData> planetList, List<MarketData> marketList, List<AstreoidBeltData> astreoidBeltDataList, List<RingBandData> ringBandDataList, List<SectorEntittyTokenData> sectorEntityTokenList, boolean autoGenerateEntrancesAtGasGiants, boolean autoGenerateFringeJumpPoint, boolean generatePlanetConditions, float minHyperspaceRadius) {
         this.ID = ID;
 
         this.systemX = systemX;
@@ -78,7 +78,7 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
 
     }
 
-    public VeBlib_StarSystemData(String ID, String systemName, float systemX, float systemY, String backgroundTextureFilename, List<VeBlib_StarData> starList, List<VeBlib_PlanetData> planetList, List<VeBlib_MarketData> marketList, List<VeBlib_AstreoidBeltData> astreoidBeltDataList, List<VeBlib_RingBandData> ringBandDataList, List<VeBlib_SectorEntittyTokenData> sectorEntityTokenList, boolean autoGenerateEntrancesAtGasGiants, boolean autoGenerateFringeJumpPoint, boolean generatePlanetConditions, float minHyperspaceRadius) {
+    public StarSystemData(String ID, String systemName, float systemX, float systemY, String backgroundTextureFilename, List<StarData> starList, List<PlanetData> planetList, List<MarketData> marketList, List<AstreoidBeltData> astreoidBeltDataList, List<RingBandData> ringBandDataList, List<SectorEntittyTokenData> sectorEntityTokenList, boolean autoGenerateEntrancesAtGasGiants, boolean autoGenerateFringeJumpPoint, boolean generatePlanetConditions, float minHyperspaceRadius) {
         this.ID = ID;
 
         this.systemName = systemName;
@@ -117,7 +117,7 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
     }
 
     public void GenerateOrderHasMap() {
-        List<VeBlib_SGTExtend> everything = new ArrayList<>();
+        List<SGTExtend> everything = new ArrayList<>();
 
         AddToList(everything,astreoidBeltDataList);
         AddToList(everything,marketList);
@@ -128,33 +128,30 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
 
         for (int i = 0; i < everything.size(); i++) {
 
-            if (everything.get(i) instanceof VeBlib_StarData) {
-                VeBlib_StarData starData = (VeBlib_StarData) everything.get(i);
+            if (everything.get(i) instanceof StarData) {
+                StarData starData = (StarData) everything.get(i);
                 orderHashMap.put(starData.order, everything.get(i));
             }
 
-            if (everything.get(i) instanceof VeBlib_PlanetData) {
-                VeBlib_PlanetData planetData = (VeBlib_PlanetData) everything.get(i);
+            if (everything.get(i) instanceof PlanetData) {
+                PlanetData planetData = (PlanetData) everything.get(i);
                 orderHashMap.put(planetData.order, everything.get(i));
             }
 
-            if (everything.get(i) instanceof VeBlib_SectorEntittyTokenData) {
-                VeBlib_SectorEntittyTokenData sectorEntityTokenData = (VeBlib_SectorEntittyTokenData) everything.get(i);
+            if (everything.get(i) instanceof SectorEntittyTokenData) {
+                SectorEntittyTokenData sectorEntityTokenData = (SectorEntittyTokenData) everything.get(i);
                 orderHashMap.put(sectorEntityTokenData.order, everything.get(i));
             }
 
-            if (everything.get(i) instanceof VeBlib_MarketData) {
-                VeBlib_MarketData marketData = (VeBlib_MarketData) everything.get(i);
-                orderHashMap.put(marketData.order, everything.get(i));
-            }
+            // no market cuz they got no order (practically)
 
-            if (everything.get(i) instanceof VeBlib_AstreoidBeltData) {
-                VeBlib_AstreoidBeltData astreoidData = (VeBlib_AstreoidBeltData) everything.get(i);
+            if (everything.get(i) instanceof AstreoidBeltData) {
+                AstreoidBeltData astreoidData = (AstreoidBeltData) everything.get(i);
                 orderHashMap.put(astreoidData.order, everything.get(i));
             }
 
-            if (everything.get(i) instanceof VeBlib_RingBandData) {
-                VeBlib_RingBandData ringBandData = (VeBlib_RingBandData) everything.get(i);
+            if (everything.get(i) instanceof RingBandData) {
+                RingBandData ringBandData = (RingBandData) everything.get(i);
                 orderHashMap.put(ringBandData.order, everything.get(i));
             }
 
@@ -162,13 +159,13 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
         }
     }
 
-    private void AddToList(List<VeBlib_SGTExtend> list, List<? extends VeBlib_SGTExtend> toAddList) {
+    private void AddToList(List<SGTExtend> list, List<? extends SGTExtend> toAddList) {
 
         if (toAddList != null) list.addAll(toAddList);
 
     }
 
-    public HashMap<Integer, VeBlib_SGTExtend> orderHashMap = new HashMap<>();
+    public HashMap<Integer, SGTExtend> orderHashMap = new HashMap<>();
 
     public String systemName;
 
@@ -178,19 +175,19 @@ public class VeBlib_StarSystemData extends VeBlib_SGTExtend {
 
     public String backgroundTextureFilename;
 
-    public List<VeBlib_StarData> starList = new ArrayList<>();
+    public List<StarData> starList = new ArrayList<>();
 
-    public List<VeBlib_PlanetData> planetList = new ArrayList<>();
+    public List<PlanetData> planetList = new ArrayList<>();
 
-    public List<VeBlib_MarketData> marketList = new ArrayList<>();
+    public List<MarketData> marketList = new ArrayList<>();
 
     //    public ArrayList<Boolean> WithJunkAndChatter;//if its null will be false
     //    public ArrayList<Boolean> PirateMode;//if its null will be false
 
-    public List<VeBlib_AstreoidBeltData> astreoidBeltDataList = new ArrayList<>();
-    public List<VeBlib_RingBandData> ringBandDataList = new ArrayList<>();
+    public List<AstreoidBeltData> astreoidBeltDataList = new ArrayList<>();
+    public List<RingBandData> ringBandDataList = new ArrayList<>();
 
-    public List<VeBlib_SectorEntittyTokenData> sectorEntityTokenList;//anchors,custom entittys in Entities aka com.fs.starfarer.api.impl.campaign.ids;
+    public List<SectorEntittyTokenData> sectorEntityTokenList;//anchors,custom entittys in Entities aka com.fs.starfarer.api.impl.campaign.ids;
 
 
     public boolean autoGenerateEntrancesAtGasGiants;//for autogenerateHyperspaceJumpPoints

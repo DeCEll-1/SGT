@@ -60,7 +60,6 @@
             this.nud_Radius.Name = "nud_Radius";
             this.nud_Radius.Size = new System.Drawing.Size(96, 22);
             this.nud_Radius.TabIndex = 6;
-            this.nud_Radius.ValueChanged += new System.EventHandler(this.TextChangedBTNAddUpdateCheck);
             // 
             // Planets
             // 

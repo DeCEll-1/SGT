@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.lwjgl.opengl.GL11.glGetTexImage;
-
+@Deprecated
 public class ParseJson {
 
     /**
@@ -24,14 +24,14 @@ public class ParseJson {
      *
      * @param path path to the system json
      */
-    public static List<VeBlib_StarSystemData> GetJson(String path) throws Throwable { // path is the target to metadata
+    public static List<StarSystemData> GetJson(String path) throws Throwable { // path is the target to metadata
         VeBlib_Logger.log(ParseJson.class, "Getting Json - in function");
 
         VeBlib_Logger.log(ParseJson.class, "Init Metadata System List");
         List<SystemMetadata> systemMetadataList = new ArrayList<>();
 
         VeBlib_Logger.log(ParseJson.class, "Init System List");
-        List<VeBlib_StarSystemData> systemList = new ArrayList<>();
+        List<StarSystemData> systemList = new ArrayList<>();
 
 
         VeBlib_Logger.log(ParseJson.class, "Get SystemMetadata Json Object");
@@ -69,10 +69,10 @@ public class ParseJson {
             JSONObject systemJsonObject = new JSONObject(json);
 
             VeBlib_Logger.log(ParseJson.class, "Parse System");
-            JSONParser<VeBlib_StarSystemData> systemParser = new JSONParser<VeBlib_StarSystemData>(VeBlib_StarSystemData.class);
+            JSONParser<StarSystemData> systemParser = new JSONParser<StarSystemData>(StarSystemData.class);
 
             VeBlib_Logger.log(ParseJson.class, "Convert System");
-            VeBlib_StarSystemData system = systemParser.Convert(systemJsonObject);
+            StarSystemData system = systemParser.Convert(systemJsonObject);
 
             system.stuffOrbitingAround = GetStuffOrbitingAround(systemJsonObject);// :) // idk why i put smile here idk what this does nor how it does
 
@@ -84,9 +84,9 @@ public class ParseJson {
             for (int st = 0; st < starListJsonArray.length(); st++) {
                 JSONObject starJsonObject = starListJsonArray.getJSONObject(st);
 
-                JSONParser<VeBlib_StarData> starParser = new JSONParser<>(VeBlib_StarData.class);
+                JSONParser<StarData> starParser = new JSONParser<>(StarData.class);
 
-                VeBlib_StarData star = starParser.Convert(starJsonObject);
+                StarData star = starParser.Convert(starJsonObject);
 
                 star.stuffOrbitingAround = GetStuffOrbitingAround(starJsonObject);
 
@@ -101,9 +101,9 @@ public class ParseJson {
             for (int pl = 0; pl < planetsJsonArray.length(); pl++) {
                 JSONObject planetJsonObject = planetsJsonArray.getJSONObject(pl);
 
-                JSONParser<VeBlib_PlanetData> planetParser = new JSONParser<>(VeBlib_PlanetData.class);
+                JSONParser<PlanetData> planetParser = new JSONParser<>(PlanetData.class);
 
-                VeBlib_PlanetData planet = planetParser.Convert(planetJsonObject);
+                PlanetData planet = planetParser.Convert(planetJsonObject);
 
                 planet.stuffOrbitingAround = GetStuffOrbitingAround(planetJsonObject);
 
@@ -118,9 +118,9 @@ public class ParseJson {
             for (int ma = 0; ma < marketJsonArray.length(); ma++) {
                 JSONObject marketJsonObject = marketJsonArray.getJSONObject(ma);
 
-                JSONParser<VeBlib_MarketData> marketParser = new JSONParser<>(VeBlib_MarketData.class);
+                JSONParser<MarketData> marketParser = new JSONParser<>(MarketData.class);
 
-                VeBlib_MarketData market = marketParser.Convert(marketJsonObject);
+                MarketData market = marketParser.Convert(marketJsonObject);
 
                 market.stuffOrbitingAround = GetStuffOrbitingAround(marketJsonObject);//wont do shit but no reson to remove either
 
@@ -135,9 +135,9 @@ public class ParseJson {
             for (int as = 0; as < astreoidJsonArray.length(); as++) {
                 JSONObject astreoidJsonObject = astreoidJsonArray.getJSONObject(as);
 
-                JSONParser<VeBlib_AstreoidBeltData> marketParser = new JSONParser<>(VeBlib_AstreoidBeltData.class);
+                JSONParser<AstreoidBeltData> marketParser = new JSONParser<>(AstreoidBeltData.class);
 
-                VeBlib_AstreoidBeltData astreoidBelt = marketParser.Convert(astreoidJsonObject);
+                AstreoidBeltData astreoidBelt = marketParser.Convert(astreoidJsonObject);
 
                 astreoidBelt.stuffOrbitingAround = GetStuffOrbitingAround(astreoidJsonObject);
 
@@ -152,9 +152,9 @@ public class ParseJson {
             for (int ri = 0; ri < ringBandJsonArray.length(); ri++) {
                 JSONObject ringBandJsonObject = ringBandJsonArray.getJSONObject(ri);
 
-                JSONParser<VeBlib_RingBandData> ringBandParser = new JSONParser<>(VeBlib_RingBandData.class);
+                JSONParser<RingBandData> ringBandParser = new JSONParser<>(RingBandData.class);
 
-                VeBlib_RingBandData ringBand = ringBandParser.Convert(ringBandJsonObject);
+                RingBandData ringBand = ringBandParser.Convert(ringBandJsonObject);
 
                 ringBand.stuffOrbitingAround = GetStuffOrbitingAround(ringBandJsonObject);
 
@@ -177,9 +177,9 @@ public class ParseJson {
             for (int set = 0; set < sectorEntityTokenJsonArray.length(); set++) {
                 JSONObject sectorEntityTokenJsonObject = sectorEntityTokenJsonArray.getJSONObject(set);
 
-                JSONParser<VeBlib_SectorEntittyTokenData> sectorEntityTokenParser = new JSONParser<>(VeBlib_SectorEntittyTokenData.class);
+                JSONParser<SectorEntittyTokenData> sectorEntityTokenParser = new JSONParser<>(SectorEntittyTokenData.class);
 
-                VeBlib_SectorEntittyTokenData sectorEntityToken = sectorEntityTokenParser.Convert(sectorEntityTokenJsonObject);
+                SectorEntittyTokenData sectorEntityToken = sectorEntityTokenParser.Convert(sectorEntityTokenJsonObject);
 
                 sectorEntityToken.stuffOrbitingAround = GetStuffOrbitingAround(sectorEntityTokenJsonObject);
 

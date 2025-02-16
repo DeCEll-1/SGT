@@ -1,6 +1,7 @@
 package DeCell.SGT.SystemGeneration;
 
-import DeCell.SGT.SystemGeneration.systemFiles.VeBlib_StarSystemData;
+import DeCell.SGT.SystemGeneration.systemFiles.MarketData;
+import DeCell.SGT.SystemGeneration.systemFiles.StarSystemData;
 import DeCell.SGT.Helpers.VeBlib_Logger;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
@@ -12,9 +13,9 @@ import java.util.*;
 public class SectorGenerationPlugin implements SectorGeneratorPlugin {
 
 
-    public List<VeBlib_StarSystemData> starSystemDataList;
+    public List<StarSystemData> starSystemDataList;
 
-    public SectorGenerationPlugin(List<VeBlib_StarSystemData> starSystemDataList) {
+    public SectorGenerationPlugin(List<StarSystemData> starSystemDataList) {
         this.starSystemDataList = starSystemDataList;
     }
 
@@ -25,7 +26,7 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
         if (starSystemDataList == null) return;
 
         VeBlib_Logger.log(this.getClass(), "System list for start");
-        for (VeBlib_StarSystemData data : starSystemDataList) {
+        for (StarSystemData data : starSystemDataList) {
 
             VeBlib_Logger.log(this.getClass(), "if the same system exist dont generate a new one " + data.name);
             if (sector.getStarSystem(data.name) != null) {
@@ -39,7 +40,7 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
             VeBlib_Logger.log(this.getClass(), "set background " + data.backgroundTextureFilename);
             system.setBackgroundTextureFilename(data.backgroundTextureFilename);
 
-            VeBlib_Logger.log(this.getClass(), "set base name" + data.name);
+            VeBlib_Logger.log(this.getClass(), "set base name " + data.name);
             system.setBaseName(data.name);
 
 
@@ -51,16 +52,19 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
 
             VeBlib_Logger.log(this.getClass(), "hashmap for");
             for (int i = 0; i < data.orderHashMap.size(); i++) {
-
                 VeBlib_Logger.log(this.getClass(), "create sector object");
-
-                data.orderHashMap.get(i).CreateObject(data, system, SectorEntittyTokenHashMap, i);
-
+                if (data.orderHashMap.get(i) != null) {
+                    data.orderHashMap.get(i).CreateObject(data, system, SectorEntittyTokenHashMap, i);
+                }
             }
 
-            VeBlib_Logger.log(this.getClass(), "star init for starless systems");
-            if (data.starList.size() == 0) {
+            for (MarketData marketData : data.marketList) {
+                marketData.CreateObject(data, system, SectorEntittyTokenHashMap, marketData);
+            }
 
+
+            if (data.starList.size() == 0) {
+                VeBlib_Logger.log(this.getClass(), "star init for starless systems");
 //                    system.initNonStarCenter();
                 PlanetAPI star = system.initStar(
                         "SGT_SystemCenter" + "SGTNebulaSystemTempInitStar" + data.systemName,
@@ -71,11 +75,10 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
 
             }
 
-            VeBlib_Logger.log(this.getClass(), "autogenerate jump points");
-            system.autogenerateHyperspaceJumpPoints(data.autoGenerateEntrancesAtGasGiants, data.autoGenerateFringeJumpPoint, data.generatePlanetConditions);
-
-            VeBlib_Logger.log(this.getClass(), "remove the star");// TODO fix this
-            if (data.starList.size() == 0) system.removeEntity(system.getStar());
+            if (data.starList.size() == 0) {
+                VeBlib_Logger.log(this.getClass(), "remove the star for starless systems");// TODO fix this // idk whats wrong with this lol
+                system.removeEntity(system.getStar());
+            }
 
 
             VeBlib_Logger.log(this.getClass(), "hyperspace terrain");
@@ -91,6 +94,8 @@ public class SectorGenerationPlugin implements SectorGeneratorPlugin {
             VeBlib_Logger.log(this.getClass(), "clear arc");
             nebulaEditor.clearArc(data.x, data.y, 0, minHyperspaceRadius + maxHyperspaceRadius, 0f, 360f, 0.25f);
 
+            VeBlib_Logger.log(this.getClass(), "autogenerate jump points");
+            system.autogenerateHyperspaceJumpPoints(data.autoGenerateEntrancesAtGasGiants, data.autoGenerateFringeJumpPoint, data.generatePlanetConditions);
         }
         VeBlib_Logger.log(this.getClass(), "For ends");
 

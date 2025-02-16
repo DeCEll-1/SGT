@@ -1,0 +1,1 @@
+﻿when a star is orbiting a star the center star disapears and adding something to orbit to the second star makes the system DİE

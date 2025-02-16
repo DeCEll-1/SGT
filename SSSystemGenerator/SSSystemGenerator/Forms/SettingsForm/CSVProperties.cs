@@ -18,13 +18,16 @@ namespace SSSystemGenerator.Forms.SettingsForm
         private List<IndustriesCSV> industries = new List<IndustriesCSV>();
         private List<MarketConditionsCSV> conditions = new List<MarketConditionsCSV>();
         private List<SubmarketsCSV> submarkets = new List<SubmarketsCSV>();
-        public CSVProperties(List<IndustriesCSV> industries, List<MarketConditionsCSV> conditions, List<SubmarketsCSV> submarkets)
+        private readonly List<PlanetGenData> planetGenDatas = new List<PlanetGenData>();
+
+        public CSVProperties(List<IndustriesCSV> industries, List<MarketConditionsCSV> conditions, List<SubmarketsCSV> submarkets, List<PlanetGenData> planetGenDatas)
         {
             InitializeComponent();
             UpdateColors();
             this.industries = industries;
             this.conditions = conditions;
             this.submarkets = submarkets;
+            this.planetGenDatas = planetGenDatas;
 
             lb_Industries.Items.Add("Industries");
             lb_Industries.Items.AddRange(IndustriesList());
@@ -32,7 +35,10 @@ namespace SSSystemGenerator.Forms.SettingsForm
             lb_Conditions.Items.AddRange(ConditionsList());
             lb_Submarkets.Items.Add("Submarkets");
             lb_Submarkets.Items.AddRange(SubmarketsList());
+            lb_PlanetTypes.Items.Add("Planet ids, types, categories");
+            lb_PlanetTypes.Items.AddRange(PlanetTypeList());
 
+            CSVProperties_ResizeEnd(null, null);
         }
 
         private string[] IndustriesList()
@@ -68,12 +74,27 @@ namespace SSSystemGenerator.Forms.SettingsForm
 
             return result;
         }
+        private string[] PlanetTypeList()
+        {
+            string[] result = new string[planetGenDatas.Count];
+
+            for (int i = 0; i < planetGenDatas.Count; i++)
+            {
+                result[i] = planetGenDatas[i].id + " - " + planetGenDatas[i].type + " - " + planetGenDatas[i].category;
+            }
+
+            return result;
+        }
 
         private void CSVProperties_ResizeEnd(object sender, EventArgs e)
         {
+            pnl_top.Size = new Size(this.Size.Width, this.Size.Height / 2);
             lb_Industries.Size = new Size(this.Size.Width / 3, lb_Industries.Height);
             lb_Conditions.Size = new Size(this.Size.Width / 3, lb_Conditions.Height);
             lb_Submarkets.Size = new Size(this.Size.Width / 3, lb_Submarkets.Height);
+         
+            pnl_bottom.Size = new Size(this.Size.Width, this.Size.Height / 2);
+            lb_PlanetTypes.Size = new Size(this.Size.Width / 3, lb_PlanetTypes.Height);
         }
 
         private void CSVProperties_KeyPress(object sender, KeyEventArgs e)

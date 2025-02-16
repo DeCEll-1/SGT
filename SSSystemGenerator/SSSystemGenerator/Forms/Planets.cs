@@ -23,6 +23,7 @@ namespace SSSystemGenerator.Forms
         {
             InitializeComponent();
             context = "Planet";
+            nud_Radius.ValueChanged += base.TextChangedBTNAddUpdateCheck;
             Load();
         }
 
@@ -100,6 +101,8 @@ namespace SSSystemGenerator.Forms
 
                 UpdateForm(planet);// update the star with variables
 
+                currPlanet = planet;
+
                 btn_Add.Text = "Update " + context;
 
                 btn_Delete.Enabled = true;
@@ -110,7 +113,8 @@ namespace SSSystemGenerator.Forms
                 btn_Delete.Enabled = false;
             }
         }
-        internal override void btn_Add_Click(object sender, EventArgs e) {
+        internal override void btn_Add_Click(object sender, EventArgs e)
+        {
 
             if (btn_Add.Text == "Add " + context)
             {

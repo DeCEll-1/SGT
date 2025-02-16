@@ -7,14 +7,14 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 
 import java.util.HashMap;
 
-public class VeBlib_PlanetData extends VeBlib_SGTExtend {
+public class PlanetData extends SGTExtend {
 
-    public VeBlib_PlanetData()
+    public PlanetData()
     {
 
     }
 
-    public VeBlib_PlanetData(String ID, String OrbitFocus, String name, String TypeId, float angle, float radius, float orbitRadius, float orbitDays)
+    public PlanetData(String ID, String OrbitFocus, String name, String TypeId, float angle, float radius, float orbitRadius, float orbitDays)
     {
         this.ID = ID;
         this.focusID = OrbitFocus;
@@ -28,9 +28,9 @@ public class VeBlib_PlanetData extends VeBlib_SGTExtend {
     }
 
     @Override
-    public void CreateObject(VeBlib_StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
+    public void CreateObject(StarSystemData data, StarSystemAPI system, HashMap<String, SectorEntityToken> SectorEntittyTokenHashMap, int i){
         VeBlib_Logger.log(this.getClass(), "get planet from hashmap");
-        VeBlib_PlanetData planetData = (VeBlib_PlanetData) data.orderHashMap.get(i);
+        PlanetData planetData = (PlanetData) data.orderHashMap.get(i);
         VeBlib_Logger.log(this.getClass(), "generate planet " + planetData.ID);
         PlanetAPI planet = system.addPlanet(
                 planetData.ID,

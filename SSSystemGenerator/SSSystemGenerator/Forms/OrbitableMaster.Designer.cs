@@ -62,10 +62,10 @@
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.tb_TypeID = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ComboBox_Selectables = new System.Windows.Forms.ComboBox();
+            this.cb_TypeID = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nud_OrbitDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinSpin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MaxSpin)).BeginInit();
@@ -494,14 +494,6 @@
             this.label16.TabIndex = 118;
             this.label16.Text = "Name (optional):";
             // 
-            // tb_TypeID
-            // 
-            this.tb_TypeID.Location = new System.Drawing.Point(13, 220);
-            this.tb_TypeID.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_TypeID.Name = "tb_TypeID";
-            this.tb_TypeID.Size = new System.Drawing.Size(233, 22);
-            this.tb_TypeID.TabIndex = 120;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -534,11 +526,20 @@
             this.ComboBox_Selectables.TabIndex = 128;
             this.ComboBox_Selectables.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Selectables_SelectedIndexChanged);
             // 
+            // cb_TypeID
+            // 
+            this.cb_TypeID.FormattingEnabled = true;
+            this.cb_TypeID.Location = new System.Drawing.Point(13, 218);
+            this.cb_TypeID.Name = "cb_TypeID";
+            this.cb_TypeID.Size = new System.Drawing.Size(234, 24);
+            this.cb_TypeID.TabIndex = 130;
+            // 
             // OrbitableMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 591);
+            this.Controls.Add(this.cb_TypeID);
             this.Controls.Add(this.ComboBox_Selectables);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Clone);
@@ -548,7 +549,6 @@
             this.Controls.Add(this.lbl_StuffOrbitingAround);
             this.Controls.Add(this.lbl_Order);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.tb_TypeID);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.tb_Name);
@@ -626,9 +626,9 @@
         internal System.Windows.Forms.TextBox tb_Name;
         internal System.Windows.Forms.Label label12;
         internal System.Windows.Forms.Label label16;
-        internal System.Windows.Forms.TextBox tb_TypeID;
         internal System.Windows.Forms.Label label13;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.ComboBox ComboBox_Selectables;
+        private System.Windows.Forms.ComboBox cb_TypeID;
     }
 }
