@@ -7,3 +7,4 @@ TODO: add strings.csv editing to make planet descriptions in-tool (was it only f
 DONE: map zooms out when you move your cursor in the form, fix that, somehow
 TODO: use inheritence instead of IINterfact
 TODO: add preview of the planet in the planet editor
+DONE: replace yes no exit with yes no cancel

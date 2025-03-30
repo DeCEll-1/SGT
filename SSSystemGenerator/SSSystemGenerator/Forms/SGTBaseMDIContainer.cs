@@ -122,18 +122,7 @@ namespace SSSystemGenerator
 
         private void closeAppToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            DialogResult result = MessageBox.Show("Are You Sure You Want To Exit", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2);
-
-            if (result == DialogResult.Yes)
-            {
-                saveToolStripMenuItem_Click(null, null);
-
-                Misc.WaitUntilSaveEnds();
-
-                Statics.CloseTheForm = true;
-
-            }
+            this.Close();
 
         }
 
@@ -245,7 +234,7 @@ namespace SSSystemGenerator
 
         private void SGTBaseMDIContainer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are You Sure You Want To Exit", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2);
+            DialogResult result = MessageBox.Show("Do you want to save before exiting?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.None, MessageBoxDefaultButton.Button3);
 
             if (result == DialogResult.Yes && e.CloseReason == CloseReason.UserClosing)
             {
@@ -260,6 +249,10 @@ namespace SSSystemGenerator
                     return;
                 }
 
+                e.Cancel = false;
+            }
+            else if (result == DialogResult.No)
+            {
                 e.Cancel = false;
             }
             else
