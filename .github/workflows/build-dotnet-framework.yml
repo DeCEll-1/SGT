@@ -32,10 +32,14 @@ jobs:
         run: |
           powershell -command "Get-ChildItem -Recurse"
 
+      - name: Unlock EXE before upload
+        run: |
+          powershell -command "Stop-Process -Name '.SSSystemGenerator' -ErrorAction SilentlyContinue"
+
       - name: Publish artifacts
         uses: actions/upload-artifact@v4
         with:
           name: BuildOutput
-          path: SGTExe/
+          path: SGTExe/**
           compression-level: 0
           overwrite: true
