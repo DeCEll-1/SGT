@@ -91,35 +91,19 @@ jobs:
 
       - name: Zip SGTExe
         run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
-
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Publish artifact exe
+        uses: actions/upload-artifact@v4
         with:
-          body: ${{ github.event.inputs.relaseDescription }}
-          tag_name: ${{ github.event.inputs.version }}
-          release_name: Release ${{ github.event.inputs.version }}
-          draft: false
-          prerelease: false
+          name: BuildOutput
+          path: ./SGTExe.zip
+          compression-level: 0
+          overwrite: true
 
-      - name: Upload SGTExe
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish artifact sgt
+        uses: actions/upload-artifact@v4
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./SGTExe.zip
-          asset_name: SGTExe.zip
-          asset_content_type: application/zip
-
-      - name: Upload SGT
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./SGT.zip
-          asset_name: SGT.zip
-          asset_content_type: application/zip
+          name: BuildOutput
+          path: ./SGT.zip
+          compression-level: 0
+          overwrite: true
