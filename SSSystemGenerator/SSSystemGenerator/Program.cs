@@ -21,6 +21,8 @@ namespace SSSystemGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Paths.EXEPath = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+
             fileHelper.SetupFiles();
             object s = Paths.EXEPath;
             s = Paths.JsonMetadataPath;
@@ -31,7 +33,7 @@ namespace SSSystemGenerator
             s = Paths.GameCore;
             s = Paths.GameCoreCampaignFolder;
             s = Statics.BaseClass;//for testing
-            Paths.EXEPath = new DirectoryInfo(Assembly.GetExecutingAssembly().Location);
+            //Paths.EXEPath = new DirectoryInfo(Assembly.GetExecutingAssembly().Location);
 
 
             if (Settings.Default.UpgradeNeeded)

@@ -12,7 +12,8 @@ namespace SSSystemGenerator.Classes
         /// <summary>
         /// D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\SGTExe
         /// </summary>
-        public static DirectoryInfo EXEPath { get; set; } = new DirectoryInfo("D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SGTExe");//mod/SGTExe//exe
+        //public static DirectoryInfo EXEPath { get; set; } = new DirectoryInfo("D:\\Game Files\\Fractal Softworks\\0.97a-RC11\\mods\\SGT\\SGTExe");
+        public static DirectoryInfo EXEPath { get; set; } = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
 
         /// <summary>
         /// D:\Game Files\Fractal Softworks\0.97a-RC11\mods\SGT\data\strings\SGTSystems.json
