@@ -86,7 +86,7 @@ jobs:
       - name: Publish artifact exe
         uses: actions/upload-artifact@v4
         with:
-          name: SGTExe.zip
+          name: SGTExe
           path: ./SGTExe.zip
           compression-level: 0
           overwrite: true
@@ -94,7 +94,7 @@ jobs:
       - name: Publish artifact sgt
         uses: actions/upload-artifact@v4
         with:
-          name: BSGT.zip
+          name: SGT
           path: ./SGT.zip
           compression-level: 0
           overwrite: true
