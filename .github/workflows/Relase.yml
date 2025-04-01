@@ -20,7 +20,7 @@ jobs:
       - name: Create zip excluding specific folders
         run: |
           # Exclude multiple folders by specifying each one with -x
-          zip -r SGT.zip ../ -x "../SGT/.idea/*" -x "../SGT/.run/*" -x "../SGT/.github/*" -x "../SGT/.SGTExe/*" -x "../SGT/SSSystemGenerator/*" -x "../SGT/src/*" -x "../SGT/.git/*" -x "../SGT/README.*" -x "../SGT/SGTExe/*.xml" -x "../SGT/SGTExe/*.pdb"
+          zip -r SGT.zip ../ -x "../SGT/.idea/*" -x "../SGT/.run/*" -x "../SGT/.github/*" -x "../SGT/.SGTExe/*" -x "../SGT/SSSystemGenerator/*" -x "../SGT/src/*" -x "../SGT/.git/*" -x "../SGT/README.*" -x "../SGT/ObjectListViewDemo/*"
 
       - name: Download build artifact
         id: download-artifact
