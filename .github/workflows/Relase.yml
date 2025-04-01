@@ -81,12 +81,12 @@ jobs:
           allow_forks: false
 
       - name: Zip SGTExe # plz work
-        run: zip -r SGTExe.zip BuildOutput -x "*.xml" "*.pdb"
+        run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
       
       - name: Publish artifact exe
         uses: actions/upload-artifact@v4
         with:
-          name: BuildOutput
+          name: SGTExe.zip
           path: ./SGTExe.zip
           compression-level: 0
           overwrite: true
@@ -94,7 +94,7 @@ jobs:
       - name: Publish artifact sgt
         uses: actions/upload-artifact@v4
         with:
-          name: BuildOutput
+          name: BSGT.zip
           path: ./SGT.zip
           compression-level: 0
           overwrite: true
