@@ -80,8 +80,8 @@ jobs:
           # default false
           allow_forks: false
 
-      - name: Zip SGTExe
-        run: zip -r SGTExe.zip SGTExe -x "*.xml" "*.pdb"
+      - name: Zip SGTExe # plz work
+        run: zip -r SGTExe.zip BuildOutput -x "*.xml" "*.pdb"
       
       - name: Publish artifact exe
         uses: actions/upload-artifact@v4
