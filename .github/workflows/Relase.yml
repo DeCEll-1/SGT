@@ -1,16 +1,7 @@
-name: Zip and Release
+name: Generate relase zips
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Enter version'
-        required: true
-        default: 'Vx.x.x'
-      relaseDescription:
-        description: 'Enter relase description'
-        required: false
-        default: ''
 
 jobs:
   build:
