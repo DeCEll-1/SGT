@@ -7,7 +7,7 @@
     <ProjectGuid>{EBDE1E16-F1C3-4248-85F0-E8C12C03E5B7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SSSystemGenerator</RootNamespace>
-    <AssemblyName>.SSSystemGenerator</AssemblyName>
+    <AssemblyName>SSSystemGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
