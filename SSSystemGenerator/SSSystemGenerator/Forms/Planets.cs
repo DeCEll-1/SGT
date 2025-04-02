@@ -70,7 +70,7 @@ namespace SSSystemGenerator.Forms
 
             planetToAdd.systemGUID = GetSystem().GUID;
 
-            ItemEditingAdding.AddPlanet(planetToAdd);//add the planet to the system
+            ItemCRUD.AddPlanet(planetToAdd);//add the planet to the system
 
             currPlanet = planetToAdd;
 
@@ -137,7 +137,7 @@ namespace SSSystemGenerator.Forms
 
                 updatedPlanet.systemGUID = Helper.GetSystemFromID(updatedPlanet.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
-                ItemEditingAdding.UpdatePlanet(updatedPlanet);//update the planet
+                ItemCRUD.UpdatePlanet(updatedPlanet);//update the planet
 
                 Load();
 
@@ -179,7 +179,7 @@ namespace SSSystemGenerator.Forms
 
             deletedPlanetsInThisSessionList.Add(planetToDelete);
 
-            ItemEditingAdding.DeletePlanet(planetToDelete);
+            ItemCRUD.DeletePlanet(planetToDelete);
 
             Load();
 

@@ -231,7 +231,7 @@ namespace SSSystemGenerator.Forms
 
             entityToAdd.systemGUID = getSystem().GUID;
 
-            ItemEditingAdding.AddCustomEntity(entityToAdd);//add the planet to the system
+            ItemCRUD.AddCustomEntity(entityToAdd);//add the planet to the system
 
             currEntity = entityToAdd;
 
@@ -255,7 +255,7 @@ namespace SSSystemGenerator.Forms
 
             updatedEntity.systemGUID = Helper.GetSystemFromID(updatedEntity.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
-            ItemEditingAdding.UpdateCustomEntity(updatedEntity);//update the planet
+            ItemCRUD.UpdateCustomEntity(updatedEntity);//update the planet
 
             Load();
 
@@ -436,7 +436,7 @@ namespace SSSystemGenerator.Forms
 
             deletedEntitiesInThisSessionList.Add(entityToDelete);
 
-            ItemEditingAdding.DeleteCustomEntity(entityToDelete);
+            ItemCRUD.DeleteCustomEntity(entityToDelete);
 
             Load();
 

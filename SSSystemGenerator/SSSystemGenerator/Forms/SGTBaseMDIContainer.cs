@@ -135,7 +135,7 @@ namespace SSSystemGenerator
 
         private void StartSave(string jsonPath)
         {
-            ItemEditingAdding.UpdateLoadOrder();
+            ItemCRUD.UpdateLoadOrder();
 
             if (TSPB_Saving.Value == 100) TSPB_Saving.Value = 0;
 

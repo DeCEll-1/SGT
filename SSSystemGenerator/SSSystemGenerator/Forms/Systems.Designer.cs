@@ -283,7 +283,7 @@
             // ofd_BackgroundTexture
             // 
             this.ofd_BackgroundTexture.FileName = "ofd_BackgroundTexture";
-            this.ofd_BackgroundTexture.Filter = "PNG (*.png)|*.png|PJEG (*.jpeg)|*.jpeg|All files (*.*)|*.*";
+            this.ofd_BackgroundTexture.Filter = "Image Files (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg|All Files (*.*)|*.*";
             // 
             // btn_BackgroundImagePick
             // 

@@ -273,7 +273,7 @@ namespace SSSystemGenerator.Forms
 
             ringBand.systemGUID = getSystem().GUID;
 
-            ItemEditingAdding.AddRingBand(ringBand);
+            ItemCRUD.AddRingBand(ringBand);
 
             currRingBand = ringBand;
 
@@ -458,7 +458,7 @@ namespace SSSystemGenerator.Forms
 
                 updatedRingBand.systemGUID = Helper.GetSystemFromID(updatedRingBand.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
-                ItemEditingAdding.UpdateRingBand(updatedRingBand);//update the planet
+                ItemCRUD.UpdateRingBand(updatedRingBand);//update the planet
 
                 Load();
 
@@ -478,7 +478,7 @@ namespace SSSystemGenerator.Forms
 
             deletedRingBandsInThisSession.Add(ringBandToDelete);
 
-            ItemEditingAdding.DeleteRingBand(ringBandToDelete);
+            ItemCRUD.DeleteRingBand(ringBandToDelete);
 
             Load();
 

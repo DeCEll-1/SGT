@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SSSystemGenerator.Classes
 {
-    public class StarSystemData : Extend
+    public class StarSystemData : Extend , ICloneable
     {
 
         public StarSystemData()
@@ -120,5 +120,9 @@ namespace SSSystemGenerator.Classes
         [Newtonsoft.Json.JsonIgnore]
         public Bitmap systemImage;
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

@@ -86,7 +86,7 @@ namespace SSSystemGenerator
 
             starToAdd.systemGUID = Helper.GetSystemFromID(starToAdd.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
-            ItemEditingAdding.AddStar(starToAdd);//add the star to the system
+            ItemCRUD.AddStar(starToAdd);//add the star to the system
 
             //currStar = Helper.GetStarOnSystem(starToAdd.systemID, starToAdd.ID);
             //why the fuck did i got the star like this? starToAdd is literally this anyways?
@@ -156,7 +156,7 @@ namespace SSSystemGenerator
                     return;
                 }
 
-                ItemEditingAdding.UpdateStar(updatedStar);//updates star
+                ItemCRUD.UpdateStar(updatedStar);//updates star
 
                 Load();//reload (idr why)
 
@@ -197,7 +197,7 @@ namespace SSSystemGenerator
 
             deletedStarsInThisSessionList.Add(starToDelete);//add it to deleteds list
 
-            ItemEditingAdding.DeleteStar(starToDelete);//delete it
+            ItemCRUD.DeleteStar(starToDelete);//delete it
 
             Load();//reload
 

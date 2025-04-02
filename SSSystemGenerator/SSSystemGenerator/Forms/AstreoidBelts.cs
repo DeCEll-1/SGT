@@ -156,7 +156,7 @@ namespace SSSystemGenerator.Forms
 
             astreoidBelt.systemGUID = getSystem().GUID;
 
-            ItemEditingAdding.AddAstreoidBelt(astreoidBelt);
+            ItemCRUD.AddAstreoidBelt(astreoidBelt);
 
             currAstreoid = astreoidBelt;
 
@@ -207,7 +207,7 @@ namespace SSSystemGenerator.Forms
 
             updatedAstreoidData.systemGUID = Helper.GetSystemFromID(updatedAstreoidData.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
-            ItemEditingAdding.UpdateAstreoidBelt(updatedAstreoidData);//update the planet
+            ItemCRUD.UpdateAstreoidBelt(updatedAstreoidData);//update the planet
 
             Load();
 
@@ -365,7 +365,7 @@ namespace SSSystemGenerator.Forms
 
             deletedAstreoidBeltsThisSession.Add(ringBandToDelete);
 
-            ItemEditingAdding.DeleteAstreoidBelt(ringBandToDelete);
+            ItemCRUD.DeleteAstreoidBelt(ringBandToDelete);
 
             Load();
 

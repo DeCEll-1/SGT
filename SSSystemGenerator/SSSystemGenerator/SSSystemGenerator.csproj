@@ -140,7 +140,7 @@
     <Compile Include="Classes\Settings\ModsToLoadController.cs" />
     <Compile Include="Classes\Paths.cs" />
     <Compile Include="Classes\SavingProccess\ImageWorks.cs" />
-    <Compile Include="Classes\ItemEditingAdding.cs" />
+    <Compile Include="Classes\ItemCRUD.cs" />
     <Compile Include="Classes\SavingProccess\BaseClass.cs" />
     <Compile Include="Classes\Extend.cs" />
     <Compile Include="Classes\fileHelper.cs" />

@@ -2,13 +2,14 @@
 using SSSystemGenerator.Forms;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SSSystemGenerator.Classes
 {
-    public class ItemEditingAdding
+    public class ItemCRUD
     {
 
         #region misc
@@ -176,13 +177,15 @@ namespace SSSystemGenerator.Classes
                 Helper.ThrowCrash("ItemEditingAdding.cs", "UpdateSystem");
 
             }
-
-
-
             Statics.BaseClass.StarSystemDataList.Remove(systemToRemove);//remove system
 
             Statics.BaseClass.StarSystemDataList.Add(newSystem);//add system
+        }
 
+        public static void DeleteSystem(StarSystemData systemToDelete)
+        {
+            File.Delete(Paths.SystemsFolder.FullName + "\\" + systemToDelete.ID + ".png");
+            Statics.BaseClass.StarSystemDataList.Remove(systemToDelete);
         }
         #endregion
 

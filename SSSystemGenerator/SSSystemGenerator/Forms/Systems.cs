@@ -33,27 +33,10 @@ namespace SSSystemGenerator.Forms
 
         #region customFunctions
 
-        private StarSystemData addValuesToSystem()
+        private StarSystemData addValuesToSystem(StarSystemData system = null)
         {
-            StarSystemData system = new StarSystemData();
-
-            system.ID = tb_ID.Text;
-            system.name = tb_Name.Text;
-            system.backgroundTextureFilename = tb_StarBackgroundTexturePath.Text;
-
-            system.minHyperspaceRadius = (float)nud_minHyperspaceRadius.Value;
-            system.systemX = (float)nud_SystemX.Value;
-            system.systemY = (float)nud_SystemY.Value;
-
-            system.autoGenerateEntrancesAtGasGiants = cb_autoGenerateEntrancesAtGasGiants.Checked;
-            system.autoGenerateFringeJumpPoint = cb_autoGenerateFringeJumpPoint.Checked;
-            system.generatePlanetConditions = cb_generatePlanetConditions.Checked;
-
-            return system;
-        }
-
-        private StarSystemData addValuesToSystem(StarSystemData system)
-        {
+            if (system == null)
+                system = new StarSystemData();
 
             system.ID = tb_ID.Text;
             system.name = tb_Name.Text;
@@ -173,7 +156,7 @@ namespace SSSystemGenerator.Forms
 
                 currSystem = systemToAdd;
 
-                ItemEditingAdding.AddSystem(systemToAdd);
+                ItemCRUD.AddSystem(systemToAdd);
 
                 Load();
 
@@ -203,7 +186,7 @@ namespace SSSystemGenerator.Forms
                 }
 
 
-                ItemEditingAdding.UpdateSystem(updatedSystem);//update the system
+                ItemCRUD.UpdateSystem(updatedSystem);//update the system
 
                 Load();
 
@@ -242,9 +225,7 @@ namespace SSSystemGenerator.Forms
 
                 #region adds the system back, copied from add system
 
-                StarSystemData systemToAdd = addValuesToSystem();
-
-                currSystem = addValuesToSystem();
+                StarSystemData systemToAdd = addValuesToSystem(currSystem);
 
                 currSystem = systemToAdd;
 
@@ -266,15 +247,14 @@ namespace SSSystemGenerator.Forms
 
             if (currSystem == null) return;
 
-            deletedSystemsInThisSessionList.Add(currSystem);
+            deletedSystemsInThisSessionList.Add((StarSystemData)currSystem.Clone());
 
-            Statics.BaseClass.StarSystemDataList.Remove(currSystem);
+            ItemCRUD.DeleteSystem(currSystem);
 
             currSystem = new StarSystemData();
 
             Load();
             reset();
-
         }
 
         private void btn_GetSystemBackground_Click(object sender, EventArgs e)

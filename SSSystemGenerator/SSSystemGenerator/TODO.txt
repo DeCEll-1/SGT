@@ -8,3 +8,5 @@ DONE: map zooms out when you move your cursor in the form, fix that, somehow
 TODO: use inheritence instead of IINterfact
 TODO: add preview of the planet in the planet editor
 DONE: replace yes no exit with yes no cancel
+TODO: delete the systems image when you delete the image
+TODO: make numericals increase by tile values (250 500 etc etc)

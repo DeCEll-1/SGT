@@ -394,7 +394,7 @@ namespace SSSystemGenerator.Forms
 
             marketToAdd.systemGUID = GetSystem().GUID;
 
-            ItemEditingAdding.AddMarket(marketToAdd);
+            ItemCRUD.AddMarket(marketToAdd);
 
             currMarket = marketToAdd;
 
@@ -418,7 +418,7 @@ namespace SSSystemGenerator.Forms
 
             updatedMarket.systemGUID = Helper.GetSystemFromID(updatedMarket.systemID).GUID;//put system guid, dont get the system from guid because it cant be changed anyways
 
-            ItemEditingAdding.UpdateMarket(updatedMarket);
+            ItemCRUD.UpdateMarket(updatedMarket);
 
             currMarket = updatedMarket;
 
@@ -604,7 +604,7 @@ namespace SSSystemGenerator.Forms
 
             deletedMarketsInThisSessionList.Add(marketToDelete);
 
-            ItemEditingAdding.DeleteMarket(marketToDelete);
+            ItemCRUD.DeleteMarket(marketToDelete);
 
             Load();
 

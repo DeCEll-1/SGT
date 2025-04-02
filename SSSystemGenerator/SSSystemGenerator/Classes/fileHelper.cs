@@ -65,13 +65,16 @@ namespace SSSystemGenerator.Classes
 
             ImageWorks imageWorks = new ImageWorks();
 
-            metadataHolder.SystemMetadatas.ForEach(metadata =>
+            foreach (var metadata in metadataHolder.SystemMetadatas)
             {
+                if (!File.Exists(Paths.SystemsFolder.FullName + "\\" + metadata.ID + ".png"))
+                    continue;
+
                 string systemJson = imageWorks.BitmapToText(new System.Drawing.Bitmap(Paths.SystemsFolder.FullName + "\\" + metadata.ID + ".png"));
 
                 systems.Add(JsonHelper.GetSystemListFromJsonFile(systemJson));
 
-            });
+            };
 
 
             BaseClass bc = new BaseClass();
