@@ -16,7 +16,7 @@ namespace SSSystemGenerator.Forms
     public partial class OrbitableMaster : Form, IFormInterface
     { // holy SHİT THİS İS SO CLEAN AWWWW :3
         public string context { get; set; } = "";
-        public OrbitableMaster() 
+        public OrbitableMaster()
         {
             InitializeComponent();
             UpdateColors();
@@ -133,7 +133,7 @@ namespace SSSystemGenerator.Forms
             cb_Spin.Visible = visibility;
             cb_PointingDown.Visible = visibility;
         }
-        
+
         // gets orbit mode as text 
         private string GetOrbitModeText(Extend item)
         {
@@ -142,7 +142,7 @@ namespace SSSystemGenerator.Forms
         // gets orbit mode as number
         private int GetOrbitModeNo()
         {
-            if(cb_OrbitMode.SelectedItem.ToString() == "Fixed Location")
+            if (cb_OrbitMode.SelectedItem.ToString() == "Fixed Location")
                 return 0;
             else if (cb_PointingDown.Checked)
             {
@@ -202,7 +202,7 @@ namespace SSSystemGenerator.Forms
             item.WhatIsThis = type;
         }
 
-        internal void LoadTypes()
+        internal virtual void LoadTypes()
         {
             cb_TypeID.Items.Clear();
             cb_TypeID.Items.AddRange(
@@ -271,7 +271,7 @@ namespace SSSystemGenerator.Forms
                         selectableArray = GetSystem().planetList.ToArray();
                         break;
                     case "Custom Entity":
-                       selectableArray = GetSystem().sectorEntityTokenList.ToArray();
+                        selectableArray = GetSystem().sectorEntityTokenList.ToArray();
                         break;
                     default:
                         break;

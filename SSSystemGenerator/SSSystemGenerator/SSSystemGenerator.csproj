@@ -133,6 +133,7 @@
     <Compile Include="Classes\CSVClasses\IndustriesCSV.cs" />
     <Compile Include="Classes\CSVClasses\MarketConditionsCSV.cs" />
     <Compile Include="Classes\CSVClasses\PlanetGenData.cs" />
+    <Compile Include="Classes\CSVClasses\StarGenData.cs" />
     <Compile Include="Classes\CSVClasses\SubmarketsCSV.cs" />
     <Compile Include="Classes\CSVClasses\CSVHelper.cs" />
     <Compile Include="Classes\Finals.cs" />

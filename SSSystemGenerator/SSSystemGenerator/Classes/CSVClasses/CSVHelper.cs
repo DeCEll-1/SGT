@@ -28,6 +28,8 @@ namespace SSSystemGenerator.Classes
 
             csv.PlanetGenDatas.AddRange(GetPlanetGenDataListFromPath(coreCampaignFolderPath + @"\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.PLANET_GEN_DATA_FILE_NAME));
 
+            csv.StarGenDatas.AddRange(GetStarGenDataListFromPath(coreCampaignFolderPath + @"\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.STAR_GEN_DATA_FILE_NAME));
+
             foreach (DirectoryInfo modDirectory in SettingsController.ModsToLoad)
             {
 
@@ -66,6 +68,15 @@ namespace SSSystemGenerator.Classes
                     csv.PlanetGenDatas.AddRange(
                         GetPlanetGenDataListFromPath(
                             modPath + @"\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.PLANET_GEN_DATA_FILE_NAME
+                        )
+                    );
+                }
+
+                if (File.Exists(modPath + @"\data\campaign\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.STAR_GEN_DATA_FILE_NAME))
+                {
+                    csv.StarGenDatas.AddRange(
+                        GetStarGenDataListFromPath(
+                            modPath + @"\" + Finals.PROCGEN_FOLDER_NAME + @"\" + Finals.STAR_GEN_DATA_FILE_NAME
                         )
                     );
                 }
@@ -211,7 +222,7 @@ namespace SSSystemGenerator.Classes
 
         #endregion
 
-        #region MarketConditions
+        #region PlanetGenData
 
         /// <summary>
         /// get market conditions csv
@@ -220,7 +231,6 @@ namespace SSSystemGenerator.Classes
         /// <returns>null if not found anything</returns>
         public static List<PlanetGenData> GetPlanetGenDataListFromPath(string path)
         {
-
             List<PlanetGenData> records = null;
 
             //https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file
@@ -252,6 +262,49 @@ namespace SSSystemGenerator.Classes
 
             return records;
 
+        }
+
+        #endregion
+
+        #region PlanetGenData
+
+        /// <summary>
+        /// get market conditions csv
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>null if not found anything</returns>
+        public static List<StarGenData> GetStarGenDataListFromPath(string path)
+        {
+            List<StarGenData> records = null;
+
+            //https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file
+
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                records = csv.GetRecords<StarGenData>().ToList();
+            }
+
+            string modName = path.Split('\\')[path.Split('\\').Length - 5];
+            records.ForEach(record =>
+            {
+                record.owner = modName;
+            });
+
+            List<StarGenData> stuffToDelete = new List<StarGenData>();
+
+            foreach (StarGenData genData in records)
+            {
+                if (genData.id == "" || genData.id.Contains("#"))
+                {
+                    stuffToDelete.Add(genData);
+                    continue;
+                }
+            }
+
+            foreach (StarGenData genDataToDelete in stuffToDelete) { records.Remove(genDataToDelete); }
+
+            return records;
         }
 
         #endregion

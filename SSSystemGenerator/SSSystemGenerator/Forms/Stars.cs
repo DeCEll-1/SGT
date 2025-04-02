@@ -49,6 +49,16 @@ namespace SSSystemGenerator
             nud_CoronaSize.Value = 0;
         }
 
+        internal override void LoadTypes()
+        {
+            cb_TypeID.Items.Clear();
+            cb_TypeID.Items.AddRange(
+                Statics.CSVs.StarGenDatas
+                .ToList() // list it
+                .Select(s => s.id) // turn it into a list of ids
+                .ToArray<object>() // array it
+            );
+        }
         private StarData getData()
         {
             StarData gettenStar = new StarData();

@@ -17,5 +17,7 @@ namespace SSSystemGenerator.Classes.CSVClasses
 
         public List<PlanetGenData> PlanetGenDatas { get; set; } = new List<PlanetGenData> { };
 
+        public List<StarGenData> StarGenDatas { get; set; } = new List<StarGenData> { };
+
     }
 }

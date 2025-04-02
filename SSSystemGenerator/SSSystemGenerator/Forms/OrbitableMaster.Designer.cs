@@ -629,6 +629,6 @@
         internal System.Windows.Forms.Label label13;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.ComboBox ComboBox_Selectables;
-        private System.Windows.Forms.ComboBox cb_TypeID;
+        public System.Windows.Forms.ComboBox cb_TypeID;
     }
 }

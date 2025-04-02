@@ -18,6 +18,7 @@ namespace SSSystemGenerator.Classes
 
         public const string PROCGEN_FOLDER_NAME = "procgen";
         public const string PLANET_GEN_DATA_FILE_NAME = "planet_gen_data.csv";
+        public const string STAR_GEN_DATA_FILE_NAME = "star_gen_data.csv";
 
         public const string INDUSTRIES = "INDUSTRIES";
         public const string SUBMARKETS = "SUBMARKETS";
