@@ -79,6 +79,7 @@ namespace SSSystemGenerator.Forms
             ComboBox_Selectables.SelectedItem = planetToAdd.ID + " - " + planetToAdd.name;//select the added planet
         }
         #endregion
+
         #region triggers
         internal override void SelectablesIndexChanged()
         { // runs when the selectable is changed

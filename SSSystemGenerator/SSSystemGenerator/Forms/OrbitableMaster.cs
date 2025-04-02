@@ -387,19 +387,9 @@ namespace SSSystemGenerator.Forms
                 tb_ID.Text == "" ||
                 cb_TypeID.Text == "" ||
                 ComboBox_Systems.SelectedItem == null ||
-                ComboBox_Systems.SelectedItem.ToString() == ""
-                )
-            {
-                btn_Add.Enabled = false;
-            }
-            else
-            {
-                btn_Add.Enabled = true;
-            }
-            if (
-                ComboBox_Focus.SelectedItem == null ||
-                ComboBox_Focus.SelectedItem.ToString() == "" &&
-                cb_OrbitMode.SelectedItem.ToString() == "Circular Orbit"
+                ComboBox_Systems.SelectedItem.ToString() == "" ||
+                (String.IsNullOrEmpty(ComboBox_Focus.SelectedItem?.ToString()) &&
+                cb_OrbitMode.SelectedItem?.ToString() == "Circular Orbit")
                 )
             {
                 btn_Add.Enabled = false;
