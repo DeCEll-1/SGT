@@ -1,7 +1,6 @@
 package DeCell.SGT.Parser;
 
 import com.fs.starfarer.api.graphics.SpriteAPI;
-import sun.security.util.ArrayUtil;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

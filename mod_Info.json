@@ -9,7 +9,7 @@
     "patch": 0
   },
   "description": "SGT",
-  "gameVersion": "0.97a-RC11",
+  "gameVersion": "0.98a-RC5",
   "modPlugin": "DeCell.SGT.Plugins.ModPlugin",
   "jars": [
     "jars/SGT.jar"
